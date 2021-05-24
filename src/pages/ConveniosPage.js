@@ -1,34 +1,28 @@
 import React, { useState } from "react";
-import Footer from "../components/Footer";
-import HeroSection from "../components/HeroSection";
-import InfoSection from "../components/InfoSection";
-import {
-  ConveniosObjFour,
-  ConveniosObjOne,
-  ConveniosObjThree,
-  ConveniosObjTwo,
-} from "../components/InfoSection/DataConvenios";
-import Navbar from "../components/Navbar";
-import Services from "../components/Services";
-import Sidebar from "../components/Sidebar";
+import DropDown from "../componentsConvenio/DropDown";
+import Hero from "../componentsConvenio/Hero";
+import InfoSection from "../componentsConvenio/InfoSection";
+import Navbar from "../componentsConvenio/Navbar";
+import { InfoData, InfoDataTwo } from "../dataConvenios/InfoData";
+import { SliderData } from "../dataConvenios/SliderData";
+import GlobalStyle from "../globalStyles";
 
-const ConveniosPage = () => {
+function ConveniosPage() {
   const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
-      <Sidebar isOpen={isOpen} toggle={toggle} />
+      <GlobalStyle />
       <Navbar toggle={toggle} />
-      <HeroSection />
-      <InfoSection {...ConveniosObjOne} />
-    {/*   <InfoSection {...ConveniosObjTwo} />
-      <Services {...ConveniosObjFour} />
-      <InfoSection {...ConveniosObjThree} /> */}
-      <Footer />
+      <DropDown isOpen={isOpen} toggle={toggle} />
+      <Hero slides={SliderData} />
+      <InfoSection {...InfoData} />
+      <InfoSection {...InfoDataTwo} />
     </>
   );
-};
+}
 
 export default ConveniosPage;
