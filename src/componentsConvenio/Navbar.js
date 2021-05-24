@@ -53,7 +53,7 @@ const Navbar = ({ toggle }) => {
                   spy={true}
                   exact="true"
                 >
-                  Conócenos
+                  Mis Convenios
                 </NavLinks>
               </NavItem>
               <NavItem>
@@ -64,21 +64,21 @@ const Navbar = ({ toggle }) => {
                   spy={true}
                   exact="true"
                 >
-                  Beneficios
+                  Pagos
                 </NavLinks>
               </NavItem>
               <NavItem>
                 <NavLinks
-                  to="services"
+                  to="/"
                   smooth={true}
                   duration={1000}
                   spy={true}
                   exact="true"
                 >
-                  Información
+                  Reuniones
                 </NavLinks>
               </NavItem>
-              <NavItem>
+             {/*  <NavItem>
                 <NavLinks
                   to="signup"
                   smooth={true}
@@ -86,12 +86,12 @@ const Navbar = ({ toggle }) => {
                   spy={true}
                   exact="true"
                 >
-                  Afíliate
+                  
                 </NavLinks>
-              </NavItem>
+              </NavItem> */}
             </NavMenu>
             <NavBtn>
-              <NavBtnLink to="/signin">Entrar</NavBtnLink>
+              <NavBtnLink to="/">Salir</NavBtnLink>
             </NavBtn>
           </NavbarContainer>
         </Nav>
