@@ -4,6 +4,7 @@ import Home from "./pages";
 import SigninPage from "./pages/SigninPage";
 import ConveniosPage from "./pages/ConveniosPage";
 import MisConveniosPage from "./pages/MisConveniosPage";
+import FuncionariosPage from "./pages/FuncionariosPage";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/signin" component={SigninPage} exact />
         <Route path="/convenios" component={ConveniosPage} exact />
         <Route path="/misconvenios" component={MisConveniosPage} exact />
+        <Route path="/funcionarios" component={FuncionariosPage} exact />
       </Switch>
     </Router>
   );

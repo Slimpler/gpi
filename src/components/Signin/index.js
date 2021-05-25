@@ -29,7 +29,10 @@ const SignIn = () => {
               <FormLabel htmlFor="password">Contraseña</FormLabel>
               <FormInput type="password" id="password" required />
               <FormBtnWrap>
-                <FormRoute to="../Convenios">Continuar</FormRoute>
+                <FormRoute to="../Convenios">Afiliados</FormRoute>
+              </FormBtnWrap>
+              <FormBtnWrap>
+                <FormRoute to="../funcionarios">Funcionarios</FormRoute>
               </FormBtnWrap>
                {/* <FormButton type="submit">Continue</FormButton>  */}
               <Text>Forgot password?</Text>
