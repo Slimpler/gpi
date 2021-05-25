@@ -47,16 +47,16 @@ const Navbar = ({ toggle }) => {
             <NavMenu>
               <NavItem>
                 <NavLinks
-                  to="misconvenios"
+                  to="/"
                   smooth={true}
                   duration={1000}
                   spy={true}
                   exact="true"
                 >
-                  Mis Convenios
+                  Deportes
                 </NavLinks>
               </NavItem>
-              <NavItem>
+              {/* <NavItem>
                 <NavLinks
                   to="discover"
                   smooth={true}
@@ -77,7 +77,7 @@ const Navbar = ({ toggle }) => {
                 >
                   Reuniones
                 </NavLinks>
-              </NavItem>
+              </NavItem> */}
              {/*  <NavItem>
                 <NavLinks
                   to="signup"
