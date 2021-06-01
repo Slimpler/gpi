@@ -53,21 +53,12 @@ const Navbar = ({ toggle }) => {
                   spy={true}
                   exact="true"
                 >
-                  Mis Convenios
+                 Convenios
                 </NavLinks>
               </NavItem>
-              <NavItem>
-                <NavLinks
-                  to="discover"
-                  smooth={true}
-                  duration={1000}
-                  spy={true}
-                  exact="true"
-                >
-                  Pagos
-                </NavLinks>
-              </NavItem>
-              <NavItem>
+
+               <NavItem>
+
                 <NavLinks
                   to="/"
                   smooth={true}
@@ -75,20 +66,10 @@ const Navbar = ({ toggle }) => {
                   spy={true}
                   exact="true"
                 >
-                  Reuniones
+                  Mis Convenios
                 </NavLinks>
               </NavItem>
-             {/*  <NavItem>
-                <NavLinks
-                  to="signup"
-                  smooth={true}
-                  duration={1000}
-                  spy={true}
-                  exact="true"
-                >
-                  
-                </NavLinks>
-              </NavItem> */}
+             
             </NavMenu>
             <NavBtn>
               <NavBtnLink to="/">Salir</NavBtnLink>

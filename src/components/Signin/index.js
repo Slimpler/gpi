@@ -23,19 +23,22 @@ const SignIn = () => {
           <Icon to="/">Quintero</Icon>
           <FormContent>
             <Form action="#">
-              <FormH1>Sign in to your account</FormH1>
-              <FormLabel htmlFor="email">Email</FormLabel>
+              <FormH1>Ingreso al sistema de la corporación</FormH1>
+              <FormLabel htmlFor="email">Rut</FormLabel>
               <FormInput type="email" id="email" required />
               <FormLabel htmlFor="password">Contraseña</FormLabel>
-              <FormInput type="password" id="password" required />
+  <FormInput type="password" id="password" required />
               <FormBtnWrap>
                 <FormRoute to="../Convenios">Afiliados</FormRoute>
               </FormBtnWrap>
+              <FormLabel ></FormLabel>
+              <FormLabel ></FormLabel>
+              <FormLabel ></FormLabel>
               <FormBtnWrap>
                 <FormRoute to="../funcionarios">Funcionarios</FormRoute>
               </FormBtnWrap>
                {/* <FormButton type="submit">Continue</FormButton>  */}
-              <Text>Forgot password?</Text>
+              {/*<Text>Forgot password?</Text>}*/}
             </Form>
           </FormContent>
         </FormWrap>
