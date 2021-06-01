@@ -75,7 +75,7 @@ const Navbar = ({ toggle }) => {
                   spy={true}
                   exact="true"
                 >
-                  Información
+                  Empresas
                 </NavLinks>
               </NavItem>
               <NavItem>

@@ -57,7 +57,7 @@ export const ServicesCard = styled.div`
 export const ServicesIcon = styled.img`
   height: 160px;
   width: 160px;
-  margin-bottom: 10px;
+  margin-bottom: 64px;
 `;
 
 export const ServicesH1 = styled.h1`
@@ -77,5 +77,5 @@ export const ServicesH2 = styled.h2`
 
 export const ServicesP = styled.p`
   font-size: 1rem;
-  text-align: center;
+  text-align: Justify;
 `;
