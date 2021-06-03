@@ -1,6 +1,77 @@
+import React, { useEffect, useState } from "react";
+import { FaBars } from "react-icons/fa";
+import { IconContext } from "react-icons/lib";
+import { animateScroll as scroll } from "react-scroll";
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
-import { Link as LinkS } from "react-scroll";
+
+
+const Navbar = ({ toggle }) => {
+  const [scrollNav, setScrollNav] = useState(false);
+
+  const changeNav = () => {
+    if (window.scrollY >= 80) {
+      setScrollNav(true);
+    } else {
+      setScrollNav(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", changeNav);
+  }, [scrollNav]);
+
+  const toggleHome = () => {
+    scroll.scrollToTop();
+  };
+
+  return (
+    <>
+      <IconContext.Provider value={{ color: "#fff" }}>
+        <Nav scrollNav={scrollNav}>
+          <NavbarContainer>
+            <NavLogo to="/" onClick={toggleHome}>
+              Quintero
+            </NavLogo>
+            <MobileIcon onClick={toggle}>
+              <FaBars />
+            </MobileIcon>
+            <NavMenu>
+              <NavItem>
+                <NavLinks
+                  to="perfil"
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  exact="true"
+                >
+                 Inicio
+                </NavLinks>
+              </NavItem>
+
+               <NavItem>
+
+                <NavLinks
+                  to="convenios"
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  exact="true"
+                >
+                  Convenios
+                </NavLinks>
+              </NavItem>
+             
+            </NavMenu>
+            <NavBtn>
+              <NavBtnLink to="/">Salir</NavBtnLink>
+            </NavBtn>
+          </NavbarContainer>
+        </Nav>
+      </IconContext.Provider>
+    </>
+  );
+};
 
 export const Nav = styled.nav`
   background: ${({ scrollNav }) => (scrollNav ? "#000" : "transparent")};
@@ -114,3 +185,8 @@ export const NavBtnLink = styled(LinkR)`
     color: #010606;
   }
 `;
+
+
+export default Navbar;
+
+

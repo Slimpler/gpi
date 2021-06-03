@@ -3,8 +3,8 @@ import DropDown from "../componentsConvenio/DropDown";
 import Hero from "../componentsConvenio/Hero";
 import InfoSection from "../componentsConvenio/InfoSection";
 import Navbar from "../componentsConvenio/Navbar";
-import { InfoData, InfoDataTwo } from "../dataConvenios/InfoData";
-import { SliderData } from "../dataConvenios/SliderData";
+import { InfoData, InfoDataTwo } from "../componentsConvenio/dataConvenios/InfoData";
+import { SliderData } from "../componentsConvenio/dataConvenios/SliderData";
 import GlobalStyle from "../globalStyles";
 
 function ConveniosPage() {

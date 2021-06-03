@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import DropDown from "../componentsMisConvenios/DropDown";
-import Hero from "../componentsMisConvenios/Hero";
-import InfoSection from "../componentsMisConvenios/InfoSection";
-import Navbar from "../componentsMisConvenios/Navbar";
-import { InfoData, InfoDataTwo } from "../dataMisConvenios/InfoData";
-import { SliderData } from "../dataMisConvenios/SliderData";
+import DropDown from "../componentsPerfil/DropDown";
+import Hero from "../componentsPerfil/Hero";
+import InfoSection from "../componentsPerfil/InfoSection";
+import Navbar from "../componentsPerfil/Navbar";
+import { InfoData, InfoDataTwo } from "../componentsPerfil/dataPerfil/InfoData";
+import { SliderData } from "../componentsPerfil/dataPerfil/SliderData";
 import GlobalStyle from "../globalStyles";
 
-function MisConveniosPage() {
+function PerfilPage() {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -25,4 +25,4 @@ function MisConveniosPage() {
   );
 }
 
-export default MisConveniosPage;
+export default PerfilPage;

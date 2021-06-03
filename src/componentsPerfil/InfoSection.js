@@ -17,7 +17,7 @@ const InfoSection = ({
           <h1>{heading}</h1>
           <p>{paragraphOne}</p>
           <p>{paragraphTwo}</p>
-          <Button to="/homes" primary="true">
+          <Button to="/home" primary="true">
             {buttonLabel}
           </Button>
         </ColumnLeft>

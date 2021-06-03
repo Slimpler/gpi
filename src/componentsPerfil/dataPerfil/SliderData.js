@@ -1,7 +1,7 @@
-import ImageOne from "../img/house-1.jpg";
-import ImageTwo from "../img/house-2.jpg";
-import ImageThree from "../img/house-3.jpg";
-import ImageFour from "../img/house-4.jpg";
+import ImageOne from "../../img/house-1.jpg";
+import ImageTwo from "../../img/house-2.jpg";
+import ImageThree from "../../img/house-3.jpg";
+import ImageFour from "../../img/house-4.jpg";
 
 export const SliderData = [
   {
