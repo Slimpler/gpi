@@ -34,34 +34,34 @@ const Footer = () => {
           <FooterLinksWrapper>
             <FooterLinkItems>
               <FooterLinkTitle>Nosotros</FooterLinkTitle>
-              <FooterLink to="/signin">Información</FooterLink>
-              {/* <FooterLink to="/signin">Testimonials</FooterLink>
-              <FooterLink to="/signin">Careers</FooterLink>
-              <FooterLink to="/signin">Investors</FooterLink>
-              <FooterLink to="/signin">Terms of Service</FooterLink> */}
+              <FooterLink to="/entrar">Información</FooterLink>
+              {/* <FooterLink to="/entrar">Testimonials</FooterLink>
+              <FooterLink to="/entrar">Careers</FooterLink>
+              <FooterLink to="/entrar">Investors</FooterLink>
+              <FooterLink to="/entrar">Terms of Service</FooterLink> */}
             </FooterLinkItems>
             <FooterLinkItems>
               <FooterLinkTitle>Contactanos</FooterLinkTitle>
-              <FooterLink to="/signin">Contacto</FooterLink>
-             {/*  <FooterLink to="/signin">Support</FooterLink>
-              <FooterLink to="/signin">Destinations</FooterLink>
-              <FooterLink to="/signin">Sponsorships</FooterLink> */}
+              <FooterLink to="/entrar">Contacto</FooterLink>
+             {/*  <FooterLink to="/entrar">Support</FooterLink>
+              <FooterLink to="/entrar">Destinations</FooterLink>
+              <FooterLink to="/entrar">Sponsorships</FooterLink> */}
             </FooterLinkItems>
           </FooterLinksWrapper>
           <FooterLinksWrapper>
            {/*  <FooterLinkItems>
               <FooterLinkTitle>Videos</FooterLinkTitle>
-              <FooterLink to="/signin">Submit video</FooterLink>
-              <FooterLink to="/signin">Ambassadors</FooterLink>
-              <FooterLink to="/signin">Agency</FooterLink>
-              <FooterLink to="/signin">Influencer</FooterLink>
+              <FooterLink to="/entrar">Submit video</FooterLink>
+              <FooterLink to="/entrar">Ambassadors</FooterLink>
+              <FooterLink to="/entrar">Agency</FooterLink>
+              <FooterLink to="/entrar">Influencer</FooterLink>
             </FooterLinkItems> */}
             <FooterLinkItems>
               <FooterLinkTitle>Redes Sociales</FooterLinkTitle>
-              <FooterLink to="/signin">Instagram</FooterLink>
-              <FooterLink to="/signin">Facebook</FooterLink>
-              <FooterLink to="/signin">Youtube</FooterLink>
-              <FooterLink to="/signin">Twitter</FooterLink>
+              <FooterLink to="/entrar">Instagram</FooterLink>
+              <FooterLink to="/entrar">Facebook</FooterLink>
+              <FooterLink to="/entrar">Youtube</FooterLink>
+              <FooterLink to="/entrar">Twitter</FooterLink>
             </FooterLinkItems>
           </FooterLinksWrapper>
         </FooterLinksContainer>

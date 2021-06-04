@@ -1,5 +1,5 @@
 export const homeObjOne = {
-  id: "about",
+  id: "afiliate",
   lightBg: false,
   lightText: true,
   lightTextDesc: true,
@@ -17,7 +17,7 @@ export const homeObjOne = {
 };
 
 export const homeObjTwo = {
-  id: "discover",
+  id: "beneficios",
   lightBg: true,
   lightText: false,
   lightTextDesc: false,
@@ -35,7 +35,7 @@ export const homeObjTwo = {
 };
 
 export const homeObjThree = {
-  id: "signup",
+  id: "informacion",
   lightBg: true,
   lightText: false,
   lightTextDesc: false,
@@ -53,5 +53,5 @@ export const homeObjThree = {
 };
 
 export const homeObjFour = {
-  id: "services",
+  id: "empresas",
 };

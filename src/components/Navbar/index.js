@@ -47,18 +47,18 @@ const Navbar = ({ toggle }) => {
             <NavMenu>
               <NavItem>
                 <NavLinks
-                  to="about"
+                  to="afiliate"
                   smooth={true}
                   duration={1000}
                   spy={true}
                   exact="true"
                 >
-                  Conócenos
+                  Afíliate
                 </NavLinks>
               </NavItem>
               <NavItem>
                 <NavLinks
-                  to="discover"
+                  to="beneficios"
                   smooth={true}
                   duration={1000}
                   spy={true}
@@ -69,7 +69,7 @@ const Navbar = ({ toggle }) => {
               </NavItem>
               <NavItem>
                 <NavLinks
-                  to="services"
+                  to="empresas"
                   smooth={true}
                   duration={1000}
                   spy={true}
@@ -80,18 +80,18 @@ const Navbar = ({ toggle }) => {
               </NavItem>
               <NavItem>
                 <NavLinks
-                  to="signup"
+                  to="informacion"
                   smooth={true}
                   duration={1000}
                   spy={true}
                   exact="true"
                 >
-                  Afíliate
+                  Información
                 </NavLinks>
               </NavItem>
             </NavMenu>
             <NavBtn>
-              <NavBtnLink to="/signin">Entrar</NavBtnLink>
+              <NavBtnLink to="/entrar">Entrar</NavBtnLink>
             </NavBtn>
           </NavbarContainer>
         </Nav>

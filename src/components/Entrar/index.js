@@ -13,9 +13,9 @@ import {
   FormRoute
   ,
   Text,
-} from "./SigninElements";
+} from "./EntrarElements";
 
-const SignIn = () => {
+const Entrar = () => {
   return (
     <>
       <Container>
@@ -27,7 +27,7 @@ const SignIn = () => {
               <FormLabel htmlFor="email">Rut</FormLabel>
               <FormInput type="email" id="email" required />
               <FormLabel htmlFor="password">Contraseña</FormLabel>
-  <FormInput type="password" id="password" required />
+                <FormInput type="password" id="password" required />
               <FormBtnWrap>
                 <FormRoute to="../perfil">Afiliados</FormRoute>
               </FormBtnWrap>
@@ -47,4 +47,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default Entrar;
