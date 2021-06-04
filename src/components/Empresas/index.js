@@ -10,6 +10,8 @@ import {
   EmpresasIcon,
   EmpresasP,
   EmpresasWrapper,
+  EmpresasBtn,
+  EmpresasBtnLink,
 } from "./EmpresasElements";
 
 const Empresas = ({ id }) => {
@@ -36,6 +38,9 @@ const Empresas = ({ id }) => {
             Nosotros llevamos a cabo los tramites necesarios para tu tranquilidad
           </EmpresasP>
         </EmpresasCard>
+        <EmpresasBtn>
+          <EmpresasBtnLink to="/">Requisitos</EmpresasBtnLink> {/*Aquí dirigir a los requisitos para la empresa */}
+        </EmpresasBtn>
       </EmpresasWrapper>
     </EmpresasContainer>
   );
