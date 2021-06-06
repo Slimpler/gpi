@@ -20,7 +20,7 @@ const Entrar = () => {
     <>
       <Container>
         <FormWrap>
-          <Icon to="/">Quintero</Icon>
+          <Icon to="/">Quintero </Icon>
           <FormContent>
             <Form action="#">
               <FormH1>Ingreso al sistema de la corporación</FormH1>
