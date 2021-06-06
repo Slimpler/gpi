@@ -92,9 +92,9 @@ export const EmpresasBtn = styled.nav`
 
 export const EmpresasBtnLink = styled(LinkR)`
   border-radius: 50px;
-  background: #01bf71;
+  background: #7cf1b6;
   white-space: nowrap;
-  padding: 10px 22px;
+  padding: 10px 25px;
   color: #010606;
   font-size: 16px;
   outline: none;
