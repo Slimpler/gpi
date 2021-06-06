@@ -90,7 +90,7 @@ export const EmpresasBtn = styled.nav`
   }
 `;
 
-export const EmpresasBtnLink = styled(LinkR)`
+export const EmpresasBtnLink = styled.a`
   border-radius: 50px;
   background: #7cf1b6;
   white-space: nowrap;

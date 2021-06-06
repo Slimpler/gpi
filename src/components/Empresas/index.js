@@ -1,7 +1,7 @@
 import React from "react";
-import Icon1 from "../../images/svg-2.png";
-import Icon2 from "../../images/svg-1.png";
-import Icon3 from "../../images/svg-3.svg";
+import Icon1 from "../../images/descargar.svg";
+import Icon2 from "../../images/rellenar.svg";
+import Icon3 from "../../images/enviar.svg";
 import {
   EmpresasContainer,
   EmpresasCard,
@@ -39,7 +39,7 @@ const Empresas = ({ id }) => {
           </EmpresasP>
         </EmpresasCard>
         <EmpresasBtn>
-          <EmpresasBtnLink to= "/">Descargar Formulario</EmpresasBtnLink> {/*Aquí dirigir a los requisitos para la empresa */}
+          <EmpresasBtnLink href= '../../documentos/formulario-empresa.docx' download>Descargar Formulario</EmpresasBtnLink> {/*Aquí dirigir a los requisitos para la empresa */}
         </EmpresasBtn>
       </EmpresasWrapper>
     </EmpresasContainer>
