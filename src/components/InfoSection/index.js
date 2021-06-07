@@ -47,17 +47,17 @@ const InfoSection = ({
                 <Subtitle darkText={darkText}>{description}</Subtitle>
                 <BtnWrap>
                 <NavBtn>
-                 {/*  <NavBtnLink 
+                <NavBtnLink 
                     href= {Formulario1} download="formulario"> Descargar Formulario
-                  </NavBtnLink> {/*Aquí dirigir al formulario  */} */}
+                </NavBtnLink> {/*Aquí dirigir al formulario  */} 
                 </NavBtn>
                 </BtnWrap>
               </TextWrapper>
             </Column1>
             <Column2>
-             {/*  <ImgWrap>
+            <ImgWrap>
                 <Img src={img}/>
-              </ImgWrap> */}
+            </ImgWrap> 
             </Column2>
           </InfoRow>
         </InfoWrapper>
