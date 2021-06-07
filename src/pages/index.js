@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Footer from "../components/Footer";
 import HeroSection from "../components/HeroSection";
 import InfoSection from "../components/InfoSection";
+import InfoSectionAfiliate from "../components/InfoSectionAfiliate";
+
 import {
   homeObjFour,
   homeObjOne,
@@ -22,10 +24,10 @@ const Home = () => {
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
       <HeroSection />
-      <InfoSection {...homeObjOne} />
-      <InfoSection {...homeObjTwo} /> 
-      <Empresas  {...homeObjFour}  />
-      <InfoSection {...homeObjThree} /> 
+      <InfoSectionAfiliate {...homeObjOne} />
+      <InfoSection {...homeObjTwo} />
+      <Empresas {...homeObjFour} />
+      <InfoSection {...homeObjThree} />
       <Footer />
     </>
   );
