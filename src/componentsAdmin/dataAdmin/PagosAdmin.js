@@ -19,11 +19,13 @@ const rows = [
   { id: '19490110-0', firstName: 'Alejandro', lastName: 'Rudolphy', deudas: '350.000', cuotas: '5', montoCuota: '70.000', fechaPago: '05/06/2021', tipo: 'préstamo'},
 ];
 
-export default function DataTable() {
+function PagosAdmin() {
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
     </div>
   );
 }
+
+export default PagosAdmin;
 

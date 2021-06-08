@@ -6,7 +6,7 @@ import Navbar from "../componentsAdmin/Navbar";
 import { InfoData, InfoDataTwo, InfoDataThree, InfoDataFour } from "../componentsAdmin/dataAdmin/InfoData";
 import { SliderData } from "../componentsAdmin/dataAdmin/SliderData";
 import GlobalStyle from "../globalStyles";
-import { PagosAdmin } from "../componentsAdmin/dataAdmin/PagosAdmin";
+import PagosAdmin from "../componentsAdmin/dataAdmin/PagosAdmin";
 
 function PagoConveniosPage() {
     const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +18,7 @@ function PagoConveniosPage() {
         <>
             <GlobalStyle />
             <DropDown isOpen={isOpen} toggle={toggle} />
-            < DataTable PagosAdmin />
+            <PagosAdmin/>
         </>
     );
 }
