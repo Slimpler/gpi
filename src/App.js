@@ -5,7 +5,7 @@ import EntrarPage from "./pages/EntrarPage";
 import PerfilPage from "./pages/PerfilPage";
 import ConveniosPage from "./pages/ConveniosPage";
 import FuncionariosPage from "./pages/FuncionariosPage";
-import PagosPage from "./pages/PagosPage";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
         <Route path="/perfil" component={PerfilPage} exact />
         <Route path="/convenios" component={ConveniosPage} exact />
         <Route path="/funcionarios" component={FuncionariosPage} exact />
-        <Route path="/pagos" component={PagosPage} exact />
+        <Route path="/pagos" component={AdminPage} exact />
       </Switch>
     </Router>
   );

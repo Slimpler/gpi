@@ -1,5 +1,7 @@
 import ImageOne from "../../img/house-5.jpg";
 import ImageTwo from "../../img/house-2.jpg";
+import ImageThree from "../../img/house-2.jpg";
+import ImageFour from "../../img/house-2.jpg";
 
 export const InfoData = {
   heading: "Salud",
@@ -21,6 +23,18 @@ export const InfoDataTwo = {
     "Accede a los mejores beneficios para viajes",
   buttonLabel: "Convenios",
   image: ImageTwo,
+  reverse: true,
+  delay: 300,
+};
+
+export const InfoDataThree = {
+  heading: "Test",
+  paragraphOne:
+    "descripción",
+  paragraphTwo:
+    "nada",
+  buttonLabel: "test",
+  image: ImageThree,
   reverse: true,
   delay: 300,
 };

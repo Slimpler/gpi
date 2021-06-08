@@ -48,8 +48,33 @@ const Navbar = ({ toggle }) => {
                  Inicio
                 </NavLinks>
               </NavItem>
+              <NavItem>
 
-               <NavItem>
+                <NavLinks
+                  to="afiliados"
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  exact="true"
+                >
+                  Afiliados
+                </NavLinks>
+              </NavItem>
+
+                <NavItem>
+
+                <NavLinks
+                  to="pagos"
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  exact="true"
+                >
+                  Pagos
+                </NavLinks>
+              </NavItem>
+
+              <NavItem>
 
                 <NavLinks
                   to="convenios"

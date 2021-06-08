@@ -61,6 +61,18 @@ const Navbar = ({ toggle }) => {
                   Pagos
                 </NavLinks>
               </NavItem>
+              <NavItem>
+
+                <NavLinks
+                  to="convenios"
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  exact="true"
+                >
+                  Convenios
+                </NavLinks>
+              </NavItem>
              
             </NavMenu>
             <NavBtn>
@@ -74,7 +86,7 @@ const Navbar = ({ toggle }) => {
 };
 
 export const Nav = styled.nav`
-  background: ${({ scrollNav }) => (scrollNav ? "#000" : "transparent")};
+  background: ${({ scrollNav }) => ("#000")};
   height: 80px;
   margin-top: -80px;
   display: flex;

@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import DropDown from "../componentsPerfil/DropDown";
 import Hero from "../componentsPerfil/Hero";
 import InfoSection from "../componentsPerfil/InfoSection";
-import Navbar from "../componentsPagos/Navbar";
-import { InfoData, InfoDataTwo } from "../componentsPagos/dataPagos/InfoData";
-import { SliderData } from "../componentsPagos/dataPagos/SliderData";
+import Navbar from "../componentsAdmin/Navbar";
+import { InfoData, InfoDataTwo, InfoDataThree, InfoDataFour } from "../componentsAdmin/dataAdmin/InfoData";
+import { SliderData } from "../componentsPerfil/dataPerfil/SliderData";
 import GlobalStyle from "../globalStyles";
 
-function PagosPage() {
+function FuncionariosPage() {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -18,12 +18,12 @@ function PagosPage() {
       <GlobalStyle />
       <Navbar toggle={toggle} />
       <DropDown isOpen={isOpen} toggle={toggle} />
-      <Hero slides={SliderData} />
       <InfoSection {...InfoData} />
       <InfoSection {...InfoDataTwo} />
-
+      <InfoSection {...InfoDataThree} />
+      <InfoSection {...InfoDataFour} />
     </>
   );
 }
 
-export default PagosPage;
+export default FuncionariosPage;
