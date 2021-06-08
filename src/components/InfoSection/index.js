@@ -1,8 +1,5 @@
 import React from "react";
 import { Button } from "../ButtonElement";
-import Formulario1 from "../../documentos/formulario-afiliacion.docx";
-import img from "../../images/svg-2.png";
-
 import {
   InfoContainer,
   InfoWrapper,
@@ -16,8 +13,6 @@ import {
   BtnWrap,
   ImgWrap,
   Img,
-  NavBtn,
-  NavBtnLink
 } from "./InfoElements";
 
 const InfoSection = ({
@@ -30,6 +25,7 @@ const InfoSection = ({
   darkText,
   description,
   buttonLabel,
+  img,
   alt,
   primary,
   dark,
@@ -46,9 +42,8 @@ const InfoSection = ({
                 <Heading lightText={lightText}>{headline}</Heading>
                 <Subtitle darkText={darkText}>{description}</Subtitle>
                 <BtnWrap>
-<<<<<<< HEAD
                   <Button
-                    to="perfil"
+                    to="home"
                     smooth={true}
                     duration={500}
                     spy={true}
@@ -59,20 +54,13 @@ const InfoSection = ({
                   >
                     {buttonLabel}
                   </Button>
-=======
-                <NavBtn>
-                <NavBtnLink 
-                    href= {Formulario1} download="formulario"> Descargar Formulario
-                </NavBtnLink> {/*Aquí dirigir al formulario  */} 
-                </NavBtn>
->>>>>>> dd20093ab457122af536765c200e38f7958be728
                 </BtnWrap>
               </TextWrapper>
             </Column1>
             <Column2>
-            <ImgWrap>
-                <Img src={img}/>
-            </ImgWrap> 
+              <ImgWrap>
+                <Img src={img} alt={alt} />
+              </ImgWrap>
             </Column2>
           </InfoRow>
         </InfoWrapper>
