@@ -14,9 +14,9 @@ const columns = [
 ];
 
 const rows = [
-  { id: 19817247-2, firstName: 'Ana', lastName: 'Muñoz', deudas: 25.000, cuotas: 5 , montoCuota: 5.000, fechaPago: 08/06/2021, tipo: 'convenio óptica'},
-  { id: 19772624-5, firstName: 'Alejandro', lastName: 'Oliveros', deudas: 100.000, cuotas: 1, montoCuota: 100.000, fechaPago: 01/06/2021, tipo: 'préstamo'},
-  { id: 19490110-0, firstName: 'Alejandro', lastName: 'Rudolphy', deudas: 350.000, cuotas: 5, montoCuota: 70.000, fechaPago: 05/06/2021, tipo: 'préstamo'},
+  { id: '19817247-2', firstName: 'Ana', lastName: 'Muñoz', deudas: '25.000', cuotas: '5' , montoCuota: '5.000', fechaPago: '08/06/2021', tipo: 'convenio óptica'},
+  { id: '19772624-5', firstName: 'Alejandro', lastName: 'Oliveros', deudas: '100.000', cuotas: '1', montoCuota: '100.000', fechaPago: '01/06/2021', tipo: 'préstamo'},
+  { id: '19490110-0', firstName: 'Alejandro', lastName: 'Rudolphy', deudas: '350.000', cuotas: '5', montoCuota: '70.000', fechaPago: '05/06/2021', tipo: 'préstamo'},
 ];
 
 export default function DataTable() {

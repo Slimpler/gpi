@@ -48,20 +48,8 @@ const Navbar = ({ toggle }) => {
                  Inicio
                 </NavLinks>
               </NavItem>
-              <NavItem>
 
-                <NavLinks
-                  to="afiliados"
-                  smooth={true}
-                  duration={1000}
-                  spy={true}
-                  exact="true"
-                >
-                  Afiliados
-                </NavLinks>
-              </NavItem>
-
-                <NavItem>
+               <NavItem>
 
                 <NavLinks
                   to="pagos"
@@ -73,7 +61,6 @@ const Navbar = ({ toggle }) => {
                   Pagos
                 </NavLinks>
               </NavItem>
-
               <NavItem>
 
                 <NavLinks
@@ -99,7 +86,7 @@ const Navbar = ({ toggle }) => {
 };
 
 export const Nav = styled.nav`
-  background: ${({ scrollNav }) => (scrollNav ? "#000" : "transparent")};
+  background: ${({ scrollNav }) => ("#000")};
   height: 80px;
   margin-top: -80px;
   display: flex;

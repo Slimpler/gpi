@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import DropDown from "../componentsPerfil/DropDown";
-import Hero from "../componentsPerfil/Hero";
-import InfoSection from "../componentsPerfil/InfoSection";
+import DropDown from "../componentsAdmin/DropDown";
+import Hero from "../componentsAdmin/Hero";
+import InfoSection from "../componentsAdmin/InfoSection";
 import Navbar from "../componentsAdmin/Navbar";
 import { InfoData, InfoDataTwo, InfoDataThree, InfoDataFour } from "../componentsAdmin/dataAdmin/InfoData";
-import { SliderData } from "../componentsPerfil/dataPerfil/SliderData";
+import { SliderData } from "../componentsAdmin/dataAdmin/SliderData";
 import GlobalStyle from "../globalStyles";
 
-function FuncionariosPage() {
+function AdminPage() {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -26,4 +26,4 @@ function FuncionariosPage() {
   );
 }
 
-export default FuncionariosPage;
+export default AdminPage;

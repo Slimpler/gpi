@@ -6,23 +6,21 @@ import Navbar from "../componentsAdmin/Navbar";
 import { InfoData, InfoDataTwo, InfoDataThree, InfoDataFour } from "../componentsAdmin/dataAdmin/InfoData";
 import { SliderData } from "../componentsAdmin/dataAdmin/SliderData";
 import GlobalStyle from "../globalStyles";
+import { PagosAdmin } from "../componentsAdmin/dataAdmin/PagosAdmin";
 
-function FuncionariosPage() {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
+function PagoConveniosPage() {
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => {
+        setIsOpen(!isOpen);
+    };
 
-  return (
-    <>
-      <GlobalStyle />
-      <Navbar toggle={toggle} />
-      <DropDown isOpen={isOpen} toggle={toggle} />
-      <Hero slides={SliderData} />
-      <InfoSection {...InfoData} />
-      <InfoSection {...InfoDataTwo} />
-    </>
-  );
+    return (
+        <>
+            <GlobalStyle />
+            <DropDown isOpen={isOpen} toggle={toggle} />
+            < DataTable PagosAdmin />
+        </>
+    );
 }
 
-export default FuncionariosPage;
+export default PagoConveniosPage;

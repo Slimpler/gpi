@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import DropDown from "../componentsPerfil/DropDown";
-import Hero from "../componentsPerfil/Hero";
-import InfoSection from "../componentsPerfil/InfoSection";
+import DropDown from "../componentsPagos/DropDown";
+import Hero from "../componentsPagos/Hero";
+import InfoSection from "../componentsPagos/InfoSection";
 import Navbar from "../componentsPagos/Navbar";
-import { InfoData, InfoDataTwo } from "../componentsPagos/dataPagos/InfoData";
+import { InfoData, InfoDataTwo, InfoDataThree, InfoDataFour } from "../componentsPagos/dataPagos/InfoData";
 import { SliderData } from "../componentsPagos/dataPagos/SliderData";
 import GlobalStyle from "../globalStyles";
 
@@ -21,6 +21,8 @@ function PagosPage() {
       <Hero slides={SliderData} />
       <InfoSection {...InfoData} />
       <InfoSection {...InfoDataTwo} />
+      <InfoSection {...InfoDataThree} />
+      <InfoSection {...InfoDataFour} />
 
     </>
   );

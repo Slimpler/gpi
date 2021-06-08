@@ -20,7 +20,7 @@ const Entrar = () => {
     <>
       <Container>
         <FormWrap>
-          <Icon to="/">Quintero </Icon>
+          <Icon to="/">Quintero</Icon>
           <FormContent>
             <Form action="#">
               <FormH1>Ingreso al sistema de la corporación</FormH1>
@@ -35,7 +35,7 @@ const Entrar = () => {
               <FormLabel ></FormLabel>
               <FormLabel ></FormLabel>
               <FormBtnWrap>
-                <FormRoute to="../funcionarios">Funcionarios</FormRoute>
+                <FormRoute to="../admin">Funcionarios</FormRoute>
               </FormBtnWrap>
                {/* <FormButton type="submit">Continue</FormButton>  */}
               {/*<Text>Forgot password?</Text>}*/}
