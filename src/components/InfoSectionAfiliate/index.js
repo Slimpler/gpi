@@ -17,10 +17,10 @@ import {
   ImgWrap,
   Img,
   NavBtn,
-  NavBtnLink
-} from "./InfoElements";
+  NavBtnLink,
+} from "../InfoSection/InfoElements";
 
-const InfoSection = ({
+const InfoSectionAfiliate = ({
   lightBg,
   id,
   imgStart,
@@ -29,11 +29,6 @@ const InfoSection = ({
   headline,
   darkText,
   description,
-  buttonLabel,
-  alt,
-  primary,
-  dark,
-  dark2,
 }) => {
   return (
     <>
@@ -46,33 +41,19 @@ const InfoSection = ({
                 <Heading lightText={lightText}>{headline}</Heading>
                 <Subtitle darkText={darkText}>{description}</Subtitle>
                 <BtnWrap>
-<<<<<<< HEAD
-                  <Button
-                    to="perfil"
-                    smooth={true}
-                    duration={500}
-                    spy={true}
-                    exact="true"
-                    primary={primary ? 1 : 0}
-                    dark={dark ? 1 : 0}
-                    dark2={dark2 ? 1 : 0}
-                  >
-                    {buttonLabel}
-                  </Button>
-=======
-                <NavBtn>
-                <NavBtnLink 
-                    href= {Formulario1} download="formulario"> Descargar Formulario
-                </NavBtnLink> {/*Aquí dirigir al formulario  */} 
-                </NavBtn>
->>>>>>> dd20093ab457122af536765c200e38f7958be728
+                  <NavBtn>
+                    <NavBtnLink href="/formularioAfiliate">
+                      Formulario
+                    </NavBtnLink>{" "}
+                    {/*Aquí dirigir al formulario  */}
+                  </NavBtn>
                 </BtnWrap>
               </TextWrapper>
             </Column1>
             <Column2>
-            <ImgWrap>
+              {/*  <ImgWrap>
                 <Img src={img}/>
-            </ImgWrap> 
+              </ImgWrap> */}
             </Column2>
           </InfoRow>
         </InfoWrapper>
@@ -81,4 +62,4 @@ const InfoSection = ({
   );
 };
 
-export default InfoSection;
+export default InfoSectionAfiliate;

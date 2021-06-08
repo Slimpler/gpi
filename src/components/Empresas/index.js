@@ -1,7 +1,8 @@
 import React from "react";
-import Icon1 from "../../images/svg-2.png";
-import Icon2 from "../../images/svg-1.png";
-import Icon3 from "../../images/svg-3.svg";
+import Icon1 from "../../images/descargar.svg";
+import Icon2 from "../../images/rellenar.svg";
+import Icon3 from "../../images/enviar.svg";
+import Formulario1 from "../../documentos/formulario-empresa.docx";
 import {
   EmpresasContainer,
   EmpresasCard,
@@ -10,32 +11,37 @@ import {
   EmpresasIcon,
   EmpresasP,
   EmpresasWrapper,
+  EmpresasBtn,
+  EmpresasBtnLink,
 } from "./EmpresasElements";
 
 const Empresas = ({ id }) => {
   return (
     <EmpresasContainer id={id}>
-      <EmpresasH1>Requisitos para ser parte de la corporación</EmpresasH1>
+      <EmpresasH1>Requisitos para Empresas</EmpresasH1>
       <EmpresasWrapper>
         <EmpresasCard>
           <EmpresasIcon src={Icon1} />
-          <EmpresasH2>Familia Quinterana</EmpresasH2>
+          <EmpresasH2>Paso 1</EmpresasH2>
           <EmpresasP>
-            Ayudemos a los nuestros y crezcamos
+            Descargar el formulario a continuación.
           </EmpresasP>
         </EmpresasCard>
         <EmpresasCard>
           <EmpresasIcon src={Icon2} />
-          <EmpresasH2>Lo que necesitas</EmpresasH2>
-          <EmpresasP>Accede a beneficios y deja de preocuparte</EmpresasP>
+          <EmpresasH2>Paso 2</EmpresasH2>
+          <EmpresasP>Rellenar dicho formulario y firmarlo.</EmpresasP>
         </EmpresasCard>
         <EmpresasCard>
           <EmpresasIcon src={Icon3} />
-          <EmpresasH2>Tramites a traves del municipio</EmpresasH2>
+          <EmpresasH2>Paso 3</EmpresasH2>
           <EmpresasP>
-            Nosotros llevamos a cabo los tramites necesarios para tu tranquilidad
+            Presentar formulario en oficina "nombre de la oficina", de la municipalidad de Quintero.
           </EmpresasP>
         </EmpresasCard>
+        <EmpresasBtn>
+          <EmpresasBtnLink href= {Formulario1} download="formulario">Descargar Formulario</EmpresasBtnLink> {/*Aquí descargar a los requisitos para la empresa */}
+        </EmpresasBtn>
       </EmpresasWrapper>
     </EmpresasContainer>
   );

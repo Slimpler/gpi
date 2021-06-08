@@ -18,6 +18,10 @@ function PagoConveniosPage() {
         <>
             <GlobalStyle />
             <DropDown isOpen={isOpen} toggle={toggle} />
+            <h1>
+            dejame ver mi tabla
+            </h1>
+            <Navbar toggle={toggle} />
             <PagosAdmin/>
         </>
     );

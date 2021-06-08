@@ -7,6 +7,8 @@ import ConveniosPage from "./pages/ConveniosPage";
 import AdminPage from "./pages/AdminPage";
 import PagosPage from "./pages/PagosPage";
 import PagoConveniosPage from "./pages/PagoConveniosPage";
+import FuncionariosPage from "./pages/FuncionariosPage";
+import FormularioAfiliate from "./pages/FormularioAfiliate";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
         <Route path="/admin" component={AdminPage} exact />
         <Route path="/pagos" component={PagosPage} exact />
         <Route path="/pagoConvenios" component={PagoConveniosPage} exact />
+        <Route path="/funcionarios" component={FuncionariosPage} exact />
+        <Route path="/formularioAfiliate" component={FormularioAfiliate} />
       </Switch>
     </Router>
   );
