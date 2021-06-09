@@ -6,6 +6,8 @@ import PerfilPage from "./pages/PerfilPage";
 import ConveniosPage from "./pages/ConveniosPage";
 import FuncionariosPage from "./pages/FuncionariosPage";
 import FormularioAfiliate from "./pages/FormularioAfiliate";
+import Buscarconvenios from './pages/Buscarconvenios'
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
         <Route path="/convenios" component={ConveniosPage} exact />
         <Route path="/funcionarios" component={FuncionariosPage} exact />
         <Route path="/formularioAfiliate" component={FormularioAfiliate} />
+        <Route path='/buscarconvenios' component={Buscarconvenios} />
       </Switch>
     </Router>
   );
