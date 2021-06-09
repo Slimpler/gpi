@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import DropDown from "../componentsPerfil/DropDown";
-import Hero from "../componentsPerfil/Hero";
+import DropDown from "../componentsAdmin/DropDown";
+import Hero from "../componentsAdmin/Hero";
 import InfoSection from "../componentsAdmin/InfoSection";
 import Navbar from "../componentsAdmin/Navbar";
 import { InfoData, InfoDataTwo, InfoDataThree, InfoDataFour } from "../componentsAdmin/dataAdmin/InfoData";
 import { SliderData } from "../componentsAdmin/dataAdmin/SliderData";
 import GlobalStyle from "../globalStyles";
 
-function FuncionariosPage() {
+function AdminPage() {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -18,11 +18,12 @@ function FuncionariosPage() {
       <GlobalStyle />
       <Navbar toggle={toggle} />
       <DropDown isOpen={isOpen} toggle={toggle} />
-      <Hero slides={SliderData} />
       <InfoSection {...InfoData} />
       <InfoSection {...InfoDataTwo} />
+      <InfoSection {...InfoDataThree} />
+      <InfoSection {...InfoDataFour} />
     </>
   );
 }
 
-export default FuncionariosPage;
+export default AdminPage;

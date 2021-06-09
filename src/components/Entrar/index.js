@@ -35,7 +35,7 @@ const Entrar = () => {
               <FormLabel ></FormLabel>
               <FormLabel ></FormLabel>
               <FormBtnWrap>
-                <FormRoute to="../funcionarios">Funcionarios</FormRoute>
+                <FormRoute to="../admin">Funcionarios</FormRoute>
               </FormBtnWrap>
                {/* <FormButton type="submit">Continue</FormButton>  */}
               {/*<Text>Forgot password?</Text>}*/}
