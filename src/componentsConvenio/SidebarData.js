@@ -2,14 +2,29 @@ import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
+import { FaBars } from "react-icons/fa";
+import { IconContext } from "react-icons/lib";
+import { animateScroll as scroll } from "react-scroll";
+import styled from "styled-components";
+import { Link as LinkR } from "react-router-dom";
+
 
 export const SidebarData = [
   {
-    title: 'Home',
+    title: '',
+    title: 'Quintero',
     path: '/',
     icon: <AiIcons.AiFillHome />,
-    cName: 'nav-text'
+    cName: 'nav-text',
+    color: '#fff',
+    cursor: 'pointer',
+    display: 'flex',
   },
+
+  {
+    title: '',
+  },
+  
   {
     title: 'Buscar convenios',
     path: '/buscarconvenios',
