@@ -10,7 +10,8 @@ import PagosAdmin from "../componentsAdmin/dataAdmin/PagosAdmin";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { orange, purple } from '@material-ui/core/colors';
-import AgregarPago from '../components/Buttons/Agregar';
+//import AgregarPago from '../components/Buttons/Agregar';
+import FormDialog from "../componentsAdmin/TestAgregar";
 
 
 const ColorButton = withStyles((theme) => ({
@@ -42,26 +43,12 @@ function PagoConveniosPage() {
     return (
         <>
             <GlobalStyle />
+            
+            
             <DropDown isOpen={isOpen} toggle={toggle} />
-            <div>
-            <Button variant = "contained"
-            color = "primary"
-            onClick={() => setButtonPopup(true)}> 
-            Agregar</Button>
-            <AgregarPago trigger={buttonPopup} setTrigger={setButtonPopup}>
-            <h3>Aqui va el formulario</h3>
-            </AgregarPago>
-
-            <ColorButton variant = "contained"
-             color = "primary">
-            Actualizar </ColorButton>
-
-            <Button variant = "contained"
-            color = "secondary">
-            Eliminar </Button>
-            </div>
-
+            <FormDialog/>
             <PagosAdmin/>
+            
         </>
     );
 }
