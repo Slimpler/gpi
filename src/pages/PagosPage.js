@@ -16,17 +16,19 @@ function PagosPage() {
     setIsOpen(!isOpen);
   };
 
+const style = {
+  background: 'black',
+
+}  
   return (
     <>
       <GlobalStyle />
       <Navbar toggle={toggle} />
-      <DropDown isOpen={isOpen} toggle={toggle} />
-      
-      <InfoSectionAfiliado {...InfoData} />
+      <DropDown isOpen={isOpen} toggle={toggle} /> 
+      <InfoSectionAfiliado {...InfoData} style={style}/>
       <InfoSectionAsociacion {...InfoDataTwo} />
       <InfoSectionBono {...InfoDataThree} />
       <InfoSectionPrestamo {...InfoDataFour} />
-
     </>
   );
 }
