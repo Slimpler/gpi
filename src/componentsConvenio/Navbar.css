@@ -1,6 +1,7 @@
-.navbar {
+  .navbar {
     background-color: #080808;
     height: 80px;
+    left: 20%;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -24,7 +25,7 @@
   }
   
   .nav-menu.active {
-    left: 0;
+    left: 0%;
     transition: 350ms;
   }
   
