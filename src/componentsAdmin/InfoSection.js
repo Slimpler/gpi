@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "./Button";
+import Button from "./Button";
 
 const InfoSection = ({
   heading,
@@ -17,7 +17,7 @@ const InfoSection = ({
           <h1>{heading}</h1>
           <p>{paragraphOne}</p>
           <p>{paragraphTwo}</p>
-          <Button to="/pagoConvenios" primary="true">
+          <Button to="/home" primary="true">
             {buttonLabel}
           </Button>
         </ColumnLeft>

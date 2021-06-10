@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Button } from "../Button";
 
-const InfoSectionAfiliado = ({
+const InfoSectionPrestamo = ({
   heading,
   paragraphOne,
   paragraphTwo,
@@ -17,7 +17,7 @@ const InfoSectionAfiliado = ({
           <h1>{heading}</h1>
           <p>{paragraphOne}</p>
           <p>{paragraphTwo}</p>
-          <Button to="/pagoAfiliados" primary="true">
+          <Button to="/pagoPrestamos" primary="true">
             {buttonLabel}
           </Button>
         </ColumnLeft>
@@ -93,4 +93,4 @@ const ColumnRight = styled.div`
   }
 `;
 
-export default InfoSectionAfiliado;
+export default InfoSectionPrestamo;

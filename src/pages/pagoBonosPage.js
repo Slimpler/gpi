@@ -1,19 +1,13 @@
 //Esto es pagos de afiliados
-
 import React, { useState } from "react";
 import DropDown from "../componentsPerfil/DropDown";
-import Hero from "../componentsPerfil/Hero";
-import InfoSection from "../componentsAdmin/InfoSection";
-import Navbar from "../componentsAdmin/Navbar";
-import { InfoData, InfoDataTwo, InfoDataThree, InfoDataFour } from "../componentsAdmin/dataAdmin/InfoData";
-import { SliderData } from "../componentsAdmin/dataAdmin/SliderData";
 import GlobalStyle from "../globalStyles";
-import PagosAdmin from "../componentsAdmin/dataAdmin/PagosAdmin";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { orange, purple } from '@material-ui/core/colors';
 //import AgregarPago from '../components/Buttons/Agregar';
-import FormDialog from "../componentsAdmin/TestAgregar";
+import FormDialog from "../componentsPagos/TestAgregar";
+import PagosBono from "../componentsPagos/componentsBono/PagosBono";
 
 
 const ColorButton = withStyles((theme) => ({
@@ -33,7 +27,7 @@ const ColorButton = withStyles((theme) => ({
   }));
 
 
-function PagoConveniosPage() {
+  function PagoBonosPage() {
       
     const classes = useStyles();
     const [buttonPopup, setButtonPopup] = useState(false);
@@ -45,14 +39,10 @@ function PagoConveniosPage() {
     return (
         <>
             <GlobalStyle />
-            
-            
             <DropDown isOpen={isOpen} toggle={toggle} />
-            <FormDialog/>
-            <PagosAdmin/>
-            
+            <PagosBono/>
         </>
     );
 }
 
-export default PagoConveniosPage;
+export default PagoBonosPage;

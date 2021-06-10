@@ -3,6 +3,8 @@ import DropDown from "../componentsPagos/DropDown";
 import Hero from "../componentsPagos/Hero";
 import InfoSectionAfiliado from "../componentsPagos/componentsAfiliado/InfoSectionAfiliado";
 import InfoSectionAsociacion from "../componentsPagos/componentsAsociacion/InfoSectionAsociacion";
+import InfoSectionBono from "../componentsPagos/componentsBono/InfoSectionBono";
+import InfoSectionPrestamo from "../componentsPagos/componentsPrestamo/InfoSectionPrestamo";
 import Navbar from "../componentsPagos/Navbar";
 import { InfoData, InfoDataTwo, InfoDataThree, InfoDataFour } from "../componentsPagos/dataPagos/InfoData";
 import { SliderData } from "../componentsPagos/dataPagos/SliderData";
@@ -22,8 +24,8 @@ function PagosPage() {
       
       <InfoSectionAfiliado {...InfoData} />
       <InfoSectionAsociacion {...InfoDataTwo} />
-      <InfoSectionAfiliado {...InfoDataThree} />
-      <InfoSectionAfiliado {...InfoDataFour} />
+      <InfoSectionBono {...InfoDataThree} />
+      <InfoSectionPrestamo {...InfoDataFour} />
 
     </>
   );

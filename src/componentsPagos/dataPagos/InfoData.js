@@ -28,18 +28,6 @@ export const InfoDataTwo = {
 };
 
 export const InfoDataThree = {
-  heading: "Préstamos",
-  paragraphOne:
-    "descripción",
-  paragraphTwo:
-    "Instrucción",
-  buttonLabel: "Préstamo",
-  image: ImageThree,
-  reverse: false,
-  delay: 300,
-};
-
-export const InfoDataFour = {
   heading: "Bonos",
   paragraphOne:
     "descripción",
@@ -47,17 +35,20 @@ export const InfoDataFour = {
     "Instrucción",
   buttonLabel: "Bonos",
   image: ImageThree,
+  reverse: false,
+  delay: 300,
+};
+
+export const InfoDataFour = {
+  heading: "Préstamos",
+  paragraphOne:
+    "descripción",
+  paragraphTwo:
+    "Instrucción",
+  buttonLabel: "Préstamos",
+  image: ImageThree,
   reverse: true,
   delay: 300,
 };
 
-function newFunction() {
-  return {
-    heading: "Pagos de Afiliados",
-    paragraphOne: "Breve descripción",
-    paragraphTwo: "Instrucción",
-    buttonLabel: "Pagos Afiliados",
-  }
-    < Button;
-}
 
