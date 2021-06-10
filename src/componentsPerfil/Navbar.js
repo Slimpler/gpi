@@ -45,7 +45,32 @@ const Navbar = ({ toggle }) => {
                   spy={true}
                   exact="true"
                 >
-                 Inicio
+                 Perfil
+                </NavLinks>
+              </NavItem>
+
+              <NavItem>
+
+                <NavLinks
+                  to="pagos"
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  exact="true"
+                >
+                  Pagos
+                </NavLinks>
+              </NavItem>
+
+              <NavItem>
+              <NavLinks
+                  to="bonos"
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  exact="true"
+                >
+                  Mis Bonos
                 </NavLinks>
               </NavItem>
 

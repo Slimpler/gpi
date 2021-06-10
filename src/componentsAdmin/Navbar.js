@@ -45,7 +45,7 @@ const Navbar = ({ toggle }) => {
                   spy={true}
                   exact="true"
                 >
-                 Inicio
+                 Perfil
                 </NavLinks>
               </NavItem>
 
