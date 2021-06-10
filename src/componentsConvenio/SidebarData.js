@@ -34,7 +34,7 @@ export const SidebarData = [
   },
   {
     title: 'Mis Convenios',
-    path: '/products',
+    path: '/MisConvenios',
     icon: <IconN.BiDetail/>,
     cName: 'nav-text'
   },

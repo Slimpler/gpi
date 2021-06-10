@@ -12,6 +12,8 @@ import PagoAsociacionPage from "./pages/PagoAsociacionPage";
 import PagoBonosPage from "./pages/pagoBonosPage";
 import PagoPrestamosPage from "./pages/pagoPrestamosPage";
 import Buscarconvenios from './pages/Buscarconvenios';
+import MisConvenios from './pages/MisConvenios';
+
 
 function App() {
   return (
@@ -28,7 +30,8 @@ function App() {
         <Route path="/pagoAsociacion" component={PagoAsociacionPage} exact />
         <Route path="/pagoBonos" component={PagoBonosPage} exact />
         <Route path="/pagoPrestamos" component={PagoPrestamosPage} exact />
-        <Route path='/buscarconvenios' component={Buscarconvenios} />
+        <Route path='/buscarconvenios' component={Buscarconvenios} exact />
+        <Route path='/MisConvenios' component={MisConvenios} exact />
       </Switch>
     </Router>
   );
