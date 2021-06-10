@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Button } from "../Button";
+import Icon from '@material-ui/icons/ArrowForward';
 
 const InfoSectionPrestamo = ({
   heading,
@@ -19,6 +20,7 @@ const InfoSectionPrestamo = ({
           <p>{paragraphTwo}</p>
           <Button to="/pagoPrestamos" primary="true">
             {buttonLabel}
+            <Icon/>
           </Button>
         </ColumnLeft>
         <ColumnRight reverse={reverse}>
@@ -53,12 +55,15 @@ const Container = styled.div`
 
 const ColumnLeft = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
-  line-height: 1.4;
   padding: 1rem 2rem;
-  order: 1;
+  flex-flow: column;
+  width: 90%;
+  height: 96%;
+  margin: 15px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  background: #eee;
 
   h1 {
     margin-bottom: 1rem;
