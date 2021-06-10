@@ -27,7 +27,7 @@ const Entrar = () => {
               <FormLabel htmlFor="email">Rut</FormLabel>
               <FormInput type="email" id="email" required />
               <FormLabel htmlFor="password">Contraseña</FormLabel>
-                <FormInput type="password" id="password" required />
+              <FormInput type="password" id="password" required />
               <FormBtnWrap>
                 <FormRoute to="../perfil">Afiliados</FormRoute>
               </FormBtnWrap>
@@ -35,7 +35,7 @@ const Entrar = () => {
               <FormLabel ></FormLabel>
               <FormLabel ></FormLabel>
               <FormBtnWrap>
-                <FormRoute to="../admin">Funcionarios</FormRoute>
+                <FormRoute to="../admin">Directiva</FormRoute>
               </FormBtnWrap>
                {/* <FormButton type="submit">Continue</FormButton>  */}
               {/*<Text>Forgot password?</Text>}*/}

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Button } from "./Button";
+import { Button } from "../Button";
 
-const InfoSection = ({
+const InfoSectionAsociacion = ({
   heading,
   paragraphOne,
   paragraphTwo,
@@ -17,7 +17,7 @@ const InfoSection = ({
           <h1>{heading}</h1>
           <p>{paragraphOne}</p>
           <p>{paragraphTwo}</p>
-          <Button to="/pagoConvenios" primary="true">
+          <Button to="/pagoAsociacion" primary="true">
             {buttonLabel}
           </Button>
         </ColumnLeft>
@@ -93,4 +93,4 @@ const ColumnRight = styled.div`
   }
 `;
 
-export default InfoSection;
+export default InfoSectionAsociacion;
