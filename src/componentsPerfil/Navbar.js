@@ -52,7 +52,7 @@ const Navbar = ({ toggle }) => {
               <NavItem>
 
                 <NavLinks
-                  to="pagos"
+                  to="pagosUsuario"
                   smooth={true}
                   duration={1000}
                   spy={true}
@@ -64,13 +64,13 @@ const Navbar = ({ toggle }) => {
 
               <NavItem>
               <NavLinks
-                  to="bonos"
+                  to="bonosAfiliado"
                   smooth={true}
                   duration={1000}
                   spy={true}
                   exact="true"
                 >
-                  Mis Bonos
+                  Mis bonos
                 </NavLinks>
               </NavItem>
 
