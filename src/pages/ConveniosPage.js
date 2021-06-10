@@ -19,7 +19,8 @@ function ConveniosPage() {
       <Navbar toggle={toggle} />
       <DropDown isOpen={isOpen} toggle={toggle} />
       <Hero slides={SliderData} />
-  
+      <InfoSection {...InfoData} />
+      <InfoSection {...InfoDataTwo} />
     </>
   );
 }
