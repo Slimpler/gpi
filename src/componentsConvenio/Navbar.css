@@ -25,11 +25,13 @@
   }
   
   .nav-menu.active {
+    left: 20%;
     left: 0%;
     transition: 350ms;
   }
   
   .nav-text {
+    left: 20%;
     display: flex;
     justify-content: start;
     align-items: center;
@@ -39,6 +41,7 @@
   }
   
   .nav-text a {
+    left: 20%;
     text-decoration: none;
     color: #f5f5f5;
     font-size: 18px;
@@ -51,14 +54,17 @@
   }
   
   .nav-text a:hover {
+    left: 20%;
     background-color: #18191a;
   }
   
   .nav-menu-items {
+    left: 20%;
     width: 100%;
   }
   
   .navbar-toggle {
+    left: 20%;
     background-color: #080808;
     width: 100%;
     height: 80px;
