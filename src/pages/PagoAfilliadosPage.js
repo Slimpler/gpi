@@ -8,7 +8,6 @@ import Button from '@material-ui/core/Button';
 import { orange, purple } from '@material-ui/core/colors';
 //import AgregarPago from '../components/Buttons/Agregar';
 import FormDialog from "../componentsPagos/TestAgregar";
-import "./Fondo.css";
 
 
 const ColorButton = withStyles((theme) => ({
@@ -39,6 +38,7 @@ function PagoAfiliadosPage() {
 
     return (
         <>
+            <GlobalStyle />
             <DropDown isOpen={isOpen} toggle={toggle} />
             <FormDialog/>
             <PagosAfiliados/>

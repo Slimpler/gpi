@@ -1,0 +1,29 @@
+# Query: Nosotros
+# ContextLines: 1
+
+5 results - 5 files
+
+src/components/Sidebar/index.js:
+  21            <SidebarLink to="afiliate" onClick={toggle}>
+  22:             Afíliate
+  23            </SidebarLink>
+
+src/componentsAdmin/DropDown.js:
+  23            <Button primary="true" round="true" big="true" to="/afiliate">
+  24:             Afíliate
+  25            </Button>
+
+src/componentsConvenio/DropDown.js:
+  23            <Button primary="true" round="true" big="true" to="/afiliate">
+  24:             Afíliate
+  25            </Button>
+
+src/componentsPagos/DropDown.js:
+  23            <Button primary="true" round="true" big="true" to="/afiliate">
+  24:             Afíliate
+  25            </Button>
+
+src/componentsPerfil/DropDown.js:
+  23            <Button primary="true" round="true" big="true" to="/afiliate">
+  24:             Afíliate
+  25            </Button>
