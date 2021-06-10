@@ -7,6 +7,7 @@ import { IconContext } from "react-icons/lib";
 import { animateScroll as scroll } from "react-scroll";
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
+import * as IconN from "react-icons/bi";
 
 
 export const SidebarData = [
@@ -32,9 +33,9 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Products',
+    title: 'Mis Convenios',
     path: '/products',
-    icon: <FaIcons.FaCartPlus />,
+    icon: <IconN.BiDetail/>,
     cName: 'nav-text'
   },
   {
