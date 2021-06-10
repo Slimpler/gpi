@@ -60,7 +60,26 @@ export const InputStyled = styled.input`
   border: none;
   border-radius: 4px;
   outline: none;
+  padding-right: 55%;
 `;
+
+export const InputFile = styled.input.attrs({ type: 'file' })`
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  width: 100%;
+  border-radius: 5px;
+  height: 35px;
+  border-color: transparent;
+  box-shadow: 0px;
+  outline: none;
+  transition: 0.15s;
+  text-align: center;
+  &:active {
+    background-color: #f1ac15;
+  }
+`
 
 export const ButtonStyled = styled.button`
   border-radius: 20px;
@@ -69,6 +88,7 @@ export const ButtonStyled = styled.button`
   cursor: pointer;
   border: none;
   padding: 10px;
+  margin-top: 10px;
 
   &:hover {
     background: #7e8280;
@@ -90,4 +110,16 @@ export const IconStyled = styled(Link)`
   color: #fff;
   font-weight: 700;
   font-size: 32px;
+`;
+
+export const ScrollContainer = styled.div`
+    width: 100%;
+    height: 500px;
+    overflow-y: auto;
+    position: relative;
+    &::-webkit-scrollbar {
+        width: 10px;
+        border: 1px solid black;
+        background:white;
+    }
 `;

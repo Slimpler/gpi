@@ -37,3 +37,30 @@ export const SliderData = [
     alt: "Convenios",
   },
 ];
+
+// export const SliderDataTwo = [
+//   {
+//     title: "House in Las Vegas, Nevada",
+//     price: "$8,980,000",
+//     path: "/homes",
+//     label: "View Home",
+//     image: ImageFive,
+//     alt: "House",
+//   },
+//   {
+//     title: "House in Houston, Texas",
+//     price: "$3,460,000",
+//     path: "/homes",
+//     label: "View Home",
+//     image: ImageSix,
+//     alt: "House",
+//   },
+//   {
+//     title: "House in Alajuela, Costa Rica",
+//     price: "$5,420,000",
+//     path: "/homes",
+//     label: "View Home",
+//     image: ImageSeven,
+//     alt: "House",
+//   },
+// ];
