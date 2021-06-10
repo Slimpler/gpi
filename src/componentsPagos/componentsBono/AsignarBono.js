@@ -1,4 +1,4 @@
-//Diálogo que aparece al agregar un nuevo pago
+//Diálogo que aparece al asignar un bono
 
 import React from 'react';
 import Button from '@material-ui/core/Button';
@@ -61,55 +61,42 @@ const mystyle = {
         <Box display="flex" justifyContent="flex-end" m={0.5} p={5}>
           <Box p={5}>
             <Button variant="contained" color="primary" onClick={handleClickOpen} placement="right-start">
-                Agregar
+                Asignar Bono
             </Button>
           </Box>
         </Box>
       </div>
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-      <DialogTitle id="form-dialog-title">Agregar Pago</DialogTitle>
+      <DialogTitle id="form-dialog-title">Asignar Bono</DialogTitle>
       <DialogContent>
           <DialogContentText>
-              Para agregar un pago de un afiliado llenar los siguientes campos:
-          </DialogContentText>
-          <p> Datos personales </p>
-          <TextField autofocus margin="dense" id="rut" label="Rut" variant="outlined" size="medium"/>
-          <p>  </p>
-          <TextField autofocus margin="dense" id="rut" label="Nombre" variant="outlined" size="medium"/>
-          <TextField autofocus margin="dense" id="rut" label="Apellido" variant="outlined" size="medium"/>
-          
-          <p> Datos del pago</p>            
+              Para asignar un tipo de bono a los afiliados, seleccione una de las opciones:
+          </DialogContentText>           
           <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">Tipo</InputLabel>
-                  <Select
-                  labelId="demo-simple-select-outlined-label"
-                  id="demo-simple-select-outlined"
-                  value={tipo}
-                  onChange={handleChange}
-                  label="tipo"
-                  width="100%"
-                  >
-                      <MenuItem value="">
-                          <em> Seleccionar </em>
-                      </MenuItem>
-                      <MenuItem value={10}>Cuota Membresía</MenuItem>
-                      <MenuItem value={20}>Cuota Gremial</MenuItem>
-                      <MenuItem value={30}>Convenio Óptica</MenuItem>
-                      <MenuItem value={30}>Convenio Caja Los Andes</MenuItem>
-                  </Select>
+                <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                value={tipo}
+                onChange={handleChange}
+                label="tipo"
+                width="100%"
+                >
+                  <MenuItem value="">
+                      <em> Seleccionar </em>
+                  </MenuItem>
+                  <MenuItem value={10}>Bono Fiestas Patrias</MenuItem>
+                  <MenuItem value={20}>Bono Navidad</MenuItem>
+                </Select>
           </FormControl>
-          <p> </p>
-          <TextField autofocus margin="dense" id="rut" label="Cuotas" variant="outlined" size="small" />
-          <TextField autofocus margin="dense" id="rut" label="Monto de la Cuota" variant="outlined" size="medium" />
-
         </DialogContent>
         <DialogActions>
         <Button onClick={handleClose} color="primary">
             Cancelar
         </Button>
         <Button onClick={handleClose} color="primary">
-            Agregar pago
+            Asignar Bono
         </Button>
         </DialogActions>
       </Dialog>

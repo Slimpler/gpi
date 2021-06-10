@@ -6,8 +6,9 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { orange, purple } from '@material-ui/core/colors';
 //import AgregarPago from '../components/Buttons/Agregar';
-import FormDialog from "../componentsPagos/TestAgregar";
+import FormDialog from "../componentsPagos/componentsBono/AsignarBono";
 import PagosBono from "../componentsPagos/componentsBono/PagosBono";
+import Navbar from "../componentsPagos/Navbar";
 
 
 const ColorButton = withStyles((theme) => ({
@@ -39,7 +40,9 @@ const ColorButton = withStyles((theme) => ({
     return (
         <>
             <GlobalStyle />
+            <Navbar toggle={toggle}/>
             <DropDown isOpen={isOpen} toggle={toggle} />
+            <FormDialog/>
             <PagosBono/>
         </>
     );
