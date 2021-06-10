@@ -1,56 +1,17 @@
-//En este componente está la tabla con info de los pagos de afiliados + CRUD; Pertenece al perfil de Directiva.
+//En este componente está la tabla con info de los pagos de afiliados.
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
-import AgregarPago from '../../components/Buttons/Agregar';
-import { useState } from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import { orange, purple } from '@material-ui/core/colors';
-import AddIcon from '@material-ui/icons/Add';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import IconButton from '@material-ui/core/IconButton';
-import Grid from '@material-ui/core/Grid';
-
-
-const ColorButton = withStyles((theme) => ({
-  root: {
-    color: theme.palette.getContrastText(purple[500]),
-    backgroundColor: purple[500],
-    '&:hover': {
-      backgroundColor: purple[700],
-    },
-  },
-}))(Button);
-
-const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-  fab: {
-    margin: theme.spacing(2)
-  },
-}));
+import { BorderAll } from '@material-ui/icons';
 
 const columns = [
-  { field: 'id', headerName: 'RUT', width: 130 },
+  { field: 'id', headerName: 'RUT', width: 70 },
   { field: 'firstName', headerName: 'Nombre', width: 130 },
   { field: 'lastName', headerName: 'Apellido', width: 130 },
-  { field: 'deudas', headerName: 'Deuda Total', type: 'number', width:  140 },
-  { field: 'cuotas', headerName: 'Cuotas', type: 'number', width: 130 },
-  { field: 'montoCuota', headerName: 'Monto Cuota', type: 'number', width: 170 },
-  { field: 'fechaPago', headerName: 'Fecha último pago', width: 130, type: 'date'},
+  { field: 'deudas', headerName: 'Deuda Total', type: 'number', width:  70},
+  { field: 'cuotas', headerName: 'Cuotas', type: 'number', width: 70 },
+  { field: 'montoCuota', headerName: 'Monto Cuota', type: 'number', width: 130 },
+  { field: 'fechaPago', headerName: 'Fecha último pago', width: 130 },
   { field: 'tipo', headerName: 'Tipo', width: 130 },
-  { field: 'action', headerName: 'Accion', width: 120, renderCell: (params: GridCellParams)=> (
-    <strong>
-      <IconButton aria-label="delete">
-        <DeleteIcon />
-      </IconButton>
-      <IconButton aria-label="edit">
-        <EditIcon />
-      </IconButton>
-    </strong>
-  )}
 ];
 
 const rows = [
@@ -59,18 +20,13 @@ const rows = [
   { id: '19490110-0', firstName: 'Alejandro', lastName: 'Rudolphy', deudas: '350.000', cuotas: '5', montoCuota: '70.000', fechaPago: '05/06/2021', tipo: 'préstamo'},
 ];
 
-
 function PagosAdmin() {
-  
-  const classes = useStyles();
   return (
-  <div style={{ height: 400, width: '100%' }}>
-    <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
-  </div>
+    <div style={{ height: 400, width: '100%' }}>
+      <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+    </div>
   );
-  
 }
-
 
 export default PagosAdmin;
 

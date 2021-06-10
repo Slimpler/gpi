@@ -13,6 +13,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
+import "../Fondo.css";
 
 
 const ColorButton = withStyles((theme) => ({
@@ -58,12 +59,19 @@ const rows = [
   { id: '4', nombreIngreso: 'Subvencion Municipal', montoIngreso: '500000', fechaIngreso: '01/06/2021'},
 ];
 
+const mystyle = {
+  height: 800,
+  width: "100%",
+  padding: "10px",
+  margin: '0.5em',
+};
 
 function PagosAsociacion() {
   
   const classes = useStyles();
+
   return (
-  <div style={{ height: 400, width: '100%' }}>
+  <div style={mystyle}>
     <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
   </div>
   );
