@@ -1,3 +1,5 @@
+//Esto es pagos de afiliados
+
 import React, { useState } from "react";
 import DropDown from "../componentsPerfil/DropDown";
 import Hero from "../componentsPerfil/Hero";
