@@ -2,6 +2,7 @@ import React from 'react';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
+import * as IconN from "react-icons/bi";
 import { FaBars } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import { animateScroll as scroll } from "react-scroll";
@@ -32,9 +33,9 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Products',
+    title: 'Mis Convenios',
     path: '/products',
-    icon: <FaIcons.FaCartPlus />,
+    icon: <IconN.BiDetail/>,
     cName: 'nav-text'
   },
   {
