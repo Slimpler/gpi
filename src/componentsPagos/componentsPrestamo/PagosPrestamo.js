@@ -3,72 +3,59 @@
 //Ejemplo: Subvenciones.
 
 import * as React from 'react';
-import { DataGrid } from '@material-ui/data-grid';
-import AgregarPago from '../../components/Buttons/Agregar';
-import { useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import { orange, purple } from '@material-ui/core/colors';
-import AddIcon from '@material-ui/icons/Add';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import IconButton from '@material-ui/core/IconButton';
-import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import styled from "styled-components";
+import Formulario3 from "../../documentos/formulario-prestamo.docx";
 
+const PrestamosBtnLink = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  background: #7cf1b6;
+  white-space: nowrap;
+  padding: 10px 25px;
+  color: #010606;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
 
-const ColorButton = withStyles((theme) => ({
-  root: {
-    color: theme.palette.getContrastText(purple[500]),
-    backgroundColor: purple[500],
-    '&:hover': {
-      backgroundColor: purple[700],
-    },
-  },
-}))(Button);
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #90ee90;
+    color: #010606;
+  }
+`;
+
 
 const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-  fab: {
-    margin: theme.spacing(2)
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
   },
 }));
 
-const columns = [
-  { field: 'id', headerName: 'ID', width: 130 },
-  { field: 'nombreIngreso', headerName: 'Nombre', width: 130 },
-  { field: 'montoIngreso', headerName: 'Monto', type: 'number', width: 130 },
-  { field: 'fechaIngreso', headerName: 'Fecha', width: 130, type: 'date'},
-  { field: 'action', headerName: 'Accion', width: 120, renderCell: (params: GridCellParams)=> (
-    <strong>
-      <IconButton aria-label="delete">
-        <DeleteIcon />
-      </IconButton>
-      <IconButton aria-label="edit">
-        <EditIcon />
-      </IconButton>
-    </strong>
-  )}
-];
-
-const rows = [
-  { id: '1', nombreIngreso: 'Subvencion Municipal', montoIngreso: '500000', fechaIngreso: '01/03/2021'},
-  { id: '2', nombreIngreso: 'Subvencion Municipal', montoIngreso: '500000', fechaIngreso: '01/04/2021'},
-  { id: '3', nombreIngreso: 'Subvencion Municipal', montoIngreso: '500000', fechaIngreso: '01/05/2021'},
-  { id: '4', nombreIngreso: 'Subvencion Municipal', montoIngreso: '500000', fechaIngreso: '01/06/2021'},
-];
 
 
 function PagosAsociacion() {
   
   const classes = useStyles();
+
   return (
-  <div style={{ height: 400, width: '100%' }}>
-    <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
-  </div>
+      <form className={classes.root} noValidate autoComplete="off">
+          <TextField id="standard-basic" label="RUT" variant="outlined" />
+          <TextField id="filled-basic" label="Monto" variant="outlined" />
+          <TextField id="outlined-basic" label="Cuotas" variant="outlined" />
+
+          <PrestamosBtnLink href= {Formulario3} download="formulario"> Imprimir formulario </PrestamosBtnLink>
+      </form>
   );
-  
 }
 
 
