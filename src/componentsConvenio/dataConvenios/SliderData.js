@@ -1,23 +1,26 @@
-import ImageOne from "../../img/house-1.jpg";
-import ImageTwo from "../../img/house-2.jpg";
-import ImageThree from "../../img/house-3.jpg";
-import ImageFour from "../../img/house-4.jpg";
+import ImageOne from "../../img/1.png";
+import ImageTwo from "../../img/2.jpg";
+import ImageThree from "../../img/3.png";
+import ImageFour from "../../img/4.png";
 
 export const SliderData = [
   {
+    color: "black",
     title: "Camping",
     price: "$10.000",
     path: "/homes",
     label: "Quintero Camping",
     image: ImageOne,
     alt: "Convenios",
+
+
   },
   {
     title: "Travell",
     price: "$50.000",
     path: "/homes",
     label: "LAN",
-    image: ImageTwo,
+    image: ImageThree,
     alt: "Convenios",
   },
   {
@@ -25,7 +28,7 @@ export const SliderData = [
     price: "$20.000",
     path: "/homes",
     label: "Dental",
-    image: ImageThree,
+    image: ImageTwo,
     alt: "Convenios",
   },
   {
