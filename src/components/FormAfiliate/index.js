@@ -10,69 +10,35 @@ import {
   Redir,
   FormStyled,
   IconStyled,
-  InputFile,
-  ScrollContainer
 } from "./FormAfiliateElements";
-
-
 
 const FormAfiliate = () => {
   return (
-    
     <ContainerAll>
       <Wrap>
         <IconStyled to="/">Quintero</IconStyled>
         <Content>
           <FormStyled>
             <H1styled>Formulario para Afiliación</H1styled>
-            <ScrollContainer>
-              <LabelStyled>Ingrese Nombres: </LabelStyled>
-            <div >
-              <InputStyled />
-            </div>
-            <LabelStyled>Ingrese apellidos: </LabelStyled>
-            <div >
-              <InputStyled />
-            </div>  
-            <LabelStyled>Rut: </LabelStyled>
-            <div>
-              <InputStyled
-                id="rut"
-                placeholder="Ejemplo: 123456789"
-                type="number"
-              />
-            </div>
-            <LabelStyled>Telefono: </LabelStyled>
-            <div>
-              <InputStyled />
-            </div>
-            <LabelStyled>Direccion: </LabelStyled>
-            <div>
+            <LabelStyled>Ingrese Nombres:</LabelStyled>
             <InputStyled />
-            </div>
-            <LabelStyled>Correo Electronico: </LabelStyled>
-            <div>
-              <InputStyled id="email" placeholder="email@gmail.com" type="email"/>
-            </div>
-            <LabelStyled>Cargo en la municipalidad: </LabelStyled>
-            <div>
-              <InputStyled />
-            </div>
-            <LabelStyled>Motivos de afiliación: </LabelStyled>
-            <div>
-              <InputStyled />
-            </div>
-            <div>
-              <InputFile type="file"/>
-            </div> 
-            </ScrollContainer>
-            <ButtonStyled >Enviar</ButtonStyled>
+            <LabelStyled>Ingrese apellidos:</LabelStyled>
+            <InputStyled />
+            <LabelStyled>Rut: </LabelStyled>
+            <InputStyled
+              id="rut"
+              placeholder="Ejemplo: 123456789"
+              type="number"
+            />
+
+            <LabelStyled>Cargo en la municipalidad:</LabelStyled>
+            <InputStyled />
+            <ButtonStyled>Enviar</ButtonStyled>
             <Redir to="../">cancelar</Redir>
           </FormStyled>
         </Content>
       </Wrap>
     </ContainerAll>
-    
   );
 };
 export default FormAfiliate;

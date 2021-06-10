@@ -21,7 +21,7 @@ const DropDown = ({ isOpen, toggle }) => {
         </DropdownMenu>
         <BtnWrap>
           <Button primary="true" round="true" big="true" to="/contact">
-            Afíliate
+            Nosotros
           </Button>
         </BtnWrap>
       </DropdownWrapper>

@@ -19,16 +19,16 @@ const Sidebar = ({ isOpen, toggle }) => {
       <SidebarWrapper>
         <SidebarMenu>
           <SidebarLink to="afiliate" onClick={toggle}>
-            Afíliate
+            Nosotros
           </SidebarLink>
           <SidebarLink to="beneficios" onClick={toggle}>
             Beneficios
           </SidebarLink>
           <SidebarLink to="empresas" onClick={toggle}>
-            Empresas
+            Información
           </SidebarLink>
           <SidebarLink to="informacion" onClick={toggle}>
-            Información
+            Afíliate
           </SidebarLink>
         </SidebarMenu>
         <SideBtnWrap>
