@@ -1,9 +1,12 @@
 import React from 'react'
+import Navbar from "../componentsConvenio/Navbar";
 
 function BuscarConvenios() {
-    return (
+ return (
         <div className='buscarconvenios'>
-            <h1>Buscar Convenios</h1>
+            <Navbar />
+            <center>Buscar Convenios</center>
+           
         </div>
     )
 }
