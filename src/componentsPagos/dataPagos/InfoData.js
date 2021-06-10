@@ -21,7 +21,7 @@ export const InfoDataTwo = {
     "Breve descripción",
   paragraphTwo:
     "Instrucción",
-  buttonLabel: "Pago afiliados",  
+  buttonLabel: "Pagos de la asociación",  
   image: ImageTwo,
   reverse: true,
   delay: 300,

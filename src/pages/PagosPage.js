@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import DropDown from "../componentsPagos/DropDown";
 import Hero from "../componentsPagos/Hero";
-import InfoSection from "../componentsPagos/InfoSection";
+import InfoSectionAfiliado from "../componentsPagos/componentsAfiliado/InfoSectionAfiliado";
+import InfoSectionAsociacion from "../componentsPagos/componentsAsociacion/InfoSectionAsociacion";
 import Navbar from "../componentsPagos/Navbar";
 import { InfoData, InfoDataTwo, InfoDataThree, InfoDataFour } from "../componentsPagos/dataPagos/InfoData";
 import { SliderData } from "../componentsPagos/dataPagos/SliderData";
@@ -19,10 +20,10 @@ function PagosPage() {
       <Navbar toggle={toggle} />
       <DropDown isOpen={isOpen} toggle={toggle} />
       
-      <InfoSection {...InfoData} />
-      <InfoSection {...InfoDataTwo} />
-      <InfoSection {...InfoDataThree} />
-      <InfoSection {...InfoDataFour} />
+      <InfoSectionAfiliado {...InfoData} />
+      <InfoSectionAsociacion {...InfoDataTwo} />
+      <InfoSectionAfiliado {...InfoDataThree} />
+      <InfoSectionAfiliado {...InfoDataFour} />
 
     </>
   );
