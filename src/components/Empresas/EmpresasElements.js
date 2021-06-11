@@ -41,9 +41,9 @@ export const EmpresasCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 35px;
   max-height: 340px;
-  padding: 30px;
+  padding: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
 
@@ -63,7 +63,7 @@ export const EmpresasIcon = styled.img`
 export const EmpresasH1 = styled.h1`
   font-size: 2.5rem;
   color: #fff;
-  margin-bottom: 64px;
+  margin-bottom: 200px;
 
   @media screen and (max-width: 480px) {
     font-size: 2rem;
@@ -71,12 +71,13 @@ export const EmpresasH1 = styled.h1`
 `;
 
 export const EmpresasH2 = styled.h2`
-  font-size: 1rem;
-  margin-bottom: 10px;
+  font-size: 2rem;
+  margin-bottom: -35px;
+
 `;
 
 export const EmpresasP = styled.p`
-  font-size: 1rem;
+  font-size: 1.5rem;
   text-align: Justify;
 `;
 

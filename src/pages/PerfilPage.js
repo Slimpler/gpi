@@ -1,27 +1,21 @@
-import React, { useState } from "react";
-import DropDown from "../componentsPerfil/DropDown";
-import Hero from "../componentsPerfil/Hero";
-import InfoSection from "../componentsPerfil/InfoSection";
-import Navbar from "../componentsPerfil/Navbar";
-import { InfoData, InfoDataTwo } from "../componentsPerfil/dataPerfil/InfoData";
-import { SliderData } from "../componentsPerfil/dataPerfil/SliderData";
-import GlobalStyle from "../globalStyles";
+import React from "react";
 
-function PerfilPage() {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
+import Navbar from "../componentsAfiliados/Navbar/Navbar";
+import PerfilAfiliado from "../componentsAfiliados/PerfilAfiliado/PerfilAfiliado";
 
+
+const PerfilPage = () => {
+  
   return (
-    <>
-      <GlobalStyle />
-      <Navbar toggle={toggle} />
-      <DropDown isOpen={isOpen} toggle={toggle} />
-      <Hero slides={SliderData} />
-      <InfoSection {...InfoData} />
-      <InfoSection {...InfoDataTwo} />
-    </>
+    <div style={{background:"#23BB77", paddingBlockEnd: "150px"}}>
+      <div>
+
+        <Navbar />
+      </div>
+      <div>
+        <PerfilAfiliado />
+      </div>
+    </div>
   );
 }
 

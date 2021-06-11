@@ -7,7 +7,7 @@ import { InfoData, InfoDataTwo, InfoDataThree, InfoDataFour } from "../component
 import { SliderData } from "../componentsAdmin/dataAdmin/SliderData";
 import GlobalStyle from "../globalStyles";
 
-function FuncionariosPage() {
+function adminPage() {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -25,4 +25,4 @@ function FuncionariosPage() {
   );
 }
 
-export default FuncionariosPage;
+export default adminPage;

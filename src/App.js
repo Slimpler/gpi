@@ -6,6 +6,7 @@ import PerfilPage from "./pages/PerfilPage";
 import ConveniosPage from "./pages/ConveniosPage";
 import AdminPage from "./pages/AdminPage";
 import PagosPage from "./pages/PagosPage";
+//import PagoConveniosPage from "./pages/PagoConveniosPage";
 import PagoAfiliadosPage from "./pages/PagoAfilliadosPage";
 import FormularioAfiliate from "./pages/FormularioAfiliate";
 import PagoAsociacionPage from "./pages/PagoAsociacionPage";
@@ -14,6 +15,12 @@ import PagoPrestamosPage from "./pages/pagoPrestamosPage";
 import Buscarconvenios from './pages/Buscarconvenios';
 import BonosAfiliadoPage from './pages/BonosAfiliadoPage';
 import PagosUsuarioPage from './pages/PagosUsuarioPage';
+import MisConvenios from './pages/MisConvenios';
+import Otracosa from "./pages/Otracosa";
+import Información from "./pages/Información";
+import AdmAfiliados from "./pages/AdmAfiliados";
+
+
 
 function App() {
   return (
@@ -33,6 +40,13 @@ function App() {
         <Route path="/buscarconvenios" component={Buscarconvenios} exact />
         <Route path="/bonosAfiliado" component={BonosAfiliadoPage} exact />
         <Route path="/pagosUsuario" component={PagosUsuarioPage} exact />
+        <Route path="/AdmAfiliados" component={AdmAfiliados} exact />
+        <Route path='/buscarconvenios' component={Buscarconvenios} exact />
+        <Route path='/MisConvenios' component={MisConvenios} exact />
+        <Route path='/otracosa' component={Otracosa} />
+        <Route path="/Información" component={Información} exact />
+
+
       </Switch>
     </Router>
   );
