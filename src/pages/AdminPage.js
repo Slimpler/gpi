@@ -1,7 +1,7 @@
 import React from "react";
 
-import Navbar from "../componentsAfiliados/Navbar/Navbar";
-import PerfilAfiliado from "../componentsAfiliados/PerfilAfiliado/PerfilAfiliado";
+import Navbar from "../componentsAdministrador/Navbar/Navbar";
+import PerfilAdministrador from "../componentsAdministrador/perfilAdministrador/PerfilAdministrador";
 
 
 const AdminPage = () => {
@@ -10,10 +10,10 @@ const AdminPage = () => {
     <div style={{background:"#23BB77", paddingBlockEnd: "150px"}}>
       <div>
 
-        <Navbar />
+        <Navbar/>
       </div>
       <div>
-        <PerfilAfiliado />
+        <PerfilAdministrador />
       </div>
     </div>
   );
