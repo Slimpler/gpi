@@ -50,3 +50,16 @@ export const InfoDataFour = {
   delay: 300,
 };
 
+export const InfoDataFIve = {
+  heading: "Administracion De Afiliados",
+  paragraphOne:
+    "Modificacion De informacion De afiliados, Se agregan, eliminan o modifican datos ",
+  paragraphTwo:
+    "Instrucción",
+  buttonLabel: "Administrar",
+  image: ImageThree,
+  reverse: false,
+  delay: 300,
+  
+};
+
