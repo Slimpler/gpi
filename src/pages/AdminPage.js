@@ -1,29 +1,21 @@
-import React, { useState } from "react";
-import DropDown from "../componentsAdmin/DropDown";
-import Hero from "../componentsAdmin/Hero";
-import InfoSection from "../componentsAdmin/InfoSection";
-import Navbar from "../componentsAdmin/Navbar";
-import { InfoData, InfoDataTwo, InfoDataThree, InfoDataFour, InfoDataFIve } from "../componentsAdmin/dataAdmin/InfoData";
-import { SliderData } from "../componentsAdmin/dataAdmin/SliderData";
-import GlobalStyle from "../globalStyles";
+import React from "react";
 
-function AdminPage() {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggle = () => {
-    setIsOpen(!isOpen);
-  };
+import Navbar from "../componentsAfiliados/Navbar/Navbar";
+import PerfilAfiliado from "../componentsAfiliados/PerfilAfiliado/PerfilAfiliado";
 
+
+const AdminPage = () => {
+  
   return (
-    <>
-      <GlobalStyle />
-      <Navbar toggle={toggle} />
-      <DropDown isOpen={isOpen} toggle={toggle} />
-      <InfoSection {...InfoData} />
-      <InfoSection {...InfoDataTwo} />
-      <InfoSection {...InfoDataThree} />
-      <InfoSection {...InfoDataFour} />
-      <InfoSection {...InfoDataFIve} />
-    </>
+    <div style={{background:"#23BB77", paddingBlockEnd: "150px"}}>
+      <div>
+
+        <Navbar />
+      </div>
+      <div>
+        <PerfilAfiliado />
+      </div>
+    </div>
   );
 }
 
