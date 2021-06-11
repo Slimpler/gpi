@@ -14,7 +14,8 @@
   font-family: 'Lato', sans-serif;
 }
 
-
+.home,
+.products,
 .reports {
   display: flex;
   height: 90vh;

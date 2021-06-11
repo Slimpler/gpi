@@ -7,6 +7,8 @@ import { IconContext } from "react-icons/lib";
 import { animateScroll as scroll } from "react-scroll";
 import styled from "styled-components";
 import { Link as LinkR } from "react-router-dom";
+import * as IconN from "react-icons/bi";
+import * as IconF from "react-icons/fi";
 
 
 export const SidebarData = [
@@ -24,7 +26,15 @@ export const SidebarData = [
   {
     title: '',
   },
-  
+
+   {
+    title: 'Convenios',
+    path: '/convenios',
+    size: '30%',
+    icon: <IconF.FiAlignCenter />,
+    cName: 'nav-text',
+  },
+
   {
     title: 'Buscar convenios',
     path: '/buscarconvenios',
@@ -32,26 +42,24 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Products',
-    path: '/products',
-    icon: <FaIcons.FaCartPlus />,
+    title: 'Mis Convenios',
+
+    path: '/MisConvenios',
+
+
+    icon: <IconN.BiDetail/>,
     cName: 'nav-text'
   },
+ 
   {
-    title: 'Team',
-    path: '/team',
-    icon: <IoIcons.IoMdPeople />,
-    cName: 'nav-text'
-  },
-  {
-    title: 'Messages',
-    path: '/messages',
+    title: 'Otra cosa',
+    path: '/Otracosa',
     icon: <FaIcons.FaEnvelopeOpenText />,
     cName: 'nav-text'
   },
   {
-    title: 'Support',
-    path: '/support',
+    title: 'Información',
+    path: '/Información',
     icon: <IoIcons.IoMdHelpCircle />,
     cName: 'nav-text'
   }
