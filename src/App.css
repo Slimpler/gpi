@@ -4,3 +4,23 @@
   padding: 0;
   font-family: "Encode Sans Expanded", sans-serif;
 }
+<<<<<<< HEAD
+=======
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.home,
+.products,
+.reports {
+  display: flex;
+  height: 90vh;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+}
+>>>>>>> e8c355de8f38f8a0a31d568eea598a87fd5192df

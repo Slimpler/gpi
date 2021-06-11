@@ -79,6 +79,7 @@ const Hero = ({ slides }) => {
 };
 
 const HeroSection = styled.section`
+  left: 14%;
   height: 100vh;
   max-height: 1100px;
   position: relative;
@@ -168,9 +169,10 @@ const Arrow = styled(IoMdArrowRoundForward)`
 `;
 
 const SliderButtons = styled.div`
+  top: 75%;
   position: absolute;
   bottom: 50px;
-  right: 5%;
+  right: 20%;
   display: flex;
   z-index: 10;
 `;

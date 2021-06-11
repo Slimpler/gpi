@@ -6,13 +6,23 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+<<<<<<< HEAD
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+=======
+    "@trendmicro/react-buttons": "^1.3.1",
+    "gulp": "^4.0.2",
+    "material-table": "^1.69.3",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+>>>>>>> e8c355de8f38f8a0a31d568eea598a87fd5192df
     "react-icons": "^4.2.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "react-scroll": "^1.8.2",
+    "semantic-ui-css": "^2.4.1",
+    "semantic-ui-react": "^2.0.3",
     "styled-components": "^5.3.0",
     "web-vitals": "^1.0.1"
   },

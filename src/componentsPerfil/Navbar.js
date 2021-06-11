@@ -27,7 +27,7 @@ const Navbar = ({ toggle }) => {
 
   return (
     <>
-      <IconContext.Provider value={{ color: "#fff" }}>
+      <IconContext.Provider value={{ color: "black" }}>
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
             <NavLogo to="/" onClick={toggleHome}>
@@ -45,7 +45,32 @@ const Navbar = ({ toggle }) => {
                   spy={true}
                   exact="true"
                 >
-                 Inicio
+                 Perfil
+                </NavLinks>
+              </NavItem>
+
+              <NavItem>
+
+                <NavLinks
+                  to="pagosUsuario"
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  exact="true"
+                >
+                  Pagos
+                </NavLinks>
+              </NavItem>
+
+              <NavItem>
+              <NavLinks
+                  to="bonosAfiliado"
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  exact="true"
+                >
+                  Mis bonos
                 </NavLinks>
               </NavItem>
 
@@ -144,7 +169,7 @@ export const NavItem = styled.li`
 `;
 
 export const NavLinks = styled(LinkR)`
-  color: #fff;
+  color: black;
   display: flex;
   align-items: center;
   text-decoration: none;

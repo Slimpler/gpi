@@ -27,6 +27,7 @@ const Navbar = ({ toggle }) => {
 
   return (
     <>
+<<<<<<< HEAD
       <IconContext.Provider value={{ color: "#fff" }}>
         <Nav scrollNav={scrollNav}>
           <NavbarContainer>
@@ -68,6 +69,31 @@ const Navbar = ({ toggle }) => {
             </NavBtn>
           </NavbarContainer>
         </Nav>
+=======
+      <IconContext.Provider value={{ color: '#fff' }}>
+        <div className='navbar'>
+          <Link to='#' className='menu-bars'>
+            <FaIcons.FaBars onClick={showSidebar} />
+          </Link>
+        </div>
+        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
+          <ul className='nav-menu-items' onClick={showSidebar}>
+            
+
+          
+            {SidebarData.map((item, index) => {
+              return (
+                <li key={index} className={item.cName}>
+                  <Link to={item.path}>
+                    {item.icon}
+                    <span>{item.title}</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+>>>>>>> e8c355de8f38f8a0a31d568eea598a87fd5192df
       </IconContext.Provider>
     </>
   );
