@@ -7,7 +7,7 @@ import ConveniosPage from "./pages/ConveniosPage";
 import AdminPage from "./pages/AdminPage";
 import PagosPage from "./pages/PagosPage";
 import PagoConveniosPage from "./pages/PagoConveniosPage";
-import FuncionariosPage from "./pages/FuncionariosPage";
+import adminPage from "./pages/AdminPage";
 import FormularioAfiliate from "./pages/FormularioAfiliate";
 import Buscarconvenios from './pages/Buscarconvenios'
 
@@ -23,7 +23,7 @@ function App() {
         <Route path="/admin" component={AdminPage} exact />
         <Route path="/pagos" component={PagosPage} exact />
         <Route path="/pagoConvenios" component={PagoConveniosPage} exact />
-        <Route path="/funcionarios" component={FuncionariosPage} exact />
+        <Route path="/admin" component={AdminPage} exact />
         <Route path="/formularioAfiliate" component={FormularioAfiliate} />
         <Route path='/buscarconvenios' component={Buscarconvenios} />
       </Switch>
