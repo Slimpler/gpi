@@ -69,17 +69,8 @@ const mystyle = {
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
       <DialogTitle id="form-dialog-title">Agregar Pago</DialogTitle>
-      <DialogContent>
-          <DialogContentText>
-              Para agregar un pago de un afiliado llenar los siguientes campos:
-          </DialogContentText>
-          <p> Datos personales </p>
-          <TextField autofocus margin="dense" id="rut" label="Rut" variant="outlined" size="medium"/>
-          <p>  </p>
-          <TextField autofocus margin="dense" id="rut" label="Nombre" variant="outlined" size="medium"/>
-          <TextField autofocus margin="dense" id="rut" label="Apellido" variant="outlined" size="medium"/>
-          
-          <p> Datos del pago</p>            
+      <DialogContent>          
+          <p>Tipo de ingreso</p>            
           <FormControl variant="outlined" className={classes.formControl}>
               <InputLabel id="demo-simple-select-outlined-label">Tipo</InputLabel>
                   <Select
@@ -93,15 +84,14 @@ const mystyle = {
                       <MenuItem value="">
                           <em> Seleccionar </em>
                       </MenuItem>
-                      <MenuItem value={10}>Cuota Membresía</MenuItem>
-                      <MenuItem value={20}>Cuota Gremial</MenuItem>
-                      <MenuItem value={30}>Convenio Óptica</MenuItem>
-                      <MenuItem value={30}>Convenio Caja Los Andes</MenuItem>
+                      <MenuItem value={10}>Subvencion Municipal</MenuItem>
+                      <MenuItem value={20}>Convenio 1</MenuItem>
+                      <MenuItem value={30}>Convenio 2</MenuItem>
+                      <MenuItem value={30}>Convenio 3</MenuItem>
                   </Select>
           </FormControl>
-          <p> </p>
-          <TextField autofocus margin="dense" id="rut" label="Cuotas" variant="outlined" size="small" />
-          <TextField autofocus margin="dense" id="rut" label="Monto de la Cuota" variant="outlined" size="medium" />
+          <p> Monto a ingresar </p>
+          <TextField autofocus margin="dense" id="monto_ingreso" label="Monto" variant="outlined" size="medium"/>
 
         </DialogContent>
         <DialogActions>

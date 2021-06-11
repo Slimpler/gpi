@@ -14,17 +14,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 
-
-const ColorButton = withStyles((theme) => ({
-  root: {
-    color: theme.palette.getContrastText(purple[500]),
-    backgroundColor: purple[500],
-    '&:hover': {
-      backgroundColor: purple[700],
-    },
-  },
-}))(Button);
-
+/*
 const useStyles = makeStyles((theme) => ({
   margin: {
     margin: theme.spacing(1),
@@ -32,14 +22,15 @@ const useStyles = makeStyles((theme) => ({
   fab: {
     margin: theme.spacing(2)
   },
-}));
+}));*/
+
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 130 },
-  { field: 'nombreIngreso', headerName: 'Nombre', width: 130 },
-  { field: 'montoIngreso', headerName: 'Monto', type: 'number', width: 130 },
-  { field: 'fechaIngreso', headerName: 'Fecha', width: 130, type: 'date'},
-  { field: 'action', headerName: 'Accion', width: 120, renderCell: (params: GridCellParams)=> (
+  { field: 'nombreIngreso', headerName: 'Nombre', width: 200 },
+  { field: 'montoIngreso', headerName: 'Monto', type: 'number', width: 150 },
+  { field: 'fechaIngreso', headerName: 'Fecha', width: 150, type: 'date'},
+  { field: 'action', headerName: 'Accion', width: 180, renderCell: (params: GridCellParams)=> (
     <strong>
       <IconButton aria-label="delete">
         <DeleteIcon />
@@ -57,17 +48,16 @@ const rows = [
   { id: '3', nombreIngreso: 'Subvencion Municipal', montoIngreso: '500000', fechaIngreso: '01/05/2021'},
   { id: '4', nombreIngreso: 'Subvencion Municipal', montoIngreso: '500000', fechaIngreso: '01/06/2021'},
 ];
-
 const mystyle = {
-  height: 800,
-  width: "100%",
+  height: 400,
+  width: "80%",
   padding: "10px",
   margin: '0.5em',
 };
 
 function PagosAsociacion() {
   
-  const classes = useStyles();
+  /*const classes = useStyles();*/
 
   return (
   <div style={mystyle}>

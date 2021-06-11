@@ -28,17 +28,7 @@ const columns = [
   { field: 'cuotas', headerName: 'Cuotas', type: 'number', width: 130 },
   { field: 'montoCuota', headerName: 'Monto Cuota', type: 'number', width: 170 },
   { field: 'fechaPago', headerName: 'Fecha último pago', width: 130, type: 'date'},
-  { field: 'tipo', headerName: 'Tipo', width: 130 },
-  { field: 'action', headerName: 'Accion', width: 120, renderCell: (params: GridCellParams)=> (
-    <strong>
-      <IconButton aria-label="delete">
-        <DeleteIcon />
-      </IconButton>
-      <IconButton aria-label="edit">
-        <EditIcon />
-      </IconButton>
-    </strong>
-  )}
+  { field: 'tipo', headerName: 'Tipo', width: 130 }
 ];
 const rows = [
   { id: '19817247-2', firstName: 'Ana', lastName: 'Muñoz', deudas: '25.000', cuotas: '5' , montoCuota: '5.000', fechaPago: '08/06/2021', tipo: 'convenio óptica', },
@@ -50,7 +40,7 @@ const mystyle = {
   height: 400,
   width: "90%",
   padding: "10px",
-  margin: '0.5em',
+  margin: '0.5m',
 };
 
 

@@ -1,4 +1,6 @@
-//Esto es pagos de bonos desde directiva
+//Esto es bonos desde afiliados
+/*----------------------------*/
+
 
 import React, { useState } from "react";
 import DropDown from "../componentsPerfil/DropDown";
@@ -7,20 +9,9 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { orange, purple } from '@material-ui/core/colors';
 //import AgregarPago from '../components/Buttons/Agregar';
-import FormDialog from "../componentsPagos/componentsBono/AsignarBono";
-import PagosBono from "../componentsPagos/componentsBono/PagosBono";
-import Navbar from "../componentsPagos/Navbar";
+import FormDialog from "../componentsPagos/TestAgregar";
+import PagosBonos from "../componentsPagos/componentsBono/PagosBonoAfiliado";
 
-
-const ColorButton = withStyles((theme) => ({
-    root: {
-      color: theme.palette.getContrastText(purple[500]),
-      backgroundColor: purple[500],
-      '&:hover': {
-        backgroundColor: purple[700],
-      },
-    },
-  }))(Button);
   
   const useStyles = makeStyles((theme) => ({
     margin: {
@@ -29,7 +20,7 @@ const ColorButton = withStyles((theme) => ({
   }));
 
 
-  function PagoBonosPage() {
+  function BonosAfiliadoPage() {
       
     const classes = useStyles();
     const [buttonPopup, setButtonPopup] = useState(false);
@@ -41,12 +32,10 @@ const ColorButton = withStyles((theme) => ({
     return (
         <>
             <GlobalStyle />
-            <Navbar toggle={toggle}/>
             <DropDown isOpen={isOpen} toggle={toggle} />
-            <FormDialog/>
-            <PagosBono/>
+            <PagosBonos/>
         </>
     );
 }
 
-export default PagoBonosPage;
+export default BonosAfiliadoPage;

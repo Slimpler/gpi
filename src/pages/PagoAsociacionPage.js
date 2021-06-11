@@ -6,25 +6,15 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { orange, purple } from '@material-ui/core/colors';
 //import AgregarPago from '../components/Buttons/Agregar';
-import FormDialog from "../componentsPagos/TestAgregar";
+import FormDialog from "../componentsPagos/componentsAsociacion/agregarIngreso";
 import PagosAsociacion from "../componentsPagos/componentsAsociacion/PagoAsociacion";
-
-
-const ColorButton = withStyles((theme) => ({
-    root: {
-      color: theme.palette.getContrastText(purple[500]),
-      backgroundColor: purple[500],
-      '&:hover': {
-        backgroundColor: purple[700],
-      },
-    },
-  }))(Button);
+import Navbar from "../componentsPagos/Navbar";
   
-  const useStyles = makeStyles((theme) => ({
-    margin: {
-      margin: theme.spacing(1),
-    },
-  }));
+const useStyles = makeStyles((theme) => ({
+  margin: {
+    margin: theme.spacing(1),
+  },
+}));
 
 
 function PagoAsociacionPage() {
@@ -40,7 +30,7 @@ function PagoAsociacionPage() {
         <>
             <GlobalStyle />
             
-            
+            <Navbar toggle={toggle} />
             <DropDown isOpen={isOpen} toggle={toggle} />
             <FormDialog/>
             <PagosAsociacion/>

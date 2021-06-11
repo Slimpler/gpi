@@ -39,13 +39,13 @@ const Navbar = ({ toggle }) => {
             <NavMenu>
               <NavItem>
                 <NavLinks
-                  to="perfil"
+                  to="admin"
                   smooth={true}
                   duration={1000}
                   spy={true}
                   exact="true"
                 >
-                 Inicio
+                 Perfil
                 </NavLinks>
               </NavItem>
 
