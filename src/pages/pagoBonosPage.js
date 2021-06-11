@@ -1,4 +1,5 @@
-//Esto es pagos de afiliados
+//Esto es pagos de bonos desde directiva
+
 import React, { useState } from "react";
 import DropDown from "../componentsPerfil/DropDown";
 import GlobalStyle from "../globalStyles";

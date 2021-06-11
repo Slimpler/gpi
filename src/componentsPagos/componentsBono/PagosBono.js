@@ -22,7 +22,7 @@ const mystyle = {
   margin: '0.5em',
 };
 
-function PagosAdmin() {
+function PagosBonos() {
   return (
     <div style={mystyle}>
       <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
@@ -30,5 +30,5 @@ function PagosAdmin() {
   );
 }
 
-export default PagosAdmin;
+export default PagosBonos;
 

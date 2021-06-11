@@ -1,4 +1,4 @@
-//Esto es pagos de afiliados
+//Esto es pagos de afiliados; vista desde la directiva
 import React, { useState } from "react";
 import DropDown from "../componentsPerfil/DropDown";
 import GlobalStyle from "../globalStyles";
@@ -8,19 +8,10 @@ import Button from '@material-ui/core/Button';
 import { orange, purple } from '@material-ui/core/colors';
 //import AgregarPago from '../components/Buttons/Agregar';
 import FormDialog from "../componentsPagos/TestAgregar";
+import Navbar from "../componentsPagos/Navbar";
 
 
-const ColorButton = withStyles((theme) => ({
-    root: {
-      color: theme.palette.getContrastText(purple[500]),
-      backgroundColor: purple[500],
-      '&:hover': {
-        backgroundColor: purple[700],
-      },
-    },
-  }))(Button);
-  
-  const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
     margin: {
       margin: theme.spacing(1),
     },
@@ -39,6 +30,7 @@ function PagoAfiliadosPage() {
     return (
         <>
             <GlobalStyle />
+            <Navbar toggle={toggle} />
             <DropDown isOpen={isOpen} toggle={toggle} />
             <FormDialog/>
             <PagosAfiliados/>
