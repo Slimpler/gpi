@@ -43,7 +43,7 @@ const MisConvenios = () => (
 
     <Table.Body>
       <Table.Row>
-        <Table.Cell>Federer Court </Table.Cell>
+        <Table.Cell>Coopeuch </Table.Cell>
         <Table.Cell>
         <Icon color='green' name='checkmark' size='large' />
             Habilitado
@@ -71,7 +71,7 @@ const MisConvenios = () => (
         </Table.Cell>
       </Table.Row>
       <Table.Row>
-        <Table.Cell>Travell</Table.Cell>
+        <Table.Cell>Caja Los Andes</Table.Cell>
         <Table.Cell>
         <Icon color ='red' name='close'  size='large'/>
             No Habilitado
@@ -81,7 +81,7 @@ const MisConvenios = () => (
       </Table.Row>
 
       <Table.Row>
-        <Table.Cell>Dental Care</Table.Cell>
+        <Table.Cell>Optica Viña del Mar </Table.Cell>
         <Table.Cell>
         <Icon color='green' name='checkmark' size='large' />
             Habilitado
