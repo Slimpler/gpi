@@ -15,6 +15,8 @@ import Buscarconvenios from './pages/Buscarconvenios';
 import MisConvenios from './pages/MisConvenios';
 
 
+
+
 function App() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
@@ -30,8 +32,11 @@ function App() {
         <Route path="/pagoAsociacion" component={PagoAsociacionPage} exact />
         <Route path="/pagoBonos" component={PagoBonosPage} exact />
         <Route path="/pagoPrestamos" component={PagoPrestamosPage} exact />
+
         <Route path='/buscarconvenios' component={Buscarconvenios} exact />
         <Route path='/MisConvenios' component={MisConvenios} exact />
+
+
       </Switch>
     </Router>
   );
