@@ -43,7 +43,10 @@ export const SidebarData = [
   },
   {
     title: 'Mis Convenios',
-    path: '/misconvenios',
+
+    path: '/MisConvenios',
+
+
     icon: <IconN.BiDetail/>,
     cName: 'nav-text'
   },
@@ -55,8 +58,8 @@ export const SidebarData = [
     cName: 'nav-text'
   },
   {
-    title: 'Support',
-    path: '/support',
+    title: 'Información',
+    path: '/Información',
     icon: <IoIcons.IoMdHelpCircle />,
     cName: 'nav-text'
   }
