@@ -13,6 +13,8 @@ import PagoBonosPage from "./pages/pagoBonosPage";
 import PagoPrestamosPage from "./pages/pagoPrestamosPage";
 import Buscarconvenios from './pages/Buscarconvenios';
 import MisConvenios from './pages/MisConvenios';
+import Otracosa from "./pages/Otracosa";
+import Información from "./pages/Información";
 
 
 
@@ -35,6 +37,8 @@ function App() {
 
         <Route path='/buscarconvenios' component={Buscarconvenios} exact />
         <Route path='/MisConvenios' component={MisConvenios} exact />
+        <Route path='/otracosa' component={Otracosa} />
+        <Route path="/Información" component={Información} exact />
 
 
       </Switch>
