@@ -8,7 +8,7 @@ import { orange, purple } from '@material-ui/core/colors';
 //import AgregarPago from '../components/Buttons/Agregar';
 import FormDialog from "../componentsPagos/TestAgregar";
 import PagosBono from "../componentsPagos/componentsBono/PagosBono";
-import PagosAfiliados from "../componentsPagos/componentsAfiliado/PagosAfiliados";
+import PagosAfiliados from "../componentsPagos/componentsAfiliado/PagosViewAfiliados";
  
 const useStyles = makeStyles((theme) => ({
     margin: {
