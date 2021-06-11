@@ -12,8 +12,12 @@ import PagoAsociacionPage from "./pages/PagoAsociacionPage";
 import PagoBonosPage from "./pages/pagoBonosPage";
 import PagoPrestamosPage from "./pages/pagoPrestamosPage";
 import Buscarconvenios from './pages/Buscarconvenios';
-import Misconvenios from './pages/Misconvenios';
+import MisConvenios from './pages/MisConvenios';
 import Otracosa from "./pages/Otracosa";
+import Información from "./pages/Información";
+
+
+
 
 function App() {
   return (
@@ -30,9 +34,13 @@ function App() {
         <Route path="/pagoAsociacion" component={PagoAsociacionPage} exact />
         <Route path="/pagoBonos" component={PagoBonosPage} exact />
         <Route path="/pagoPrestamos" component={PagoPrestamosPage} exact />
-        <Route path='/buscarconvenios' component={Buscarconvenios} />
-        <Route path='/misconvenios' component={Misconvenios} />
+
+        <Route path='/buscarconvenios' component={Buscarconvenios} exact />
+        <Route path='/MisConvenios' component={MisConvenios} exact />
         <Route path='/otracosa' component={Otracosa} />
+        <Route path="/Información" component={Información} exact />
+
+
       </Switch>
     </Router>
   );
