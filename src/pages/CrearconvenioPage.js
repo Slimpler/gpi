@@ -1,15 +1,9 @@
 import React from 'react'
 import Navbar from "../componentsConvenio1/Navbar";
 
-function CrearconvenioPage() {
- return (
-        <div className='crearconvenio'>
-            <Navbar />
-            
-            <center>Formulario para crear convenio</center>
-           
-        </div>
-    )
-}
+import Formcrearconvenio from "../components/Formcrearconvenio";
 
-export default CrearconvenioPage
+const CrearconvenioPage = () => {
+  return <Formcrearconvenio/>;
+};
+export default CrearconvenioPage;
