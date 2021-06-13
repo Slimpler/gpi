@@ -26,7 +26,7 @@ const Navbar = () => {
                                 </NavLinks>
                             </NavItem>
                             <NavItem>
-                                <NavLinks to="pagoAfiliados">
+                                <NavLinks to="pagosUsuario">
                                     Pagos
                                 </NavLinks>
                             </NavItem>
