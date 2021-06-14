@@ -14,6 +14,7 @@ import {
   ScrollContainer
 } from "./FormAfiliateElements";
 
+import SelectContract from "./Select/index";
 
 
 const FormAfiliate = () => {
@@ -28,11 +29,11 @@ const FormAfiliate = () => {
             <ScrollContainer>
               <LabelStyled>Ingrese Nombres: </LabelStyled>
             <div >
-              <InputStyled />
+              <InputStyled required/>
             </div>
             <LabelStyled>Ingrese apellidos: </LabelStyled>
             <div >
-              <InputStyled />
+              <InputStyled required/>
             </div>  
             <LabelStyled>Rut: </LabelStyled>
             <div>
@@ -40,11 +41,12 @@ const FormAfiliate = () => {
                 id="rut"
                 placeholder="Ejemplo: 123456789"
                 type="number"
+                required
               />
             </div>
             <LabelStyled>Telefono: </LabelStyled>
             <div>
-              <InputStyled />
+              <InputStyled type="tel" required/>
             </div>
             <LabelStyled>Direccion: </LabelStyled>
             <div>
@@ -52,18 +54,21 @@ const FormAfiliate = () => {
             </div>
             <LabelStyled>Correo Electronico: </LabelStyled>
             <div>
-              <InputStyled id="email" placeholder="email@gmail.com" type="email"/>
+              <InputStyled id="email" placeholder="email@gmail.com" type="email" />
             </div>
             <LabelStyled>Cargo en la municipalidad: </LabelStyled>
             <div>
               <InputStyled />
+            </div>
+            <div>
+              <SelectContract />
             </div>
             <LabelStyled>Motivos de afiliación: </LabelStyled>
             <div>
               <InputStyled />
             </div>
             <div>
-              <InputFile type="file"/>
+              <InputFile type="file" required/>
             </div> 
             </ScrollContainer>
             <ButtonStyled >Enviar</ButtonStyled>

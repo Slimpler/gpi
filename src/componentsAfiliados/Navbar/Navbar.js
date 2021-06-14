@@ -36,6 +36,11 @@ const Navbar = () => {
                                 </NavLinks>
                             </NavItem>
                             <NavItem>
+                                <NavLinks to="bonosAfiliado">
+                                    Mis bonos
+                                </NavLinks>
+                            </NavItem>
+                            <NavItem>
                                 <NavLinks>
                                     Otro
                                 </NavLinks>
