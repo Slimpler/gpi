@@ -12,6 +12,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 import FormDialog from "../../componentsPagos/TestAgregar";
 
@@ -58,28 +59,33 @@ const useStyles = makeStyles((theme) => ({
     height: 400,
     width: "100%",
     //padding: "10px",
-    margin: '0px 5px 0px',
+    margin: '0px 20px 0px',
     },
  
   boton: {
-    margin: '10px 0px'
+    margin: '20px 0px 10px 0px'
+  },
+  root: {
+    display: 'flex',
+    '& > *': {
+      margin: theme.spacing(1),
+    },
   }
-   }
-));
+}));
 
 function PagosAfiliados() {
   
   const classes = useStyles();
   return (
-    <div>
-
-      <FormDialog/>
-    <Box display="flex" justifyContent="flex-end" m={1} p={1} >    
-    <div className={classes.rudolphy}>
-
-      <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
-    </div>
-    </Box>
+    <div>    
+      <Box display="flex" justifyContent="flex-end" m={1} >
+        <FormDialog/>
+      </Box>
+      <Box display="flex" justifyContent="center" m={0,1}>    
+        <div className={classes.rudolphy}>
+          <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+        </div>
+      </Box>
 
 
     </div>
