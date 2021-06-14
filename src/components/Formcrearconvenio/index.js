@@ -12,23 +12,23 @@ import {
   IconStyled,
   InputFile,
   ScrollContainer
-} from "./FormAfiliateElements";
+} from "./FormCrearConvenioElements";
 import Navbar from "../Navbar";
 
 
 
 const FormAfiliate = () => {
   return (
-   
+    
     <ContainerAll>
       <Wrap>
         <Content>
           <FormStyled>
-            <H1styled>Formulario para ingresar convenio al sistema</H1styled>
+            <H1styled>Formulario para ingresar convenio al sistema {'\n'} </H1styled>
             <ScrollContainer>
               <LabelStyled>Nombre del convenio:</LabelStyled>
             <div >
-              <InputStyled />
+              <InputStyled type="text"/>
             </div>
 
             <LabelStyled>Nombre de la empresa: </LabelStyled>

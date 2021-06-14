@@ -1,9 +1,13 @@
 import React from 'react'
-import Navbar from "../componentsConvenio1/Navbar";
-
+import Navbar from "../components/Formcrearconvenio/Navbar.js"
 import Formcrearconvenio from "../components/Formcrearconvenio";
 
 const CrearconvenioPage = () => {
-  return <Formcrearconvenio/>;
+  return (
+    <>
+  <Navbar/>
+  <Formcrearconvenio/>
+  </>
+  )
 };
 export default CrearconvenioPage;

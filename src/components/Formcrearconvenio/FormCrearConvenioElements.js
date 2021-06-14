@@ -7,9 +7,9 @@ export const ContainerAll = styled.div`
   min-height: 692px;
   position: fixed;
   bottom: 0;
-  left: 0;
+  left: 14%;
   right: 0;
-  top: 0;
+  top: 10.5%;
   z-index: 0;
   overflow: hidden;
   background: #5ad8a8;
