@@ -31,6 +31,11 @@ const Navbar = () => {
                                 </NavLinks>
                             </NavItem>
                             <NavItem>
+                                <NavLinks to="convenios1">
+                                    Convenios
+                                </NavLinks>
+                            </NavItem>
+                            <NavItem>
                                 <NavLinks>
                                     Otro
                                 </NavLinks>
