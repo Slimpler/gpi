@@ -10,7 +10,6 @@ import { Link as LinkR } from "react-router-dom";
 import * as IconN from "react-icons/bi";
 import * as IconF from "react-icons/fi";
 
-
 export const SidebarData = [
   {
     title: '',
@@ -29,7 +28,7 @@ export const SidebarData = [
 
    {
     title: 'Convenios',
-    path: '/convenios',
+    path: '/convenios1',
     size: '30%',
     icon: <IconF.FiAlignCenter />,
     cName: 'nav-text',
@@ -37,7 +36,7 @@ export const SidebarData = [
 
   {
     title: 'Buscar convenios',
-    path: '/buscarconvenios',
+    path: '/buscarconvenios1',
     icon: <FaIcons.FaSearch/>,
     cName: 'nav-text'
   },
@@ -52,8 +51,8 @@ export const SidebarData = [
   },
  
   {
-    title: 'Otra cosa',
-    path: '/Otracosa',
+    title: 'Crear convenio',
+    path: '/CrearConvenio',
     icon: <FaIcons.FaEnvelopeOpenText />,
     cName: 'nav-text'
   },
