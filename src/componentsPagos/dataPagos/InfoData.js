@@ -3,8 +3,7 @@ import ImageTwo from "../../img/house-2.jpg";
 import ImageThree from "../../img/house-5.jpg";
 
 export const InfoData = {
-
-  background: 'black',
+  heading2: "Pagos de la Asociación",
   heading: "Pagos de Afiliados",
   paragraphOne:
     "Breve descripción",
@@ -18,14 +17,15 @@ export const InfoData = {
 };
 
 export const InfoDataTwo = {
-  heading: "Pagos de la Asociación",
+  heading2: "Pagos de prestamos",
+  heading: "Pagos de bonos",
   paragraphOne:
     "Breve descripción",
   paragraphTwo:
     "Instrucción",
   buttonLabel: "Ir!",  
   image: ImageTwo,
-  reverse: true,
+  reverse: false,
   delay: 300,
 };
 

@@ -5,7 +5,7 @@ function Otracosa() {
  return (
         <div className='otracosa'>
             <Navbar />
-            <center>Otra cosa</center>
+            <center>Otra cosa </center>
            
         </div>
     )

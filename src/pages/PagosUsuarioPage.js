@@ -10,7 +10,7 @@ import { orange, purple } from '@material-ui/core/colors';
 import FormDialog from "../componentsPagos/TestAgregar";
 import PagosAfiliados from "../componentsPagos/componentsAfiliado/PagosViewAfiliados";
 import PrintPagos from "../componentsPagos/componentsAfiliado/PrintPagosAfiliados";
-import Navbar from "../componentsPagos/Navbar";
+import Navbar from "../componentsAfiliados/Navbar/Navbar";
  
 const useStyles = makeStyles((theme) => ({
     margin: {
