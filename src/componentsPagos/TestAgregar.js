@@ -48,19 +48,19 @@ export default function FormDialog() {
   };
 //-----------------------------------------//
 //Ubicación del botón
-const mystyle = {
+/*const mystyle = {
   height: 500,
   width: "40%",
-  padding: "100px",
+  //padding: "100px",
   margin: '0em',
-};
+};*/
 
   return (
     <div>
       <div style={{width: '75%'}}>
-        <Box display="flex" justifyContent="flex-end" m={0.5} p={5}>
+        <Box display="flex" justifyContent="flex-end" m={1} p={1}>
           <Box p={5}>
-            <Button variant="contained" color="primary" onClick={handleClickOpen} placement="right-start">
+            <Button variant="contained" color="primary" onClick={handleClickOpen}>
                 Agregar
             </Button>
           </Box>

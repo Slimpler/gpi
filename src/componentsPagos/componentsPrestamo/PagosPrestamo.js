@@ -1,6 +1,4 @@
-//Aquí se muestra todo lo que tiene que ver con los ingresos
-//de la asociación distintos de los pagos que hacen los afiliados
-//Ejemplo: Subvenciones.
+//Aquí está todo lo que tiene que ver con generar un préstamo
 
 import * as React from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -39,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
       width: '25ch',
     },
   },
+  boton: {
+    margin: '30px 220px 10px'
+  },
 }));
 
 
@@ -52,8 +53,9 @@ function PagosAsociacion() {
           <TextField id="standard-basic" label="RUT" variant="outlined" />
           <TextField id="filled-basic" label="Monto" variant="outlined" />
           <TextField id="outlined-basic" label="Cuotas" variant="outlined" />
-
-          <PrestamosBtnLink href= {Formulario3} download="formulario"> Imprimir formulario </PrestamosBtnLink>
+          <div className={classes.boton}>
+          <PrestamosBtnLink href= {Formulario3} download="formulario-prestamo"> Generar Voucher </PrestamosBtnLink>
+          </div>
       </form>
   );
 }
