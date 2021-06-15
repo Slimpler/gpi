@@ -19,7 +19,7 @@ export const  PerfilAfiliado = () => {
               />
             </ItemImg>
             <div style={{textAlign:"center"}}>
-              <p style={{color:"#fff", marginBottom:"10%", fontFamily:"'Baloo Tammudu 2', cursive"}}> * CARGO EN LA MUNICIPALIDAD * </p>
+              <p style={{color:"#fff", marginBottom:"10%", fontFamily:"'Baloo Tammudu 2', cursive"}}> * Departamento EN LA MUNICIPALIDAD * </p>
               <Boton to="misconvenios">
                 Mis Convenios
               </Boton>
@@ -61,6 +61,12 @@ export const  PerfilAfiliado = () => {
                 <div class="row">
                     <h5 class="mb-0">Comuna</h5>
                     <div class="text-secondary">Comuna afiliado</div>
+                </div>
+            </Item>
+            <Item>
+                <div class="row">
+                    <h5 class="mb-0">Tipo De Contrato</h5>
+                    <div class="text-secondary">Contrato Del Afiliado</div>
                 </div>
             </Item>
             <BtnEdit>Editar</BtnEdit>
