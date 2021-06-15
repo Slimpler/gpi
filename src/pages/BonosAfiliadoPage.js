@@ -11,6 +11,7 @@ import { orange, purple } from '@material-ui/core/colors';
 //import AgregarPago from '../components/Buttons/Agregar';
 import FormDialog from "../componentsPagos/TestAgregar";
 import PagosBonos from "../componentsPagos/componentsBono/PagosBonoAfiliado";
+import Navbar from "../componentsAfiliados/Navbar/Navbar";
 
   
   const useStyles = makeStyles((theme) => ({
@@ -32,6 +33,7 @@ import PagosBonos from "../componentsPagos/componentsBono/PagosBonoAfiliado";
     return (
         <>
             <GlobalStyle />
+            <Navbar toggle ={toggle}/>
             <DropDown isOpen={isOpen} toggle={toggle} />
             <PagosBonos/>
         </>

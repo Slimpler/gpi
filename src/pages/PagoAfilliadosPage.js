@@ -7,7 +7,7 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { orange, purple } from '@material-ui/core/colors';
 //import AgregarPago from '../components/Buttons/Agregar';
-import FormDialog from "../componentsPagos/TestAgregar";
+//import FormDialog from "../componentsPagos/TestAgregar";
 import Navbar from "../componentsPagos/Navbar";
 
 
@@ -32,7 +32,6 @@ function PagoAfiliadosPage() {
             <GlobalStyle />
             <Navbar toggle={toggle} />
             <DropDown isOpen={isOpen} toggle={toggle} />
-            <FormDialog/>
             <PagosAfiliados/>
             
         </>

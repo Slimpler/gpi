@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import { BorderAll } from '@material-ui/icons';
+import Box from '@material-ui/core/Box';
 
 const columns = [
   { field: 'id', headerName: 'RUT', width: 150 },
@@ -17,16 +18,18 @@ const rows = [
 
 const mystyle = {
   height: 400,
-  width: "50%",
-  padding: "10px",
-  margin: '0.5em',
+  width: "100%",
+  //padding: "10px",
+  margin: '0px 450px 10px',
 };
 
 function PagosBonos() {
   return (
+    <Box display="flex" justifyContent="flex-end" m={1} p={0} > 
     <div style={mystyle}>
       <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
     </div>
+    </Box>
   );
 }
 

@@ -1,4 +1,5 @@
-//Esto es pagos de afiliados
+//Esto es prestamos a los afilados; directiva>prestamos
+
 import React, { useState } from "react";
 import DropDown from "../componentsPerfil/DropDown";
 import GlobalStyle from "../globalStyles";
@@ -8,6 +9,7 @@ import Button from '@material-ui/core/Button';
 import { orange, purple } from '@material-ui/core/colors';
 //import AgregarPago from '../components/Buttons/Agregar';
 import FormDialog from "../componentsPagos/TestAgregar";
+import Navbar from "../componentsPagos/Navbar";
 
 
 const ColorButton = withStyles((theme) => ({
@@ -26,6 +28,10 @@ const ColorButton = withStyles((theme) => ({
     },
   }));
 
+  const positioningStyle = {
+  margin: '150px 400px 10px',
+};
+
 
 function PagoPrestamosPage() {
       
@@ -39,8 +45,11 @@ function PagoPrestamosPage() {
     return (
         <>
             <GlobalStyle />
+            <Navbar toggle = {toggle}/>
             <DropDown isOpen={isOpen} toggle={toggle} />
-            <PagosPrestamo/>        
+            <div style={positioningStyle}>
+            <PagosPrestamo/>
+            </div>
         </>
     );
 }
