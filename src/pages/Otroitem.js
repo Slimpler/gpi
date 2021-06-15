@@ -1,14 +1,14 @@
 import React from 'react'
 import Navbar from "../componentsConvenio/Navbar";
 
-function Otracosa() {
+function Otroitem() {
  return (
-        <div className='otracosa'>
+        <div className='otroitem'>
             <Navbar />
-            <center>Otra cosa </center>
+            <center>Otro item</center>
            
         </div>
     )
 }
 
-export default Otracosa
+export default Otroitem
