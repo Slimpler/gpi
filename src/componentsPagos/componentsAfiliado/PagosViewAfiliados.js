@@ -29,7 +29,7 @@ const mystyle = {
   height: 400,
   width: "87%",
   //padding: "60px",
-  margin: '150px 80px 10px',
+  margin: '30px 80px 10px',
 };
 
 

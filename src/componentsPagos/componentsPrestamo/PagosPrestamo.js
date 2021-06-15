@@ -54,7 +54,7 @@ function PagosAsociacion() {
           <TextField id="filled-basic" label="Monto" variant="outlined" />
           <TextField id="outlined-basic" label="Cuotas" variant="outlined" />
           <div className={classes.boton}>
-          <PrestamosBtnLink href= {Formulario3} download="formulario-prestamo"> Generar Voucher </PrestamosBtnLink>
+          <PrestamosBtnLink href= {Formulario3} download="formulario-prestamo.docx"> Generar Voucher </PrestamosBtnLink>
           </div>
       </form>
   );

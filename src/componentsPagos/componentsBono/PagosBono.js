@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import { BorderAll } from '@material-ui/icons';
-import Box from '@material-ui/core/Box'
+import Box from '@material-ui/core/Box';
 
 const columns = [
   { field: 'id', headerName: 'RUT', width: 150 },
