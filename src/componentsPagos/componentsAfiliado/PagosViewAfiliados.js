@@ -6,28 +6,17 @@ import { useState } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { orange, purple } from '@material-ui/core/colors';
-import AddIcon from '@material-ui/icons/Add';
-import EditIcon from '@material-ui/icons/Edit';
-import DeleteIcon from '@material-ui/icons/Delete';
-import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 
-const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-  fab: {
-    margin: theme.spacing(2)
-  },
-}));
+
 const columns = [
   { field: 'id', headerName: 'RUT', width: 130 },
-  { field: 'firstName', headerName: 'Nombre', width: 130 },
-  { field: 'lastName', headerName: 'Apellido', width: 130 },
-  { field: 'deudas', headerName: 'Deuda Total', type: 'number', width:  140 },
-  { field: 'cuotas', headerName: 'Cuotas', type: 'number', width: 130 },
-  { field: 'montoCuota', headerName: 'Monto Cuota', type: 'number', width: 170 },
-  { field: 'fechaPago', headerName: 'Fecha último pago', width: 130, type: 'date'},
+  { field: 'firstName', headerName: 'Nombre', width: 150 },
+  { field: 'lastName', headerName: 'Apellido', width: 150 },
+  { field: 'deudas', headerName: 'Deuda Total', type: 'number', width:  180 },
+  { field: 'cuotas', headerName: 'Cuotas', type: 'number', width: 150 },
+  { field: 'montoCuota', headerName: 'Monto Cuota', type: 'number', width: 180 },
+  { field: 'fechaPago', headerName: 'Fecha último pago', width: 210, type: 'date'},
   { field: 'tipo', headerName: 'Tipo', width: 130 }
 ];
 const rows = [
@@ -38,9 +27,9 @@ const rows = [
 
 const mystyle = {
   height: 400,
-  width: "90%",
-  padding: "10px",
-  margin: '0.5m',
+  width: "87%",
+  //padding: "60px",
+  margin: '30px 80px 10px',
 };
 
 

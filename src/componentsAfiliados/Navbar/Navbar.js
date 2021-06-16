@@ -26,13 +26,18 @@ const Navbar = () => {
                                 </NavLinks>
                             </NavItem>
                             <NavItem>
-                                <NavLinks to="pagoAfiliados">
+                                <NavLinks to="pagosUsuario">
                                     Pagos
                                 </NavLinks>
                             </NavItem>
                             <NavItem>
                                 <NavLinks to="convenios">
                                     Convenios
+                                </NavLinks>
+                            </NavItem>
+                            <NavItem>
+                                <NavLinks to="bonosAfiliado">
+                                    Mis bonos
                                 </NavLinks>
                             </NavItem>
                             <NavItem>

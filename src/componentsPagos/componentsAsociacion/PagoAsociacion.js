@@ -13,6 +13,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 
 /*
 const useStyles = makeStyles((theme) => ({
@@ -50,9 +51,9 @@ const rows = [
 ];
 const mystyle = {
   height: 400,
-  width: "80%",
-  padding: "10px",
-  margin: '0.5em',
+  width: "60%",
+  //padding: "10px",
+  margin: '0px 20px 0px',
 };
 
 function PagosAsociacion() {
@@ -60,9 +61,11 @@ function PagosAsociacion() {
   /*const classes = useStyles();*/
 
   return (
-  <div style={mystyle}>
-    <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
-  </div>
+    <Box display="flex" justifyContent="center" m={1} p={1}>
+      <div style={mystyle}>
+        <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+      </div>
+    </Box>
   );
   
 }

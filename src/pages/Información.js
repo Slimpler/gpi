@@ -1,5 +1,5 @@
-/*import React from 'react'
-import Navbar from "../componentsConvenio/Navbar";*/
+//import React from 'react'
+import Navbar from "../componentsConvenio/Navbar";
 
 
 
@@ -9,6 +9,8 @@ import { Button, Card, Divider, Image, Placeholder, Icon, List } from 'semantic-
 
 const cards = [
   {
+    width: '300%',
+    top: '400%',
     Icon: 'id badge',
     date: 'Joined in 2013',
     header: 'Helen',
@@ -45,6 +47,8 @@ export default class PlaceholderExampleCard extends Component {
 
     return (
       <>
+
+      <center>
         <Button loading={loading} onClick={this.handleLoadingClick} primary>
           Actualizar
         </Button>
@@ -101,6 +105,8 @@ export default class PlaceholderExampleCard extends Component {
             </Card>
           ))}
         </Card.Group>
+        </center>
+        <Navbar/>
       </>
     )
   }

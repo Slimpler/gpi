@@ -49,19 +49,19 @@ export default function FormDialog() {
 //-----------------------------------------//
 //Ubicación del botón
 const mystyle = {
-  height: 500,
-  width: "40%",
-  padding: "100px",
-  margin: '0em',
+  height: 80,
+  width: "100%",
+  //padding: "100px",
+  margin: '40px 0px 10px 0px',
 };
 
   return (
     <div>
-      <div style={{width: '75%'}}>
-        <Box display="flex" justifyContent="flex-end" m={0.5} p={5}>
+      <div style={mystyle}>
+        <Box display="flex" justifyContent="flex-end" m={1} p={1}>
           <Box p={5}>
-            <Button variant="contained" color="primary" onClick={handleClickOpen} placement="right-start">
-                Agregar
+            <Button variant="contained" color="primary" onClick={handleClickOpen}>
+                Agregar Pago
             </Button>
           </Box>
         </Box>
