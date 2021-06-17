@@ -53,4 +53,16 @@ export const InfoDataFour = {
   delay: 300,
 };
 
+export const InfoDataFive = {
+  heading: "Administrar Afiliados",
+  paragraphOne:
+    "Zona de administracion De Afiliados",
+  paragraphTwo:
+    "Se podra agregar, eliminar y modificar informacion de los afiliados",
+  buttonLabel: "Ir!",
+  image: ImageThree,
+  reverse: true,
+  delay: 300,
+};
+
 

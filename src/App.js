@@ -22,7 +22,7 @@ import MisConvenios from './pages/MisConvenios';
 import Otroitem from "./pages/Otroitem";
 import Información from "./pages/Información";
 import AdmAfiliados from "./pages/AdmAfiliados";
-
+import AdministracionAfiliados from "./pages/AdministracionAfiliados";
 
 
 function App() {
@@ -46,6 +46,7 @@ function App() {
         <Route path="/bonosAfiliado" component={BonosAfiliadoPage} exact />
         <Route path="/pagosUsuario" component={PagosUsuarioPage} exact />
         <Route path="/AdmAfiliados" component={AdmAfiliados} exact />
+        <Route path="/AdministracionAfiliados" component={AdministracionAfiliados} exact />
         <Route path='/buscarconvenios' component={Buscarconvenios} exact />
         <Route path='/buscarconvenios1' component={BuscarConvenios1} exact />
         <Route path='/MisConvenios' component={MisConvenios} exact />

@@ -36,7 +36,7 @@ const Navbar = () => {
                                 </NavLinks>
                             </NavItem>
                             <NavItem>
-                                <NavLinks>
+                                <NavLinks to="AdmAfiliados">
                                     Otro
                                 </NavLinks>
                             </NavItem>

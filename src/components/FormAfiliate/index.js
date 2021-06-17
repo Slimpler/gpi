@@ -56,7 +56,7 @@ const FormAfiliate = () => {
             <div>
               <InputStyled id="email" placeholder="email@gmail.com" type="email" />
             </div>
-            <LabelStyled>Cargo en la municipalidad: </LabelStyled>
+            <LabelStyled>Departamento en la municipalidad: </LabelStyled>
             <div>
               <InputStyled />
             </div>
