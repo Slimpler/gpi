@@ -73,7 +73,18 @@ const Navbar = ({ toggle }) => {
                   Convenios
                 </NavLinks>
               </NavItem>
-             
+             <NavItem>
+
+                <NavLinks
+                  to="otroitem"
+                  smooth={true}
+                  duration={1000}
+                  spy={true}
+                  exact="true"
+                >
+                  Otro
+                </NavLinks>
+              </NavItem>
             </NavMenu>
             <NavBtn>
               <NavBtnLink to="/">Salir</NavBtnLink>

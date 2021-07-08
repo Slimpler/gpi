@@ -61,7 +61,7 @@ const ColumnLeft = styled.div`
   padding: 1rem 2rem;
   flex-flow: column;
   width: 90%;
-  height: 96%;
+  height: 90%;
   margin: 15px;
   border: 2px solid #000;
   border-radius: 20px;
