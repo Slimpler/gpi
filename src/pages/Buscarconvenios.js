@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from "../componentsConvenio/Navbar";
+import Navbar from "../componentsConvenio/Navbar/Navbar";
 
 function BuscarConvenios() {
  return (

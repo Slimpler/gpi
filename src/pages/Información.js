@@ -1,8 +1,5 @@
 //import React from 'react'
-import Navbar from "../componentsConvenio/Navbar";
-
-
-
+import Navbar from "../componentsConvenio/Navbar/Navbar";
 import _ from 'lodash'
 import React, { Component } from 'react'
 import { Button, Card, Divider, Image, Placeholder, Icon, List } from 'semantic-ui-react'
@@ -47,8 +44,9 @@ export default class PlaceholderExampleCard extends Component {
 
     return (
       <>
-
+      
       <center>
+      <Navbar />
         <Button loading={loading} onClick={this.handleLoadingClick} primary>
           Actualizar
         </Button>

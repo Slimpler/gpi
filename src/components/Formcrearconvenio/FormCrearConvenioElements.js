@@ -7,7 +7,7 @@ export const ContainerAll = styled.div`
   min-height: 692px;
   position: fixed;
   bottom: 0;
-  left: 14%;
+  left: 0;
   right: 0;
   top: 10.5%;
   z-index: 0;

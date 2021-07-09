@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from "../components/Formcrearconvenio/Navbar.js"
+import Navbar from "../componentsConvenio1/Navbar/Navbar";
 import Formcrearconvenio from "../components/Formcrearconvenio";
 
 const CrearconvenioPage = () => {
