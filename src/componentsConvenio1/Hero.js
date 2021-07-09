@@ -79,7 +79,7 @@ const Hero = ({ slides }) => {
 };
 
 const HeroSection = styled.section`
-  left: 14%;
+  left: 0;
   height: 100vh;
   max-height: 1100px;
   position: relative;
