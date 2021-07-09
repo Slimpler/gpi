@@ -1,45 +1,38 @@
-//Aquí se muestra todo lo que tiene que ver con los ingresos
-//de la asociación distintos de los pagos que hacen los afiliados
-//Ejemplo: Subvenciones.
+//Aquí se muestran los pagos de bonos visto desde la directiva
+
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import AgregarPago from '../../components/Buttons/Agregar';
-import { useState } from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { orange, purple } from '@material-ui/core/colors';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 
+const mystyle = {
+  height: 400,
+  width: "55%",
+  //padding: "10px",
+  margin: '0px 20px 0px',
+};
 
-const ColorButton = withStyles((theme) => ({
+const useStyles = makeStyles({
   root: {
-    color: theme.palette.getContrastText(purple[500]),
-    backgroundColor: purple[500],
-    '&:hover': {
-      backgroundColor: purple[700],
-    },
+    width: '100%',
+    margin: '0px 100px 0px',
   },
-}))(Button);
-
-const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-  fab: {
-    margin: theme.spacing(2)
-  },
-}));
+});
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 130 },
-  { field: 'nombreIngreso', headerName: 'Nombre', width: 130 },
-  { field: 'montoIngreso', headerName: 'Monto', type: 'number', width: 130 },
-  { field: 'fechaIngreso', headerName: 'Fecha', width: 130, type: 'date'},
-  { field: 'action', headerName: 'Accion', width: 120, renderCell: (params: GridCellParams)=> (
+  { field: 'nombreIngreso', headerName: 'Nombre', width: 180 },
+  { field: 'montoIngreso', headerName: 'Monto', type: 'number', width: 180 },
+  { field: 'fechaIngreso', headerName: 'Fecha', width: 180, type: 'date'},
+  { field: 'action', headerName: 'Accion', width: 180, renderCell: (params: GridCellParams)=> (
     <strong>
       <IconButton aria-label="delete">
         <DeleteIcon />
@@ -60,12 +53,26 @@ const rows = [
 
 
 function PagosBono() {
-  
-  const classes = useStyles();
-  return (
-  <div style={{ height: 400, width: '100%' }}>
-    <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
-  </div>
+    const classes = useStyles();
+    return (
+      
+      <div>
+      <div className={classes.root}>
+        <Typography variant="h4" gutterBottom>
+          TEST DE TÍTULO
+        </Typography>
+        <Typography variant="body1" gutterBottom>
+        Test de descripcion tipo body1
+      </Typography>
+      </div>
+      
+      
+        <Box display="flex" justifyContent="center" m={1} p={1}>
+          <div style={mystyle}>
+            <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+          </div>
+        </Box>
+      </div>
   );
   
 }
