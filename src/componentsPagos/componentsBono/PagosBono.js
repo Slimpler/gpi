@@ -65,8 +65,6 @@ function PagosBono() {
         Test de descripcion tipo body1
       </Typography>
       </div>
-      
-      
         <Box display="flex" justifyContent="center" m={1} p={1}>
           <div style={mystyle}>
             <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />

@@ -5,6 +5,7 @@ import { makeStyles, withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import styled from "styled-components";
 import Formulario3 from "../../documentos/formulario-prestamo.docx";
+import Typography from '@material-ui/core/Typography';
 
 const PrestamosBtnLink = styled.a`
   display: flex;
@@ -42,13 +43,26 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
+const textStyle = {
+  width: '100%',
+  margin: '0px 10px 50px'
+};
 
 function PagosAsociacion() {
   
   const classes = useStyles();
 
   return (
+      <div>
+        <div style={textStyle}>
+          <Typography variant="h4" gutterBottom>
+            TEST DE TÍTULO
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            Test de descripcion tipo body1
+          </Typography>
+        </div>
+
       <form className={classes.root} noValidate autoComplete="off">
           <TextField id="standard-basic" label="RUT" variant="outlined" />
           <TextField id="filled-basic" label="Monto" variant="outlined" />
@@ -57,6 +71,7 @@ function PagosAsociacion() {
           <PrestamosBtnLink href= {Formulario3} download="formulario-prestamo.docx"> Generar Voucher </PrestamosBtnLink>
           </div>
       </form>
+    </div>
   );
 }
 
