@@ -8,12 +8,12 @@ import {
   FormH1,
   FormLabel,
   FormInput,
-  FormButton,
   FormBtnWrap,
-  FormRoute
-  ,
-  Text,
+  FormRoute,
+  A,
 } from "./EntrarElements";
+
+import SimpleModal from "./modalPassword";
 
 const Entrar = () => {
   return (
@@ -28,6 +28,13 @@ const Entrar = () => {
               <FormInput type="email" id="email" placeholder="Ej: 13.450.233-2" required />
               <FormLabel htmlFor="password">Contraseña</FormLabel>
               <FormInput type="password" id="password" placeholder ="minimo 4 digitos y maximo 8" required />
+              <FormLabel style={{ textAlign:"center"}}>
+                ¿Has olvidado tu Contraseña?  
+                <SimpleModal />
+              </FormLabel>
+              <FormLabel ></FormLabel>
+              <FormLabel ></FormLabel>
+              <FormLabel ></FormLabel>
               <FormBtnWrap>
                 <FormRoute to="../perfil">Afiliados</FormRoute>
               </FormBtnWrap>
@@ -40,7 +47,7 @@ const Entrar = () => {
                {/* <FormButton type="submit">Continue</FormButton>  */}
               {/*<Text>Forgot password?</Text>}*/}
             </Form>
-          </FormContent>
+        </FormContent>
         </FormWrap>
       </Container>
     </>

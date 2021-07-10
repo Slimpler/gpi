@@ -21,7 +21,7 @@ const Navbar = () => {
                     </NavLogo>
                         <NavMenu>
                             <NavItem>
-                                <NavLinks to="perfil">
+                                <NavLinks to="admin">
                                     Inicio
                                 </NavLinks>
                             </NavItem>
@@ -37,7 +37,7 @@ const Navbar = () => {
                             </NavItem>
                             <NavItem>
                                 <NavLinks to="AdmAfiliados">
-                                    Otro
+                                    Administracion Afiliados
                                 </NavLinks>
                             </NavItem>
                         </NavMenu>

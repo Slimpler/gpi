@@ -21,26 +21,35 @@ const Navbar = () => {
                     </NavLogo>
                         <NavMenu>
                             <NavItem>
-                                <NavLinks to="perfil">
+                                <NavLinks to="admin">
                                     Inicio
                                 </NavLinks>
                             </NavItem>
-                            
                             <NavItem>
-                                <NavLinks to="convenios">
+                                <NavLinks to="pagos">
+                                    Pagos
+                                </NavLinks>
+                            </NavItem>
+                            <NavItem>
+                                <NavLinks to="convenios1">
                                     Convenios
                                 </NavLinks>
                             </NavItem>
                             <NavItem>
-                                <NavLinks to="bonosAfiliado">
-                                    Mis bonos
+                                <NavLinks to="buscarconvenios1">
+                                    Buscar convenios
                                 </NavLinks>
                             </NavItem>
                             <NavItem>
-                                <NavLinks>
-                                    Otro
+                                <NavLinks to="MisConvenios1">
+                                    Mis convenios
                                 </NavLinks>
                             </NavItem>
+                            <NavItem>
+                                <NavLinks to="CrearConvenio">
+                                    Crear convenios
+                                </NavLinks>
+                            </NavItem> 
                         </NavMenu>
                         <NavBtn>
                             <NavBtnLink to="/">Salir</NavBtnLink>
