@@ -40,9 +40,9 @@ const InfoSectionAfiliado = ({
 
 const Section = styled.section`
   width: 100%;
-  height: 100%;
+  height: 10%;
   padding: 4rem 0;
-  background: black;
+  background: #31ce83;
 
   @media screen and (max-width: 768px) {
     padding: 0;
@@ -53,8 +53,8 @@ const Container = styled.div`
   padding: 3rem calc((100vw - 1300px) / 2);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 800px;
-  background: black;
+  grid-template-rows: 400px;
+  background: #31ce83;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -68,7 +68,7 @@ const ColumnLeft = styled.div`
   padding: 1rem 2rem;
   flex-flow: column;
   width: 90%;
-  height: 96%;
+  height: 95%;
   margin: 15px;
   border: 2px solid #000;
   border-radius: 20px;
@@ -90,7 +90,7 @@ const ColumnRight = styled.div`
   padding: 1rem 2rem;
   flex-flow: column;
   width: 90%;
-  height: 96%;
+  height: 95%;
   margin: 15px;
   border: 2px solid #000;
   border-radius: 20px;

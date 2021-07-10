@@ -14,16 +14,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-
-/*
-const useStyles = makeStyles((theme) => ({
-  margin: {
-    margin: theme.spacing(1),
-  },
-  fab: {
-    margin: theme.spacing(2)
-  },
-}));*/
+import Typography from '@material-ui/core/Typography';
 
 
 const columns = [
@@ -56,17 +47,36 @@ const mystyle = {
   margin: '0px 20px 0px',
 };
 
+const textStyle = {
+  width: '100%',
+  margin: '0px 100px 0px',
+}
+
 function PagosAsociacion() {
   
-  /*const classes = useStyles();*/
-
   return (
-    <Box display="flex" justifyContent="center" m={1} p={1}>
-      <div style={mystyle}>
-        <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+      
+      <div >
+        <div style={textStyle}>
+          <Typography variant="h4" gutterBottom>
+            TEST DE TÍTULO
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            Test de descripcion tipo body1
+          </Typography>
+        </div>
+        
+        <div>
+          <Box display="flex" justifyContent="center" m={1} p={1}>
+            <div style={mystyle}>
+              <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+          </div>
+          </Box>
+        </div>
       </div>
-    </Box>
   );
+    
+      
   
 }
 

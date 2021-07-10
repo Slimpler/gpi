@@ -4,6 +4,8 @@ import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import { BorderAll } from '@material-ui/icons';
 import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
+
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 150 },
@@ -30,14 +32,30 @@ const mystyle = {
   //padding: "10px",
   margin: '0px 250px 10px',
 };
+const textStyle = {
+  width: '100%',
+  margin: '10px 100px 10px',
+};
 
 function PagosBonos() {
   return (
+      <div >
+        <div style={textStyle}>
+          <Typography variant="h4" gutterBottom>
+            TEST DE TÍTULO
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            Test de descripcion tipo body1
+          </Typography>
+        </div>
+        <div >
     <Box display="flex" justifyContent="center" m={1} p={0} >     
     <div style={mystyle}>
       <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
     </div>
     </Box>
+    </div>
+    </div>
   );
 }
 

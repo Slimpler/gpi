@@ -52,7 +52,7 @@ const mystyle = {
   height: 80,
   width: "100%",
   //padding: "100px",
-  margin: '40px 0px 10px 0px',
+  margin: '80px 10px 10px 0px',
 };
 
   return (

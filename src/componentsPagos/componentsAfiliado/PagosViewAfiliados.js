@@ -2,11 +2,10 @@
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import AgregarPago from '../../components/Buttons/Agregar';
-import { useState } from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { orange, purple } from '@material-ui/core/colors';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
 
 const columns = [
@@ -27,19 +26,37 @@ const rows = [
 
 const mystyle = {
   height: 400,
-  width: "87%",
+  width: "80%",
   //padding: "60px",
   margin: '30px 80px 10px',
 };
-
+const textStyle = {
+  width: '100%',
+  margin: '10px 100px 10px',
+};
 
 function PagosAfiliados() {
   
   //const classes = useStyles();
   return (
-  <div style={mystyle}>
-    <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
-  </div>
+    <div >
+        <div style={textStyle}>
+          <Typography variant="h4" gutterBottom>
+            TEST DE TÍTULO
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            Test de descripcion tipo body1
+          </Typography>
+        </div>
+        <div >
+    <Box display="flex" justifyContent="center" m={1} p={0} >
+        <div style={mystyle}>
+          <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+        </div>
+    </Box>
+    </div>
+    </div>
+
   );
   
 }

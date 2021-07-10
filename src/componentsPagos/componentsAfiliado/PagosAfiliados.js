@@ -2,19 +2,18 @@
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import AgregarPago from '../../components/Buttons/Agregar';
-import { useState } from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import { orange, purple } from '@material-ui/core/colors';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-
+import Typography from '@material-ui/core/Typography';
 import FormDialog from "../../componentsPagos/TestAgregar";
+import PlanillaMes from "../../documentos/planilla.xlsx";
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import styled from "styled-components";
 
 
 const columns = [
@@ -42,50 +41,77 @@ const rows = [
   { id: '19772624-5', firstName: 'Alejandro', lastName: 'Oliveros', deudas: '100.000', cuotas: '1', montoCuota: '100.000', fechaPago: '01/06/2021', tipo: 'préstamo'},
   { id: '19490110-0', firstName: 'Alejandro', lastName: 'Rudolphy', deudas: '350.000', cuotas: '5', montoCuota: '70.000', fechaPago: '05/06/2021', tipo: 'préstamo'},
 ];
-/*
-const mystyle = {
-  height: 400,
-  width: "100%",
-  //padding: "10px",
-  margin: '0px 5px 0px',
-  },
-  boton: {
-    margin: '30px 220px 10px'
-  },
-};*/
+
+const DldPlanillaBtn = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  background: #7cf1b6;
+  white-space: nowrap;
+  padding: 10px 25px;
+  color: #010606;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    background: #90ee90;
+    color: #010606;
+  }
+`;
+
 
 const useStyles = makeStyles((theme) => ({
-  rudolphy: {
-    height: 400,
+  root: {
+    '& > *': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+  boton: {
+    margin: '30px 600px 10px'
+  },
+}));
+
+const tableStyle = {
+  height: 400,
     width: "100%",
     //padding: "10px",
     margin: '0px 20px 0px',
-    },
- 
-  boton: {
-    margin: '20px 0px 10px 0px'
-  },
-  root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(1),
-    },
-  }
-}));
+};
+const textStyle = {
+  width: '100%',
+  margin: '0px 100px 0px'
+};
 
 function PagosAfiliados() {
-  
-  const classes = useStyles();
+    const classes = useStyles();
   return (
-    <div>    
-      <Box display="flex" justifyContent="flex-end" m={1} >
-        <FormDialog/>
-      </Box>
+
+    <div>
+      <div style={textStyle}>
+        <Typography variant="h4" gutterBottom>
+            TEST DE TÍTULO
+          </Typography>
+          <Typography variant="body1" gutterBottom>
+            Test de descripcion tipo body1
+          </Typography>
+      </div>
       <Box display="flex" justifyContent="center" m={0,1}>    
-        <div className={classes.rudolphy}>
+        <div style={tableStyle}>
           <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
         </div>
       </Box>
+
+      
+          <div className={classes.boton}>
+          <DldPlanillaBtn href= {PlanillaMes} download="planilla.xlsx"> Descargar Planilla </DldPlanillaBtn>
+          </div>
 
 
     </div>

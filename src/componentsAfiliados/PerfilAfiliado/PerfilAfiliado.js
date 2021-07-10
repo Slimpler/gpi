@@ -23,7 +23,7 @@ export const  PerfilAfiliado = () => {
               <Boton to="misconvenios">
                 Mis Convenios
               </Boton>
-              <Boton to="pagos">
+              <Boton to="pagosUsuario">
                 Mis Pagos
               </Boton>
             </div>

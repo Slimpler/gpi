@@ -33,9 +33,9 @@ const InfoSectionPrestamo = ({
 
 const Section = styled.section`
   width: 100%;
-  height: 100%;
+  height: 50%;
   padding: 4rem 0;
-  background: black;
+  background: red;
 
   @media screen and (max-width: 768px) {
     padding: 0;
