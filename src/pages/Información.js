@@ -1,7 +1,7 @@
 
 
 //import React from 'react'
-import Navbar from "../componentsConvenio/Navbar";
+import Navbar from "../componentsConvenio/Navbar/Navbar";
 
 import React from 'react'
 import { Item, Icon, Container, Header, Grid, Segment, Image } from 'semantic-ui-react'
@@ -9,6 +9,7 @@ import { Item, Icon, Container, Header, Grid, Segment, Image } from 'semantic-ui
 
 const ItemExampleContents = () => (
   <center>
+    <Navbar/>
     <div>
     <Container fluid>
       <Header as='h2'>  Contactos Recomendados</Header>
@@ -81,11 +82,16 @@ const ItemExampleContents = () => (
         </Segment>
       </Grid.Column>
 
-  <Navbar/>
-
+      
+      
   </center>
+
+
+  
+  
   
 )
+
 
 
 export default ItemExampleContents
