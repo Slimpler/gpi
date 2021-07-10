@@ -45,7 +45,10 @@ const MisConvenios = () => (
         <Table.Cell>Sin comentarios
         </Table.Cell>
         <Table.Cell>
-        <Button active>Descargar</Button>
+        <Button active>
+        <Icon color ='black' name='vcard'  size='large'/>
+          
+          Descargar</Button>
         </Table.Cell>
       </Table.Row>
 
@@ -87,7 +90,10 @@ const MisConvenios = () => (
         <Table.Cell>Sin Comentarios</Table.Cell>
         <Table.Cell>
 
-        <Button active>Descargar</Button>
+        <Button active>
+        <Icon color ='black' name='vcard'  size='large'/>
+          
+          Descargar</Button>
         </Table.Cell>
       </Table.Row>
     </Table.Body>

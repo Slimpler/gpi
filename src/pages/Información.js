@@ -23,7 +23,7 @@ const ItemExampleContents = () => (
   <Grid.Column width={6}>
         <Segment>
         <Item>
-    <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
+        <Icon color='black' name='user' size='large' />
       <Item.Content verticalAlign='middle'> 
       
       <Icon name='phone' size='large' />
@@ -43,7 +43,7 @@ const ItemExampleContents = () => (
         <Segment>
 
         <Item>
-    <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
+        <Icon color='black' name='user' size='large' />
       <Item.Content verticalAlign='middle'> 
       
       <Icon name='phone' size='large' />
@@ -63,7 +63,7 @@ const ItemExampleContents = () => (
 
         <Segment>
         <Item>
-    <Item.Image size='tiny' src='https://react.semantic-ui.com/images/wireframe/image.png' />
+    <Icon color='black' name='user' size='large' />
       <Item.Content verticalAlign='middle'> 
       
       <Icon name='phone' size='large' />
