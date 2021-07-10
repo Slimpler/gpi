@@ -21,7 +21,7 @@ const Navbar = () => {
                     </NavLogo>
                         <NavMenu>
                             <NavItem>
-                                <NavLinks to="perfil">
+                                <NavLinks to="admin">
                                     Inicio
                                 </NavLinks>
                             </NavItem>
