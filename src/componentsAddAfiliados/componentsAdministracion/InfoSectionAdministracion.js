@@ -34,7 +34,8 @@ const InfoSectionAdministracion = ({
 const Section = styled.section`
   width: 100%;
   height: 100%;
-  padding: 4rem 0;
+  padding: 6rem 0;
+  background: #31ce83;
 
   @media screen and (max-width: 768px) {
     padding: 0;
