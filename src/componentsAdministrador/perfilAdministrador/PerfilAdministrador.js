@@ -12,7 +12,7 @@ export const  PerfilAdministrador = () => {
           <Grid2>
             <ItemImg>
               <img
-                src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                src="https://bootdey.com/img/Content/avatar/avatar6.png"
                 alt="Afiliado"
                 class="rounded-circle"
                 width="150"
@@ -22,9 +22,6 @@ export const  PerfilAdministrador = () => {
               <p style={{color:"#fff", marginBottom:"10%", fontFamily:"'Baloo Tammudu 2', cursive"}}> * CARGO EN LA MUNICIPALIDAD * </p>
               <Boton to="misconvenios">
                 Mis Convenios
-              </Boton>
-              <Boton to="pagos">
-                Mis Pagos
               </Boton>
             </div>
           </Grid2>
