@@ -45,24 +45,16 @@ export default function FormDialog() {
     setTipo(event.target.value);
   };
 //-----------------------------------------//
-//Ubicación del botón
-const mystyle = {
-  height: 500,
-  width: "40%",
-  padding: "100px",
-  margin: '0em',
-};
+
 
   return (
     <div>
-      <div style={{width: '75%'}}>
-        <Box display="flex" justifyContent="flex-end" m={0.5} p={5}>
-          <Box p={5}>
+      <div>
+          <Box>
             <Button variant="contained" color="primary" onClick={handleClickOpen} placement="right-start">
                 Agregar Afiliados
-            </Button>
+            </Button>         
           </Box>
-        </Box>
       </div>
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">

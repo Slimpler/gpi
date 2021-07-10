@@ -10,6 +10,10 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import FormDialog from '../TestAgregar';
+
+
 
 const useStyles = makeStyles((theme) => ({
   margin: {
@@ -21,14 +25,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 const columns = [
   { field: 'id', headerName: 'RUT', width: 130 },
-  { field: 'firstName', headerName: 'Nombre', width: 130 },
-  { field: 'lastName', headerName: 'Apellido', width: 130 },
-  { field: 'Telefono', headerName: 'Telefono', type: 'number', width:  140 },
-  { field: 'Direccion', headerName: 'Direccion', width: 130 },
-  { field: 'CorreoElectronico', headerName: 'Correo Electronico', width: 170 },
-  { field: 'Departamento', headerName: 'Departamento En La Municipalidad', width: 130},
-  { field: 'Contrato', headerName: 'Tipo De Contrato', width: 130 },
-  { field: 'action', headerName: 'Accion', width: 120, renderCell: (params: GridCellParams)=> (
+  { field: 'firstName', headerName: 'Nombre', width: 150 , background: 'black' },
+  { field: 'lastName', headerName: 'Apellido', width: 150 },
+  { field: 'Telefono', headerName: 'Teléfono', type: 'number', width:  155 },
+  { field: 'Direccion', headerName: 'Dirección', width: 160 },
+  { field: 'CorreoElectronico', headerName: 'Correo Electrónico', width: 210 },
+  { field: 'Departamento', headerName: 'Departamento en la Municipalidad', width: 300},
+  { field: 'Contrato', headerName: 'Tipo De Contrato', width: 200 },
+  { field: 'action', headerName: 'Acción', width: 150, renderCell: (params: GridCellParams)=> (
     <strong>
       <IconButton aria-label="delete">
         <DeleteIcon />
@@ -46,19 +50,27 @@ const rows = [
 
 const mystyle = {
   height: 400,
-  width: "90%",
-  padding: "10px",
-  margin: '0.5em',
+  width: "60%",
+  margin: '10px',
 };
 
 
 function AdministracionAfiliados() {
   
-  //const classes = useStyles();
   return (
-  <div style={mystyle}>
-    <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
-  </div>
+    <div style={{paddingTop: "10%"}}>
+      <h1 style={{paddingLeft:"20%", fontSize:"30px", fontFamily:"'Roboto', sans-serif" }}>Lista de Afiliados</h1>
+      <Box display="flex" justifyContent="center" m={1} p={1} >
+        <div style={mystyle}>
+          <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
+        </div> 
+      </Box>
+      <Box>
+        <div style={{justifyContent:"center", display:"flex"}}>
+          <FormDialog/>
+        </div>
+      </Box>
+    </div>
   );
   
 }
