@@ -15,7 +15,7 @@ export default Misconvenios
 import React from 'react'
 import { Icon, Table } from 'semantic-ui-react'
 import _ from 'lodash'
-import Navbar from "../componentsConvenio/Navbar/Navbar";
+import Navbar from "../componentsConvenio1/Navbar/Navbar";
 
 
 const MisConvenios = () => (

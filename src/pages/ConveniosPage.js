@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DropDown from "../componentsConvenio/DropDown";
 import Hero from "../componentsConvenio/Hero";
 import InfoSection from "../componentsConvenio/InfoSection";
-import Navbar from "../componentsConvenio/Navbar";
+import Navbar from "../componentsConvenio/Navbar/Navbar";
 import { InfoData, InfoDataTwo } from "../componentsConvenio/dataConvenios/InfoData";
 import { SliderData } from "../componentsConvenio/dataConvenios/SliderData";
 import GlobalStyle from "../globalStyles";

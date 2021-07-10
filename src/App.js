@@ -19,6 +19,7 @@ import BuscarConvenios1 from "./pages/Buscarconvenios1";
 import BonosAfiliadoPage from './pages/BonosAfiliadoPage';
 import PagosUsuarioPage from './pages/PagosUsuarioPage';
 import MisConvenios from './pages/MisConvenios';
+import MisConvenios1 from './pages/MisConvenios1';
 import Otroitem from "./pages/Otroitem";
 import Información from "./pages/Información";
 import AdmAfiliados from "./pages/AdmAfiliados";
@@ -50,6 +51,7 @@ function App() {
         <Route path='/buscarconvenios' component={Buscarconvenios} exact />
         <Route path='/buscarconvenios1' component={BuscarConvenios1} exact />
         <Route path='/MisConvenios' component={MisConvenios} exact />
+        <Route path='/MisConvenios1' component={MisConvenios1} exact />
         <Route path='/otroitem' component={Otroitem} />
         <Route path="/Información" component={Información} exact />
 
