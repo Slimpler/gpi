@@ -13,8 +13,9 @@ export default Misconvenios
 */
 
 import React from 'react'
-import { Icon, Table, Button } from 'semantic-ui-react'
+import { Icon, Table, Header } from 'semantic-ui-react'
 import _ from 'lodash'
+
 import Navbar from "../componentsConvenio/Navbar/Navbar";
 import Voucher from "../documentos/Voucher.docx";
 import {
@@ -33,6 +34,12 @@ const MisConvenios = () => (
 <Navbar/>
 <Table celled>
   <center>
+  <div>
+    <Header size='huge'>Bienvenidos a tus convenios</Header>
+    <Header size='small'> En esta seccion podras llevar un seguimiento de tus convenios para saber en el estado en el que se encuentran como
+     tambien apreciar ciertos comentarios por parte de la directiva.</Header>
+    </div>
+    
   <Table.Header>
       <Table.Row>
         <Table.HeaderCell>Nombre</Table.HeaderCell>
