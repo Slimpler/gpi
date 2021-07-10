@@ -13,7 +13,7 @@ export default Misconvenios
 */
 
 import React from 'react'
-import { Icon, Table } from 'semantic-ui-react'
+import { Icon, Table, Button } from 'semantic-ui-react'
 import _ from 'lodash'
 import Navbar from "../componentsConvenio/Navbar/Navbar";
 
@@ -31,6 +31,7 @@ const MisConvenios = () => (
         <Table.HeaderCell>Nombre</Table.HeaderCell>
         <Table.HeaderCell>Estado</Table.HeaderCell>
         <Table.HeaderCell>Comentario</Table.HeaderCell>
+        <Table.HeaderCell>Cupón</Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 
@@ -41,7 +42,11 @@ const MisConvenios = () => (
         <Icon color='green' name='checkmark' size='large' />
             Habilitado
             </Table.Cell>
-        <Table.Cell>Sin comentarios</Table.Cell>
+        <Table.Cell>Sin comentarios
+        </Table.Cell>
+        <Table.Cell>
+        <Button active>Descargar</Button>
+        </Table.Cell>
       </Table.Row>
 
       <Table.Row warning>
@@ -80,6 +85,10 @@ const MisConvenios = () => (
             Habilitado
             </Table.Cell>
         <Table.Cell>Sin Comentarios</Table.Cell>
+        <Table.Cell>
+
+        <Button active>Descargar</Button>
+        </Table.Cell>
       </Table.Row>
     </Table.Body>
     </center>
