@@ -16,6 +16,13 @@ import React from 'react'
 import { Icon, Table, Button } from 'semantic-ui-react'
 import _ from 'lodash'
 import Navbar from "../componentsConvenio/Navbar/Navbar";
+import Formulario1 from "../documentos/formulario-empresa.docx";
+import {
+  EmpresasBtn,
+  EmpresasBtnLink,
+
+} from "../components/Empresas/EmpresasElements.js";
+
 
 
 const MisConvenios = () => (
@@ -31,7 +38,9 @@ const MisConvenios = () => (
         <Table.HeaderCell>Nombre</Table.HeaderCell>
         <Table.HeaderCell>Estado</Table.HeaderCell>
         <Table.HeaderCell>Comentario</Table.HeaderCell>
-        <Table.HeaderCell>Cupón</Table.HeaderCell>
+        <Table.HeaderCell>Cupón
+        <Icon color ='black' name='vcard'  size='large'/>
+        </Table.HeaderCell>
       </Table.Row>
     </Table.Header>
 
@@ -45,10 +54,10 @@ const MisConvenios = () => (
         <Table.Cell>Sin comentarios
         </Table.Cell>
         <Table.Cell>
-        <Button active>
-        <Icon color ='black' name='vcard'  size='large'/>
-          
-          Descargar</Button>
+        <EmpresasBtn>
+          <EmpresasBtnLink href= {Formulario1} download="formulario">Descargar Voucher</EmpresasBtnLink> {/*Aquí descargar a los requisitos para la empresa */}
+        </EmpresasBtn>
+        
         </Table.Cell>
       </Table.Row>
 
@@ -89,11 +98,11 @@ const MisConvenios = () => (
             </Table.Cell>
         <Table.Cell>Sin Comentarios</Table.Cell>
         <Table.Cell>
+        <EmpresasBtn>
+          <EmpresasBtnLink href= {Formulario1} download="formulario">Descargar Voucher</EmpresasBtnLink> {/*Aquí descargar a los requisitos para la empresa */}
+        </EmpresasBtn>
 
-        <Button active>
-        <Icon color ='black' name='vcard'  size='large'/>
-          
-          Descargar</Button>
+    
         </Table.Cell>
       </Table.Row>
     </Table.Body>
