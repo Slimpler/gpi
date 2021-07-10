@@ -134,3 +134,8 @@ export const FormRoute = styled(LinkR)`
     color: #010606;
   }
 `;
+
+
+export const A = styled.a`
+  padding-left: 10px;
+` 
