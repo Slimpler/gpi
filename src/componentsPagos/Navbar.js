@@ -103,7 +103,7 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
+  font-size: 18px;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -190,8 +190,8 @@ export const NavBtn = styled.nav`
 `;
 
 export const NavBtnLink = styled(LinkR)`
-  border-radius: 50px;
-  background: #01bf71;
+   border-radius: 50px;
+  background: #23BB77;
   white-space: nowrap;
   padding: 10px 22px;
   color: #010606;
