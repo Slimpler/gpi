@@ -16,7 +16,7 @@ import React from 'react'
 import { Icon, Table, Button } from 'semantic-ui-react'
 import _ from 'lodash'
 import Navbar from "../componentsConvenio/Navbar/Navbar";
-import Formulario1 from "../documentos/formulario-empresa.docx";
+import Voucher from "../documentos/Voucher.docx";
 import {
   EmpresasBtn,
   EmpresasBtnLink,
@@ -55,7 +55,7 @@ const MisConvenios = () => (
         </Table.Cell>
         <Table.Cell>
         <EmpresasBtn>
-          <EmpresasBtnLink href= {Formulario1} download="formulario">Descargar Voucher</EmpresasBtnLink> {/*Aquí descargar a los requisitos para la empresa */}
+          <EmpresasBtnLink href= {Voucher} download="Voucher">Descargar Voucher</EmpresasBtnLink> 
         </EmpresasBtn>
         
         </Table.Cell>
@@ -99,7 +99,7 @@ const MisConvenios = () => (
         <Table.Cell>Sin Comentarios</Table.Cell>
         <Table.Cell>
         <EmpresasBtn>
-          <EmpresasBtnLink href= {Formulario1} download="formulario">Descargar Voucher</EmpresasBtnLink> {/*Aquí descargar a los requisitos para la empresa */}
+          <EmpresasBtnLink href= {Voucher} download="Voucher">Descargar Voucher</EmpresasBtnLink> 
         </EmpresasBtn>
 
     
