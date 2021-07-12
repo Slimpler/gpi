@@ -1,12 +1,14 @@
 import React from 'react'
-import Navbar from "../componentsConvenio/Navbar";
+import Navbar from "../componentsConvenio/Navbar/Navbar";
+import Search from "../Search";
 
 function BuscarConvenios() {
  return (
         <div className='buscarconvenios'>
             <Navbar />
-            <center>Buscar Convenios</center>
-           
+            <center>
+            <Search />
+            </center>
         </div>
     )
 }
