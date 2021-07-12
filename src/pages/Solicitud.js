@@ -1,19 +1,28 @@
 
 import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
+import Navbar from "../componentsConvenio/Navbar/Navbar";
+
 
 class Solicitud extends React.Component {
+  
     constructor(props) {
       super(props);
       this.state = { items: [], text: '' };
       this.handleChange = this.handleChange.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
     }
+
+    
   
     render() {
       return (
+        
         <div>
+           <Navbar/>
+           <center>
           <h3>Consulte el estado de su solicitud</h3>
+          
           <TodoList items={this.state.items} />
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="new-todo">
@@ -27,8 +36,11 @@ class Solicitud extends React.Component {
             <button>
               Aceptar
             </button>
+            
           </form>
+          </center>
         </div>
+        
       );
     }
   
