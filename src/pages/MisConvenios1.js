@@ -24,9 +24,6 @@ const MisConvenios = () => (
 
 <left>
 <Navbar/>
-
-
-
 <Table celled>
   <center>
   <Table.Header>
