@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Link as LinkR } from "react-router-dom";
+
 
 export const EmpresasContainer = styled.div`
   height: 800px;
@@ -110,8 +112,32 @@ export const EmpresasBtnLink = styled.a`
   }
 `;
 
+<<<<<<< HEAD
 
 
 
 
+=======
+export const NavLinkR = styled(LinkR)`
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  padding: 0 1rem;
+  height: 100%;
+  cursor: pointer;
+
+  &.active {
+    border-bottom: 3px solid #01bf71;
+  }
+`;
+export const NavBtn = styled.nav`
+  display: flex;
+  align-items: center;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+`;
+>>>>>>> 7f939d40c5f0626240adb8506130f17c180694d3
 
