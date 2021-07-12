@@ -37,53 +37,25 @@ const Navbar = ({ toggle }) => {
               <FaBars />
             </MobileIcon>
             <NavMenu>
-              <NavItem>
-                <NavLinks
-                  to="admin"
-                  smooth={true}
-                  duration={1000}
-                  spy={true}
-                  exact="true"
-                >
-                 Perfil
-                </NavLinks>
-              </NavItem>
-
-               <NavItem>
-
-                <NavLinks
-                  to="pagos"
-                  smooth={true}
-                  duration={1000}
-                  spy={true}
-                  exact="true"
-                >
-                  Pagos
-                </NavLinks>
+            <NavItem>
+              <NavLinks to="admin">
+                      Inicio
+                  </NavLinks>
               </NavItem>
               <NavItem>
-
-                <NavLinks
-                  to="convenios1"
-                  smooth={true}
-                  duration={1000}
-                  spy={true}
-                  exact="true"
-                >
-                  Convenios
-                </NavLinks>
+                  <NavLinks to="pagos">
+                      Pagos
+                  </NavLinks>
               </NavItem>
-             <NavItem>
-
-                <NavLinks
-                  to="otroitem"
-                  smooth={true}
-                  duration={1000}
-                  spy={true}
-                  exact="true"
-                >
-                  Otro
-                </NavLinks>
+              <NavItem>
+                  <NavLinks to="convenios1">
+                      Convenios
+                  </NavLinks>
+              </NavItem>
+              <NavItem>
+                  <NavLinks to="AdmAfiliados">
+                      Administracion Afiliados
+                  </NavLinks>
               </NavItem>
             </NavMenu>
             <NavBtn>
