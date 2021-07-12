@@ -24,6 +24,7 @@ import Otroitem from "./pages/Otroitem";
 import Información from "./pages/Información";
 import AdmAfiliados from "./pages/AdmAfiliados";
 import AdministracionAfiliados from "./pages/AdministracionAfiliados";
+import Solicitud from "./pages/Solicitud";
 
 
 function App() {
@@ -54,7 +55,7 @@ function App() {
         <Route path='/MisConvenios1' component={MisConvenios1} exact />
         <Route path='/otroitem' component={Otroitem} />
         <Route path="/Información" component={Información} exact />
-
+        <Route path="/Solicitud" component={Solicitud} exact />
 
       </Switch>
     </Router>
