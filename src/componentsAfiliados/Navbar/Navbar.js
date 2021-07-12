@@ -20,34 +20,25 @@ const Navbar = () => {
                         Quintero
                     </NavLogo>
                         <NavMenu>
-                        <NavItem>
-                            <NavLinks to="perfil">
+                            <NavItem>
+                                <NavLinks to="perfil">
                                     Inicio
                                 </NavLinks>
                             </NavItem>
-                            <NavItem>
-                                <NavLinks to="pagosUsuario">
-                                    Pagos
-                                </NavLinks>
-                            </NavItem>
+                            
                             <NavItem>
                                 <NavLinks to="convenios">
                                     Convenios
                                 </NavLinks>
                             </NavItem>
                             <NavItem>
-                                <NavLinks to="buscarconvenios">
-                                    Buscar convenios
+                                <NavLinks to="bonosAfiliado">
+                                    Mis bonos
                                 </NavLinks>
                             </NavItem>
                             <NavItem>
-                                <NavLinks to="MisConvenios">
-                                    Mis convenios
-                                </NavLinks>
-                            </NavItem>
-                            <NavItem>
-                                <NavLinks to="Información">
-                                    Información
+                                <NavLinks>
+                                    Otro
                                 </NavLinks>
                             </NavItem>
                         </NavMenu>
