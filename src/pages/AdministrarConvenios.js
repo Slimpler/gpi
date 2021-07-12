@@ -6,6 +6,7 @@ import Navbar from "../componentsConvenio1/Navbar/Navbar";
 import { InfoData, InfoDataTwo } from "../componentsConvenio1/dataConvenios/InfoData";
 import { SliderData } from "../componentsConvenio1/dataConvenios/SliderData";
 import GlobalStyle from "../globalStyles";
+import AdministrarConvenios from "../componentsAdministrarConv/componentsAdmintrarConv/AdministrarConvenios";
 
 function ConveniosPage1() {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,7 +19,7 @@ function ConveniosPage1() {
       <GlobalStyle />
       <Navbar toggle={toggle} />
       <DropDown isOpen={isOpen} toggle={toggle} />
-      <Hero slides={SliderData} />
+      <AdministrarConvenios/>
   
     </>
   );

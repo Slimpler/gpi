@@ -20,6 +20,9 @@ import {
 const Empresas = ({ id }) => {
   return (
     <EmpresasContainer id={id}>
+
+      
+
       <EmpresasH1>Requisitos para Empresas</EmpresasH1>
       <EmpresasWrapper>
         <EmpresasCard>
@@ -47,6 +50,9 @@ const Empresas = ({ id }) => {
           <NavLinkR to="/Solicitud">Estado de solicitud</NavLinkR>
         </NavBtn>
       </EmpresasWrapper>
+
+      
+      
     </EmpresasContainer>
   );
 };
