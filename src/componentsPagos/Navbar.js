@@ -37,55 +37,46 @@ const Navbar = ({ toggle }) => {
               <FaBars />
             </MobileIcon>
             <NavMenu>
-              <NavItem>
-                <NavLinks
-                  to="admin"
-                  smooth={true}
-                  duration={1000}
-                  spy={true}
-                  exact="true"
-                >
-                 Perfil
-                </NavLinks>
-              </NavItem>
-
-               <NavItem>
-
-                <NavLinks
-                  to="pagos"
-                  smooth={true}
-                  duration={1000}
-                  spy={true}
-                  exact="true"
-                >
+            <NavItem>
+              <NavLinks 
+                to="admin"
+                smooth={true}
+                duration={1000}
+                spy={true}
+                exact="true">
+                  Inicio
+              </NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks 
+                to="pagos"
+                smooth={true}
+                duration={1000}
+                spy={true}
+                exact="true">
                   Pagos
-                </NavLinks>
-              </NavItem>
-              <NavItem>
-
-                <NavLinks
-                  to="AdministrarConvenios"
-                  smooth={true}
-                  duration={1000}
-                  spy={true}
-                  exact="true"
-                >
-                  Convenios
-                </NavLinks>
-              </NavItem>
-             
-            {/*  <NavItem>
+              </NavLinks>
+            </NavItem>
+            <NavItem>
               <NavLinks
-                  to="otroitem"
+                to="AdministrarConvenios"
+                smooth={true}
+                duration={1000}
+                spy={true}
+                exact="true">
+                  Convenios
+              </NavLinks>
+            </NavItem>
+            <NavItem>
+              <NavLinks 
+                  to="AdmAfiliados"
                   smooth={true}
                   duration={1000}
                   spy={true}
-                  exact="true"
-                >
-                  Otro
+                  exact="true">
+                    Administracion Afiliados
                 </NavLinks>
-              </NavItem>
-           */}
+            </NavItem>
             </NavMenu>
             <NavBtn>
               <NavBtnLink to="/">Salir</NavBtnLink>

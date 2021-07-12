@@ -13,11 +13,10 @@ const InfoSectionAsociacion = ({
   image,
 }) => {
   return (
+    <Section>
       <Container>
         <ColumnLeft>
           <h1>{heading}</h1>
-          <p>{paragraphOne}</p>
-          <p>{paragraphTwo}</p>
           <Button to="/pagoBonos" primary="true">
             {buttonLabel}
             <Icon/>
@@ -25,14 +24,13 @@ const InfoSectionAsociacion = ({
         </ColumnLeft>
         <ColumnRight>
           <h1>{heading2}</h1>
-          <p>{paragraphOne}</p>
-          <p>{paragraphTwo}</p>
           <Button to="/pagoPrestamos" primary="true">
             {buttonLabel}
             <Icon/>
           </Button>
         </ColumnRight>
       </Container>
+    </Section>
   );
 };
 
@@ -40,7 +38,7 @@ const Section = styled.section`
   width: 100%;
   height: 100%;
   padding: 4rem 0;
-  background: blue;
+  background: #31ce83;
 
   @media screen and (max-width: 768px) {
     padding: 0;
@@ -51,7 +49,7 @@ const Container = styled.div`
   padding: 3rem calc((100vw - 1300px) / 2);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 400px;
+  grid-template-rows: 200px;
   background: #31ce83;
 
   @media screen and (max-width: 768px) {
@@ -62,11 +60,11 @@ const Container = styled.div`
 
 const ColumnLeft = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   padding: 1rem 2rem;
   flex-flow: column;
   width: 90%;
-  height: 95%;
+  height: 115%;
   margin: -5em 1em;
   border: 2px solid #000;
   border-radius: 20px;
@@ -84,11 +82,11 @@ const ColumnLeft = styled.div`
 
 const ColumnRight = styled.div`
 display: flex;
-align-items: flex-start;
+align-items: center;
 padding: 1rem 2rem;
 flex-flow: column;
 width: 90%;
-height: 95%;
+height: 115%;
 margin: -5em 1em;
 border: 2px solid #000;
 border-radius: 20px;

@@ -6,7 +6,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Box from '@material-ui/core/Box';
 
 import styled from "styled-components";
-import Pagos from "../../documentos/pagos.docx";
+import Pagos from "../../documentos/pagos.xlsx";
 import FormDialog from "../../componentsPagos/componentsAfiliado/AgregarEmail"
 
 /*
@@ -65,7 +65,7 @@ function PrintPagos() {
                 color="primary"
                 aria-label="vertical contained primary button group"
             >
-            <Button variant="contained" href={Pagos} download="pagos.docx"> Descargar Planilla </Button>
+            <Button variant="contained" href={Pagos} download="pagos.xlsx"> Descargar Planilla </Button>
             </ButtonGroup>
             <FormDialog/>
             

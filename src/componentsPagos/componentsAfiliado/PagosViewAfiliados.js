@@ -9,7 +9,8 @@ import Box from '@material-ui/core/Box';
 
 
 const columns = [
-  { field: 'id', headerName: 'RUT', width: 130 },
+  { field: 'id', headerName: 'ID', width: 100 },
+  { field: 'rut', headerName: 'RUT', width: 130},
   { field: 'firstName', headerName: 'Nombre', width: 150 },
   { field: 'lastName', headerName: 'Apellido', width: 150 },
   { field: 'deudas', headerName: 'Deuda Total', type: 'number', width:  180 },
@@ -19,14 +20,14 @@ const columns = [
   { field: 'tipo', headerName: 'Tipo', width: 130 }
 ];
 const rows = [
-  { id: '19817247-2', firstName: 'Ana', lastName: 'Muñoz', deudas: '25.000', cuotas: '5' , montoCuota: '5.000', fechaPago: '08/06/2021', tipo: 'convenio óptica', },
-  { id: '19772624-5', firstName: 'Alejandro', lastName: 'Oliveros', deudas: '100.000', cuotas: '1', montoCuota: '100.000', fechaPago: '01/06/2021', tipo: 'préstamo'},
-  { id: '19490110-0', firstName: 'Alejandro', lastName: 'Rudolphy', deudas: '350.000', cuotas: '5', montoCuota: '70.000', fechaPago: '05/06/2021', tipo: 'préstamo'},
+  { id: '1', rut: '12345678-9', firstName: 'José', lastName: 'Coronado', deudas: '25.000', cuotas: '5' , montoCuota: '5.000', fechaPago: '08/06/2021', tipo: 'convenio óptica', },
+  { id: '2', rut: '12345678-9', firstName: 'José', lastName: 'Coronado', deudas: '100.000', cuotas: '1', montoCuota: '100.000', fechaPago: '01/06/2021', tipo: 'préstamo'},
+  { id: '3', rut: '12345678-9', firstName: 'José', lastName: 'Coronado', deudas: '350.000', cuotas: '5', montoCuota: '70.000', fechaPago: '05/06/2021', tipo: 'préstamo'},
 ];
 
 const mystyle = {
   height: 400,
-  width: "80%",
+  width: "87%",
   //padding: "60px",
   margin: '30px 80px 10px',
 };
@@ -42,10 +43,10 @@ function PagosAfiliados() {
     <div >
         <div style={textStyle}>
           <Typography variant="h4" gutterBottom>
-            TEST DE TÍTULO
+            Mis pagos
           </Typography>
           <Typography variant="body1" gutterBottom>
-            Test de descripcion tipo body1
+            En esta tabla se pueden ver todos los detalles de los pagos hechos por usted hacia la asociación.
           </Typography>
         </div>
         <div >

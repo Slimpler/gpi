@@ -96,10 +96,10 @@ function PagosAfiliados() {
     <div>
       <div style={textStyle}>
         <Typography variant="h4" gutterBottom>
-            TEST DE TÍTULO
+            Pagos de afiliados
           </Typography>
           <Typography variant="body1" gutterBottom>
-            Test de descripcion tipo body1
+            En esta tabla se pueden ver los pagos (cuotas, convenios, etc) hechos por los afiliados a la asociación.
           </Typography>
       </div>
       <Box display="flex" justifyContent="center" m={0,1}>    
