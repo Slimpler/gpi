@@ -23,9 +23,6 @@ const InfoSectionAdministracion = ({
             <Icon/>
           </Button>
         </ColumnLeft>
-        <ColumnRight reverse={reverse}>
-          <img src={image} alt="home" />
-        </ColumnRight>
       </Container>
     </Section>
   );
@@ -76,7 +73,7 @@ const ColumnLeft = styled.div`
   }
 `;
 
-const ColumnRight = styled.div`
+/* const ColumnRight = styled.div`
   padding: 1rem 2rem;
   order: ${({ reverse }) => (reverse ? "0" : "2")};
   display: flex;
@@ -97,6 +94,6 @@ const ColumnRight = styled.div`
       height: 100%;
     }
   }
-`;
+`; */
 
 export default InfoSectionAdministracion;
