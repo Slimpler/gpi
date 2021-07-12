@@ -4,7 +4,7 @@ import Home from "./pages";
 import EntrarPage from "./pages/EntrarPage";
 import PerfilPage from "./pages/PerfilPage";
 import ConveniosPage from "./pages/ConveniosPage";
-import ConveniosPage1 from "./pages/ConveniosPage1";
+import AdministrarConvenios from "./pages/AdministrarConvenios";
 import CrearconvenioPage from "./pages/CrearconvenioPage";
 import AdminPage from "./pages/AdminPage";
 import PagosPage from "./pages/PagosPage";
@@ -35,7 +35,7 @@ function App() {
         <Route path="/entrar" component={EntrarPage} exact />
         <Route path="/perfil" component={PerfilPage} exact />
         <Route path="/convenios" component={ConveniosPage} exact />
-        <Route path="/convenios1" component={ConveniosPage1} exact />
+        <Route path="/AdministrarConvenios" component={AdministrarConvenios} exact />
         <Route path="/admin" component={AdminPage} exact />
         <Route path="/pagos" component={PagosPage} exact />
         <Route path="/pagoAfiliados" component={PagoAfiliadosPage} exact />

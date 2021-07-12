@@ -31,7 +31,7 @@ const Navbar = () => {
                                 </NavLinks>
                             </NavItem>
                             <NavItem>
-                                <NavLinks to="convenios1">
+                                <NavLinks to="AdministrarConvenios">
                                     Convenios
                                 </NavLinks>
                             </NavItem>
