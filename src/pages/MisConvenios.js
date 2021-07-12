@@ -51,6 +51,7 @@ const MisConvenios = () => (
         <Table.Cell>
         <Icon color='white' name='check' size='large' />
             Habilitado
+            
         </Table.Cell>
         <Table.Cell>Sin comentarios
         </Table.Cell>
@@ -81,14 +82,15 @@ const MisConvenios = () => (
           Sin comentarios
         </Table.Cell>
       </Table.Row>
+
       <Table.Row>
         <Table.Cell>Caja Los Andes</Table.Cell>
         
         <Table.Cell>
-        <Icon color='white' name='close' size='large' />
+        
+          <Icon color='white' name='close' size='large' /> 
            No habilitado
         </Table.Cell>
-
         
         <Table.Cell>Sin Comentarios</Table.Cell>
       </Table.Row>

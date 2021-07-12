@@ -43,7 +43,7 @@ export const EmpresasCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 35px;
+  border-radius: 55px;
   max-height: 340px;
   padding: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
@@ -74,7 +74,7 @@ export const EmpresasH1 = styled.h1`
 
 export const EmpresasH2 = styled.h2`
   font-size: 2rem;
-  margin-bottom: -35px;
+  margin-bottom: -65px;       
 
 `;
 
