@@ -7,7 +7,7 @@ import PerfilAfiliado from "../componentsAfiliados/PerfilAfiliado/PerfilAfiliado
 const PerfilPage = () => {
   
   return (
-    <div style={{background:"#23BB77", paddingBlockEnd: "150px"}}>
+    <div style={{background:"#23BB77", paddingBlockEnd: "200px"}}>
       <div>
 
         <Navbar />
