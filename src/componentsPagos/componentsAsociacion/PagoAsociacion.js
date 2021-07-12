@@ -59,10 +59,10 @@ function PagosAsociacion() {
       <div >
         <div style={textStyle}>
           <Typography variant="h4" gutterBottom>
-            TEST DE TÍTULO
+            Pagos a la asociación
           </Typography>
           <Typography variant="body1" gutterBottom>
-            Test de descripcion tipo body1
+            En esta tabla se pueden ver los pagos que llegan a la asociación y que son distintos a los hechos por afiliados (ejemplo: subvenciones).
           </Typography>
         </div>
         

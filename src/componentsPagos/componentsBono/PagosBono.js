@@ -59,10 +59,10 @@ function PagosBono() {
       <div>
       <div className={classes.root}>
         <Typography variant="h4" gutterBottom>
-          TEST DE TÍTULO
+          Pagos y Asignación de Bonos
         </Typography>
         <Typography variant="body1" gutterBottom>
-        Test de descripcion tipo body1
+        En esta tabla se pueden asignar distintos bonos a los afiliados.
       </Typography>
       </div>
         <Box display="flex" justifyContent="center" m={1} p={1}>
