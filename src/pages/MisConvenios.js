@@ -17,17 +17,10 @@ import { Icon, Table, Button } from 'semantic-ui-react'
 import _ from 'lodash'
 import Navbar from "../componentsConvenio/Navbar/Navbar";
 import Formulario1 from "../documentos/formulario-empresa.docx";
-import {
-  EmpresasBtn,
-  EmpresasBtnLink,
-
-} from "../components/Empresas/EmpresasElements.js";
-
-
+import {EmpresasBtn,EmpresasBtnLink,} from "../components/Empresas/EmpresasElements.js";
+import { TableCell } from '@material-ui/core';
 
 const MisConvenios = () => (
-
-  
 
 <left>
 <Navbar/>
@@ -39,7 +32,7 @@ const MisConvenios = () => (
         <Table.HeaderCell>Estado</Table.HeaderCell>
         <Table.HeaderCell>Comentario</Table.HeaderCell>
         <Table.HeaderCell>Cupón
-        <Icon color ='black' name='vcard'  size='large'/>
+        <Icon color ='white' name='vcard'  size='large'/>
         </Table.HeaderCell>
       </Table.Row>
     </Table.Header>
@@ -48,9 +41,9 @@ const MisConvenios = () => (
       <Table.Row>
         <Table.Cell>Coopeuch </Table.Cell>
         <Table.Cell>
-        <Icon color='green' name='checkmark' size='large' />
+        <Icon color='white' name='check' size='large' />
             Habilitado
-            </Table.Cell>
+        </Table.Cell>
         <Table.Cell>Sin comentarios
         </Table.Cell>
         <Table.Cell>
@@ -64,7 +57,7 @@ const MisConvenios = () => (
       <Table.Row warning>
         <Table.Cell>Cosmetica y Belleza</Table.Cell>
         <Table.Cell>
-          <Icon name='attention' size='large' />
+          <Icon color='white' name='attention' size='large' />
           Pendiente
         </Table.Cell>
         <Table.Cell>Sin Comentarios</Table.Cell>
@@ -82,18 +75,20 @@ const MisConvenios = () => (
       </Table.Row>
       <Table.Row>
         <Table.Cell>Caja Los Andes</Table.Cell>
+        
         <Table.Cell>
-        <Icon color ='red' name='close'  size='large'/>
-            No Habilitado
-    
+        <Icon color='white' name='close' size='large' />
+           No habilitado
         </Table.Cell>
+
+        
         <Table.Cell>Sin Comentarios</Table.Cell>
       </Table.Row>
 
       <Table.Row>
-        <Table.Cell>Optica Viña del Mar </Table.Cell>
+        <Table.Cell>Óptica Viña del Mar </Table.Cell>
         <Table.Cell>
-        <Icon color='green' name='checkmark' size='large' />
+        <Icon color='white' name='checkmark' size='large' />
             Habilitado
             </Table.Cell>
         <Table.Cell>Sin Comentarios</Table.Cell>

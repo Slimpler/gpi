@@ -30,7 +30,7 @@ export const Content = styled.div`
 
 export const FormStyled = styled.form`
   background: #080808de;
-  max-width: 40%;
+  max-width: 48%;
   height: auto;
   width: 70%;
   z-index: 1;
