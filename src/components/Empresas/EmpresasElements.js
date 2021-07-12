@@ -112,12 +112,6 @@ export const EmpresasBtnLink = styled.a`
   }
 `;
 
-<<<<<<< HEAD
-
-
-
-
-=======
 export const NavLinkR = styled(LinkR)`
   color: #fff;
   display: flex;
@@ -139,5 +133,4 @@ export const NavBtn = styled.nav`
     display: none;
   }
 `;
->>>>>>> 7f939d40c5f0626240adb8506130f17c180694d3
 

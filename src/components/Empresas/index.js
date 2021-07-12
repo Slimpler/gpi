@@ -13,13 +13,8 @@ import {
   EmpresasWrapper,
   EmpresasBtn,
   EmpresasBtnLink,
-<<<<<<< HEAD
-  Menu,
-  Input,
-=======
   NavLinkR,
   NavBtn
->>>>>>> 7f939d40c5f0626240adb8506130f17c180694d3
 } from "./EmpresasElements";
 
 const Empresas = ({ id }) => {
@@ -51,15 +46,9 @@ const Empresas = ({ id }) => {
         <EmpresasBtn>
           <EmpresasBtnLink href= {Formulario1} download="formulario">Descargar Formulario</EmpresasBtnLink> {/*Aquí descargar a los requisitos para la empresa */}
         </EmpresasBtn>
-<<<<<<< HEAD
-
-        
-
-=======
         <NavBtn>
           <NavLinkR to="/Solicitud">Estado de solicitud</NavLinkR>
         </NavBtn>
->>>>>>> 7f939d40c5f0626240adb8506130f17c180694d3
       </EmpresasWrapper>
 
       
