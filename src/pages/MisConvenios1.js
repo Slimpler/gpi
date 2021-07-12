@@ -13,7 +13,7 @@ export default Misconvenios
 */
 
 import React from 'react'
-import { Icon, Table } from 'semantic-ui-react'
+import { Icon, Table, Menu,Dropdown } from 'semantic-ui-react'
 import _ from 'lodash'
 import Navbar from "../componentsConvenio1/Navbar/Navbar";
 
@@ -24,6 +24,9 @@ const MisConvenios = () => (
 
 <left>
 <Navbar/>
+
+
+
 <Table celled>
   <center>
   <Table.Header>

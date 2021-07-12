@@ -39,6 +39,8 @@ const MisConvenios = () => (
     <Header size='small'> En esta seccion podras llevar un seguimiento de tus convenios para saber en el estado en el que se encuentran como
      tambien apreciar ciertos comentarios por parte de la directiva.</Header>
     </div>
+
+    
     
   <Table.Header>
       <Table.Row>
