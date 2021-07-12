@@ -13,11 +13,16 @@ import {
   EmpresasWrapper,
   EmpresasBtn,
   EmpresasBtnLink,
+  Menu,
+  Input,
 } from "./EmpresasElements";
 
 const Empresas = ({ id }) => {
   return (
     <EmpresasContainer id={id}>
+
+      
+
       <EmpresasH1>Requisitos para Empresas</EmpresasH1>
       <EmpresasWrapper>
         <EmpresasCard>
@@ -41,7 +46,13 @@ const Empresas = ({ id }) => {
         <EmpresasBtn>
           <EmpresasBtnLink href= {Formulario1} download="formulario">Descargar Formulario</EmpresasBtnLink> {/*Aquí descargar a los requisitos para la empresa */}
         </EmpresasBtn>
+
+        
+
       </EmpresasWrapper>
+
+      
+      
     </EmpresasContainer>
   );
 };
