@@ -27,37 +27,35 @@ export const  PerfilAdministrador = () => {
           </Grid2>
           <Grid2>
             <Item>
-              <div class="row">
+              <div>
                 <h5 class="mb-0">Nombre Completo</h5>
-                <div class="text-secondary">Jose Enrique Coronado</div>
+                <div class="text-primary">Jose Enrique Coronado</div>
               </div>
             </Item>
             <Item>
-              <div class="row">
+              <div>
                 <h5 class="mb-0">Rut</h5>
-                <div class="text-secondary">12345678-9</div>
+                <div class="text-primary">12345678-9</div>
               </div>
             </Item>
             <Item>
-              <div class="row">
+              <div>
                 <h5 class="mb-0">Edad</h5>
-                <div class="text-secondary">35 años</div>
+                <div class="text-primary">35 años</div>
               </div>
             </Item>
             <Item>
-              <div class="row">
+              <div>
               <div class="col-sm-3">
                 <h5 class="mb-0">Ciudad</h5>
-                </div>
-                <div class="col-sm-9 text-secondary">
-                <div class="text-secondary">Ciudad afiliado</div>
-              </div>
+                </div>             
+                <div class="text-primary">Ciudad afiliado</div>
               </div>
             </Item>
             <Item>
-                <div class="row">
+                <div>
                     <h5 class="mb-0">Comuna</h5>
-                    <div class="text-secondary">Comuna afiliado</div>
+                    <div class="text-primary">Comuna afiliado</div>
                 </div>
             </Item>
             <BtnEdit>Editar</BtnEdit>
