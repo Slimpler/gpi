@@ -56,10 +56,10 @@ function PagosAsociacion() {
       <div>
         <div style={textStyle}>
           <Typography variant="h4" gutterBottom>
-            TEST DE TÍTULO
+            Préstamos
           </Typography>
           <Typography variant="body1" gutterBottom>
-            Test de descripcion tipo body1
+            En esta sección se puede generar el voucher para solicitar un préstamo por parte del afiliado a la asociación.
           </Typography>
         </div>
 
