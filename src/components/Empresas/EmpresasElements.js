@@ -20,11 +20,11 @@ export const EmpresasContainer = styled.div`
 `;
 
 export const EmpresasWrapper = styled.div`
-  max-width: 1000px;
+  max-width: 1250px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: left;
   grid-gap: 16px;
   padding: 0 50px;
 
@@ -38,14 +38,52 @@ export const EmpresasWrapper = styled.div`
   }
 `;
 
+export const EmpresasWrapperr = styled.div`
+  max-width: 800px;
+  margin: 20 auto;
+  display: grid;
+  grid-template-columns: repeat(0, 1fr);
+  align-items: left;
+  grid-gap: 25px;
+  padding: 0 50px;
+  margin-bottom: 30px; 
+
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media screen and (max-width: 700px) {
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+  }
+`;
+
 export const EmpresasCard = styled.div`
   background: #fff;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 55px;
-  max-height: 300px;
+  max-height: 340px;
   padding: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+`;
+
+export const EmpresasCardd = styled.div`
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 55px;
+  max-height: 50px;
+  padding: 7px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
 
@@ -62,6 +100,13 @@ export const EmpresasIcon = styled.img`
   margin-bottom: 64px;
 `;
 
+
+export const EmpresasIconn = styled.img`
+  height: 30px;
+  width: 30px;
+  margin-bottom: 50px;
+`;
+
 export const EmpresasH1 = styled.h1`
   font-size: 2.5rem;
   color: #fff;
@@ -75,6 +120,12 @@ export const EmpresasH1 = styled.h1`
 export const EmpresasH2 = styled.h2`
   font-size: 2rem;
   margin-bottom: -65px;       
+
+`;
+
+export const EmpresasH22 = styled.h2`
+  font-size: 2rem;
+  margin-bottom: -30px;       
 
 `;
 
