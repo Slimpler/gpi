@@ -2,10 +2,12 @@ import React from "react";
 import Icon1 from "../../images/descargar.svg";
 import Icon2 from "../../images/rellenar.svg";
 import Icon3 from "../../images/enviar.svg";
+import Icon4 from "../../images/buscar.svg";
 import Formulario1 from "../../documentos/formulario-empresa.docx";
 import {
   EmpresasContainer,
   EmpresasCard,
+  EmpresasCardd,
   EmpresasH1,
   EmpresasH2,
   EmpresasIcon,
@@ -14,8 +16,12 @@ import {
   EmpresasBtn,
   EmpresasBtnLink,
   NavLinkR,
-  NavBtn
+  NavBtn,
+  EmpresasIconn,
+  EmpresasH22,
+  EmpresasWrapperr,
 } from "./EmpresasElements";
+import { Spa } from "@material-ui/icons";
 
 const Empresas = ({ id }) => {
   return (
@@ -43,14 +49,24 @@ const Empresas = ({ id }) => {
             Presentar formulario en oficina "Convenios", de la municipalidad de Quintero.
           </EmpresasP>
         </EmpresasCard>
-        <EmpresasBtn>
-          <EmpresasBtnLink href= {Formulario1} download="formulario">Descargar Formulario</EmpresasBtnLink> {/*Aquí descargar a los requisitos para la empresa */}
-        </EmpresasBtn>
-        <NavBtn>
+
+      <EmpresasWrapperr>
+      <EmpresasCardd>
+          <EmpresasIconn src={Icon4} />
+          <EmpresasH22></EmpresasH22>
+          <NavBtn>
           <NavLinkR to="/Solicitud">Estado de solicitud</NavLinkR>
         </NavBtn>
-      </EmpresasWrapper>
+        </EmpresasCardd>
+      </EmpresasWrapperr>
+        <EmpresasBtn>
+          <EmpresasBtnLink href= {Formulario1} download="formulario"><span></span><span></span>Descargar Formulario<span></span><span></span><span></span></EmpresasBtnLink> {/*Aquí descargar a los requisitos para la empresa */}
+        </EmpresasBtn>
 
+       
+      </EmpresasWrapper>
+      
+     
       
       
     </EmpresasContainer>
