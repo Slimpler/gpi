@@ -29,9 +29,9 @@ const useStyles = makeStyles({
 
 const columns = [
   { field: 'id', headerName: 'ID', width: 130 },
-  { field: 'nombreIngreso', headerName: 'Nombre', width: 180 },
-  { field: 'montoIngreso', headerName: 'Monto', type: 'number', width: 180 },
-  { field: 'fechaIngreso', headerName: 'Fecha', width: 180, type: 'date'},
+  { field: 'rut', headerName: 'RUT', width: 180 },
+  { field: 'firstName', headerName: 'Nombre', width: 150 },
+  { field: 'lastName', headerName: 'Fecha', width: 180, type: 'date'},
   { field: 'action', headerName: 'Accion', width: 180, renderCell: (params: GridCellParams)=> (
     <strong>
       <IconButton aria-label="delete">
@@ -45,10 +45,10 @@ const columns = [
 ];
 
 const rows = [
-  { id: '1', nombreIngreso: 'Subvencion Municipal', montoIngreso: '500000', fechaIngreso: '01/03/2021'},
-  { id: '2', nombreIngreso: 'Subvencion Municipal', montoIngreso: '500000', fechaIngreso: '01/04/2021'},
-  { id: '3', nombreIngreso: 'Subvencion Municipal', montoIngreso: '500000', fechaIngreso: '01/05/2021'},
-  { id: '4', nombreIngreso: 'Subvencion Municipal', montoIngreso: '500000', fechaIngreso: '01/08/2021'},
+  { id: '1', rut: '12345678-9', firstName: 'José', lastName: 'Coronado'},
+  { id: '2', rut: '14523698-7', firstName: 'Julia', lastName: 'Guzman'},
+  { id: '3', rut: '11549632-1', firstName: 'Luisa', lastName: 'Perez'},
+  { id: '4', rut: '9654039-4', firstName: 'Jorge', lastName: 'González'},
 ];
 
 

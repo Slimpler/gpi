@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
-import Navbar from "../components/Navbar/index";
+import Navbar from "../components/NavbarSoliticitud/index.js";
 
 
 class Solicitud extends React.Component {
@@ -18,23 +18,30 @@ class Solicitud extends React.Component {
     render() {
       return (
         
-        <div>
-           <Navbar/>
+        <div> 
+          <Navbar/>
+          
+          
            <center>
+          <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
           <h3>Consulte el estado de su solicitud</h3>
           
           <TodoList items={this.state.items} />
           <form onSubmit={this.handleSubmit}>
             <label htmlFor="new-todo">
-              Número de seguimiento
+              Número de seguimiento <span></span>
             </label>
             <input
               id="new-todo"
               onChange={this.handleChange}
               value={this.state.text}
             />
+            <span></span>
             <button>
-              Aceptar
+            <span></span>  Aceptar<span></span>
             </button>
             
           </form>
