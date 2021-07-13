@@ -99,7 +99,7 @@ function PagosAfiliados() {
             Pagos de afiliados
           </Typography>
           <Typography variant="body1" gutterBottom>
-            En esta tabla se pueden ver los pagos (cuotas, convenios, etc) hechos por los afiliados a la asociación.
+            En esta tabla se pueden ver los pagos (cuotas, convenios, etc.) hechos por los afiliados a la asociación.
           </Typography>
       </div>
       <Box display="flex" justifyContent="center" m={0,1}>    
@@ -108,11 +108,11 @@ function PagosAfiliados() {
         </div>
       </Box>
 
-      
+      <Box display="flex" justifyContent="center" m={0,1}>   
           <div className={classes.boton}>
-          <DldPlanillaBtn href= {PlanillaMes} download="planilla.xlsx"> Descargar Planilla </DldPlanillaBtn>
+          <DldPlanillaBtn href= {PlanillaMes} download="planilla.xlsx"> Descargar Planilla Mensual </DldPlanillaBtn>
           </div>
-
+      </Box>
 
     </div>
 
