@@ -44,7 +44,7 @@ export const EmpresasCard = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 55px;
-  max-height: 340px;
+  max-height: 300px;
   padding: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
   transition: all 0.2s ease-in-out;
