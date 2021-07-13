@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
-import Navbar from "../componentsConvenio/Navbar/Navbar";
+import Navbar from "../components/Navbar/index";
 
 
 class Solicitud extends React.Component {
