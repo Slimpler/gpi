@@ -20,16 +20,16 @@ export const EmpresasContainer = styled.div`
 `;
 
 export const EmpresasWrapper = styled.div`
-  max-width: 1250px;
+  max-width: 1200px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   align-items: left;
   grid-gap: 16px;
-  padding: 0 50px;
+  padding: 0 40px;
 
   @media screen and (max-width: 1000px) {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 
   @media screen and (max-width: 768px) {
@@ -46,7 +46,7 @@ export const EmpresasWrapperr = styled.div`
   align-items: left;
   grid-gap: 25px;
   padding: 0 50px;
-  margin-bottom: 30px; 
+  margin-bottom: 20px; 
 
   @media screen and (max-width: 1000px) {
     grid-template-columns: repeat(1, 1fr);
@@ -110,7 +110,7 @@ export const EmpresasIconn = styled.img`
 export const EmpresasH1 = styled.h1`
   font-size: 2.5rem;
   color: #fff;
-  margin-bottom: 200px;
+  margin-bottom: 100px;
 
   @media screen and (max-width: 480px) {
     font-size: 2rem;
@@ -147,7 +147,7 @@ export const EmpresasBtnLink = styled.a`
   border-radius: 50px;
   background: #7cf1b6;
   white-space: nowrap;
-  padding: 10px 25px;
+  padding: 10px 64px;
   color: #010606;
   font-size: 16px;
   outline: none;
