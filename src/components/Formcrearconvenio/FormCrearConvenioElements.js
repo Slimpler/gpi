@@ -4,8 +4,8 @@ import { Link, Link as LinkR } from "react-router-dom";
 // Contenedor del formulario
 
 export const ContainerAll = styled.div`
-  min-height: 692px;
-  position: fixed;
+  min-height: 200px;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;

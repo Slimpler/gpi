@@ -20,9 +20,7 @@ export const  PerfilAfiliado = () => {
             </ItemImg>
             <div style={{textAlign:"center"}}>
               <p style={{color:"#fff", marginBottom:"10%", fontFamily:"'Baloo Tammudu 2', cursive"}}> * Departamento EN LA MUNICIPALIDAD * </p>
-              <Boton to="misconvenios">
-                Mis Convenios
-              </Boton>
+              
               <Boton to="pagosUsuario">
                 Mis Pagos
               </Boton>
