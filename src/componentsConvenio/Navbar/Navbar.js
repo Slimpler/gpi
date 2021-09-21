@@ -45,11 +45,7 @@ const Navbar = () => {
                                     Mis convenios
                                 </NavLinks>
                             </NavItem>
-                            <NavItem>
-                                <NavLinks to="Información">
-                                    Información
-                                </NavLinks>
-                            </NavItem>
+                            
                         </NavMenu>
                         <NavBtn>
                             <NavBtnLink to="/">Salir</NavBtnLink>

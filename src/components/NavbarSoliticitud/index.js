@@ -78,17 +78,7 @@ const Navbar = ({ toggle }) => {
                   Empresas
                 </NavLinks>
               </NavItem>
-              <NavItem>
-                <NavLinks
-                  to="/"
-                  smooth={true}
-                  duration={1000}
-                  spy={true}
-                  exact="true"
-                >
-                  Información
-                </NavLinks>
-              </NavItem>
+              
             </NavMenu>
             <NavBtn>
               <NavBtnLink to="/entrar">Entrar</NavBtnLink>
