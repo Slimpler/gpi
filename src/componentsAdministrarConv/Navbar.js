@@ -25,10 +25,12 @@ const Navbar = ({ toggle }) => {
     scroll.scrollToTop();
   };
 
+  
+
   return (
     <>
       <IconContext.Provider value={{ color: "#fff" }}>
-        <Nav scrollNav={scrollNav}>
+       <Nav scrollNav={scrollNav}>
           <NavbarContainer>
             <NavLogo to="/" onClick={toggleHome}>
               Quintero
@@ -38,7 +40,7 @@ const Navbar = ({ toggle }) => {
             </MobileIcon>
             <NavMenu>
               <NavItem>
-                <NavLinks
+                <NavLinks 
                   to="admin"
                   smooth={true}
                   duration={1000}
