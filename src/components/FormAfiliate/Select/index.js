@@ -5,7 +5,7 @@ import { Container } from "./Select.styled";
 const customStyles = {
   menu: (provided, state) => ({
     ...provided,
-    borderRadius: "20px",
+    borderRadius: "8px",
     background: "#F9F9F9;",
     marginTop: "5px",
     padding: "2px 4px"
@@ -51,7 +51,7 @@ const customStyles = {
     justifyContent: "start",
     alignItems: "center",
     alignContent: "center",
-    padding: "0 16px",
+    padding: "0 8px",
     height: "40px"
   })
 };

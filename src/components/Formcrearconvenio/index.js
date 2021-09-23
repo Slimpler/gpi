@@ -34,7 +34,7 @@ const FormAfiliate = () => {
               <Grid2>
               <LabelStyled>Nombre del convenio:</LabelStyled>
             <div >
-              <InputStyled type="text" minlength="0" maxlength="0" size="35"/>
+              <InputStyled type="text" minlength="0" maxlength="0" size="35" required/>
             </div>
 
             <LabelStyled>Nombre de la empresa: </LabelStyled>

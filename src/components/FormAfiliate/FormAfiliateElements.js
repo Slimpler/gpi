@@ -4,41 +4,15 @@ import { Link, Link as LinkR } from "react-router-dom";
 // Contenedor del formulario
 
 export const ContainerAll = styled.div`
-  min-height: 692px;
-  position: fixed;
+  min-height: 200px;
+  position: relative;
   bottom: 0;
   left: 0;
   right: 0;
-  top: 0;
+  top: 10.5%;
   z-index: 0;
   overflow: hidden;
   background: #5ad8a8;
-`;
-
-export const Wrap = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-export const Content = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-`;
-
-export const FormStyled = styled.form`
-  background: #080808de;
-  max-width: 30%;
-  height: auto;
-  width: 70%;
-  z-index: 1;
-  display: grid;
-  margin: 0 auto;
-  padding: 30px 25px;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 1.9);
 `;
 
 export const Grid = styled.div`
@@ -62,26 +36,53 @@ export const Grid2 = styled.div`
   
 `;
 
+export const Wrap = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+export const Content = styled.div`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const FormStyled = styled.form`
+  background: #080808de;
+  max-width: 200%;
+  height: auto;
+  width: 65%;
+  z-index: 1;
+  display: grid;
+  margin: 0 auto;
+  padding: 15px 25px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 1.9);
+`;
+
 // Campos del formulario, titulo, subtitulo, inputs, labels, etc
 
 export const H1styled = styled.h1`
   font-family: "Encode Sans Expanded", sans-serif;
   color: #ffffff;
-  margin-bottom: 32px;
+  margin-bottom: 2px;
 `;
 
 export const LabelStyled = styled.label`
   color: #ffffff;
+  margin-bottom: -5px;
 `;
 
 export const InputStyled = styled.input`
   padding: 16px;
   margin-top: 5px;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   outline: none;
-  padding-right: 55%;
+  padding-right: 0%;
 `;
 
 export const InputFile = styled.input.attrs({ type: 'file' })`
