@@ -15,6 +15,27 @@ export const ContainerAll = styled.div`
   background: #5ad8a8;
 `;
 
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  grid-template-rows: auto;
+  grid-gap: 1px;
+  box-shadow: 1px 9px 30px -5px rgba(0, 0, 0, 0.9);
+  padding-left: 8%;
+`;
+
+export const Grid2 = styled.div`
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 3px;
+  box-shadow: rgba(0, 0, 0, 0.5);
+  padding-top:5%;
+  padding-bottom:10%;
+  padding-right:10%;
+  
+`;
+
 export const Wrap = styled.div`
   height: 100%;
   display: flex;
@@ -30,13 +51,13 @@ export const Content = styled.div`
 
 export const FormStyled = styled.form`
   background: #080808de;
-  max-width: 48%;
+  max-width: 200%;
   height: auto;
-  width: 70%;
+  width: 65%;
   z-index: 1;
   display: grid;
   margin: 0 auto;
-  padding: 30px 25px;
+  padding: 15px 25px;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 1.9);
 `;
@@ -46,21 +67,22 @@ export const FormStyled = styled.form`
 export const H1styled = styled.h1`
   font-family: "Encode Sans Expanded", sans-serif;
   color: #ffffff;
-  margin-bottom: 32px;
+  margin-bottom: 2px;
 `;
 
 export const LabelStyled = styled.label`
   color: #ffffff;
+  margin-bottom: -5px;
 `;
 
 export const InputStyled = styled.input`
   padding: 16px;
   margin-top: 5px;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
   outline: none;
-  padding-right: 55%;
+  padding-right: 0%;
 `;
 
 export const InputFile = styled.input.attrs({ type: 'file' })`
