@@ -22,11 +22,9 @@ const columns = [
   { field: 'Socio', headerName: 'Socio', width: 150 },
   { field: 'tipo', headerName: 'Tipo', width: 130 },
   { field: 'teléfono', headerName: 'Teléfono', type: 'number', width: 180 },
-  { field: 'Precio', headerName: 'Precio ($)', type: 'number', width:  165 },
   { field: 'cuotas', headerName: 'Cuotas permitidas', type: 'number', width: 207, textAlign: 'center', alignSelf: 'stretch' },
-  { field: 'Dirección', headerName: 'Dirección', width: 215 },
-  { field: 'fecha', headerName: 'Fecha de creación', width: 207, type: 'date'},
-  { field: 'action', headerName: 'Accion', width: 145, renderCell: (params: GridCellParams)=> (
+  
+  { field: 'action', headerName: 'Acción', width: 145, renderCell: (params: GridCellParams)=> (
     <strong>
       <IconButton aria-label="delete">
         <DeleteIcon />
@@ -38,9 +36,12 @@ const columns = [
   )}
 ];
 const rows = [
-  { id: '76.815.247-2', firstName: 'Optica Viña del mar', Socio: 'Carlos Donoso', tipo: 'Salud', teléfono: '(32) 271 3543', Precio: '80.000', cuotas: '6', Dirección: 'Calle Valparaíso 436, Viña del Mar', fecha: '08/06/2021'},
+  { id: '76.815.247-2', firstName: 'Optica Viña del Mar', Socio: 'Carlos Donoso', tipo: 'Salud', teléfono: '(32) 271 3543', Precio: '80.000', cuotas: '6', Dirección: 'Calle Valparaíso 436, Viña del Mar', fecha: '08/06/2021'},
   { id: '88.454.234-5', firstName: 'Coopeuch', Socio: 'Esteban González', tipo: 'Crédito',teléfono: '+569 67580912', Precio: '300.000', cuotas: '12', Dirección: 'Villanelo N° 166, Viña del mar.', fecha: '01/06/2021'},
-  { id: '90.343.332-k', firstName: 'Bahia Salud', Socio: 'Pilar Muñoz', tipo: 'Hogar', teléfono: '+569 7893 2551', Precio: '60.000', cuotas: '6',  Dirección: 'Arturo Prat 1836, Quintero', fecha: '05/06/2021'}
+  { id: '90.343.332-k', firstName: 'Bahia Salud', Socio: 'Pilar Muñoz', tipo: 'Hogar', teléfono: '+569 7893 2551', Precio: '60.000', cuotas: '6',  Dirección: 'Arturo Prat 1836, Quintero', fecha: '05/06/2021'},
+  { id: '76.815.247-1', firstName: 'Optica Viña del Mar', Socio: 'Carlos Donoso', tipo: 'Salud', teléfono: '(32) 271 3543', Precio: '80.000', cuotas: '6', Dirección: 'Calle Valparaíso 436, Viña del Mar', fecha: '08/06/2021'},
+  { id: '88.454.234-7', firstName: 'Coopeuch', Socio: 'Esteban González', tipo: 'Crédito',teléfono: '+569 67580912', Precio: '300.000', cuotas: '12', Dirección: 'Villanelo N° 166, Viña del mar.', fecha: '01/06/2021'}
+  
 ];
 
 const DldPlanillaBtn = styled.a`
@@ -83,7 +84,7 @@ const tableStyle = {
   height: 400,
     width: "100%",
     //padding: "10px",
-    margin: '0px 20px 0px',
+    margin: '20px 0px 0px',
 };
 const textStyle = {
   width: '100%',
@@ -105,7 +106,7 @@ function AdministrarConvenios() {
             Test de descripcion tipo body1
   </Typography>*/}
       </div>
-      <Box display="flex" justifyContent="center" m={0,1}>    
+      <Box display="center" justifyContent="center" m={0,1}>    
         <div style={tableStyle}>
           <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
         </div>
@@ -119,5 +120,3 @@ function AdministrarConvenios() {
   
 }
 export default AdministrarConvenios;
-
-
