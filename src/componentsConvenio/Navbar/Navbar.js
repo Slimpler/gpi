@@ -20,9 +20,20 @@ const Navbar = () => {
                         Quintero
                     </NavLogo>
                         <NavMenu>
-                            <NavItem>
+                        <NavItem>
                                 <NavLinks to="perfil">
                                     Inicio
+                                </NavLinks>
+                            </NavItem>
+                            
+                            <NavItem>
+                                <NavLinks to="buscarconvenios">
+                                    Convenios
+                                </NavLinks>
+                            </NavItem>
+                            <NavItem>
+                                <NavLinks to="MisConvenios">
+                                    Mis convenios
                                 </NavLinks>
                             </NavItem>
                             <NavItem>
@@ -31,18 +42,8 @@ const Navbar = () => {
                                 </NavLinks>
                             </NavItem>
                             <NavItem>
-                                <NavLinks to="convenios">
-                                    Convenios
-                                </NavLinks>
-                            </NavItem>
-                            <NavItem>
-                                <NavLinks to="buscarconvenios">
-                                    Buscar convenios
-                                </NavLinks>
-                            </NavItem>
-                            <NavItem>
-                                <NavLinks to="MisConvenios">
-                                    Mis convenios
+                                <NavLinks to="bonosAfiliado">
+                                    Mis bonos
                                 </NavLinks>
                             </NavItem>
                             

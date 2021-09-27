@@ -27,12 +27,12 @@ const Navbar = () => {
                             </NavItem>
                             <NavItem>
                                 <NavLinks to="pagos">
-                                    Pagos
+                                    Administracion Pagos
                                 </NavLinks>
                             </NavItem>
                             <NavItem>
                                 <NavLinks to="AdministrarConvenios">
-                                    Convenios
+                                    Administracion Convenios
                                 </NavLinks>
                             </NavItem>
                             <NavItem>

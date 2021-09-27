@@ -6,7 +6,7 @@ import InfoSectionAsociacion from "../componentsPagos/componentsAsociacion/InfoS
 import InfoSectionBono from "../componentsPagos/componentsBono/InfoSectionBono";
 import InfoSectionPrestamo from "../componentsPagos/componentsPrestamo/InfoSectionPrestamo";
 import InfoSectionAdministracion from "../componentsAddAfiliados/componentsAdministracion/InfoSectionAdministracion";
-import Navbar from "../componentsPagos/Navbar";
+import Navbar from "../componentsAdministrador/Navbar/Navbar";
 import { InfoDataFive } from "../componentsPagos/dataPagos/InfoData";
 import { SliderData } from "../componentsPagos/dataPagos/SliderData";
 import GlobalStyle from "../globalStyles";
