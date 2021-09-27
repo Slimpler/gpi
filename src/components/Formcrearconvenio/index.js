@@ -108,7 +108,7 @@ const FormAfiliate = () => {
             </div>
             <div>
               <center>
-            <Redir to="../convenios1">cancelar</Redir>
+            <Redir to="../conveniosAdmin">cancelar</Redir>
             </center>
             </div>
             </Grid2>

@@ -13,6 +13,13 @@ export const InfoData = {
   reverse: false,
   delay: 100,
 };
+export const InfoDataX = {
+  heading: "Crear Convenio",
+  buttonLabel: "Crear Convenio",
+  reverse: true,
+  delay: 300,
+};
+
 
 export const InfoDataTwo = {
   heading: "Pagos a la Asociación",
