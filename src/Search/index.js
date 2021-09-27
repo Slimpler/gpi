@@ -12,7 +12,7 @@ import {
 
 import blankImg from "./blank.gif";
 
-import "./style.css";
+import "../App.css";
 import "./flags.min.css";
 
 import countriesList from "./countries.json";
@@ -85,7 +85,7 @@ class App extends Component {
                 <select
                 className="custom-select" aria-label="Filter Countries By Countries">
                 <option value="All">Filtrar</option>
-                <option value="Africa">Salud</option>
+                <option value="Salud">Salud</option>
                 <option value="Americas">Deporte</option>
                 <option value="Asia">Crédito</option>
                 <option value="Europe">Hogar</option>

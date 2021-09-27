@@ -1,16 +1,3 @@
-/*import React from 'react'
-
-function Misconvenios() {
-    return (
-        <div className='misconvenios'>
-            <h1>Mis Convenios</h1>
-        </div>
-    )
-}
-
-export default Misconvenios
-
-*/
 
 import React from 'react'
 import { Icon, Table, Header } from 'semantic-ui-react'
