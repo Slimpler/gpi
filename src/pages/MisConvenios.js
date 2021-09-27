@@ -15,7 +15,7 @@ export default Misconvenios
 import React from 'react'
 import { Icon, Table, Header } from 'semantic-ui-react'
 import _ from 'lodash'
-import Navbar from "../componentsConvenio/Navbar/Navbar";
+import Navbar from "../componentsAfiliados/Navbar/Navbar";
 import Voucher from "../documentos/Voucher.docx";
 
 import {EmpresasBtn,EmpresasBtnLink,} from "../components/Empresas/EmpresasElements.js";

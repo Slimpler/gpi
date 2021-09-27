@@ -44,17 +44,6 @@ const Navbar = () => {
                             </NavItem> 
                             
                            
-                           {/*  <NavItem>
-                                <NavLinks to="buscarconvenios1">
-                                    Buscar convenios
-                                </NavLinks>
-                            </NavItem> */}
-                           {/*  <NavItem>
-                                <NavLinks to="MisConvenios1">
-                                    Mis convenios
-                                </NavLinks>
-                            </NavItem> */}
-                           
                         </NavMenu>
                         <NavBtn>
                             <NavBtnLink to="/">Salir</NavBtnLink>

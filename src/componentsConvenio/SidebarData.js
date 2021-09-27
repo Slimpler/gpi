@@ -51,11 +51,5 @@ export const SidebarData = [
     cName: 'nav-text'
   },
  
-  {
-    title: 'Otro item',
-    path: '/Otroitem',
-    icon: <FaIcons.FaEnvelopeOpenText />,
-    cName: 'nav-text'
-  },
   
 ];

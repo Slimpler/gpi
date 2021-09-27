@@ -7,7 +7,7 @@ import { makeStyles} from '@material-ui/core/styles';
 //import AgregarPago from '../components/Buttons/Agregar';
 import FormDialog from "../componentsPagos/componentsBono/AsignarBono";
 import PagosBono from "../componentsPagos/componentsBono/PagosBono";
-import Navbar from "../componentsPagos/Navbar";
+import Navbar from "../componentsAdministrador/Navbar/Navbar";
   
   const useStyles = makeStyles((theme) => ({
     margin: {

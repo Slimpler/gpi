@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import { orange, purple } from '@material-ui/core/colors';
 //import AgregarPago from '../components/Buttons/Agregar';
 import FormDialog from "../componentsPagos/TestAgregar";
-import Navbar from "../componentsPagos/Navbar";
+import Navbar from "../componentsAdministrador/Navbar/Navbar";
 
 
 const ColorButton = withStyles((theme) => ({
