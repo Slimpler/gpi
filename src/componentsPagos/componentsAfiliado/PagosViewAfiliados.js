@@ -9,13 +9,13 @@ import Box from '@material-ui/core/Box';
 
 
 const columns = [
-  { field: 'id', headerName: 'ID', width: 100 },
+  { field: 'id', headerName: 'ID', width: 90 },
   { field: 'rut', headerName: 'RUT', width: 130},
   { field: 'firstName', headerName: 'Nombre', width: 150 },
-  { field: 'lastName', headerName: 'Apellido', width: 150 },
-  { field: 'deudas', headerName: 'Deuda Total', type: 'number', width:  180 },
+  { field: 'lastName', headerName: 'Apellido', width: 130 },
+  { field: 'deudas', headerName: 'Deuda Total', type: 'number', width:  150 },
   { field: 'cuotas', headerName: 'Cuotas', type: 'number', width: 150 },
-  { field: 'montoCuota', headerName: 'Monto Cuota', type: 'number', width: 180 },
+  { field: 'montoCuota', headerName: 'Monto Cuota', type: 'number', width: 150 },
   { field: 'fechaPago', headerName: 'Fecha último pago', width: 210, type: 'date'},
   { field: 'tipo', headerName: 'Tipo', width: 130 }
 ];
@@ -27,13 +27,13 @@ const rows = [
 
 const mystyle = {
   height: 400,
-  width: "87%",
+  width: "100%",
   //padding: "60px",
-  margin: '30px 80px 10px',
+  margin: '20px 0px 0px',
 };
 const textStyle = {
   width: '100%',
-  margin: '10px 100px 10px',
+  margin: '0px 100px 0px',
 };
 
 function PagosAfiliados() {
