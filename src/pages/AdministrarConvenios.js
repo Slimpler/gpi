@@ -1,14 +1,10 @@
 import React, { useState } from "react";
-import DropDown from "../componentsConvenio1/DropDown";
-import Hero from "../componentsConvenio1/Hero";
-import InfoSection from "../componentsConvenio/InfoSection";
-import Navbar from "../componentsConvenio1/Navbar/Navbar";
-import { InfoData, InfoDataTwo } from "../componentsConvenio1/dataConvenios/InfoData";
-import { SliderData } from "../componentsConvenio1/dataConvenios/SliderData";
+import DropDown from "../componentsConvenioAdmin/DropDown";
+import Navbar from "../componentsAdministrador/Navbar/Navbar";  
 import GlobalStyle from "../globalStyles";
 import AdministrarConvenios from "../componentsAdministrarConv/componentsAdmintrarConv/AdministrarConvenios";
 
-function ConveniosPage1() {
+function ConveniosPageAdmin() {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
@@ -25,4 +21,4 @@ function ConveniosPage1() {
   );
 }
 
-export default ConveniosPage1;
+export default ConveniosPageAdmin;

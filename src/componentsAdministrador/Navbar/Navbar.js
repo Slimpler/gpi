@@ -36,8 +36,13 @@ const Navbar = () => {
                                 </NavLinks>
                             </NavItem>
                             <NavItem>
+                                <NavLinks to="CrearConvenio">
+                                    Crear Convenios
+                                </NavLinks>
+                            </NavItem>
+                            <NavItem>
                                 <NavLinks to="AdmAfiliados">
-                                    Administracion Afiliados
+                                    Afiliados
                                 </NavLinks>
                             </NavItem>
                         </NavMenu>

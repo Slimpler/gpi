@@ -63,7 +63,7 @@ const Navbar = ({ toggle }) => {
                   duration={1000}
                   spy={true}
                   exact="true"
-                >
+                >  
                   Beneficios
                 </NavLinks>
               </NavItem>

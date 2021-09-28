@@ -9,10 +9,10 @@ export const Nav = styled.nav`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1rem;
+  font-size: 18px;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 999;
 
   @media screen and (max-width: 960px) {
     transition: 0.8s all ease;

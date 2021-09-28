@@ -1,9 +1,7 @@
 //En este componente está la tabla con info de los convenios de afiliados
 import * as React from 'react';
 import { DataGrid } from '@material-ui/data-grid';
-import AgregarPago from '../../components/Buttons/Agregar';
-import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
+
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';

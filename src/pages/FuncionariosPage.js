@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DropDown from "../componentsPerfil/DropDown";
 import Hero from "../componentsPerfil/Hero";
 import InfoSection from "../componentsAdmin/InfoSection";
-import Navbar from "../componentsAdmin/Navbar";
+import Navbar from "../componentsAdministrador/Navbar/Navbar";
 import { InfoData, InfoDataTwo, InfoDataThree, InfoDataFour } from "../componentsAdmin/dataAdmin/InfoData";
 import { SliderData } from "../componentsAdmin/dataAdmin/SliderData";
 import GlobalStyle from "../globalStyles";
