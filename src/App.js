@@ -25,9 +25,12 @@ function App() {
   return (
     <Router basename={process.env.PUBLIC_URL}>
       <Switch>
-        {/* Paginas del usuario */}
+        {/* Pagina Principal */}
         <Route path="/" component={Home} exact />
+        <Route path="/formularioAfiliate" component={FormularioAfiliate} exact />
         <Route path="/entrar" component={EntrarPage} exact />
+        
+        {/* Paginas del usuario */}
         <Route path="/perfil" component={PerfilPage} exact />
         <Route path='/buscarconvenios' component={Buscarconvenios} exact />
         <Route path='/MisConvenios' component={MisConvenios} exact />
@@ -46,9 +49,6 @@ function App() {
         <Route path="/AdmAfiliados" component={AdmAfiliados} exact />
         <Route path="/AdministracionAfiliados" component={AdministracionAfiliados} exact />
         
-        {/* Pagina Principal */}
-        <Route path="/formularioAfiliate" component={FormularioAfiliate} exact />
-
       </Switch>
     </Router>
   );

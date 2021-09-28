@@ -35,24 +35,6 @@ export const homeObjTwo = {
   darkText: true,
 };
 
-export const homeObjThree = {
-  id: "informacion",
-  lightBg: true,
-  lightText: false,
-  lightTextDesc: false,
-  topLine: "Afíliate",
-  headline: "Creemos el grupo necesario para nuestro municipio",
-  description:
-    "Postula a la afiliacón para acceder a tus beneficios",
-  /* buttonLabel: "Empieza ahora", */
-  imgStart: false,
-/*   img: require("../../images/entregar.png").default, */
-  alt: "Papers",
-  dark: false,
-  primary: false,
-  darkText: true,
-};
-
 export const homeObjFour = {
   id: "empresas",
 };
