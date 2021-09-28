@@ -15,9 +15,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const mystyle = {
   height: 400,
-  width: "55%",
+  width: "100%",
   //padding: "10px",
-  margin: '0px 20px 0px',
+  margin: '20px 0px 0px',
 };
 
 const useStyles = makeStyles({
@@ -65,7 +65,7 @@ function PagosBono() {
         En esta tabla se pueden asignar distintos bonos a los afiliados.
       </Typography>
       </div>
-        <Box display="flex" justifyContent="center" m={1} p={1}>
+        <Box display="center" justifyContent="center" m={1} p={1}>
           <div style={mystyle}>
             <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
           </div>

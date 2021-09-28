@@ -28,13 +28,13 @@ const rows = [
 
 const mystyle = {
   height: 400,
-  width: "60%",
+  width: "100%",
   //padding: "10px",
-  margin: '0px 250px 10px',
+  margin: '20px 0px 0px',
 };
 const textStyle = {
   width: '100%',
-  margin: '10px 100px 20px',
+  margin: '0px 100px 0px',
 };
 
 function PagosBonos() {
@@ -49,7 +49,7 @@ function PagosBonos() {
           </Typography>
         </div>
         <div >
-    <Box display="flex" justifyContent="center" m={1} p={0} >     
+    <Box display="center" justifyContent="center" m={1} p={1} >     
     <div style={mystyle}>
       <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
     </div>

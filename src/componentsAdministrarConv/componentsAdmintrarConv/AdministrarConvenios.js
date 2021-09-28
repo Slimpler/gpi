@@ -107,7 +107,7 @@ function AdministrarConvenios() {
             Test de descripcion tipo body1
   </Typography>*/}
       </div>
-      <Box display="center" justifyContent="center" m={0,1}>    
+      <Box display="center" justifyContent="center" m={1} p={0}>    
         <div style={tableStyle}>
           <DataGrid rows={rows} columns={columns} pageSize={5} checkboxSelection />
         </div>
