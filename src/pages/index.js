@@ -7,7 +7,6 @@ import InfoSectionAfiliate from "../components/InfoSectionAfiliate";
 import {
   homeObjFour,
   homeObjOne,
-  homeObjThree,
   homeObjTwo,
 } from "../components/InfoSection/Data";
 import Navbar from "../components/Navbar";
@@ -27,7 +26,6 @@ const Home = () => {
       <InfoSectionAfiliate {...homeObjOne} />
       <InfoSection {...homeObjTwo} />
       <Empresas {...homeObjFour} />
-      <InfoSection {...homeObjThree} />
       <Footer />
     </>
   );
