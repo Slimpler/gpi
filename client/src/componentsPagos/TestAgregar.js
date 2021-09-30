@@ -44,8 +44,8 @@ export default function FormDialog() {
   const mystyle = {
     height: 80,
     width: "100%",
-    //padding: "100px",
-    margin: "80px 10px 10px 0px",
+    padding: "0px",
+    margin: "80px 15px 15px 0px",
   };
 
   // Estados para datos de tabla convenios
@@ -86,7 +86,7 @@ export default function FormDialog() {
   return (
     <div>
       <div style={mystyle}>
-        <Box display="flex" justifyContent="flex-end" m={1} p={1}>
+        <Box display="flex" justifyContent="center" m={1} p={1}>
           <Box p={5}>
             <Button
               variant="contained"
@@ -156,7 +156,7 @@ export default function FormDialog() {
             </InputLabel>
             <Select
               labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
+              id="demo-simple-select"
               value={estado_pago}
               onChange={cambioEstado}
               width="100%"
