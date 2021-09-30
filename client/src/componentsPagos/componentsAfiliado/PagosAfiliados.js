@@ -18,11 +18,46 @@ import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
 
 const columns = [
-  { title: "Id de pago", field: "id_pago", filtering: false, export: false },
-  { title: "Rut del afiliado", field: "rut_afiliado" },
-  { title: "Monto del pago", field: "monto_pago" },
-  { title: "Fecha de pago", field: "fecha_pago" },
-  { title: "Estado del pago", field: "estado_pago" },
+  {
+    title: "Id de pago",
+    field: "id_pago",
+    export: false,
+    headerStyle: {
+      backgroundColor: "#01579b",
+    },
+  },
+  {
+    title: "Rut del afiliado",
+    field: "rut_afiliado",
+    headerStyle: {
+      backgroundColor: "#01579b",
+    },
+  },
+  {
+    title: "Monto del pago",
+    field: "monto_pago",
+    headerStyle: {
+      backgroundColor: "#01579b",
+    },
+  },
+  {
+    title: "Fecha de pago",
+    field: "fecha_pago",
+    type: "date",
+    dateSetting: {
+      format: "dd/MM/yyyy",
+    },
+    headerStyle: {
+      backgroundColor: "#01579b",
+    },
+  },
+  {
+    title: "Estado del pago",
+    field: "estado_pago",
+    headerStyle: {
+      backgroundColor: "#01579b",
+    },
+  },
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -42,6 +77,11 @@ const useStyles = makeStyles((theme) => ({
   },
   inputMaterial: {
     width: "100%",
+  },
+  container: {
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "1%",
   },
 }));
 
@@ -209,7 +249,7 @@ function PagosAfiliados() {
   );
 
   return (
-    <div className=" Tabla-Pagos">
+    <div className={styles.container}>
       <MaterialTable
         title="Lista de pagos"
         data={listPagos}
@@ -219,6 +259,9 @@ function PagosAfiliados() {
             icon: EditIcon,
             tooltip: "Editar Pago",
             onClick: (event, rowData) => SelectPago(rowData, "Editar"),
+            iconProps: {
+              style: { backgroundColor: "#33ACFF" },
+            },
           },
           {
             icon: DeleteIcon,
@@ -228,9 +271,13 @@ function PagosAfiliados() {
         ]}
         options={{
           actionsColumnIndex: -1,
-          filtering: true,
           search: true,
           exportButton: true,
+          headerStyle: {
+            backgroundColor: "#3374FF",
+            color: "#FFF",
+            fontSize: "14px",
+          },
         }}
         localization={{
           header: {
