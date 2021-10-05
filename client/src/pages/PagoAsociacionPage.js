@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DropDown from "../componentsPerfil/DropDown";
+ 
 import Hero from "../componentsPerfil/Hero";
 import GlobalStyle from "../globalStyles";
 import { makeStyles, withStyles } from '@material-ui/core/styles';

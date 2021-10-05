@@ -1,7 +1,7 @@
 //Esto es pagos de bonos desde directiva
 
 import React, { useState } from "react";
-import DropDown from "../componentsPerfil/DropDown";
+ 
 import GlobalStyle from "../globalStyles";
 import { makeStyles} from '@material-ui/core/styles';
 //import AgregarPago from '../components/Buttons/Agregar';

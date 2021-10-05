@@ -1,6 +1,6 @@
 //Esto es pagos de afiliados; vista desde la directiva
 import React, { useState } from "react";
-import DropDown from "../componentsPerfil/DropDown";
+ 
 import GlobalStyle from "../globalStyles";
 import PagosAfiliados from "../componentsConvenio/componentsAfiliado/PagosAfiliados";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
