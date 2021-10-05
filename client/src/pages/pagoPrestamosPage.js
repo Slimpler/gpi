@@ -1,7 +1,7 @@
 //Esto es prestamos a los afilados; directiva>prestamos
 
 import React, { useState } from "react";
-import DropDown from "../componentsPerfil/DropDown";
+ 
 import GlobalStyle from "../globalStyles";
 import PagosPrestamo from "../componentsPagos/componentsPrestamo/PagosPrestamo";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
@@ -46,7 +46,7 @@ function PagoPrestamosPage() {
         <>
             <GlobalStyle />
             <Navbar toggle = {toggle}/>
-            <DropDown isOpen={isOpen} toggle={toggle} />
+            
             <div style={positioningStyle}>
             <PagosPrestamo/>
             </div>

@@ -1,7 +1,7 @@
 //Esto es pagos de afiliados; visto por afiliados
 
 import React, { useState } from "react";
-import DropDown from "../componentsPerfil/DropDown";
+ 
 import GlobalStyle from "../globalStyles";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         <>
             <GlobalStyle />
             <Navbar toggle={toggle} />
-            <DropDown isOpen={isOpen} toggle={toggle} />
+            
             
             <PagosAfiliados/>
             <PrintPagos/>

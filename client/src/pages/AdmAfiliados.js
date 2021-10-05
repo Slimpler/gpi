@@ -19,7 +19,7 @@ const style = {
     <>
       <GlobalStyle />
       <Navbar toggle={toggle} />
-      <DropDown isOpen={isOpen} toggle={toggle} /> 
+       
       <InfoSectionAdministracion {...InfoDataFive} />
 
     </>

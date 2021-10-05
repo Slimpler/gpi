@@ -1,7 +1,7 @@
 //Esto es pagos de bonos desde directiva
 
 import React, { useState } from "react";
-import DropDown from "../componentsPerfil/DropDown";
+ 
 import GlobalStyle from "../globalStyles";
 import { makeStyles} from '@material-ui/core/styles';
 //import AgregarPago from '../components/Buttons/Agregar';
@@ -29,7 +29,7 @@ import Navbar from "../componentsAdministrador/Navbar/Navbar";
         <>
             <GlobalStyle />
             <Navbar toggle={toggle}/>
-            <DropDown isOpen={isOpen} toggle={toggle} />
+            
             <FormDialog/>
             <PagosBono/>
         </>

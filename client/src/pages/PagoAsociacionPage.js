@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import DropDown from "../componentsPerfil/DropDown";
-import Hero from "../componentsPerfil/Hero";
 import GlobalStyle from "../globalStyles";
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
@@ -29,8 +27,7 @@ function PagoAsociacionPage() {
     return (
         <>
             <GlobalStyle />
-            <Navbar toggle={toggle} />
-            <DropDown isOpen={isOpen} toggle={toggle} />
+            <Navbar toggle={toggle} />        
             <FormDialog/>
             <PagosAsociacion/>
             

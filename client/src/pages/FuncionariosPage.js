@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import DropDown from "../componentsPerfil/DropDown";
-import Hero from "../componentsPerfil/Hero";
+ 
+
 import InfoSection from "../componentsAdmin/InfoSection";
 import Navbar from "../componentsAdministrador/Navbar/Navbar";
 import { InfoData, InfoDataTwo, InfoDataThree, InfoDataFour } from "../componentsAdmin/dataAdmin/InfoData";
@@ -17,7 +17,7 @@ function adminPage() {
     <>
       <GlobalStyle />
       <Navbar toggle={toggle} />
-      <DropDown isOpen={isOpen} toggle={toggle} />
+      
       <Hero slides={SliderData} />
       <InfoSection {...InfoData} />
       <InfoSection {...InfoDataTwo} />
