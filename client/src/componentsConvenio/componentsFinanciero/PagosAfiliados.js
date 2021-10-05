@@ -92,7 +92,7 @@ function AgregarConvenio() {
   };
 
   const peticionGet = async () => {
-    await Axios.get("http://localhost:3001/showConvenio")
+    await Axios.get("http://localhost:3001/showConvenios")
       .then((response) => {
         setListConvenio(response.data);
         console.log(response.data);

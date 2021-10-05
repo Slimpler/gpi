@@ -106,7 +106,7 @@ function PagosAfiliados() {
       [name]: value,
     }));
   };
-
+ 
   const peticionGet = async () => {
     await Axios.get("http://localhost:3001/showPagos")
       .then((response) => {
