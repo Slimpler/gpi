@@ -1,10 +1,6 @@
 import React, { useState } from "react";
-import DropDown from "../componentsPagos/DropDown";
-import Hero from "../componentsPagos/Hero";
 import InfoSectionAfiliado from "../componentsPagos/componentsAfiliado/InfoSectionAfiliado";
 import InfoSectionAsociacion from "../componentsPagos/componentsAsociacion/InfoSectionAsociacion";
-import InfoSectionBono from "../componentsPagos/componentsBono/InfoSectionBono";
-import InfoSectionPrestamo from "../componentsPagos/componentsPrestamo/InfoSectionPrestamo";
 import Navbar from "../componentsAdministrador/Navbar/Navbar";
 import { InfoData, InfoDataTwo, InfoDataThree, InfoDataFour } from "../componentsPagos/dataPagos/InfoData";
 
@@ -19,8 +15,7 @@ function PagosPage() {
   return (
     <>
       <GlobalStyle />
-      <Navbar toggle={toggle} />
-       
+      <Navbar toggle={toggle} /> 
       <InfoSectionAfiliado {...InfoData} />
       <InfoSectionAsociacion {...InfoDataTwo} />
     </>

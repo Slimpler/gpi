@@ -1,7 +1,7 @@
 
 export const InfoData = {
-  heading2: "agregar pago Financiero",
-  heading: "agregar pagos Financieros",
+  heading2: "agregar Convenio Comercial",
+  heading: "agregar Convenio Financiero",
   buttonLabel: "Ir",
   reverse: false,
   delay: 100,
@@ -9,7 +9,7 @@ export const InfoData = {
 };
 
 export const InfoDataTwo = {
-  heading:"agregar pago Comercial",
+  heading:"agregar Convenio de Descuento",
   heading2: "Lista de Convenios",
   buttonLabel: "Ir",  
   reverse: false,
