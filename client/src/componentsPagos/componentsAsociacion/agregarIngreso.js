@@ -68,7 +68,7 @@ const mystyle = {
       </div>
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-      <DialogTitle id="form-dialog-title">Agregar Pago</DialogTitle>
+      <DialogTitle id="form-dialog-title">agregar pago</DialogTitle>
       <DialogContent>          
           <p>Tipo de ingreso</p>            
           <FormControl variant="outlined" className={classes.formControl}>
@@ -99,7 +99,7 @@ const mystyle = {
             Cancelar
         </Button>
         <Button onClick={handleClose} color="primary">
-            Agregar pago
+            agregar pago
         </Button>
         </DialogActions>
       </Dialog>

@@ -49,17 +49,16 @@ export default function FormDialog() {
   };
 
   // Estados para datos de tabla convenios
-  const [id_pago, setId_pago] = useState(0);
-  const [rut_afiliado, setRut_afiliado] = useState(0);
-  const [monto_pago, setMonto_pago] = useState(0);
-  const [fecha_pago, setFecha_pago] = useState("");
+  const [id_convenio, setId_convenio] = useState(0);
+  const [nombre_convenio, setNombre_convenio] = useState(0);
+  const [fecha_ingreso, setFecha_ingreso] = useState("");
 
   //estados
-  const [estado_pago, setEstado_pago] = useState("");
+/*   const [estado_pago, setEstado_pago] = useState("");
 
   const cambioEstado = (event) => {
     setEstado_pago(event.target.value);
-  };
+  }; */
 
   /*   const [monto, setMonto] = useState(0);
   const [fecha, setFecha] = useState("");
@@ -71,13 +70,11 @@ export default function FormDialog() {
   }; */
 
   //--------------------------------
-  const agregarPagos = () => {
-    Axios.post("http://localhost:3001/createPagos", {
-      id_pago: id_pago,
-      monto_pago: monto_pago,
-      fecha_pago: fecha_pago,
-      estado_pago: estado_pago,
-      rut_afiliado: rut_afiliado,
+  const agregarConvenio = () => {
+    Axios.post("http://localhost:3001/createConvenio", {
+      id_convenio: id_convenio,
+      nombre_convenio: nombre_convenio,
+      fecha_ingreso: fecha_ingreso,
     }).then(() => {
       console.log("exitoso");
     });
@@ -93,7 +90,7 @@ export default function FormDialog() {
               color="primary"
               onClick={handleClickOpen}
             >
-              Agregar Pago
+              Agregar Convenio
             </Button>
           </Box>
         </Box>
@@ -104,22 +101,22 @@ export default function FormDialog() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Agregar Pago</DialogTitle>
+        <DialogTitle id="form-dialog-title">agregar pago</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Para agregar un pago de un afiliado llenar los siguientes campos:
+            Para agregar un convenio llenar los siguientes campos:
           </DialogContentText>
-          <p> Datos de Pago </p>
+          <p> Datos del Convenio </p>
 
           <TextField
             autofocus
             margin="dense"
             id="id"
-            label="id de Pago"
+            label="id convenio"
             variant="outlined"
             size="medium"
             onChange={(e) => {
-              setId_pago(e.target.value);
+              setId_convenio(e.target.value);
             }}
           />
 
@@ -127,66 +124,34 @@ export default function FormDialog() {
           <TextField
             autofocus
             margin="dense"
-            id="monto_pago"
-            label="monto_pago"
+            id="nombre_convenio"
+            label="nombre_convenio"
             variant="outlined"
             size="medium"
             onChange={(e) => {
-              setMonto_pago(e.target.value);
+              setNombre_convenio(e.target.value);
             }}
           />
           <p />
           <TextField
             autofocus
             margin="dense"
-            id="fecha_pago"
+            id="fecha_ingreso"
             variant="outlined"
             size="medium"
             type="date"
             onChange={(e) => {
-              setFecha_pago(e.target.value);
+              setFecha_ingreso(e.target.value);
             }}
           />
 
-          <p />
-
-          <FormControl variant="outlined">
-            <InputLabel id="demo-simple-select-outlined-label">
-              Estado de pago
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select"
-              value={estado_pago}
-              onChange={cambioEstado}
-              width="100%"
-            >
-              <MenuItem value={1}> Pendiente </MenuItem>
-              <MenuItem value={2}> Aceptado </MenuItem>
-              <MenuItem value={3}> Rechazado </MenuItem>
-            </Select>
-          </FormControl>
-
-          <p> Datos Personales </p>
-
-          <TextField
-            autofocus
-            margin="dense"
-            id="rut_afiliado"
-            label="rut_afiliado"
-            variant="outlined"
-            size="medium"
-            onChange={(e) => {
-              setRut_afiliado(e.target.value);
-            }}
-          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button onClick={agregarPagos} color="primary">
-            Agregar Pago
+          <Button onClick={agregarConvenio} color="primary">
+            Agregar Convenio
           </Button>
         </DialogActions>
       </Dialog>

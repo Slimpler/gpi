@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-function PrintPagos() {
+function PrintConvenio() {
   
   const classes = useStyles();
 
@@ -65,7 +65,7 @@ function PrintPagos() {
                 color="primary"
                 aria-label="vertical contained primary button group"
             >
-            <Button variant="contained" href={Pagos} download="pagos.xlsx"> Descargar Planilla </Button>
+            <Button variant="contained" href={Convenio} download="convenios.xlsx"> Descargar Planilla </Button>
             </ButtonGroup>
             <FormDialog/>
             
@@ -75,5 +75,5 @@ function PrintPagos() {
 }
 
 
-export default PrintPagos;
+export default PrintConvenio;
 

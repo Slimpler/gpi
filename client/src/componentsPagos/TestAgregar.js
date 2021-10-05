@@ -93,7 +93,7 @@ export default function FormDialog() {
               color="primary"
               onClick={handleClickOpen}
             >
-              Agregar Pago
+              agregar pago
             </Button>
           </Box>
         </Box>
@@ -104,7 +104,7 @@ export default function FormDialog() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Agregar Pago</DialogTitle>
+        <DialogTitle id="form-dialog-title">agregar pago</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Para agregar un pago de un afiliado llenar los siguientes campos:
@@ -186,7 +186,7 @@ export default function FormDialog() {
             Cancelar
           </Button>
           <Button onClick={agregarPagos} color="primary">
-            Agregar Pago
+            agregar pago
           </Button>
         </DialogActions>
       </Dialog>

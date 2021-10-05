@@ -12,4 +12,5 @@ function AgregarPago(props){
     ) :"";
 }
 
+
 export default AgregarPago;
