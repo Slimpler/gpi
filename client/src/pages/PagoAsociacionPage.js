@@ -29,7 +29,6 @@ function PagoAsociacionPage() {
     return (
         <>
             <GlobalStyle />
-            
             <Navbar toggle={toggle} />
             <DropDown isOpen={isOpen} toggle={toggle} />
             <FormDialog/>
