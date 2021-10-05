@@ -34,7 +34,7 @@ import Navbar from "../componentsAfiliados/Navbar/Navbar";
         <>
             <GlobalStyle />
             <Navbar toggle ={toggle}/>
-            <DropDown isOpen={isOpen} toggle={toggle} />
+            
             <PagosBonos/>
         </>
     );

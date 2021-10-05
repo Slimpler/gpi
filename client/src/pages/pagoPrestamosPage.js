@@ -46,7 +46,7 @@ function PagoPrestamosPage() {
         <>
             <GlobalStyle />
             <Navbar toggle = {toggle}/>
-            <DropDown isOpen={isOpen} toggle={toggle} />
+            
             <div style={positioningStyle}>
             <PagosPrestamo/>
             </div>

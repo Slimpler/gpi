@@ -16,7 +16,7 @@ function Convenios() {
     <>
       <GlobalStyle />
       <Navbar toggle={toggle} />
-      <DropDown isOpen={isOpen} toggle={toggle} /> 
+       
       <InfoSectionAfiliado {...InfoData} />
       <InfoSectionAsociacion {...InfoDataTwo} />
     </>

@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
         <>
             <GlobalStyle />
             <Navbar toggle={toggle} />
-            <DropDown isOpen={isOpen} toggle={toggle} />
+            
             
             <PagosAfiliados/>
             <PrintPagos/>

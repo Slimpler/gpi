@@ -29,7 +29,7 @@ import Navbar from "../componentsAdministrador/Navbar/Navbar";
         <>
             <GlobalStyle />
             <Navbar toggle={toggle}/>
-            <DropDown isOpen={isOpen} toggle={toggle} />
+            
             <FormDialog/>
             <PagosBono/>
         </>

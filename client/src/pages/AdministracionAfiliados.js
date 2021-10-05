@@ -25,7 +25,7 @@ function AdministracionAfiliados() {
         <>
             <GlobalStyle />
             <Navbar toggle={toggle} />
-            <DropDown isOpen={isOpen} toggle={toggle} />
+            
             <AdmninistracionAfiliados/>        
         </>
     );
