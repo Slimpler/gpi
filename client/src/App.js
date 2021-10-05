@@ -4,7 +4,6 @@ import Home from "./pages";
 import EntrarPage from "./pages/EntrarPage";
 import PerfilPage from "./pages/PerfilPage";
 import AdministrarConvenios from "./pages/AdministrarConvenios";
-import CrearconvenioPage from "./pages/CrearconvenioPage";
 import AdminPage from "./pages/AdminPage";
 import PagosPage from "./pages/PagosPage";
 import PagoAfiliadosPage from "./pages/PagoAfilliadosPage";
@@ -18,6 +17,7 @@ import PagosUsuarioPage from './pages/PagosUsuarioPage';
 import MisConvenios from './pages/MisConvenios';
 import AdmAfiliados from "./pages/AdmAfiliados";
 import AdministracionAfiliados from "./pages/AdministracionAfiliados";
+import Convenios from "./pages/Convenios";
 
 
 
@@ -44,8 +44,8 @@ function App() {
         <Route path="/pagoAsociacion" component={PagoAsociacionPage} exact />
         <Route path="/pagoBonos" component={PagoBonosPage} exact />
         <Route path="/pagoPrestamos" component={PagoPrestamosPage} exact />
+        <Route path="/Convenios" component={Convenios} exact />       
         <Route path="/AdministrarConvenios" component={AdministrarConvenios} exact />
-        <Route path='/CrearConvenio' component={CrearconvenioPage} exact />
         <Route path="/AdmAfiliados" component={AdmAfiliados} exact />
         <Route path="/AdministracionAfiliados" component={AdministracionAfiliados} exact />
         

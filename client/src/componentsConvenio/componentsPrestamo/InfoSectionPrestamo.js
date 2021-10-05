@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import Button from "./Button";
+import { Button } from "../Button";
+import Icon from '@material-ui/icons/ArrowForward';
 
-const InfoSection = ({
+const InfoSectionPrestamo = ({
   heading,
   paragraphOne,
   paragraphTwo,
@@ -17,8 +18,9 @@ const InfoSection = ({
           <h1>{heading}</h1>
           <p>{paragraphOne}</p>
           <p>{paragraphTwo}</p>
-          <Button to="/home" primary="true">
+          <Button to="/pagoPrestamos" primary="true">
             {buttonLabel}
+            <Icon/>
           </Button>
         </ColumnLeft>
         <ColumnRight reverse={reverse}>
@@ -31,8 +33,9 @@ const InfoSection = ({
 
 const Section = styled.section`
   width: 100%;
-  height: 100%;
+  height: 50%;
   padding: 4rem 0;
+  background: red;
 
   @media screen and (max-width: 768px) {
     padding: 0;
@@ -44,6 +47,7 @@ const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 800px;
+  background: black;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -53,12 +57,15 @@ const Container = styled.div`
 
 const ColumnLeft = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
-  line-height: 1.4;
   padding: 1rem 2rem;
-  order: 1;
+  flex-flow: column;
+  width: 90%;
+  height: 96%;
+  margin: 15px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  background: #eee;
 
   h1 {
     margin-bottom: 1rem;
@@ -93,4 +100,4 @@ const ColumnRight = styled.div`
   }
 `;
 
-export default InfoSection;
+export default InfoSectionPrestamo;

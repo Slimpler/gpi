@@ -1,6 +1,3 @@
-import ImageOne from "../../img/house-5.jpg";
-import ImageTwo from "../../img/house-2.jpg";
-import ImageThree from "../../img/house-5.jpg";
 
 export const InfoData = {
   heading2: "Pagos de la Asociación",
@@ -26,7 +23,6 @@ export const InfoDataFive = {
   paragraphTwo:
     "Se podra agregar, eliminar y modificar informacion de los afiliados",
   buttonLabel: "Ir!",
-  image: ImageThree,
   reverse: true,
   delay: 300,
 };
