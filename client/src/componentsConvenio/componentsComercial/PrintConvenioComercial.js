@@ -52,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-function PrintConvenio() {
+function PrintConvenioComercial() {
   
   const classes = useStyles();
 
@@ -75,5 +75,5 @@ function PrintConvenio() {
 }
 
 
-export default PrintConvenio;
+export default PrintConvenioComercial;
 

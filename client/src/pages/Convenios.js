@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import InfoSectionAfiliado from "../componentsConvenio/componentsFinanciero/InfoSectionAfiliado";
-import InfoSectionAsociacion from "../componentsConvenio/componentsComercial/InfoSectionAsociacion";
+import InfoSectionConvenioFinanciero from "../componentsConvenio/componentsFinanciero/InfoSectionConvenioFinanciero";
+import InfoSectionAsociacion from "../componentsConvenio/componentsComercial/InfoSectionConvenioComercial";
 import Navbar from "../componentsAdministrador/Navbar/Navbar";
 import { InfoData, InfoDataTwo } from "../componentsConvenio/dataPagos/InfoData";
 import GlobalStyle from "../globalStyles";
@@ -15,7 +15,7 @@ function Convenios() {
     <>
       <GlobalStyle />
       <Navbar toggle={toggle} />
-      <InfoSectionAfiliado {...InfoData} />
+      <InfoSectionConvenioFinanciero {...InfoData} />
       <InfoSectionAsociacion {...InfoDataTwo} />
     </>
   );

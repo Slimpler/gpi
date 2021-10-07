@@ -1,13 +1,9 @@
 //Esto es pagos de afiliados; vista desde la directiva
 import React, { useState } from "react";
- 
 import GlobalStyle from "../globalStyles";
-import PagosAfiliados from "../componentsConvenio/componentsFinanciero/PagosAfiliados";
+import AgregarConvenioFinanciero from "../componentsConvenio/componentsFinanciero/convenioFinanciero";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
-import { orange, purple } from "@material-ui/core/colors";
-//import AgregarPago from '../components/Buttons/Agregar';
-import FormDialog from "../componentsConvenio/TestAgregar";
+import FormDialog from "../componentsConvenio/AgregarConvenioDescuento";
 import Navbar from "../componentsAdministrador/Navbar/Navbar";
 
 const useStyles = makeStyles((theme) => ({
@@ -27,10 +23,9 @@ function PagoAfiliadosPage() {
   return (
     </*  style={{ backgroundColor: "#eee", height: "100v" }} */>
       <GlobalStyle />
-      <Navbar toggle={toggle} />
-      
+      <Navbar toggle={toggle} />   
       <FormDialog />
-      <PagosAfiliados />
+      <AgregarConvenioFinanciero />
     </>
   );
 }

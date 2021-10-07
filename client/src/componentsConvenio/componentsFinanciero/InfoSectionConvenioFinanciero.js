@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Button } from "../Button";
 import Icon from '@material-ui/icons/ArrowForward';
 
-const InfoSectionAsociacion = ({
+const InfoSectionConvenioFinanciero = ({
   heading,
   heading2,
   paragraphOne,
@@ -17,14 +17,14 @@ const InfoSectionAsociacion = ({
       <Container>
         <ColumnLeft>
           <h1>{heading}</h1>
-          <Button to="/AdministrarConvenios " primary="true">
+          <Button to="/AdministrarConvenioFinanciero " primary="true">
             {buttonLabel}
             <Icon/>
           </Button>
         </ColumnLeft>
         <ColumnRight>
           <h1>{heading2}</h1>
-          <Button to="/AdministrarConvenios" primary="true">
+          <Button to="/AdministrarConvenioComercial" primary="true">
             {buttonLabel}
             <Icon/>
           </Button>
@@ -36,7 +36,7 @@ const InfoSectionAsociacion = ({
 
 const Section = styled.section`
   width: 100%;
-  height: 100%;
+  height: 10%;
   padding: 4rem 0;
   background: #31ce83;
 
@@ -65,7 +65,7 @@ const ColumnLeft = styled.div`
   flex-flow: column;
   width: 90%;
   height: 115%;
-  margin: -5em 1em;
+  margin: 15px;
   border: 2px solid #000;
   border-radius: 20px;
   background: #eee;
@@ -81,25 +81,25 @@ const ColumnLeft = styled.div`
 `;
 
 const ColumnRight = styled.div`
-display: flex;
-align-items: center;
-padding: 1rem 2rem;
-flex-flow: column;
-width: 90%;
-height: 115%;
-margin: -5em 1em;
-border: 2px solid #000;
-border-radius: 20px;
-background: #eee;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  flex-flow: column;
+  width: 90%;
+  height: 115%;
+  margin: 15px;
+  border: 2px solid #000;
+  border-radius: 20px;
+  background: #eee;
 
-h1 {
-  margin-bottom: 1rem;
-  font-size: clamp(1.5rem, 6vw, 2rem);
-}
+  h1 {
+    margin-bottom: 1rem;
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
 
-p {
-  margin-bottom: 2rem;
-}
+  p {
+    margin-bottom: 2rem;
+  }
 `;
 
-export default InfoSectionAsociacion;
+export default InfoSectionConvenioFinanciero;

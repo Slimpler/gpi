@@ -71,7 +71,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AgregarConvenio() {
+function AgregarConvenioComercial() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
@@ -285,4 +285,4 @@ function AgregarConvenio() {
     </div>
   );
 }
-export default AgregarConvenio;
+export default AgregarConvenioComercial;

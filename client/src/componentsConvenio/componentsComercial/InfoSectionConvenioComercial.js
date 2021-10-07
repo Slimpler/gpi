@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { Button } from "../Button";
 import Icon from '@material-ui/icons/ArrowForward';
 
-const InfoSectionPrestamo = ({
+const InfoSectionAsociacion = ({
   heading,
+  heading2,
   paragraphOne,
   paragraphTwo,
   buttonLabel,
@@ -16,15 +17,17 @@ const InfoSectionPrestamo = ({
       <Container>
         <ColumnLeft>
           <h1>{heading}</h1>
-          <p>{paragraphOne}</p>
-          <p>{paragraphTwo}</p>
-          <Button to="/pagoPrestamos" primary="true">
+          <Button to="/AdministrarConvenioDescuento " primary="true">
             {buttonLabel}
             <Icon/>
           </Button>
         </ColumnLeft>
-        <ColumnRight reverse={reverse}>
-          <img src={image} alt="home" />
+        <ColumnRight>
+          <h1>{heading2}</h1>
+          <Button to="/" primary="true">
+            {buttonLabel}
+            <Icon/>
+          </Button>
         </ColumnRight>
       </Container>
     </Section>
@@ -33,9 +36,9 @@ const InfoSectionPrestamo = ({
 
 const Section = styled.section`
   width: 100%;
-  height: 50%;
+  height: 100%;
   padding: 4rem 0;
-  background: red;
+  background: #31ce83;
 
   @media screen and (max-width: 768px) {
     padding: 0;
@@ -46,8 +49,8 @@ const Container = styled.div`
   padding: 3rem calc((100vw - 1300px) / 2);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 800px;
-  background: black;
+  grid-template-rows: 200px;
+  background: #31ce83;
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -57,12 +60,12 @@ const Container = styled.div`
 
 const ColumnLeft = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   padding: 1rem 2rem;
   flex-flow: column;
   width: 90%;
-  height: 96%;
-  margin: 15px;
+  height: 115%;
+  margin: -5em 1em;
   border: 2px solid #000;
   border-radius: 20px;
   background: #eee;
@@ -78,26 +81,25 @@ const ColumnLeft = styled.div`
 `;
 
 const ColumnRight = styled.div`
-  padding: 1rem 2rem;
-  order: ${({ reverse }) => (reverse ? "0" : "2")};
-  display: flex;
-  justify-content: center;
-  align-items: center;
+display: flex;
+align-items: center;
+padding: 1rem 2rem;
+flex-flow: column;
+width: 90%;
+height: 115%;
+margin: -5em 1em;
+border: 2px solid #000;
+border-radius: 20px;
+background: #eee;
 
-  @media screen and (max-width: 768px) {
-    order: 2;
-  }
+h1 {
+  margin-bottom: 1rem;
+  font-size: clamp(1.5rem, 6vw, 2rem);
+}
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-    @media screen and (max-width: 768px) {
-      width: 90%;
-      height: 90%;
-    }
-  }
+p {
+  margin-bottom: 2rem;
+}
 `;
 
-export default InfoSectionPrestamo;
+export default InfoSectionAsociacion;
