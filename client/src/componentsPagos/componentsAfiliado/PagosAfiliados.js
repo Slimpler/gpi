@@ -18,21 +18,13 @@ import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
 
 const columns = [
-  {
-    title: "Id de pago",
-    field: "id_pago",
-    export: false,
-    headerStyle: {
-      backgroundColor: "#01579b",
-    },
-  },
-  {
+  /* {
     title: "Rut del afiliado",
     field: "rut_afiliado",
     headerStyle: {
       backgroundColor: "#01579b",
     },
-  },
+  }, */
   {
     title: "Monto del pago",
     field: "monto_pago",
@@ -54,6 +46,13 @@ const columns = [
   {
     title: "Estado del pago",
     field: "estado_pago",
+    headerStyle: {
+      backgroundColor: "#01579b",
+    },
+  },
+  {
+    title: "Tipo del pago",
+    field: "tipo_pago",
     headerStyle: {
       backgroundColor: "#01579b",
     },
@@ -91,12 +90,14 @@ function PagosAfiliados() {
   const [modalEliminar, setModalEliminar] = useState(false);
 
   const [listPagos, setListpagos] = useState([]);
+
   const [pagoSelect, setPagoSelect] = useState({
     id_pago: "",
     rut_afiliado: "",
     monto_pago: "",
     fecha_pago: "",
     estado_pago: "",
+    tipo_pago: "",
   });
 
   const handleChange = (e) => {
@@ -125,6 +126,7 @@ function PagosAfiliados() {
       monto_pago: pagoSelect.monto_pago,
       fecha_pago: pagoSelect.fecha_pago,
       estado_pago: pagoSelect.estado_pago,
+      tipo_pago: pagoSelect.tipo_pago,
     })
       .then((response) => {
         setListpagos(
@@ -135,6 +137,7 @@ function PagosAfiliados() {
                   monto_pago: pagoSelect.monto_pago,
                   fecha_pago: pagoSelect.fecha_pago,
                   estado_pago: pagoSelect.estado_pago,
+                  tipo_pago: pagoSelect.tipo_pago,
                 }
               : val;
           })
@@ -221,6 +224,14 @@ function PagosAfiliados() {
         name="estado_pago"
         onChange={handleChange}
         value={pagoSelect && pagoSelect.estado_pago}
+      />
+      <br />
+      <TextField
+        className={styles.inputMaterial}
+        label="Tipo del pago"
+        name="tipo_pago"
+        onChange={handleChange}
+        value={pagoSelect && pagoSelect.tipo_pago}
       />
       <br />
       <div align="right">

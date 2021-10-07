@@ -49,7 +49,7 @@ export default function FormDialog() {
   };
 
   // Estados para datos de tabla convenios
-  const [id_pago, setId_pago] = useState(0);
+  const [tipo_pago, setTipo_pago] = useState(0);
   const [rut_afiliado, setRut_afiliado] = useState(0);
   const [monto_pago, setMonto_pago] = useState(0);
   const [fecha_pago, setFecha_pago] = useState("");
@@ -59,6 +59,10 @@ export default function FormDialog() {
 
   const cambioEstado = (event) => {
     setEstado_pago(event.target.value);
+  };
+
+  const cambioTipoPago = (event) => {
+    setTipo_pago(event.target.value);
   };
 
   /*   const [monto, setMonto] = useState(0);
@@ -73,11 +77,11 @@ export default function FormDialog() {
   //--------------------------------
   const agregarPagos = () => {
     Axios.post("http://localhost:3001/createPagos", {
-      id_pago: id_pago,
+      rut_afiliado: rut_afiliado,
       monto_pago: monto_pago,
       fecha_pago: fecha_pago,
       estado_pago: estado_pago,
-      rut_afiliado: rut_afiliado,
+      tipo_pago: tipo_pago,
     }).then(() => {
       console.log("exitoso");
     });
@@ -109,20 +113,21 @@ export default function FormDialog() {
           <DialogContentText>
             Para agregar un pago de un afiliado llenar los siguientes campos:
           </DialogContentText>
-          <p> Datos de Pago </p>
+          <p> Datos Personales </p>
 
           <TextField
             autofocus
             margin="dense"
-            id="id"
-            label="id de Pago"
+            id="rut_afiliado"
+            label="rut_afiliado"
             variant="outlined"
             size="medium"
             onChange={(e) => {
-              setId_pago(e.target.value);
+              setRut_afiliado(e.target.value);
             }}
           />
 
+          <p> Datos de Pago </p>
           <p />
           <TextField
             autofocus
@@ -167,19 +172,26 @@ export default function FormDialog() {
             </Select>
           </FormControl>
 
-          <p> Datos Personales </p>
+          <p />
 
-          <TextField
-            autofocus
-            margin="dense"
-            id="rut_afiliado"
-            label="rut_afiliado"
-            variant="outlined"
-            size="medium"
-            onChange={(e) => {
-              setRut_afiliado(e.target.value);
-            }}
-          />
+          <FormControl variant="outlined">
+            <InputLabel id="demo-simple-select-outlined-label">
+              Estado de pago
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-outlined-label"
+              id="demo-simple-select"
+              value={tipo_pago}
+              onChange={cambioTipoPago}
+              width="100%"
+            >
+              <MenuItem value={1}> pago_convenio </MenuItem>
+              <MenuItem value={2}> pago_asociacion </MenuItem>
+              <MenuItem value={3}> pago_prestamo </MenuItem>
+              <MenuItem value={4}> cuota_incorporacion </MenuItem>
+              <MenuItem value={5}> cuota_mensual </MenuItem>
+            </Select>
+          </FormControl>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
