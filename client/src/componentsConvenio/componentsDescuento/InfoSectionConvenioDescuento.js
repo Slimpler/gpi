@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Button } from "../Button";
 import Icon from '@material-ui/icons/ArrowForward';
 
-const InfoSectionAfiliado = ({
+const InfoSectionConvenioDescuento = ({
   heading,
   heading2,
   paragraphOne,
@@ -17,14 +17,14 @@ const InfoSectionAfiliado = ({
       <Container>
         <ColumnLeft>
           <h1>{heading}</h1>
-          <Button to="/AdministrarConvenios" primary="true">
+          <Button to="/AdministrarConvenioFinanciero " primary="true">
             {buttonLabel}
             <Icon/>
           </Button>
         </ColumnLeft>
         <ColumnRight>
           <h1>{heading2}</h1>
-          <Button to="/AdministrarConvenios" primary="true">
+          <Button to="/AdministrarConvenioComercial" primary="true">
             {buttonLabel}
             <Icon/>
           </Button>
@@ -102,4 +102,4 @@ const ColumnRight = styled.div`
   }
 `;
 
-export default InfoSectionAfiliado;
+export default InfoSectionConvenioDescuento;

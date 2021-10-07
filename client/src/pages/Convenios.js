@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import DropDown from "../componentsPagos/DropDown";
-import InfoSectionAfiliado from "../componentsConvenio/componentsAfiliado/InfoSectionAfiliado";
-import InfoSectionAsociacion from "../componentsConvenio/componentsAsociacion/InfoSectionAsociacion";
+import InfoSectionConvenioFinanciero from "../componentsConvenio/componentsFinanciero/InfoSectionConvenioFinanciero";
+import InfoSectionAsociacion from "../componentsConvenio/componentsComercial/InfoSectionConvenioComercial";
 import Navbar from "../componentsAdministrador/Navbar/Navbar";
-import { InfoData, InfoDataTwo, InfoDataThree, InfoDataFour } from "../componentsPagos/dataPagos/InfoData";
+import { InfoData, InfoDataTwo } from "../componentsConvenio/dataPagos/InfoData";
 import GlobalStyle from "../globalStyles";
 
 function Convenios() {
@@ -16,8 +15,7 @@ function Convenios() {
     <>
       <GlobalStyle />
       <Navbar toggle={toggle} />
-       
-      <InfoSectionAfiliado {...InfoData} />
+      <InfoSectionConvenioFinanciero {...InfoData} />
       <InfoSectionAsociacion {...InfoDataTwo} />
     </>
   );

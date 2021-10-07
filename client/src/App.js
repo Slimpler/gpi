@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages";
 import EntrarPage from "./pages/EntrarPage";
 import PerfilPage from "./pages/PerfilPage";
-import AdministrarConvenios from "./pages/AdministrarConvenios";
+import AdministrarConvenioFinanciero from "./pages/AdministrarConvenioFinanciero";
+import AdministrarConvenioComercial from "./pages/AdministrarConvenioComercial";
+import AdministrarConvenioDescuento from "./pages/AdministrarConvenioDescuento";
 import AdminPage from "./pages/AdminPage";
 import PagosPage from "./pages/PagosPage";
 import PagoAfiliadosPage from "./pages/PagoAfilliadosPage";
@@ -18,6 +20,7 @@ import MisConvenios from './pages/MisConvenios';
 import AdmAfiliados from "./pages/AdmAfiliados";
 import AdministracionAfiliados from "./pages/AdministracionAfiliados";
 import Convenios from "./pages/Convenios";
+
 
 
 
@@ -45,7 +48,9 @@ function App() {
         <Route path="/pagoBonos" component={PagoBonosPage} exact />
         <Route path="/pagoPrestamos" component={PagoPrestamosPage} exact />
         <Route path="/Convenios" component={Convenios} exact />       
-        <Route path="/AdministrarConvenios" component={AdministrarConvenios} exact />
+        <Route path="/AdministrarConvenioFinanciero" component={AdministrarConvenioFinanciero} exact />
+        <Route path="/AdministrarConvenioComercial" component={AdministrarConvenioComercial} exact />
+        <Route path="/AdministrarConvenioDescuento" component={AdministrarConvenioDescuento} exact />
         <Route path="/AdmAfiliados" component={AdmAfiliados} exact />
         <Route path="/AdministracionAfiliados" component={AdministracionAfiliados} exact />
         

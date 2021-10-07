@@ -124,8 +124,8 @@ export default function FormDialog() {
           <TextField
             autofocus
             margin="dense"
-            id="nombre_convenio"
-            label="nombre_convenio"
+            id="nombre_convenio_descuento"
+            label="nombre convenio descuento"
             variant="outlined"
             size="medium"
             onChange={(e) => {

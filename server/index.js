@@ -13,8 +13,8 @@ const db = mysql.createConnection({
   password: "clave123",
   database: "quintero_vf",
 });
-
-app.post("/createPagos", (req, res) => {
+ 
+   app.post("/createPagos", (req, res) => {
   console.log(req.body);
   (id_pago = req.body.id_pago),
     (monto_pago = req.body.monto_pago),
@@ -87,8 +87,67 @@ app.delete("/deletePagos/:id", (req, res) => {
       res.send(result);
     }
   });
+}); 
+ 
+
+//Convenios
+app.post("/createConvenio", (req, res) => {
+  console.log(req.body);
+  (id_convenio = req.body.id_convenio),
+    (nombre_convenio = req.body.nombre_convenio),
+    (fecha_ingreso = req.body.fecha_ingreso),
+    db.query(
+      "INSERT INTO convenio (id_convenio, nombre_convenio, fecha_ingreso) VALUES (?, ?, ?)",
+      [id_convenio, nombre_convenio, fecha_ingreso],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.send("Valores Insertados");
+        }
+      }
+    );
 });
+
+app.get("/showConvenios", (req, res) => {
+  db.query("SELECT * FROM convenio", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+app.put("/editConvenio", (req, res) => {
+  const id_convenio = req.body.id_convenio;
+  const nombre_convenio = req.body.nombre_convenio;
+  const fecha_ingreso = req.body.fecha_ingreso;
+
+  db.query(
+    "UPDATE convenio SET id_convenio = ?, nombre_convenio = ?, fecha_ingreso  WHERE id_convenio = ?",
+    [id_convenio, nombre_convenio, fecha_ingreso],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Valores actualizados");
+      }
+    }
+  );
+}); 
+  app.delete("/deleteConvenio/:id", (req, res) => {
+    const id_convenio = req.params.id_convenio;
+  
+    db.query("DELETE FROM convenio WHERE id_convenio = ? ", id_convenio, (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  
+});  
 
 app.listen(3001, () => {
   console.log("server corriendo en 3001");
-});
+}); 

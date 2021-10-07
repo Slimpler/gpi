@@ -17,14 +17,14 @@ const InfoSectionAsociacion = ({
       <Container>
         <ColumnLeft>
           <h1>{heading}</h1>
-          <Button to="/AdministrarConvenios" primary="true">
+          <Button to="/AdministrarConvenioDescuento " primary="true">
             {buttonLabel}
             <Icon/>
           </Button>
         </ColumnLeft>
         <ColumnRight>
           <h1>{heading2}</h1>
-          <Button to="/AdministrarConvenios" primary="true">
+          <Button to="/" primary="true">
             {buttonLabel}
             <Icon/>
           </Button>

@@ -19,41 +19,27 @@ import SortArrow from "@material-ui/icons/ArrowUpward";
 
 const columns = [
   {
-    title: "ID Empresa",
-    field: "id_pago",
+    title: "id convenio",
+    field: "id_convenio",
     export: false,
     headerStyle: {
       backgroundColor: "#01579b",
     },
   },
   {
-    title: "Empresa",
-    field: "rut_afiliado",
-    headerStyle: {
-      backgroundColor: "#01579b",
-    },
-  },
-  {
     title: "Convenio",
-    field: "monto_pago",
+    field: "nombre_convenio",
     headerStyle: {
       backgroundColor: "#01579b",
     },
   },
   {
     title: "Fecha de ingreso",
-    field: "fecha_pago",
+    field: "fecha_ingreso",
     type: "date",
     dateSetting: {
       format: "dd/MM/yyyy",
     },
-    headerStyle: {
-      backgroundColor: "#01579b",
-    },
-  },
-  {
-    title: "Tipo de convenio",
-    field: "estado_pago",
     headerStyle: {
       backgroundColor: "#01579b",
     },
@@ -85,32 +71,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PagosAfiliados() {
+function AgregarConvenioComercial() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
 
-  const [listPagos, setListpagos] = useState([]);
-  const [pagoSelect, setPagoSelect] = useState({
-    id_pago: "",
-    rut_afiliado: "",
-    monto_pago: "",
-    fecha_pago: "",
-    estado_pago: "",
+  const [listConvenio, setListConvenio] = useState([]);
+  const [convenioSelect, setConvenioSelect] = useState({
+    id_convenio: "",
+    nombre_convenio: "",
+    fecha_ingreso: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setPagoSelect((prevState) => ({
+    setConvenioSelect((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
 
   const peticionGet = async () => {
-    await Axios.get("http://localhost:3001/showPagos")
+    await Axios.get("http://localhost:3001/showConvenios")
       .then((response) => {
-        setListpagos(response.data);
+        setListConvenio(response.data);
         console.log(response.data);
       })
       .catch((error) => {
@@ -119,22 +103,19 @@ function PagosAfiliados() {
   };
 
   const peticionPut = async (id) => {
-    await Axios.put("http://localhost:3001/editPagos", {
-      id_pago: pagoSelect.id_pago,
-      rut_afiliado: pagoSelect.rut_afiliado,
-      monto_pago: pagoSelect.monto_pago,
-      fecha_pago: pagoSelect.fecha_pago,
-      estado_pago: pagoSelect.estado_pago,
+    await Axios.put("http://localhost:3001/editConvenio", {
+      id_convenio: convenioSelect.id_convenio,
+      nombre_convenio: convenioSelect.nombre_convenio,
+      fecha_ingreso: convenioSelect.fecha_ingreso,
     })
       .then((response) => {
-        setListpagos(
-          listPagos.map((val) => {
-            return val.id_pago === pagoSelect.id_pago
+        setListConvenio(
+          listConvenio.map((val) => {
+            return val.id_convenio === convenioSelect.id_convenio
               ? {
-                  rut_afiliado: pagoSelect.rut_afiliado,
-                  monto_pago: pagoSelect.monto_pago,
-                  fecha_pago: pagoSelect.fecha_pago,
-                  estado_pago: pagoSelect.estado_pago,
+                  id_convenio: convenioSelect.id_convenio,
+                  nombre_convenio: convenioSelect.nombre_convenio,
+                  fecha_ingreso: convenioSelect.fecha_ingreso,
                 }
               : val;
           })
@@ -147,11 +128,11 @@ function PagosAfiliados() {
   };
 
   const peticionDelete = async (id) => {
-    await Axios.delete(`http://localhost:3001/deletePagos/${id}`)
+    await Axios.delete(`http://localhost:3001/deleteConvenio/${id}`)
       .then((response) => {
-        setListpagos(
-          listPagos.filter((val) => {
-            return val.id_pago !== pagoSelect.id_pago;
+        setListConvenio(
+          listConvenio.filter((val) => {
+            return val.id_convenio !== convenioSelect.id_convenio;
           })
         );
         OCModalEliminar();
@@ -161,8 +142,8 @@ function PagosAfiliados() {
       });
   };
 
-  const SelectPago = (id_pago, caso) => {
-    setPagoSelect(id_pago);
+  const SelectConvenio = (id_convenio, caso) => {
+    setConvenioSelect(id_convenio);
     caso === "Editar" ? OCModalEditar() : OCModalEliminar();
   };
 
@@ -181,48 +162,31 @@ function PagosAfiliados() {
   //Interfaz de modal editar
   const bodyEditar = (
     <div className={styles.modal}>
-      <h3>Editar Pago</h3>
+      <h3>Editar Convenio</h3>
       <TextField
         className={styles.inputMaterial}
-        label="idPago"
-        name="id_pago"
+        label="id convenio"
+        name="id_convenio"
         onChange={handleChange}
-        value={pagoSelect && pagoSelect.id_pago}
+        value={convenioSelect && convenioSelect.id_convenio}
       />
       <br />
       <TextField
         className={styles.inputMaterial}
-        label="Rut afiliado"
-        name="rut_afiliado"
+        label="Nombre Convenio"
+        name="nombre_convenio"
         onChange={handleChange}
-        value={pagoSelect && pagoSelect.rut_afiliado}
+        value={convenioSelect && convenioSelect.nombre_convenio}
       />
-      <br />
+
       <TextField
         className={styles.inputMaterial}
-        label="Monto de pago"
-        name="monto_pago"
-        onChange={handleChange}
-        value={pagoSelect && pagoSelect.monto_pago}
-      />
-      <br />
-      <TextField
-        className={styles.inputMaterial}
-        name="fecha_pago"
+        name="fecha_ingreso"
         type="date"
         format="yyyy-MM-dd"
         onChange={handleChange}
-        value={pagoSelect && pagoSelect.fecha_pago}
+        value={convenioSelect && convenioSelect.fecha_ingreso}
       />
-      <br />
-      <TextField
-        className={styles.inputMaterial}
-        label="Estado del pago"
-        name="estado_pago"
-        onChange={handleChange}
-        value={pagoSelect && pagoSelect.estado_pago}
-      />
-      <br />
       <div align="right">
         <Button color="primary" onClick={() => peticionPut()}>
           Editar
@@ -236,8 +200,8 @@ function PagosAfiliados() {
   const bodyEliminar = (
     <div className={styles.modal}>
       <p>
-        Estás seguro que deseas eliminar el siguiente pago:{" "}
-        <b>{pagoSelect && pagoSelect.monto_pago}</b>?{" "}
+        Estás seguro que deseas eliminar el siguiente Convenio:{" "}
+        <b>{convenioSelect && convenioSelect.id_convenio}</b>?{" "}
       </p>
       <div align="right">
         <Button color="secondary" onClick={() => peticionDelete()}>
@@ -252,13 +216,13 @@ function PagosAfiliados() {
     <div className={styles.container}>
       <MaterialTable
         title="Lista de Convenios"
-        data={listPagos}
+        data={listConvenio}
         columns={columns}
         actions={[
           {
             icon: EditIcon,
             tooltip: "Editar Convenio",
-            onClick: (event, rowData) => SelectPago(rowData, "Editar"),
+            onClick: (event, rowData) => SelectConvenio(rowData, "Editar"),
             iconProps: {
               style: { backgroundColor: "#33ACFF" },
             },
@@ -266,7 +230,7 @@ function PagosAfiliados() {
           {
             icon: DeleteIcon,
             tooltip: "Eliminar Convenio",
-            onClick: (event, rowData) => SelectPago(rowData, "Eliminar"),
+            onClick: (event, rowData) => SelectConvenio(rowData, "Eliminar"),
           },
         ]}
         options={{
@@ -321,4 +285,4 @@ function PagosAfiliados() {
     </div>
   );
 }
-export default PagosAfiliados;
+export default AgregarConvenioComercial;
