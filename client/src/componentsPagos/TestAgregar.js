@@ -8,7 +8,6 @@ import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import { makeStyles } from "@material-ui/core/styles";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
@@ -17,16 +16,6 @@ import Box from "@material-ui/core/Box";
 
 import { useState } from "react";
 import Axios from "axios";
-
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
 
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
@@ -84,6 +73,7 @@ export default function FormDialog() {
       tipo_pago: tipo_pago,
     }).then(() => {
       console.log("exitoso");
+      handleClose();
     });
   };
 
@@ -164,7 +154,6 @@ export default function FormDialog() {
               id="demo-simple-select"
               value={estado_pago}
               onChange={cambioEstado}
-              width="100%"
             >
               <MenuItem value={1}> Pendiente </MenuItem>
               <MenuItem value={2}> Aceptado </MenuItem>
@@ -183,7 +172,6 @@ export default function FormDialog() {
               id="demo-simple-select"
               value={tipo_pago}
               onChange={cambioTipoPago}
-              width="100%"
             >
               <MenuItem value={1}> pago_convenio </MenuItem>
               <MenuItem value={2}> pago_asociacion </MenuItem>

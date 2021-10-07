@@ -93,7 +93,6 @@ function PagosAfiliados() {
 
   const [pagoSelect, setPagoSelect] = useState({
     id_pago: "",
-    rut_afiliado: "",
     monto_pago: "",
     fecha_pago: "",
     estado_pago: "",
@@ -107,7 +106,7 @@ function PagosAfiliados() {
       [name]: value,
     }));
   };
- 
+
   const peticionGet = async () => {
     await Axios.get("http://localhost:3001/showPagos")
       .then((response) => {
@@ -122,7 +121,6 @@ function PagosAfiliados() {
   const peticionPut = async (id) => {
     await Axios.put("http://localhost:3001/editPagos", {
       id_pago: pagoSelect.id_pago,
-      rut_afiliado: pagoSelect.rut_afiliado,
       monto_pago: pagoSelect.monto_pago,
       fecha_pago: pagoSelect.fecha_pago,
       estado_pago: pagoSelect.estado_pago,
@@ -133,7 +131,6 @@ function PagosAfiliados() {
           listPagos.map((val) => {
             return val.id_pago === pagoSelect.id_pago
               ? {
-                  rut_afiliado: pagoSelect.rut_afiliado,
                   monto_pago: pagoSelect.monto_pago,
                   fecha_pago: pagoSelect.fecha_pago,
                   estado_pago: pagoSelect.estado_pago,
@@ -150,7 +147,9 @@ function PagosAfiliados() {
   };
 
   const peticionDelete = async (id) => {
-    await Axios.delete(`http://localhost:3001/deletePagos/${id}`)
+    await Axios.delete(`http://localhost:3001/deletePagos/${id}`, {
+      id_pago: pagoSelect.id_pago,
+    })
       .then((response) => {
         setListpagos(
           listPagos.filter((val) => {
@@ -185,21 +184,13 @@ function PagosAfiliados() {
   const bodyEditar = (
     <div className={styles.modal}>
       <h3>Editar Pago</h3>
-      <TextField
-        className={styles.inputMaterial}
-        label="idPago"
-        name="id_pago"
-        onChange={handleChange}
-        value={pagoSelect && pagoSelect.id_pago}
-      />
-      <br />
-      <TextField
+      {/* <TextField
         className={styles.inputMaterial}
         label="Rut afiliado"
         name="rut_afiliado"
         onChange={handleChange}
         value={pagoSelect && pagoSelect.rut_afiliado}
-      />
+      /> */}
       <br />
       <TextField
         className={styles.inputMaterial}
