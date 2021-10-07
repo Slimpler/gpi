@@ -13,8 +13,8 @@ const db = mysql.createConnection({
   password: "clave123",
   database: "quintero_vf",
 });
- 
-   app.post("/createPagos", (req, res) => {
+
+app.post("/createPagos", (req, res) => {
   console.log(req.body);
   (id_pago = req.body.id_pago),
     (monto_pago = req.body.monto_pago),
@@ -34,7 +34,7 @@ const db = mysql.createConnection({
       }
     );
 
-  /*   query2() = db.query(
+  /*db.query(
     "INSERT INTO pagos_afiliados (id_pago, rut_afiliado) VALUES ((SELECT id_pago FROM pagos WHERE id_pago=?), ( SELECT  rut_afiliado FROM afiliado WHERE rut_afiliado = ?))",
     [id_pago, rut_afiliado],
     (err, result) => {
@@ -59,14 +59,14 @@ app.get("/showPagos", (req, res) => {
 
 app.put("/editPagos", (req, res) => {
   const id_pago = req.body.id_pago;
-  const rut_afiliado = req.body.rut_afiliado;
   const monto_pago = req.body.monto_pago;
   const fecha_pago = req.body.fecha_pago;
   const estado_pago = req.body.estado_pago;
+  const tipo_pago = req.body.tipo_pago;
 
   db.query(
-    "UPDATE pagos SET rut_afiliado = ?, monto_pago = ?, fecha_pago = ?, estado_pago = ? WHERE id_pago = ?",
-    [rut_afiliado, monto_pago, fecha_pago, estado_pago, id_pago],
+    "UPDATE pagos SET monto_pago = ?, fecha_pago = ?, estado_pago = ?, tipo_pago = ? WHERE id_pago = ?",
+    [monto_pago, fecha_pago, estado_pago, tipo_pago, id_pago],
     (err, result) => {
       if (err) {
         console.log(err);
@@ -80,15 +80,14 @@ app.put("/editPagos", (req, res) => {
 app.delete("/deletePagos/:id", (req, res) => {
   const id_pago = req.params.id_pago;
 
-  db.query("DELETE FROM pagos WHERE id_pago = ? ", id_pago, (err, result) => {
+  db.query("DELETE FROM pagos WHERE id_pago = ?", id_pago, (err, result) => {
     if (err) {
       console.log(err);
     } else {
       res.send(result);
     }
   });
-}); 
- 
+});
 
 //Convenios
 app.post("/createConvenio", (req, res) => {
@@ -134,20 +133,23 @@ app.put("/editConvenio", (req, res) => {
       }
     }
   );
-}); 
-  app.delete("/deleteConvenio/:id", (req, res) => {
-    const id_convenio = req.params.id_convenio;
-  
-    db.query("DELETE FROM convenio WHERE id_convenio = ? ", id_convenio, (err, result) => {
+});
+app.delete("/deleteConvenio/:id", (req, res) => {
+  const id_convenio = req.params.id_convenio;
+
+  db.query(
+    "DELETE FROM convenio WHERE id_convenio = ? ",
+    id_convenio,
+    (err, result) => {
       if (err) {
         console.log(err);
       } else {
         res.send(result);
       }
-    });
-  
-});  
+    }
+  );
+});
 
 app.listen(3001, () => {
   console.log("server corriendo en 3001");
-}); 
+});
