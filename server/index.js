@@ -10,8 +10,8 @@ app.use(express.json());
 const db = mysql.createConnection({
   user: "root",
   host: "localhost",
-  password: "password",
-  database: "quintero",
+  password: "clave123",
+  database: "quintero_vf",
 });
  
    app.post("/createPagos", (req, res) => {
@@ -20,10 +20,11 @@ const db = mysql.createConnection({
     (monto_pago = req.body.monto_pago),
     (fecha_pago = req.body.fecha_pago),
     (estado_pago = req.body.estado_pago),
+    (tipo_pago = req.body.tipo_pago),
     (rut_afiliado = req.body.rut_afiliado),
     db.query(
-      "INSERT INTO pagos (id_pago, monto_pago, fecha_pago, estado_pago, rut_afiliado) VALUES (?, ?, ?, ?, ?)",
-      [id_pago, monto_pago, fecha_pago, estado_pago, rut_afiliado],
+      "INSERT INTO pagos (monto_pago, fecha_pago, estado_pago, tipo_pago ) VALUES (?, ?, ?, ?)",
+      [monto_pago, fecha_pago, estado_pago, tipo_pago],
       (err, result) => {
         if (err) {
           console.log(err);
@@ -32,6 +33,18 @@ const db = mysql.createConnection({
         }
       }
     );
+
+  /*   query2() = db.query(
+    "INSERT INTO pagos_afiliados (id_pago, rut_afiliado) VALUES ((SELECT id_pago FROM pagos WHERE id_pago=?), ( SELECT  rut_afiliado FROM afiliado WHERE rut_afiliado = ?))",
+    [id_pago, rut_afiliado],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send("Valores insertados");
+      }
+    }
+  ); */
 });
 
 app.get("/showPagos", (req, res) => {
