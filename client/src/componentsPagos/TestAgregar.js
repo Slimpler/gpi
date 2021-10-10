@@ -38,8 +38,8 @@ export default function FormDialog() {
   };
 
   // Estados para datos de tabla convenios
-  const [tipo_pago, setTipo_pago] = useState(0);
-  const [rut_afiliado, setRut_afiliado] = useState(0);
+  
+  const [rut_afiliado, setRut_afiliado] = useState("");
   const [monto_pago, setMonto_pago] = useState(0);
   const [fecha_pago, setFecha_pago] = useState("");
 
@@ -50,8 +50,10 @@ export default function FormDialog() {
     setEstado_pago(event.target.value);
   };
 
-  const cambioTipoPago = (event) => {
-    setTipo_pago(event.target.value);
+  const [descripcion, setDescripcion] = useState("");
+
+  const cambioDescripcion = (event) => {
+    setDescripcion(event.target.value);
   };
 
   /*   const [monto, setMonto] = useState(0);
@@ -65,14 +67,22 @@ export default function FormDialog() {
 
   //--------------------------------
   const agregarPagos = () => {
-    Axios.post("http://localhost:3001/createPagos", {
-      rut_afiliado: rut_afiliado,
+    Axios.post("http://localhost:3001/createPagoAfiliado", {
       monto_pago: monto_pago,
       fecha_pago: fecha_pago,
       estado_pago: estado_pago,
-      tipo_pago: tipo_pago,
+      descripcion: descripcion,
     }).then(() => {
-      console.log("exitoso");
+      console.log("Exitoso");
+      handleClose();
+    });
+  };
+
+  const agregarPagosAfiliados = () => {
+    Axios.post("http://localhost:3001/createPagosAfiliados", {
+      rut_afiliado: rut_afiliado,
+      }).then(() => {
+      console.log("Exitoso");
       handleClose();
     });
   };
@@ -165,27 +175,27 @@ export default function FormDialog() {
 
           <FormControl variant="outlined">
             <InputLabel id="demo-simple-select-outlined-label">
-              Estado de pago
+              Descripcion
             </InputLabel>
             <Select
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select"
-              value={tipo_pago}
-              onChange={cambioTipoPago}
+              value={descripcion}
+              onChange={cambioDescripcion}
             >
-              <MenuItem value={1}> pago_convenio </MenuItem>
-              <MenuItem value={2}> pago_asociacion </MenuItem>
-              <MenuItem value={3}> pago_prestamo </MenuItem>
-              <MenuItem value={4}> cuota_incorporacion </MenuItem>
-              <MenuItem value={5}> cuota_mensual </MenuItem>
+              <MenuItem value={1}> Pago cuota </MenuItem>
+              <MenuItem value={2}> Pago convenio </MenuItem>
+              <MenuItem value={3}> Pago prestamo </MenuItem>
+              <MenuItem value={4}> Pago incorporacion </MenuItem>
             </Select>
           </FormControl>
+        
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button onClick={agregarPagos} color="primary">
+          <Button onClick={(e) => {agregarPagos();agregarPagosAfiliados();handleClose()}} color="primary">
             agregar pago
           </Button>
         </DialogActions>
