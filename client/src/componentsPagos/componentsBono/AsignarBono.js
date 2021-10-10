@@ -1,33 +1,21 @@
-//Diálogo que aparece al asignar un bono
+//Diálogo que aparece al agregar un nuevo pago
 
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
+import React from "react";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import Box from "@material-ui/core/Box";
 
-
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-  },
-  selectEmpty: {
-    marginTop: theme.spacing(2),
-  },
-}));
-
+import { useState } from "react";
+import Axios from "axios";
 
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
@@ -39,68 +27,176 @@ export default function FormDialog() {
   const handleClose = () => {
     setOpen(false);
   };
-//Constantes del drop-down con los tipos de pagos que se puede ingresar
-  const classes = useStyles();
-  const [tipo, setTipo] = React.useState('');
-  
-  const handleChange = (event) => {
-    setTipo(event.target.value);
+
+  //-----------------------------------------//
+  //Ubicación del botón
+  const mystyle = {
+    height: 80,
+    width: "100%",
+    padding: "0px",
+    margin: "80px 15px 15px 0px",
   };
-//-----------------------------------------//
-//Ubicación del botón
-const mystyle = {
-  height: 100,
-  width: "40%",
-  //padding: "100px",
-  margin: '45px 0px 0px 550px',
-};
+
+  // Estados para datos de tabla convenios
+  
+  const [rut_afiliado, setRut_afiliado] = useState(0);
+  const [monto_pago, setMonto_pago] = useState(0);
+  const [fecha_pago, setFecha_pago] = useState("");
+
+  //estados
+  const [estado_pago, setEstado_pago] = useState("");
+
+  const cambioEstado = (event) => {
+    setEstado_pago(event.target.value);
+  };
+
+  const [descripcion, setDescripcion] = useState("");
+
+  const cambioDescripcion = (event) => {
+    setDescripcion(event.target.value);
+  };
+
+  /*   const [monto, setMonto] = useState(0);
+  const [fecha, setFecha] = useState("");
+  const [rutAfiliado, setRutafiliado] = useState(0);
+  const [estado, setEstado] = useState("");
+
+  const cambioEstado = (e) => {
+    setEstado(e.target.value);
+  }; */
+
+  //--------------------------------
+  const agregarPagos = () => {
+    Axios.post("http://localhost:3001/createPagoAfiliado", {
+      monto_pago: monto_pago,
+      fecha_pago: fecha_pago,
+      estado_pago: estado_pago,
+      descripcion: descripcion,
+    }).then(() => {
+      console.log("exitoso");
+      handleClose();
+    });
+  };
+
+  const agregarPagosAfiliados = () => {
+    Axios.post("http://localhost:3001/createPagosAfiliados", {
+      rut_afiliado: rut_afiliado,
+      }).then(() => {
+      console.log("Exitoso");
+      handleClose();
+    });
+  };
 
   return (
     <div>
       <div style={mystyle}>
-        <Box display="flex" justifyContent="flex-end" m={1} p={1}>
+        <Box display="flex" justifyContent="center" m={1} p={1}>
           <Box p={5}>
-            <Button variant="contained" color="primary" onClick={handleClickOpen} placement="right-start">
-                Asignar Bono
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleClickOpen}
+            >
+              Agregar bono
             </Button>
           </Box>
         </Box>
       </div>
 
-      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-      <DialogTitle id="form-dialog-title">Asignar Bono</DialogTitle>
-      <DialogContent>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">Agregar bono</DialogTitle>
+        <DialogContent>
           <DialogContentText>
-              Para asignar un tipo de bono a los afiliados, seleccione una de las opciones:
-          </DialogContentText>           
-          <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel id="demo-simple-select-outlined-label">Tipo</InputLabel>
-                <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                value={tipo}
-                onChange={handleChange}
-                label="tipo"
-                width="100%"
-                >
-                  <MenuItem value="">
-                      <em> Seleccionar </em>
-                  </MenuItem>
-                  <MenuItem value={10}>Bono Fiestas Patrias</MenuItem>
-                  <MenuItem value={20}>Bono Navidad</MenuItem>
-                </Select>
+            Para agregar un bono a un afiliado llenar los siguientes campos:
+          </DialogContentText>
+          <p> Datos Personales </p>
+
+          <TextField
+            autofocus
+            margin="dense"
+            id="rut_afiliado"
+            label="rut_afiliado"
+            variant="outlined"
+            size="medium"
+            onChange={(e) => {
+              setRut_afiliado(e.target.value);
+            }}
+          />
+
+          <p> Datos del bono </p>
+          <p />
+          <TextField
+            autofocus
+            margin="dense"
+            id="monto_pago"
+            label="monto_pago"
+            variant="outlined"
+            size="medium"
+            onChange={(e) => {
+              setMonto_pago(e.target.value);
+            }}
+          />
+          <p />
+          <TextField
+            autofocus
+            margin="dense"
+            id="fecha_pago"
+            variant="outlined"
+            size="medium"
+            type="date"
+            onChange={(e) => {
+              setFecha_pago(e.target.value);
+            }}
+          />
+
+          <p />
+
+          <FormControl variant="outlined">
+            <InputLabel id="demo-simple-select-outlined-label">
+              Estado del bono
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-outlined-label"
+              id="demo-simple-select"
+              value={estado_pago}
+              onChange={cambioEstado}
+            >
+              <MenuItem value={1}> Pendiente </MenuItem>
+              <MenuItem value={2}> Aceptado </MenuItem>
+              <MenuItem value={3}> Rechazado </MenuItem>
+            </Select>
+          </FormControl>
+
+          <p />
+
+          <FormControl variant="outlined">
+            <InputLabel id="demo-simple-select-outlined-label">
+              Descripcion
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-outlined-label"
+              id="demo-simple-select"
+              value={descripcion}
+              onChange={cambioDescripcion}
+            >
+              <MenuItem value={6}> Bono Fiestas Patrias </MenuItem>
+              <MenuItem value={7}> Bono navidad </MenuItem>
+            </Select>
           </FormControl>
         </DialogContent>
         <DialogActions>
-        <Button onClick={handleClose} color="primary">
+          <Button onClick={handleClose} color="primary">
             Cancelar
-        </Button>
-        <Button onClick={handleClose} color="primary">
-            Asignar Bono
-        </Button>
+          </Button>
+          <Button onClick={(e) => {agregarPagos();agregarPagosAfiliados();handleClose()}} color="primary">
+            Agregar bono
+          </Button>
         </DialogActions>
       </Dialog>
-        
     </div>
   );
 }
