@@ -1,19 +1,22 @@
 const express = require("express");
 const app = express();
-const mysql = require("mysql");
 const cors = require("cors");
 const e = require("express");
+const morgan = require('morgan');
 
+const db = require('./database')
+//settings
+app.set('port', process.env.PORT || 3001);
+app.set('json spaces', 2);
+
+// middleware
+app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 
-const db = mysql.createConnection({
-  user: "root",
-  host: "localhost",
-  password: "Bolano12",
-  database: "quintero_vf",
-});
 
+//routes
+app.use(require('./routes/FormAfiliate'));
 
 // ------------------------------- Queries --------------------------------------
 
@@ -230,6 +233,7 @@ app.delete("/deleteConvenio/:id", (req, res) => {
   );
 });
 
+
 app.listen(3001, () => {
-  console.log("server corriendo en 3001");
+  console.log(`Server corriendo en ${app.get(`port`)}`);
 });
