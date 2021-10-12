@@ -4,7 +4,7 @@ const router = Router();
 const db = require('../database')
 
 router.get('/datosFormAfiliado', (req, res) => {
-    db.query('SELECT * FROM afiliado', (err, result) => {
+    db.query('SELECT * FROM solicitud_afiliados', (err, result) => {
         if(!err) {
             res.json(result);
         }else{
@@ -15,15 +15,15 @@ router.get('/datosFormAfiliado', (req, res) => {
 
 router.post("/createFormulario", (req, res) => {
     console.log(req.body);
-      (rut_afiliado = req.body.rut_afiliado),
-      (nombre = req.body.nombre),
+      (rut_func = req.body.rut_func),
+      (nombre_func = req.body.nombre_func),
       (telefono = req.body.telefono),
       (celular = req.body.celular),
-      (sueldo_afiliado = req.body.sueldo_afiliado),
-      (antiguedad_afiliado = req.body.antiguedad_afiliado),
+      (sueldo_func = req.body.sueldo_func),
+      (antiguedad_func = req.body.antiguedad_func),
       db.query(
-        "INSERT INTO afiliado (rut_afiliado, nombre, telefono, celular, sueldo_afiliado, antiguedad_afiliado) VALUES (?, ?, ?, ?, ?, ?)",
-        [rut_afiliado, nombre, telefono, celular, sueldo_afiliado, antiguedad_afiliado],
+        "INSERT INTO solicitud_afiliados (rut_func, nombre_func, telefono, celular, sueldo_func, antiguedad_func) VALUES (?, ?, ?, ?, ?, ?)",
+        [rut_func, nombre_func, telefono, celular, sueldo_func, antiguedad_func],
         (err, result) => {
           if (err) {
             console.log(err);

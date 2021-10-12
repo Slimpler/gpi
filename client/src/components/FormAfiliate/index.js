@@ -23,23 +23,23 @@ import SelectContract from "./Select/index";
 const FormAfiliate = () => {
     const url = "http://localhost:3001/createFormulario"
     const [values, setValues] = useState({
-        rut_afiliado: "",
-        nombre: "",
+        rut_func: "",
+        nombre_func: "",
         telefono: "",
         celular: "",
-        sueldo_afiliado: "",
-        antiguedad_afiliado: "",
+        sueldo_func: "",
+        antiguedad_func: "",
      });
     
      function submit(e){
       //  e.preventDefault();
        Axios.post(url, {
-          rut_afiliado: values.rut_afiliado,
-          nombre: values.nombre,
+          rut_func: values.rut_func,
+          nombre_func: values.nombre_func,
           telefono: values.telefono,
           celular: values.celular,
-          sueldo_afiliado: values.sueldo_afiliado,
-          antiguedad_afiliado: values.antiguedad_afiliado,
+          sueldo_func: values.sueldo_func,
+          antiguedad_func: values.antiguedad_func,
        }).then(res=> {
            console.log("Envio exitoso");
        })
@@ -64,26 +64,27 @@ const FormAfiliate = () => {
             <Grid>
               <Grid2>
               <LabelStyled>Nombres y Apellidos: </LabelStyled>
-              <InputStyled onChange={(e)=>handle(e)} id="nombre" value={values.nombre} type="text" required size="35"/>
+              <InputStyled onChange={(e)=>handle(e)} id="nombre_func" value={values.nombre_func} type="text" required size="35"/>
               <LabelStyled>RUT: </LabelStyled>
               <InputStyled
                 onChange={(e)=>handle(e)}
-                value={values.rut_afiliado}
-                type="tel"
-                id="rut_afiliado"
+                value={values.rut_func}
+                type="tex"
+                id="rut_func"
                 placeholder="Ejemplo: 123456789"
 
                 required
               />
               <LabelStyled>Telefono: </LabelStyled>
-              <InputStyled onChange={(e)=>handle(e)} id="telefono" value={values.telefono} type="tel" required/>
-              <LabelStyled>Celular</LabelStyled>
-              <InputStyled onChange={(e)=>handle(e)} id="celular" value={values.celular} type="tel" required /> 
+              <InputStyled onChange={(e)=>handle(e)} id="telefono" value={values.telefono} type="tel"/>
+              <LabelStyled>Celular:</LabelStyled>
+              <InputStyled onChange={(e)=>handle(e)} id="celular" 
+              placeholder="Ejemplo: 994589528" value={values.celular} type="tel" required /> 
 
-            <LabelStyled>Sueldo Afiliado</LabelStyled>
-            <InputStyled onChange={(e)=>handle(e)} id="sueldo_afiliado" value={values.sueldo_afiliado} type="text" required />
-            <LabelStyled>Antiguedad Afiliado</LabelStyled>
-            <InputStyled onChange={(e)=>handle(e)} id="antiguedad_afiliado" value={values.antiguedad_afiliado} type="date" required  />
+            <LabelStyled>Sueldo:</LabelStyled>
+            <InputStyled onChange={(e)=>handle(e)} id="sueldo_func" value={values.sueldo_func} type="number" required />
+            <LabelStyled>Antiguedad:</LabelStyled>
+            <InputStyled onChange={(e)=>handle(e)} id="antiguedad_func" value={values.antiguedad_func} type="date" required  />
           
           
             <ButtonStyled >Enviar</ButtonStyled>
