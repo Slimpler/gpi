@@ -49,15 +49,15 @@ export default function FormDialog() {
   };
 
    // Estados para datos de tabla convenios
-   const [id_convD, setid_convD] = useState(0);
-   const [nombre_convD, setnombre_convD] = useState(0);
-   const [fecha_convD, setfecha_convD] = useState("");
+   const [id_convF, setid_convF] = useState(0);
+   const [nombre_convF, setnombre_convF] = useState(0);
+   const [fecha_convF, setfecha_convF] = useState("");
  
-  const agregarConvenioD = () => {
-    Axios.post("http://localhost:3001/createConvenioD", {
-      id_convD: id_convD,
-      nombre_convD: nombre_convD,
-      fecha_convD: fecha_convD,
+  const agregarConvenioF = () => {
+    Axios.post("http://localhost:3001/createConvenioF", {
+      id_convF: id_convF,
+      nombre_convF: nombre_convF,
+      fecha_convF: fecha_convF,
     }).then(() => {
       console.log("exitoso");
     });
@@ -73,7 +73,7 @@ export default function FormDialog() {
               color="primary"
               onClick={handleClickOpen}
             >
-              Agregar Convenio de Descuento
+              Agregar Convenio Financiero
             </Button>
           </Box>
         </Box>
@@ -84,7 +84,7 @@ export default function FormDialog() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">agregar convenio de descuento</DialogTitle>
+        <DialogTitle id="form-dialog-title">agregar convenio financiero</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Para agregar un convenio llenar los siguientes campos:
@@ -94,12 +94,12 @@ export default function FormDialog() {
        {/*    <TextField
             autofocus
             margin="dense"
-            id="id_convD"
+            id="id_convF"
             label="id convenio"
             variant="outlined"
             size="medium"
             onChange={(e) => {
-              setid_convD(e.target.value);
+              setid_convF(e.target.value);
             }}
           />  */}
 
@@ -107,24 +107,24 @@ export default function FormDialog() {
           <TextField
             autofocus
             margin="dense"
-            id="nombre_convD"
+            id="nombre_convF"
             label="nombre convenio"
             variant="outlined"
             size="medium"
             onChange={(e) => {
-              setnombre_convD(e.target.value);
+              setnombre_convF(e.target.value);
             }}
           />
           <p />
           <TextField
             autofocus
             margin="dense"
-            id="fecha_convD"
+            id="fecha_convF"
             variant="outlined"
             size="medium"
             type="date"
             onChange={(e) => {
-              setfecha_convD(e.target.value);
+              setfecha_convF(e.target.value);
             }}
           />
 
@@ -133,7 +133,7 @@ export default function FormDialog() {
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button onClick={agregarConvenioD} color="primary">
+          <Button onClick={agregarConvenioF} color="primary">
             Agregar Convenio 
           </Button>
         </DialogActions>

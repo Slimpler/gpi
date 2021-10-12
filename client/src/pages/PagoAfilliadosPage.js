@@ -22,7 +22,7 @@ function PagoAfiliadosPage() {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
-  };
+  }; 
 
   return (
     </*  style={{ backgroundColor: "#eee", height: "100v" }} */>
