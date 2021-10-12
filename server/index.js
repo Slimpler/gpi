@@ -3,6 +3,7 @@ const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
 const e = require("express");
+const { query } = require("express");
 
 app.use(cors());
 app.use(express.json());
@@ -14,64 +15,98 @@ const db = mysql.createConnection({
   database: "quintero_vf",
 });
 
-app.post("/createPagos", (req, res) => {
+app.post("/createPagoAfiliado", (req, res) => {
   console.log(req.body);
   (id_pago = req.body.id_pago),
     (monto_pago = req.body.monto_pago),
     (fecha_pago = req.body.fecha_pago),
     (estado_pago = req.body.estado_pago),
-    (tipo_pago = req.body.tipo_pago),
-    (rut_afiliado = req.body.rut_afiliado),
+    (descripcion = req.body.descripcion),
+    (tipo_pago = "Pago afiliado"),
     db.query(
-      "INSERT INTO pagos (monto_pago, fecha_pago, estado_pago, tipo_pago ) VALUES (?, ?, ?, ?)",
-      [monto_pago, fecha_pago, estado_pago, tipo_pago],
+      "INSERT INTO pagos (monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion ) VALUES (?, ?, ?, ?, ?)",
+      [monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion],
       (err, result) => {
         if (err) {
           console.log(err);
         } else {
-          res.send("Valores Insertados");
+          console.log(
+            monto_pago,
+            fecha_pago,
+            estado_pago,
+            tipo_pago,
+            descripcion,
+            "insertados"
+          );
         }
       }
     );
+});
 
-  /*db.query(
-    "INSERT INTO pagos_afiliados (id_pago, rut_afiliado) VALUES ((SELECT id_pago FROM pagos WHERE id_pago=?), ( SELECT  rut_afiliado FROM afiliado WHERE rut_afiliado = ?))",
-    [id_pago, rut_afiliado],
+app.post("/createPagosAfiliados", (req, res) => {
+  (rut_afiliado = req.body.rut_afiliado),
+    db.query(
+      "INSERT INTO pagos_afiliados (id_pago, rut_afiliado) VALUES ((SELECT MAX(id_pago) FROM pagos), (SELECT rut_afiliado FROM afiliado where rut_afiliado = ?))",
+      [rut_afiliado],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log(rut_afiliado, "insertado");
+        }
+      }
+    );
+});
+
+app.get("/showPagosAfiliados", (req, res) => {
+  db.query(
+    "select p.id_pago, pa.rut_afiliado, p.monto_pago, p.fecha_pago, p.estado_pago, p.tipo_pago, p.descripcion from pagos p join pagos_afiliados pa on p.id_pago = pa.id_pago",
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
-        res.send("Valores insertados");
+        res.send(result);
       }
     }
-  ); */
+  );
 });
 
-app.get("/showPagos", (req, res) => {
-  db.query("SELECT * FROM pagos", (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result);
-    }
-  });
-});
-
-app.put("/editPagos", (req, res) => {
+app.put("/editPagoAfiliado", (req, res) => {
   const id_pago = req.body.id_pago;
   const monto_pago = req.body.monto_pago;
   const fecha_pago = req.body.fecha_pago;
   const estado_pago = req.body.estado_pago;
   const tipo_pago = req.body.tipo_pago;
+  const descripcion = req.body.descripcion;
 
   db.query(
-    "UPDATE pagos SET monto_pago = ?, fecha_pago = ?, estado_pago = ?, tipo_pago = ? WHERE id_pago = ?",
-    [monto_pago, fecha_pago, estado_pago, tipo_pago, id_pago],
+    "UPDATE pagos SET monto_pago = ?, fecha_pago = ?, estado_pago = ?, tipo_pago = ?, descripcion = ? WHERE id_pago = ?",
+    [monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion, id_pago],
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
         res.send("Valores actualizados");
+      }
+    }
+  );
+});
+
+app.put("/editPagosAfiliados", (req, res) => {
+  const id_pago = req.body.id_pago;
+  const rut_afiliado = req.body.rut_afiliado;
+
+  db.query(
+    "UPDATE pagos_afiliados SET rut_afiliado = ? WHERE id_pago = ?",
+    [rut_afiliado, id_pago],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log(
+          "Valores actualizados en la tabla pagos_afiliados",
+          id_pago
+        );
       }
     }
   );

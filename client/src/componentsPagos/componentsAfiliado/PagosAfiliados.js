@@ -18,18 +18,18 @@ import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
 
 const columns = [
-  /* {
+  {
     title: "Rut del afiliado",
     field: "rut_afiliado",
     headerStyle: {
-      backgroundColor: "#01579b",
+      backgroundColor: "#23BB77",
     },
-  }, */
+  },
   {
     title: "Monto del pago",
     field: "monto_pago",
     headerStyle: {
-      backgroundColor: "#01579b",
+      backgroundColor: "#23BB77",
     },
   },
   {
@@ -40,21 +40,21 @@ const columns = [
       format: "dd/MM/yyyy",
     },
     headerStyle: {
-      backgroundColor: "#01579b",
+      backgroundColor: "#23BB77",
     },
   },
   {
     title: "Estado del pago",
     field: "estado_pago",
     headerStyle: {
-      backgroundColor: "#01579b",
+      backgroundColor: "#23BB77",
     },
   },
   {
-    title: "Tipo del pago",
-    field: "tipo_pago",
+    title: "Descripcion",
+    field: "descripcion",
     headerStyle: {
-      backgroundColor: "#01579b",
+      backgroundColor: "#23BB77",
     },
   },
 ];
@@ -91,11 +91,15 @@ function PagosAfiliados() {
 
   const [listPagos, setListpagos] = useState([]);
 
+  const [rutAfiliado, setRutAfiliado] = useState([]);
+
   const [pagoSelect, setPagoSelect] = useState({
     id_pago: "",
+    rut_afiliado: "",
     monto_pago: "",
     fecha_pago: "",
     estado_pago: "",
+    descripcion: "",
     tipo_pago: "",
   });
 
@@ -108,7 +112,7 @@ function PagosAfiliados() {
   };
 
   const peticionGet = async () => {
-    await Axios.get("http://localhost:3001/showPagos")
+    await Axios.get("http://localhost:3001/showPagosAfiliados")
       .then((response) => {
         setListpagos(response.data);
         console.log(response.data);
@@ -119,12 +123,13 @@ function PagosAfiliados() {
   };
 
   const peticionPut = async (id) => {
-    await Axios.put("http://localhost:3001/editPagos", {
+    await Axios.put("http://localhost:3001/editPagoAfiliado", {
       id_pago: pagoSelect.id_pago,
       monto_pago: pagoSelect.monto_pago,
       fecha_pago: pagoSelect.fecha_pago,
       estado_pago: pagoSelect.estado_pago,
       tipo_pago: pagoSelect.tipo_pago,
+      descripcion: pagoSelect.descripcion,
     })
       .then((response) => {
         setListpagos(
@@ -135,6 +140,29 @@ function PagosAfiliados() {
                   fecha_pago: pagoSelect.fecha_pago,
                   estado_pago: pagoSelect.estado_pago,
                   tipo_pago: pagoSelect.tipo_pago,
+                  descripcion: pagoSelect.descripcion,
+                }
+              : val;
+          })
+        );
+        OCModalEditar();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const peticionPutAfiliado = async (id) => {
+    await Axios.put("https://localhost:3001/editPagosAfiliados", {
+      id_pago: pagoSelect.id_pago,
+      rut_afiliado: pagoSelect.rut_afiliado,
+    })
+      .then((response) => {
+        setRutAfiliado(
+          rutAfiliado.map((val) => {
+            return val.id_pago === pagoSelect.id_pago
+              ? {
+                  rut_afiliado: pagoSelect.rut_afiliado,
                 }
               : val;
           })
@@ -184,13 +212,13 @@ function PagosAfiliados() {
   const bodyEditar = (
     <div className={styles.modal}>
       <h3>Editar Pago</h3>
-      {/* <TextField
+      <TextField
         className={styles.inputMaterial}
         label="Rut afiliado"
         name="rut_afiliado"
         onChange={handleChange}
         value={pagoSelect && pagoSelect.rut_afiliado}
-      /> */}
+      />
       <br />
       <TextField
         className={styles.inputMaterial}
@@ -226,7 +254,13 @@ function PagosAfiliados() {
       />
       <br />
       <div align="right">
-        <Button color="primary" onClick={() => peticionPut()}>
+        <Button
+          color="primary"
+          onClick={(e) => {
+            peticionPutAfiliado();
+            peticionPut();
+          }}
+        >
           Editar
         </Button>
         <Button onClick={() => OCModalEditar()}> Cancelar </Button>
