@@ -38,7 +38,8 @@ export default function FormDialog() {
   };
 
   // Estados para datos de tabla convenios
-  const [rut_afiliado, setRut_afiliado] = useState(0);
+
+  const [rut_afiliado, setRut_afiliado] = useState("");
   const [monto_pago, setMonto_pago] = useState(0);
   const [fecha_pago, setFecha_pago] = useState("");
 
@@ -65,14 +66,14 @@ export default function FormDialog() {
   }; */
 
   //--------------------------------
-  const agregarPagos = async () => {
-    await Axios.post("http://localhost:3001/createPagoAfiliado", {
+  const agregarPagos = () => {
+    Axios.post("http://localhost:3001/createPagoAfiliado", {
       monto_pago: monto_pago,
       fecha_pago: fecha_pago,
       estado_pago: estado_pago,
       descripcion: descripcion,
     }).then(() => {
-      console.log("exitoso");
+      console.log("Exitoso");
       handleClose();
     });
   };
@@ -92,6 +93,7 @@ export default function FormDialog() {
         <Box display="flex" justifyContent="center" m={1} p={1}>
           <Box p={5}>
             <Button
+              style={{ backgroundColor: "#23BB77" }}
               variant="contained"
               color="primary"
               onClick={handleClickOpen}

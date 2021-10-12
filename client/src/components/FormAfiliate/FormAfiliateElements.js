@@ -111,6 +111,7 @@ export const ButtonStyled = styled.button`
   border: none;
   padding: 10px;
   margin-top: 10px;
+  background: #123445;
 
   &:hover {
     background: #7e8280;
@@ -119,10 +120,20 @@ export const ButtonStyled = styled.button`
 `;
 
 export const Redir = styled(LinkR)`
-  font-size: 10px;
+border-radius: 20px;
+justify-content: center;
+margin: 1px auto;
+cursor: pointer;
+border: none;
+padding: 8px;
+margin-top: 10px;
+background: #123445;
+color: #ffffff;
+
+&:hover {
+  background: #7e8280;
   color: #ffffff;
-  text-align: center;
-  padding-top: 10px;
+}
 `;
 
 export const IconStyled = styled(Link)`

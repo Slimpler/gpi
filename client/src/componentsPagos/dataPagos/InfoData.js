@@ -7,7 +7,7 @@ export const InfoData = {
   delay: 100,
 
 };
-
+ 
 export const InfoDataTwo = {
   heading2: "Pagos de prestamos",
   heading: "Pagos de bonos",

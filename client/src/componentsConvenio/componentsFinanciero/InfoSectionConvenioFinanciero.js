@@ -17,14 +17,14 @@ const InfoSectionConvenioFinanciero = ({
       <Container>
         <ColumnLeft>
           <h1>{heading}</h1>
-          <Button to="/AdministrarConvenioFinanciero " primary="true">
+          <Button to="/admFinanciero " primary="true">
             {buttonLabel}
             <Icon/>
           </Button>
         </ColumnLeft>
         <ColumnRight>
           <h1>{heading2}</h1>
-          <Button to="/AdministrarConvenioComercial" primary="true">
+          <Button to="/admComercial" primary="true">
             {buttonLabel}
             <Icon/>
           </Button>

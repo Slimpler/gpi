@@ -65,7 +65,7 @@ function PrintConvenioFinanciero() {
                 color="primary"
                 aria-label="vertical contained primary button group"
             >
-            <Button variant="contained" href={Convenio} download="convenios.xlsx"> Descargar Planilla </Button>
+            <Button variant="contained" href={Convenio} download="conveniofinanciero.xlsx"> Descargar Planilla </Button>
             </ButtonGroup>
             <FormDialog/>
             

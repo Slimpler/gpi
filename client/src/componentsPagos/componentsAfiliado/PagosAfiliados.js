@@ -90,9 +90,7 @@ function PagosAfiliados() {
   const [modalEliminar, setModalEliminar] = useState(false);
 
   const [listPagos, setListpagos] = useState([]);
-
   const [rutAfiliado, setRutAfiliado] = useState([]);
-
   const [pagoSelect, setPagoSelect] = useState({
     id_pago: "",
     rut_afiliado: "",
@@ -212,13 +210,15 @@ function PagosAfiliados() {
   const bodyEditar = (
     <div className={styles.modal}>
       <h3>Editar Pago</h3>
-      <TextField
-        className={styles.inputMaterial}
-        label="Rut afiliado"
-        name="rut_afiliado"
-        onChange={handleChange}
-        value={pagoSelect && pagoSelect.rut_afiliado}
-      />
+      {
+        <TextField
+          className={styles.inputMaterial}
+          label="Rut afiliado"
+          name="rut_afiliado"
+          onChange={handleChange}
+          value={pagoSelect && pagoSelect.rut_afiliado}
+        />
+      }
       <br />
       <TextField
         className={styles.inputMaterial}
@@ -247,8 +247,8 @@ function PagosAfiliados() {
       <br />
       <TextField
         className={styles.inputMaterial}
-        label="Tipo del pago"
-        name="tipo_pago"
+        label="Descripcion"
+        name="descripcion"
         onChange={handleChange}
         value={pagoSelect && pagoSelect.tipo_pago}
       />
@@ -310,7 +310,7 @@ function PagosAfiliados() {
           search: true,
           exportButton: true,
           headerStyle: {
-            backgroundColor: "#3374FF",
+            backgroundColor: "#009966",
             color: "#FFF",
             fontSize: "14px",
           },
