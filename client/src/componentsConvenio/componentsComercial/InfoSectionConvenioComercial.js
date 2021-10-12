@@ -17,7 +17,7 @@ const InfoSectionAsociacion = ({
       <Container>
         <ColumnLeft>
           <h1>{heading}</h1>
-          <Button to="/AdministrarConvenioDescuento " primary="true">
+          <Button to="/admDescuento " primary="true">
             {buttonLabel}
             <Icon/>
           </Button>

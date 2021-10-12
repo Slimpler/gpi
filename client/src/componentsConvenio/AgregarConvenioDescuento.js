@@ -48,33 +48,16 @@ export default function FormDialog() {
     margin: "80px 15px 15px 0px",
   };
 
-  // Estados para datos de tabla convenios
-  const [id_convenio, setId_convenio] = useState(0);
-  const [nombre_convenio, setNombre_convenio] = useState(0);
-  const [fecha_ingreso, setFecha_ingreso] = useState("");
-
-  //estados
-/*   const [estado_pago, setEstado_pago] = useState("");
-
-  const cambioEstado = (event) => {
-    setEstado_pago(event.target.value);
-  }; */
-
-  /*   const [monto, setMonto] = useState(0);
-  const [fecha, setFecha] = useState("");
-  const [rutAfiliado, setRutafiliado] = useState(0);
-  const [estado, setEstado] = useState("");
-
-  const cambioEstado = (e) => {
-    setEstado(e.target.value);
-  }; */
-
-  //--------------------------------
-  const agregarConvenio = () => {
-    Axios.post("http://localhost:3001/createConvenio", {
-      id_convenio: id_convenio,
-      nombre_convenio: nombre_convenio,
-      fecha_ingreso: fecha_ingreso,
+   // Estados para datos de tabla convenios
+   const [id_convD, setid_convD] = useState(0);
+   const [nombre_convD, setnombre_convD] = useState(0);
+   const [fecha_convD, setfecha_convD] = useState("");
+ 
+  const agregarConvenioD = () => {
+    Axios.post("http://localhost:3001/createConvenioD", {
+      id_convD: id_convD,
+      nombre_convD: nombre_convD,
+      fecha_convD: fecha_convD,
     }).then(() => {
       console.log("exitoso");
     });
@@ -90,7 +73,7 @@ export default function FormDialog() {
               color="primary"
               onClick={handleClickOpen}
             >
-              Agregar Convenio
+              Agregar Convenio de Descuento
             </Button>
           </Box>
         </Box>
@@ -101,47 +84,47 @@ export default function FormDialog() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">agregar pago</DialogTitle>
+        <DialogTitle id="form-dialog-title">agregar convenio de descuento</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Para agregar un convenio llenar los siguientes campos:
           </DialogContentText>
           <p> Datos del Convenio </p>
 
-          <TextField
+       {/*    <TextField
             autofocus
             margin="dense"
-            id="id"
+            id="id_convD"
             label="id convenio"
             variant="outlined"
             size="medium"
             onChange={(e) => {
-              setId_convenio(e.target.value);
+              setid_convD(e.target.value);
             }}
-          />
+          />  */}
 
           <p />
           <TextField
             autofocus
             margin="dense"
-            id="nombre_convenio_descuento"
-            label="nombre convenio descuento"
+            id="nombre_convD"
+            label="nombre convenio"
             variant="outlined"
             size="medium"
             onChange={(e) => {
-              setNombre_convenio(e.target.value);
+              setnombre_convD(e.target.value);
             }}
           />
           <p />
           <TextField
             autofocus
             margin="dense"
-            id="fecha_ingreso"
+            id="fecha_convD"
             variant="outlined"
             size="medium"
             type="date"
             onChange={(e) => {
-              setFecha_ingreso(e.target.value);
+              setfecha_convD(e.target.value);
             }}
           />
 
@@ -150,8 +133,8 @@ export default function FormDialog() {
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button onClick={agregarConvenio} color="primary">
-            Agregar Convenio
+          <Button onClick={agregarConvenioD} color="primary">
+            Agregar Convenio 
           </Button>
         </DialogActions>
       </Dialog>

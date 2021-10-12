@@ -9,8 +9,8 @@ export const InfoData = {
 };
 
 export const InfoDataTwo = {
-  heading:"Convenio de Descuento",
-  heading2: "Lista de Convenios",
+/*   heading2:"Convenio de Descuento", */
+  heading: "Convenio de Descuento",
   buttonLabel: "Ir",  
   reverse: false,
   delay: 300,

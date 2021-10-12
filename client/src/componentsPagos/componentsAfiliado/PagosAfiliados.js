@@ -158,18 +158,18 @@ function PagosAfiliados() {
       .then((response) => {
         setRutAfiliado(
           rutAfiliado.map((val) => {
-            return val.id_pago == pagoSelect.id_pago
-            ? {
-              rut_afiliado: pagoSelect.rut_afiliado,
-            }
-            : val;
+            return val.id_pago === pagoSelect.id_pago
+              ? {
+                  rut_afiliado: pagoSelect.rut_afiliado,
+                }
+              : val;
           })
         );
         OCModalEditar();
       })
       .catch((error) => {
         console.log(error);
-      })
+      });
   };
 
   const peticionDelete = async (id) => {
@@ -210,13 +210,15 @@ function PagosAfiliados() {
   const bodyEditar = (
     <div className={styles.modal}>
       <h3>Editar Pago</h3>
-      {<TextField
-        className={styles.inputMaterial}
-        label="Rut afiliado"
-        name="rut_afiliado"
-        onChange={handleChange}
-        value={pagoSelect && pagoSelect.rut_afiliado}
-      />}
+      {
+        <TextField
+          className={styles.inputMaterial}
+          label="Rut afiliado"
+          name="rut_afiliado"
+          onChange={handleChange}
+          value={pagoSelect && pagoSelect.rut_afiliado}
+        />
+      }
       <br />
       <TextField
         className={styles.inputMaterial}
@@ -248,11 +250,18 @@ function PagosAfiliados() {
         label="Descripcion"
         name="descripcion"
         onChange={handleChange}
-        value={pagoSelect && pagoSelect.tipo_pago}
+        value={pagoSelect && pagoSelect.descripcion}
       />
       <br />
       <div align="right">
-        <Button color="primary" onClick={(e) => {peticionPutAfiliado();peticionPut()}}>
+        <Button
+          color="primary"
+          onClick={(e) => {
+            peticionPutAfiliado();
+            peticionPut();
+            OCModalEditar();
+          }}
+        >
           Editar
         </Button>
         <Button onClick={() => OCModalEditar()}> Cancelar </Button>
