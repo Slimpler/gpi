@@ -27,7 +27,8 @@ const Navbar = () => {
                             </NavItem>
                             
                             <NavItem>
-                                <NavLinks to="buscarconvenios">
+                                
+                                <NavLinks to="ConvenioAfiliado">
                                     Convenios
                                 </NavLinks>
                             </NavItem>
