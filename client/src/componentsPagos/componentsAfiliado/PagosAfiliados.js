@@ -250,7 +250,7 @@ function PagosAfiliados() {
         label="Descripcion"
         name="descripcion"
         onChange={handleChange}
-        value={pagoSelect && pagoSelect.tipo_pago}
+        value={pagoSelect && pagoSelect.descripcion}
       />
       <br />
       <div align="right">
@@ -259,6 +259,7 @@ function PagosAfiliados() {
           onClick={(e) => {
             peticionPutAfiliado();
             peticionPut();
+            OCModalEditar();
           }}
         >
           Editar

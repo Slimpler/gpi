@@ -19,7 +19,7 @@ import SortArrow from "@material-ui/icons/ArrowUpward";
 
 const columns = [
   {
-    title: "Tipo de pago",
+    title: "Descripcion",
     field: "descripcion",
     headerStyle: {
       backgroundColor: "#23BB77",
@@ -84,7 +84,7 @@ function PagosAsociacion() {
 
   const [listPagos, setListpagos] = useState([]);
   const [pagoSelect, setPagoSelect] = useState({
-    tipo_pago: "",
+    descripcion: "",
     monto_pago: "",
     fecha_pago: "",
     estado_pago: "",
@@ -110,7 +110,8 @@ function PagosAsociacion() {
   };
 
   const peticionPut = async (id) => {
-    await Axios.put("http://localhost:3001/editPagos", {
+    await Axios.put("http://localhost:3001/editPagosAsociacion", {
+      descripcion: pagoSelect.descripcion,
       monto_pago: pagoSelect.monto_pago,
       fecha_pago: pagoSelect.fecha_pago,
       estado_pago: pagoSelect.estado_pago,
@@ -120,6 +121,7 @@ function PagosAsociacion() {
           listPagos.map((val) => {
             return val.id_pago === pagoSelect.id_pago
               ? {
+                  descripcion: pagoSelect.descripcion,
                   monto_pago: pagoSelect.monto_pago,
                   fecha_pago: pagoSelect.fecha_pago,
                   estado_pago: pagoSelect.estado_pago,
@@ -172,6 +174,15 @@ function PagosAsociacion() {
   const bodyEditar = (
     <div className={styles.modal}>
       <h3>Editar Pago</h3>
+      <br />
+      <TextField
+        className={styles.inputMaterial}
+        label="Descripcion"
+        name="descripcion"
+        onChange={handleChange}
+        value={pagoSelect && pagoSelect.descripcion}
+      />
+      <br />
       <TextField
         className={styles.inputMaterial}
         label="Monto de pago"
@@ -197,7 +208,13 @@ function PagosAsociacion() {
         value={pagoSelect && pagoSelect.estado_pago}
       />
       <div align="right">
-        <Button color="primary" onClick={() => {peticionPut()}}>
+        <Button
+          color="primary"
+          onClick={() => {
+            peticionPut();
+            OCModalEditar();
+          }}
+        >
           Editar
         </Button>
         <Button onClick={() => OCModalEditar()}> Cancelar </Button>
@@ -295,5 +312,3 @@ function PagosAsociacion() {
   );
 }
 export default PagosAsociacion;
-
-
