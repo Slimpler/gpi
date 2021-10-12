@@ -48,7 +48,7 @@ export default function FormDialog() {
   };
 
   const [descripcion, setDescripcion] = useState("");
-  
+
   const cambioDescripcion = (event) => {
     setDescripcion(event.target.value);
   };
@@ -75,13 +75,13 @@ export default function FormDialog() {
     });
   };
 
-
   return (
     <div>
       <div style={mystyle}>
         <Box display="flex" justifyContent="center" m={1} p={1}>
           <Box p={5}>
             <Button
+              style={{ backgroundColor: "#23BB77" }}
               variant="contained"
               color="primary"
               onClick={handleClickOpen}
@@ -100,7 +100,8 @@ export default function FormDialog() {
         <DialogTitle id="form-dialog-title">Agregar pago</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Para agregar un pago a la asociacion debe llenar los siguientes campos:
+            Para agregar un pago a la asociacion debe llenar los siguientes
+            campos:
           </DialogContentText>
           <p> Datos del pago </p>
           <p />
@@ -167,7 +168,13 @@ export default function FormDialog() {
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button onClick={(e) => {agregarPagos();handleClose()}} color="primary">
+          <Button
+            onClick={(e) => {
+              agregarPagos();
+              handleClose();
+            }}
+            color="primary"
+          >
             agregar pago
           </Button>
         </DialogActions>
