@@ -110,7 +110,7 @@ function PagosAsociacion() {
   };
 
   const peticionPut = async (id) => {
-    await Axios.put("http://localhost:3001/editPagos", {
+    await Axios.put("http://localhost:3001/editPagoAfiliado", {
       monto_pago: pagoSelect.monto_pago,
       fecha_pago: pagoSelect.fecha_pago,
       estado_pago: pagoSelect.estado_pago,

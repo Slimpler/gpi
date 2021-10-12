@@ -73,7 +73,7 @@ export default function FormDialog() {
       estado_pago: estado_pago,
       descripcion: descripcion,
     }).then(() => {
-      console.log("exitoso");
+      console.log("Bono agregado exitosamente");
       handleClose();
     });
   };
@@ -82,7 +82,7 @@ export default function FormDialog() {
     Axios.post("http://localhost:3001/createPagosAfiliados", {
       rut_afiliado: rut_afiliado,
       }).then(() => {
-      console.log("Exitoso");
+      console.log("Tabla intermedia actualizada exitosamente");
       handleClose();
     });
   };
@@ -93,6 +93,9 @@ export default function FormDialog() {
         <Box display="flex" justifyContent="center" m={1} p={1}>
           <Box p={5}>
             <Button
+              style = {
+                {backgroundColor:"#23BB77"}
+              }
               variant="contained"
               color="primary"
               onClick={handleClickOpen}
