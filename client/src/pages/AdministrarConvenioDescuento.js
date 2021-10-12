@@ -1,7 +1,7 @@
 //Esto es pagos de afiliados; vista desde la directiva
 import React, { useState } from "react";
 import GlobalStyle from "../globalStyles";
-import AgregarConvenioFinanciero from "../componentsConvenio/componentsFinanciero/convenioFinanciero";
+import AgregarConvenioDescuento from "../componentsConvenio/componentsDescuento/convenioDescuento";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import FormDialog from "../componentsConvenio/AgregarConvenioDescuento";
 import Navbar from "../componentsAdministrador/Navbar/Navbar";
@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PagoAfiliadosPage() {
+function AdministrarConvenioDescuento() {
   const classes = useStyles();
   const [buttonPopup, setButtonPopup] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -25,9 +25,9 @@ function PagoAfiliadosPage() {
       <GlobalStyle />
       <Navbar toggle={toggle} />   
       <FormDialog />
-      <AgregarConvenioFinanciero />
+      <AgregarConvenioDescuento />
     </>
   );
 }
 
-export default PagoAfiliadosPage;
+export default AdministrarConvenioDescuento;

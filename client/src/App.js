@@ -48,9 +48,9 @@ function App() {
         <Route path="/pagoBonos" component={PagoBonosPage} exact />
         <Route path="/pagoPrestamos" component={PagoPrestamosPage} exact />
         <Route path="/Convenios" component={Convenios} exact />       
-        <Route path="/AdministrarConvenioFinanciero" component={AdministrarConvenioFinanciero} exact />
-        <Route path="/AdministrarConvenioComercial" component={AdministrarConvenioComercial} exact />
-        <Route path="/AdministrarConvenioDescuento" component={AdministrarConvenioDescuento} exact />
+        <Route path="/admFinanciero" component={AdministrarConvenioFinanciero} exact />
+        <Route path="/admComercial" component={AdministrarConvenioComercial} exact />
+        <Route path="/admDescuento" component={AdministrarConvenioDescuento} exact />
         <Route path="/AdmAfiliados" component={AdmAfiliados} exact />
         <Route path="/AdministracionAfiliados" component={AdministracionAfiliados} exact />
         

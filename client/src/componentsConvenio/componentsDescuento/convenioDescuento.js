@@ -17,31 +17,30 @@ import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
 
-const columns = [
+const columns = [ 
   {
     title: "id convenio",
-    field: "id_convenio",
-    export: false,
+    field: "id_convD",
     headerStyle: {
-      backgroundColor: "#01579b",
+      backgroundColor: "#3374FF",
     },
   },
   {
-    title: "Convenio",
-    field: "nombre_convenio",
+    title: "Nombre Convenio",
+    field: "nombre_convD",
     headerStyle: {
-      backgroundColor: "#01579b",
+      backgroundColor: "#3374FF",
     },
   },
   {
     title: "Fecha de ingreso",
-    field: "fecha_ingreso",
+    field: "fecha_convD",
     type: "date",
     dateSetting: {
       format: "dd/MM/yyyy",
     },
     headerStyle: {
-      backgroundColor: "#01579b",
+      backgroundColor: "#3374FF",
     },
   },
 ];
@@ -71,30 +70,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AgregarConvenioDescuento() {
+function ConvenioDescuento() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
 
-  const [listConvenio, setListConvenio] = useState([]);
-  const [convenioSelect, setConvenioSelect] = useState({
-    id_convenio: "",
-    nombre_convenio: "",
-    fecha_ingreso: "",
+  const [listConvenioD, setListConvenioD] = useState([]);
+/*   const [id_convD, setid_convD = useState([]); */
+  const [convenioDSelect, setConvenioDSelect] = useState({
+    id_convD: "",
+    nombre_convD: "",
+    fecha_convD: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setConvenioSelect((prevState) => ({
+    setConvenioDSelect((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
 
   const peticionGet = async () => {
-    await Axios.get("http://localhost:3001/showConvenios")
+    await Axios.get("http://localhost:3001/showConvenioD")
       .then((response) => {
-        setListConvenio(response.data);
+        setListConvenioD(response.data);
         console.log(response.data);
       })
       .catch((error) => {
@@ -103,19 +103,19 @@ function AgregarConvenioDescuento() {
   };
 
   const peticionPut = async (id) => {
-    await Axios.put("http://localhost:3001/editConvenio", {
-      id_convenio: convenioSelect.id_convenio,
-      nombre_convenio: convenioSelect.nombre_convenio,
-      fecha_ingreso: convenioSelect.fecha_ingreso,
+    await Axios.put("http://localhost:3001/editConvenioD", {
+      id_convD: convenioDSelect.id_convD,
+      nombre_convD: convenioDSelect.nombre_convD,
+      fecha_convD: convenioDSelect.fecha_convD,
     })
       .then((response) => {
-        setListConvenio(
-          listConvenio.map((val) => {
-            return val.id_convenio === convenioSelect.id_convenio
+        setListConvenioD(
+          listConvenioD.map((val) => {
+            return val.id_convD === convenioDSelect.id_convD
               ? {
-                  id_convenio: convenioSelect.id_convenio,
-                  nombre_convenio: convenioSelect.nombre_convenio,
-                  fecha_ingreso: convenioSelect.fecha_ingreso,
+                id_convD: convenioDSelect.id_convD,
+                nombre_convD: convenioDSelect.nombre_convD,
+                fecha_convD: convenioDSelect.fecha_convD,
                 }
               : val;
           })
@@ -128,11 +128,11 @@ function AgregarConvenioDescuento() {
   };
 
   const peticionDelete = async (id) => {
-    await Axios.delete(`http://localhost:3001/deleteConvenio/${id}`)
+    await Axios.delete(`http://localhost:3001/deleteConvenioD/${id}`)
       .then((response) => {
-        setListConvenio(
-          listConvenio.filter((val) => {
-            return val.id_convenio !== convenioSelect.id_convenio;
+        setListConvenioD(
+          listConvenioD.filter((val) => {
+            return val.id_convD !== convenioDSelect.id_convD;
           })
         );
         OCModalEliminar();
@@ -142,8 +142,8 @@ function AgregarConvenioDescuento() {
       });
   };
 
-  const SelectConvenio = (id_convenio, caso) => {
-    setConvenioSelect(id_convenio);
+  const SelectConvenioD = (id_convD, caso) => {
+    setConvenioDSelect(id_convD);
     caso === "Editar" ? OCModalEditar() : OCModalEliminar();
   };
 
@@ -163,30 +163,31 @@ function AgregarConvenioDescuento() {
   const bodyEditar = (
     <div className={styles.modal}>
       <h3>Editar Convenio</h3>
-      <TextField
+      {<TextField
         className={styles.inputMaterial}
         label="id convenio"
         name="id_convenio"
         onChange={handleChange}
-        value={convenioSelect && convenioSelect.id_convenio}
-      />
+        value={convenioDSelect && convenioDSelect.id_convD}
+      />}
       <br />
       <TextField
         className={styles.inputMaterial}
         label="Nombre Convenio"
         name="nombre_convenio"
         onChange={handleChange}
-        value={convenioSelect && convenioSelect.nombre_convenio}
+        value={convenioDSelect && convenioDSelect.nombre_convD}
       />
-
+      <br />
       <TextField
         className={styles.inputMaterial}
-        name="fecha_ingreso"
+        name="fecha_convD"
         type="date"
         format="yyyy-MM-dd"
         onChange={handleChange}
-        value={convenioSelect && convenioSelect.fecha_ingreso}
+        value={convenioDSelect && convenioDSelect.fecha_convD}
       />
+      <br />
       <div align="right">
         <Button color="primary" onClick={() => peticionPut()}>
           Editar
@@ -201,7 +202,7 @@ function AgregarConvenioDescuento() {
     <div className={styles.modal}>
       <p>
         Estás seguro que deseas eliminar el siguiente Convenio:{" "}
-        <b>{convenioSelect && convenioSelect.id_convenio}</b>?{" "}
+        <b>{convenioDSelect && convenioDSelect.id_convD}</b>?{" "}
       </p>
       <div align="right">
         <Button color="secondary" onClick={() => peticionDelete()}>
@@ -216,13 +217,13 @@ function AgregarConvenioDescuento() {
     <div className={styles.container}>
       <MaterialTable
         title="Lista de Convenios"
-        data={listConvenio}
+        data={listConvenioD}
         columns={columns}
         actions={[
           {
             icon: EditIcon,
             tooltip: "Editar Convenio",
-            onClick: (event, rowData) => SelectConvenio(rowData, "Editar"),
+            onClick: (event, rowData) => SelectConvenioD(rowData, "Editar"),
             iconProps: {
               style: { backgroundColor: "#33ACFF" },
             },
@@ -230,7 +231,7 @@ function AgregarConvenioDescuento() {
           {
             icon: DeleteIcon,
             tooltip: "Eliminar Convenio",
-            onClick: (event, rowData) => SelectConvenio(rowData, "Eliminar"),
+            onClick: (event, rowData) => SelectConvenioD(rowData, "Eliminar"),
           },
         ]}
         options={{
@@ -285,4 +286,4 @@ function AgregarConvenioDescuento() {
     </div>
   );
 }
-export default AgregarConvenioDescuento;
+export default ConvenioDescuento;

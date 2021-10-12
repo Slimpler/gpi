@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import InfoSectionConvenioFinanciero from "../componentsConvenio/componentsFinanciero/InfoSectionConvenioFinanciero";
 import InfoSectionAsociacion from "../componentsConvenio/componentsComercial/InfoSectionConvenioComercial";
 import Navbar from "../componentsAdministrador/Navbar/Navbar";
-import { InfoData, InfoDataTwo } from "../componentsConvenio/dataPagos/InfoData";
+import { InfoData, InfoDataTwo } from "../componentsConvenio/dataConvenios/InfoData";
 import GlobalStyle from "../globalStyles";
 
 function Convenios() {

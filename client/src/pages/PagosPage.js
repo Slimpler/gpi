@@ -11,7 +11,7 @@ function PagosPage() {
   const toggle = () => {
     setIsOpen(!isOpen);
   };
-
+ 
   return (
     <>
       <GlobalStyle />

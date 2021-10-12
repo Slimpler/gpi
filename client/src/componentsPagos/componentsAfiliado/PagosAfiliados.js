@@ -224,9 +224,9 @@ function PagosAfiliados() {
         name="monto_pago"
         onChange={handleChange}
         value={pagoSelect && pagoSelect.monto_pago}
-      />
+      /> 
       <br />
-      <TextField
+      <TextField 
         className={styles.inputMaterial}
         name="fecha_pago"
         type="date"
