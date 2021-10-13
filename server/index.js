@@ -43,8 +43,8 @@ app.post("/createConvenioF", (req, res) => {
       }
     );
 });
-//Mostrar convenios financioeros
-app.get("/showConvenioF", (req, res) => {
+//Mostrar convenios financieros
+ app.get("/showConvenioF", (req, res) => {
   db.query("SELECT * FROM convenio_financiero", (err, result) => {
     if (err) {
       console.log(err);

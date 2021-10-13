@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import GlobalStyle from "../globalStyles";
 import AgregarConvenioDescuento from "../componentsConvenio/componentsDescuento/convenioDescuento";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
-import FormDialog from "../componentsConvenio/AgregarConvenioDescuento";
+import FormDialog2 from "../componentsConvenio/AgregarConvenioDescuento";
 import Navbar from "../componentsAdministrador/Navbar/Navbar";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,7 +24,7 @@ function AdministrarConvenioDescuento() {
     </*  style={{ backgroundColor: "#eee", height: "100v" }} */>
       <GlobalStyle />
       <Navbar toggle={toggle} />   
-      <FormDialog />
+      <FormDialog2 />
       <AgregarConvenioDescuento />
     </>
   );

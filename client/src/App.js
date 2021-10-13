@@ -13,7 +13,10 @@ import FormularioAfiliate from "./pages/FormularioAfiliate";
 import PagoAsociacionPage from "./pages/PagoAsociacionPage";
 import PagoBonosPage from "./pages/pagoBonosPage";
 import PagoPrestamosPage from "./pages/pagoPrestamosPage";
-import Buscarconvenios from './pages/Buscarconvenios';
+/*import Buscarconvenios from './pages/Buscarconvenios';*/
+
+import ConvenioAfiliado from './pages/ConvenioAfiliado';
+
 import BonosAfiliadoPage from './pages/BonosAfiliadoPage';
 import PagosUsuarioPage from './pages/PagosUsuarioPage';
 import MisConvenios from './pages/MisConvenios';
@@ -35,7 +38,11 @@ function App() {
         
         {/* Paginas del usuario */}
         <Route path="/perfil" component={PerfilPage} exact />
-        <Route path='/buscarconvenios' component={Buscarconvenios} exact />
+
+        {/*<Route path='/buscarconvenios' component={Buscarconvenios} exact />*/}
+
+        <Route path='/ConvenioAfiliado' component={ConvenioAfiliado} exact />
+
         <Route path='/MisConvenios' component={MisConvenios} exact />
         <Route path="/pagosUsuario" component={PagosUsuarioPage} exact />
         <Route path="/bonosAfiliado" component={BonosAfiliadoPage} exact />
