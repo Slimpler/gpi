@@ -14,7 +14,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Box from "@material-ui/core/Box";
-
+ 
 import { useState } from "react";
 import Axios from "axios";
 
@@ -54,6 +54,7 @@ export default function FormDialog() {
    const [fecha_convD, setfecha_convD] = useState("");
  
   const agregarConvenioD = () => {
+    setOpen(false);
     Axios.post("http://localhost:3001/createConvenioD", {
       id_convD: id_convD,
       nombre_convD: nombre_convD,

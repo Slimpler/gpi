@@ -102,116 +102,13 @@ function ConvenioD() {
       });
   };
 
-  const peticionPut = async (id) => {
-    await Axios.put("http://localhost:3001/editConvenioD", {
-      id_convD: convenioDSelect.id_convD,
-      nombre_convD: convenioDSelect.nombre_convD,
-      fecha_convD: convenioDSelect.fecha_convD,
-    })
-      .then((response) => {
-        setListConvenioD(
-          listConvenioD.map((val) => {
-            return val.id_convD === convenioDSelect.id_convD
-              ? {
-                id_convD: convenioDSelect.id_convD,
-                nombre_convD: convenioDSelect.nombre_convD,
-                fecha_convD: convenioDSelect.fecha_convD,
-                }
-              : val;
-          })
-        );
-        OCModalEditar();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const peticionDelete = async (id) => {
-    await Axios.delete(`http://localhost:3001/deleteConvenioD/${id}`)
-      .then((response) => {
-        setListConvenioD(
-          listConvenioD.filter((val) => {
-            return val.id_convD !== convenioDSelect.id_convD;
-          })
-        );
-        OCModalEliminar();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const SelectConvenioD = (id_convD, caso) => {
-    setConvenioDSelect(id_convD);
-    caso === "Editar" ? OCModalEditar() : OCModalEliminar();
-  };
-
-  const OCModalEditar = () => {
-    setModalEditar(!modalEditar);
-  };
-
-  const OCModalEliminar = () => {
-    setModalEliminar(!modalEliminar);
-  };
+  
 
   useEffect(() => {
     peticionGet();
   }, []);
 
-  //Interfaz de modal editar
-  const bodyEditar = (
-    <div className={styles.modal}>
-      <h3>Editar Convenio</h3>
-      {<TextField
-        className={styles.inputMaterial}
-        label="id convenio"
-        name="id_convenio"
-        onChange={handleChange}
-        value={convenioDSelect && convenioDSelect.id_convD}
-      />}
-      <br />
-      <TextField
-        className={styles.inputMaterial}
-        label="Nombre Convenio"
-        name="nombre_convenio"
-        onChange={handleChange}
-        value={convenioDSelect && convenioDSelect.nombre_convD}
-      />
-      <br />
-      <TextField
-        className={styles.inputMaterial}
-        name="fecha_convD"
-        type="date"
-        format="yyyy-MM-dd"
-        onChange={handleChange}
-        value={convenioDSelect && convenioDSelect.fecha_convD}
-      />
-      <br />
-      <div align="right">
-        <Button color="primary" onClick={() => peticionPut()}>
-          Editar
-        </Button>
-        <Button onClick={() => OCModalEditar()}> Cancelar </Button>
-      </div>
-    </div>
-  );
-
-  //interfaz de model eliminar
-  const bodyEliminar = (
-    <div className={styles.modal}>
-      <p>
-        Estás seguro que deseas eliminar el siguiente Convenio:{" "}
-        <b>{convenioDSelect && convenioDSelect.id_convD}</b>?{" "}
-      </p>
-      <div align="right">
-        <Button color="secondary" onClick={() => peticionDelete()}>
-          Sí
-        </Button>
-        <Button onClick={() => OCModalEliminar()}>No</Button>
-      </div>
-    </div>
-  );
+  
 
   return (
     <div className={styles.container}>
@@ -220,19 +117,8 @@ function ConvenioD() {
         data={listConvenioD}
         columns={columns}
         actions={[
-          {
-            icon: EditIcon,
-            tooltip: "Editar Convenio",
-            onClick: (event, rowData) => SelectConvenioD(rowData, "Editar"),
-            iconProps: {
-              style: { backgroundColor: "#33ACFF" },
-            },
-          },
-          {
-            icon: DeleteIcon,
-            tooltip: "Eliminar Convenio",
-            onClick: (event, rowData) => SelectConvenioD(rowData, "Eliminar"),
-          },
+          
+            //agregar botones para postulacion
         ]}
         options={{
           actionsColumnIndex: -1,
@@ -275,14 +161,6 @@ function ConvenioD() {
           SortArrow: SortArrow,
         }}
       />
-
-      <Modal open={modalEditar} onClose={OCModalEditar}>
-        {bodyEditar}
-      </Modal>
-
-      <Modal open={modalEliminar} onClose={OCModalEliminar}>
-        {bodyEliminar}
-      </Modal>
     </div>
   );
 }

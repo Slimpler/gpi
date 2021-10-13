@@ -54,6 +54,7 @@ export default function FormDialog2() {
    const [fecha_convF, setfecha_convF] = useState("");
  
   const agregarConvenioF = () => {
+    setOpen(false);
     Axios.post("http://localhost:3001/createConvenioF", {
       id_convF: id_convF,
       nombre_convF: nombre_convF,
@@ -133,7 +134,13 @@ export default function FormDialog2() {
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button onClick={agregarConvenioF} color="primary">
+          <Button 
+            onClick={(e) => {
+              agregarConvenioF();
+              handleClose();
+          }}
+              color="primary"
+          >
             Agregar Convenio 
           </Button>
         </DialogActions>

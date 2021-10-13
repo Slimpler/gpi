@@ -54,6 +54,7 @@ export default function FormDialog1() {
    const [fecha_convC, setfecha_convC] = useState("");
  
   const agregarConvenioC = () => {
+    setOpen(false);
     Axios.post("http://localhost:3001/createConvenioC", {
       id_convC: id_convC,
       nombre_convC: nombre_convC,

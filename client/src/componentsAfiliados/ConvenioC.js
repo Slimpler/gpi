@@ -102,116 +102,12 @@ function ConvenioC() {
       });
   };
 
-  const peticionPut = async (id) => {
-    await Axios.put("http://localhost:3001/editConvenioC", {
-      id_convC: convenioCSelect.id_convC,
-      nombre_convC: convenioCSelect.nombre_convC,
-      fecha_convC: convenioCSelect.fecha_convC,
-    })
-      .then((response) => {
-        setListConvenioC(
-          listConvenioC.map((val) => {
-            return val.id_convC === convenioCSelect.id_convC
-              ? {
-                id_convC: convenioCSelect.id_convC,
-                nombre_convC: convenioCSelect.nombre_convC,
-                fecha_convC: convenioCSelect.fecha_convC,
-                }
-              : val;
-          })
-        );
-        OCModalEditar();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const peticionDelete = async (id) => {
-    await Axios.delete(`http://localhost:3001/deleteConvenioC/${id}`)
-      .then((response) => {
-        setListConvenioC(
-          listConvenioC.filter((val) => {
-            return val.id_convC !== convenioCSelect.id_convC;
-          })
-        );
-        OCModalEliminar();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const SelectConvenioC = (id_convC, caso) => {
-    setConvenioCSelect(id_convC);
-    caso === "Editar" ? OCModalEditar() : OCModalEliminar();
-  };
-
-  const OCModalEditar = () => {
-    setModalEditar(!modalEditar);
-  };
-
-  const OCModalEliminar = () => {
-    setModalEliminar(!modalEliminar);
-  };
+  
 
   useEffect(() => {
     peticionGet();
   }, []);
 
-  //Interfaz de modal editar
-  const bodyEditar = (
-    <div className={styles.modal}>
-      <h3>Editar Convenio</h3>
-      {<TextField
-        className={styles.inputMaterial}
-        label="id convenio"
-        name="id_convenio"
-        onChange={handleChange}
-        value={convenioCSelect && convenioCSelect.id_convC}
-      />}
-      <br />
-      <TextField
-        className={styles.inputMaterial}
-        label="Nombre Convenio"
-        name="nombre_convenio"
-        onChange={handleChange}
-        value={convenioCSelect && convenioCSelect.nombre_convC}
-      />
-      <br />
-      <TextField
-        className={styles.inputMaterial}
-        name="fecha_convC"
-        type="date"
-        format="yyyy-MM-dd"
-        onChange={handleChange}
-        value={convenioCSelect && convenioCSelect.fecha_convC}
-      />
-      <br />
-      <div align="right">
-        <Button color="primary" onClick={() => peticionPut()}>
-          Editar
-        </Button>
-        <Button onClick={() => OCModalEditar()}> Cancelar </Button>
-      </div>
-    </div>
-  );
-
-  //interfaz de model eliminar
-  const bodyEliminar = (
-    <div className={styles.modal}>
-      <p>
-        Estás seguro que deseas eliminar el siguiente Convenio:{" "}
-        <b>{convenioCSelect && convenioCSelect.id_convC}</b>?{" "}
-      </p>
-      <div align="right">
-        <Button color="secondary" onClick={() => peticionDelete()}>
-          Sí
-        </Button>
-        <Button onClick={() => OCModalEliminar()}>No</Button>
-      </div>
-    </div>
-  );
 
   return (
     <div className={styles.container}>
@@ -220,19 +116,8 @@ function ConvenioC() {
         data={listConvenioC}
         columns={columns}
         actions={[
-          {
-            icon: EditIcon,
-            tooltip: "Editar Convenio",
-            onClick: (event, rowData) => SelectConvenioC(rowData, "Editar"),
-            iconProps: {
-              style: { backgroundColor: "#33ACFF" },
-            },
-          },
-          {
-            icon: DeleteIcon,
-            tooltip: "Eliminar Convenio",
-            onClick: (event, rowData) => SelectConvenioC(rowData, "Eliminar"),
-          },
+            //aqui debemos agregar las consultas para postular a los convenios
+            //debemos crear tabla para postulaciones.
         ]}
         options={{
           actionsColumnIndex: -1,
@@ -275,14 +160,6 @@ function ConvenioC() {
           SortArrow: SortArrow,
         }}
       />
-
-      <Modal open={modalEditar} onClose={OCModalEditar}>
-        {bodyEditar}
-      </Modal>
-
-      <Modal open={modalEliminar} onClose={OCModalEliminar}>
-        {bodyEliminar}
-      </Modal>
     </div>
   );
 }
