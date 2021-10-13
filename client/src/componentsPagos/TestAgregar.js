@@ -38,7 +38,7 @@ export default function FormDialog() {
   };
 
   // Estados para datos de tabla convenios
-  
+
   const [rut_afiliado, setRut_afiliado] = useState("");
   const [monto_pago, setMonto_pago] = useState(0);
   const [fecha_pago, setFecha_pago] = useState("");
@@ -81,7 +81,7 @@ export default function FormDialog() {
   const agregarPagosAfiliados = () => {
     Axios.post("http://localhost:3001/createPagosAfiliados", {
       rut_afiliado: rut_afiliado,
-      }).then(() => {
+    }).then(() => {
       console.log("Exitoso");
       handleClose();
     });
@@ -93,11 +93,12 @@ export default function FormDialog() {
         <Box display="flex" justifyContent="center" m={1} p={1}>
           <Box p={5}>
             <Button
+              style={{ backgroundColor: "#23BB77" }}
               variant="contained"
               color="primary"
               onClick={handleClickOpen}
             >
-              agregar pago
+              Agregar pago
             </Button>
           </Box>
         </Box>
@@ -189,13 +190,19 @@ export default function FormDialog() {
               <MenuItem value={4}> Pago incorporacion </MenuItem>
             </Select>
           </FormControl>
-        
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button onClick={(e) => {agregarPagos();agregarPagosAfiliados();handleClose()}} color="primary">
+          <Button
+            onClick={(e) => {
+              agregarPagos();
+              agregarPagosAfiliados();
+              handleClose();
+            }}
+            color="primary"
+          >
             agregar pago
           </Button>
         </DialogActions>
