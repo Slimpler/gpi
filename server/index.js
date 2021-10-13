@@ -204,7 +204,7 @@ app.post("/createConvenioF", (req, res) => {
       (err, result) => {
         if (err) {
           console.log(err);
-        } else {
+        } else { 
           res.send("Valores Insertados");
         }
       }
@@ -242,11 +242,9 @@ app.put("/editConvenioF", (req, res) => {
 
 app.delete("/deleteConvenioF/:id", (req, res) => {
   const id_convF = req.params.id_convF;
-
   db.query(
     "DELETE * FROM convenio_financiero WHERE id_convF = ? ",
-    [nombre_convF, fecha_convF, id_convF],
-    (err, result) => {
+      id_convF, (err, result) => {
       if (err) {
         console.log(err);
       } else {
