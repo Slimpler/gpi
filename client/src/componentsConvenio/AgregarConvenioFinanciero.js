@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FormDialog() {
+export default function FormDialog2() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
