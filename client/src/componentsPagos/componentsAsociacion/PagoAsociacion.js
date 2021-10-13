@@ -84,9 +84,11 @@ function PagosAsociacion() {
 
   const [listPagos, setListpagos] = useState([]);
   const [pagoSelect, setPagoSelect] = useState({
+    id_pago: "",
     descripcion: "",
     monto_pago: "",
     fecha_pago: "",
+    tipo_pago: "",
     estado_pago: "",
   });
 
@@ -111,9 +113,11 @@ function PagosAsociacion() {
 
   const peticionPut = async (id) => {
     await Axios.put("http://localhost:3001/editPagosAsociacion", {
+      id_pago: pagoSelect.id_pago,
       descripcion: pagoSelect.descripcion,
       monto_pago: pagoSelect.monto_pago,
       fecha_pago: pagoSelect.fecha_pago,
+      tipo_pago: pagoSelect.tipo_pago,
       estado_pago: pagoSelect.estado_pago,
     })
       .then((response) => {
@@ -124,6 +128,7 @@ function PagosAsociacion() {
                   descripcion: pagoSelect.descripcion,
                   monto_pago: pagoSelect.monto_pago,
                   fecha_pago: pagoSelect.fecha_pago,
+                  tipo_pago: pagoSelect.tipo_pago,
                   estado_pago: pagoSelect.estado_pago,
                 }
               : val;
@@ -272,6 +277,7 @@ function PagosAsociacion() {
         localization={{
           header: {
             actions: "Acciones",
+            backgroundColor: "#23BB77",
           },
           pagination: {
             labelRowsSelect: "Filas",
