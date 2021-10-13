@@ -2,39 +2,39 @@
 import React, { useState, useEffect } from "react";
 /* import { DataGrid } from "@material-ui/data-grid";
  */ import { makeStyles } from "@material-ui/core/styles";
- import Axios from "axios";
- import MaterialTable from "material-table";
- import DeleteIcon from "@material-ui/icons/Delete";
- import EditIcon from "@material-ui/icons/Edit";
- import { Modal, TextField, Button } from "@material-ui/core";
- import Search from "@material-ui/icons/Search";
- import ResetSearch from "@material-ui/icons/Clear";
- import Filter from "@material-ui/icons/FilterList";
- import Export from "@material-ui/icons/SaveAlt";
- import FirstPage from "@material-ui/icons/FirstPage";
- import LastPage from "@material-ui/icons/LastPage";
- import NextPage from "@material-ui/icons/ChevronRight";
- import PreviousPage from "@material-ui/icons/ChevronLeft";
- import SortArrow from "@material-ui/icons/ArrowUpward";
+import Axios from "axios";
+import MaterialTable from "material-table";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
+import { Modal, TextField, Button } from "@material-ui/core";
+import Search from "@material-ui/icons/Search";
+import ResetSearch from "@material-ui/icons/Clear";
+import Filter from "@material-ui/icons/FilterList";
+import Export from "@material-ui/icons/SaveAlt";
+import FirstPage from "@material-ui/icons/FirstPage";
+import LastPage from "@material-ui/icons/LastPage";
+import NextPage from "@material-ui/icons/ChevronRight";
+import PreviousPage from "@material-ui/icons/ChevronLeft";
+import SortArrow from "@material-ui/icons/ArrowUpward";
 
 const columns = [ 
   {
     title: "id convenio",
-    field: "id_convC",
+    field: "id_convD",
     headerStyle: {
       backgroundColor: "#3374FF",
     },
   },
   {
     title: "Nombre Convenio",
-    field: "nombre_convC",
+    field: "nombre_convD",
     headerStyle: {
       backgroundColor: "#3374FF",
     },
   },
   {
     title: "Fecha de ingreso",
-    field: "fecha_convC",
+    field: "fecha_convD",
     type: "date",
     dateSetting: {
       format: "dd/MM/yyyy",
@@ -70,31 +70,31 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ConveniosAfiliados1() {
+function ConvenioD() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
 
-  const [listConvenioC, setListConvenioC] = useState([]);
-/*   const [id_convC, setid_convC = useState([]); */
-  const [convenioCSelect, setConvenioCSelect] = useState({
-    id_convC: "",
-    nombre_convC: "",
-    fecha_convC: "",
+  const [listConvenioD, setListConvenioD] = useState([]);
+/*   const [id_convD, setid_convD = useState([]); */
+  const [convenioDSelect, setConvenioDSelect] = useState({
+    id_convD: "",
+    nombre_convD: "",
+    fecha_convD: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setConvenioCSelect((prevState) => ({
+    setConvenioDSelect((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
 
   const peticionGet = async () => {
-    await Axios.get("http://localhost:3001/showConvenioC")
+    await Axios.get("http://localhost:3001/showConvenioD")
       .then((response) => {
-        setListConvenioC(response.data);
+        setListConvenioD(response.data);
         console.log(response.data);
       })
       .catch((error) => {
@@ -103,19 +103,19 @@ function ConveniosAfiliados1() {
   };
 
   const peticionPut = async (id) => {
-    await Axios.put("http://localhost:3001/editConvenioC", {
-      id_convC: convenioCSelect.id_convC,
-      nombre_convC: convenioCSelect.nombre_convC,
-      fecha_convC: convenioCSelect.fecha_convC,
+    await Axios.put("http://localhost:3001/editConvenioD", {
+      id_convD: convenioDSelect.id_convD,
+      nombre_convD: convenioDSelect.nombre_convD,
+      fecha_convD: convenioDSelect.fecha_convD,
     })
       .then((response) => {
-        setListConvenioC(
-          listConvenioC.map((val) => {
-            return val.id_convC === convenioCSelect.id_convC
+        setListConvenioD(
+          listConvenioD.map((val) => {
+            return val.id_convD === convenioDSelect.id_convD
               ? {
-                id_convC: convenioCSelect.id_convC,
-                nombre_convC: convenioCSelect.nombre_convC,
-                fecha_convC: convenioCSelect.fecha_convC,
+                id_convD: convenioDSelect.id_convD,
+                nombre_convD: convenioDSelect.nombre_convD,
+                fecha_convD: convenioDSelect.fecha_convD,
                 }
               : val;
           })
@@ -128,11 +128,11 @@ function ConveniosAfiliados1() {
   };
 
   const peticionDelete = async (id) => {
-    await Axios.delete(`http://localhost:3001/deleteConvenioC/${id}`)
+    await Axios.delete(`http://localhost:3001/deleteConvenioD/${id}`)
       .then((response) => {
-        setListConvenioC(
-          listConvenioC.filter((val) => {
-            return val.id_convC !== convenioCSelect.id_convC;
+        setListConvenioD(
+          listConvenioD.filter((val) => {
+            return val.id_convD !== convenioDSelect.id_convD;
           })
         );
         OCModalEliminar();
@@ -142,8 +142,8 @@ function ConveniosAfiliados1() {
       });
   };
 
-  const SelectConvenioC = (id_convC, caso) => {
-    setConvenioCSelect(id_convC);
+  const SelectConvenioD = (id_convD, caso) => {
+    setConvenioDSelect(id_convD);
     caso === "Editar" ? OCModalEditar() : OCModalEliminar();
   };
 
@@ -168,7 +168,7 @@ function ConveniosAfiliados1() {
         label="id convenio"
         name="id_convenio"
         onChange={handleChange}
-        value={convenioCSelect && convenioCSelect.id_convC}
+        value={convenioDSelect && convenioDSelect.id_convD}
       />}
       <br />
       <TextField
@@ -176,16 +176,16 @@ function ConveniosAfiliados1() {
         label="Nombre Convenio"
         name="nombre_convenio"
         onChange={handleChange}
-        value={convenioCSelect && convenioCSelect.nombre_convC}
+        value={convenioDSelect && convenioDSelect.nombre_convD}
       />
       <br />
       <TextField
         className={styles.inputMaterial}
-        name="fecha_convC"
+        name="fecha_convD"
         type="date"
         format="yyyy-MM-dd"
         onChange={handleChange}
-        value={convenioCSelect && convenioCSelect.fecha_convC}
+        value={convenioDSelect && convenioDSelect.fecha_convD}
       />
       <br />
       <div align="right">
@@ -202,7 +202,7 @@ function ConveniosAfiliados1() {
     <div className={styles.modal}>
       <p>
         Estás seguro que deseas eliminar el siguiente Convenio:{" "}
-        <b>{convenioCSelect && convenioCSelect.id_convC}</b>?{" "}
+        <b>{convenioDSelect && convenioDSelect.id_convD}</b>?{" "}
       </p>
       <div align="right">
         <Button color="secondary" onClick={() => peticionDelete()}>
@@ -216,14 +216,14 @@ function ConveniosAfiliados1() {
   return (
     <div className={styles.container}>
       <MaterialTable
-        title="Lista de Convenios"
-        data={listConvenioC}
+        title="Lista de Convenios de Descuento"
+        data={listConvenioD}
         columns={columns}
         actions={[
           {
             icon: EditIcon,
             tooltip: "Editar Convenio",
-            onClick: (event, rowData) => SelectConvenioC(rowData, "Editar"),
+            onClick: (event, rowData) => SelectConvenioD(rowData, "Editar"),
             iconProps: {
               style: { backgroundColor: "#33ACFF" },
             },
@@ -231,7 +231,7 @@ function ConveniosAfiliados1() {
           {
             icon: DeleteIcon,
             tooltip: "Eliminar Convenio",
-            onClick: (event, rowData) => SelectConvenioC(rowData, "Eliminar"),
+            onClick: (event, rowData) => SelectConvenioD(rowData, "Eliminar"),
           },
         ]}
         options={{
@@ -286,20 +286,4 @@ function ConveniosAfiliados1() {
     </div>
   );
 }
-export default ConveniosAfiliados1;
-
-
-
-/*
-//Mostrar convenios financieros
-app.get("/showConvenioF", (req, res) => {
-  db.query("SELECT * FROM convenio_financiero", (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result);
-    }
-  });
-});  
-
-*/
+export default ConvenioD;
