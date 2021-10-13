@@ -5,10 +5,6 @@ const db = require("../../database");
 
 // ------------------------------------------- Post ----------------------------------------
 
-// ----------------- Ingresar bono -------------------------
-
-// ? FALTA UNA QUERY?
-
 // ---------------- Mostrar bonos -------------------------------
 router.get("/showBonosAfiliados", (req, res) => {
   db.query(

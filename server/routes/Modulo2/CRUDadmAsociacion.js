@@ -55,12 +55,12 @@ router.put("/editPagosAsociacion", (req, res) => {
   const monto_pago = req.body.monto_pago;
   const fecha_pago = req.body.fecha_pago;
   const estado_pago = req.body.estado_pago;
-  const tipo_pago = req.body.tipo_pago;
+  const tipo_pago = "Pago asociacion";
   const descripcion = req.body.descripcion;
 
   db.query(
     "UPDATE pagos SET monto_pago = ?, fecha_pago = ?, estado_pago = ?, tipo_pago = ?, descripcion = ? WHERE id_pago = ?",
-    [descripcion, monto_pago, fecha_pago, estado_pago, tipo_pago, id_pago],
+    [monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion, id_pago],
     (err, result) => {
       if (err) {
         console.log(err);

@@ -73,7 +73,7 @@ export default function FormDialog() {
       estado_pago: estado_pago,
       descripcion: descripcion,
     }).then(() => {
-      console.log("exitoso");
+      console.log("Bono agregado exitosamente");
       handleClose();
     });
   };

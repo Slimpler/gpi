@@ -87,22 +87,19 @@ router.put("/editPagoAfiliado", (req, res) => {
   );
 });
 
-// --------------------- Editar pagos afiliados ---------------------
+// --------------- Editar pagos afiliados -----------------
 router.put("/editPagosAfiliados", (req, res) => {
   const id_pago = req.body.id_pago;
   const rut_afiliado = req.body.rut_afiliado;
 
   db.query(
-    "UPDATE pagos_afiliados SET rut_afiliado = ? WHERE id_pago = ?",
-    [rut_afiliado, id_pago],
+    "UPDATE pagos_afiliados SET id_pago = ?, rut_afiliado = ? WHERE id_pago = ?",
+    [id_pago, rut_afiliado, id_pago],
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
-        console.log(
-          "Valores actualizados en la tabla pagos_afiliados",
-          id_pago
-        );
+        console.log("Valores actualizados en la tabla pagos_afiliados", id_pago);
       }
     }
   );

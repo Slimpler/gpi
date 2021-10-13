@@ -98,7 +98,7 @@ export default function FormDialog() {
               color="primary"
               onClick={handleClickOpen}
             >
-              agregar pago
+              Agregar pago
             </Button>
           </Box>
         </Box>
