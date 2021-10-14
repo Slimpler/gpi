@@ -76,7 +76,6 @@ function ConvenioFinanciero() {
   const [modalEliminar, setModalEliminar] = useState(false);
 
   const [listConvenioF, setListConvenioF] = useState([]);
-/*   const [id_convF, setid_convF = useState([]); */
   const [convenioFSelect, setConvenioFSelect] = useState({
     id_convF: "",
     nombre_convF: "",
@@ -103,17 +102,16 @@ function ConvenioFinanciero() {
   };
 
   const peticionPut = async (id) => {
-    await Axios.put("http://localhost:3001/editConvenioF", {
+      Axios.put("http://localhost:3001/editConvenioF", {
       id_convF: convenioFSelect.id_convF,
       nombre_convF: convenioFSelect.nombre_convF,
       fecha_convF: convenioFSelect.fecha_convF,
     })
-      .then((response) => {
+      .then(() => {
         setListConvenioF(
           listConvenioF.map((val) => {
             return val.id_convF === convenioFSelect.id_convF
               ? {
-                id_convF: convenioFSelect.id_convF,
                 nombre_convF: convenioFSelect.nombre_convF,
                 fecha_convF: convenioFSelect.fecha_convF,
                 }
@@ -162,34 +160,35 @@ function ConvenioFinanciero() {
   //Interfaz de modal editar
   const bodyEditar = (
     <div className={styles.modal}>
+
       <h3>Editar Convenio</h3>
-      {<TextField
-        className={styles.inputMaterial}
-        label="id convenio"
-        name="id_convenio"
-        onChange={handleChange}
-        value={convenioFSelect && convenioFSelect.id_convF}
-      />}
-      <br />
       <TextField
         className={styles.inputMaterial}
-        label="Nombre Convenio"
-        name="nombre_convenio"
+        label="Nombre del convenio"
+        name="nombre_convF"
+        variant= "outlined"
         onChange={handleChange}
         value={convenioFSelect && convenioFSelect.nombre_convF}
       />
+      <br />
       <br />
       <TextField
         className={styles.inputMaterial}
         name="fecha_convF"
         type="date"
+        variant= "outlined"
         format="yyyy-MM-dd"
         onChange={handleChange}
         value={convenioFSelect && convenioFSelect.fecha_convF}
       />
       <br />
       <div align="right">
-        <Button color="primary" onClick={() => peticionPut()}>
+        <Button 
+        color="primary"
+        onClick={(e) => {
+          peticionPut();
+          OCModalEditar();
+        }}>
           Editar
         </Button>
         <Button onClick={() => OCModalEditar()}> Cancelar </Button>
@@ -216,7 +215,7 @@ function ConvenioFinanciero() {
   return (
     <div className={styles.container}>
       <MaterialTable
-        title="Lista de Convenios"
+        title="Lista de Convenios Financieros"
         data={listConvenioF}
         columns={columns}
         actions={[

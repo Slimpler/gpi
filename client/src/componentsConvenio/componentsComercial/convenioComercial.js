@@ -163,26 +163,21 @@ function ConvenioComercial() {
   const bodyEditar = (
     <div className={styles.modal}>
       <h3>Editar Convenio</h3>
-      {<TextField
-        className={styles.inputMaterial}
-        label="id convenio"
-        name="id_convenio"
-        onChange={handleChange}
-        value={convenioCSelect && convenioCSelect.id_convC}
-      />}
-      <br />
       <TextField
         className={styles.inputMaterial}
-        label="Nombre Convenio"
-        name="nombre_convenio"
+        label="Nombre del convenio"
+        name="nombre_convC"
+        variant= "outlined"
         onChange={handleChange}
         value={convenioCSelect && convenioCSelect.nombre_convC}
       />
+      <br />
       <br />
       <TextField
         className={styles.inputMaterial}
         name="fecha_convC"
         type="date"
+        variant= "outlined"
         format="yyyy-MM-dd"
         onChange={handleChange}
         value={convenioCSelect && convenioCSelect.fecha_convC}

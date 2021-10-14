@@ -163,26 +163,21 @@ function ConvenioDescuento() {
   const bodyEditar = (
     <div className={styles.modal}>
       <h3>Editar Convenio</h3>
-      {<TextField
-        className={styles.inputMaterial}
-        label="id convenio"
-        name="id_convenio"
-        onChange={handleChange}
-        value={convenioDSelect && convenioDSelect.id_convD}
-      />}
-      <br />
       <TextField
         className={styles.inputMaterial}
-        label="Nombre Convenio"
-        name="nombre_convenio"
+        label="Nombre del convenio"
+        name="nombre_convD"
+        variant= "outlined"
         onChange={handleChange}
         value={convenioDSelect && convenioDSelect.nombre_convD}
       />
       <br />
+      <br /> 
       <TextField
         className={styles.inputMaterial}
         name="fecha_convD"
         type="date"
+        variant= "outlined"
         format="yyyy-MM-dd"
         onChange={handleChange}
         value={convenioDSelect && convenioDSelect.fecha_convD}

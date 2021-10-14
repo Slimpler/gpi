@@ -22,6 +22,8 @@ app.use(require("./routes/Modulo2/CRUDadmAfiliado"));
 app.use(require("./routes/Modulo2/CRUDadmAsociacion"));
 app.use(require("./routes/Modulo2/CRUDadmBonos"));
 
+
+
 // ------------------------------- Queries --------------------------------------
 
 //Convenio Financiero ----------------------------------------------------------------------------|
@@ -67,7 +69,7 @@ app.put("/editConvenioF", (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        console.log("Valores actualizados tabla convenio_financiero", id_convF);
+        console.log("Valores actualizados tabla convenio_financiero id:", id_convF);
       }
     }
   );
@@ -118,7 +120,7 @@ app.get("/showConvenioC", (req, res) => {
   });
 });
 
-//Editar convenios financieros
+//Editar convenios comercial
 app.put("/editConvenioC", (req, res) => {
   const id_convC = req.body.id_convC;
   const nombre_convC = req.body.nombre_convC;
@@ -131,7 +133,7 @@ app.put("/editConvenioC", (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        console.log("Valores actualizados tabla convenio_comerical", id_convC);
+        console.log("Valores actualizados tabla convenio_comercial", id_convC);
       }
     }
   );
@@ -207,7 +209,7 @@ app.delete("/deleteConvenioD/:id", (req, res) => {
   const id_convD = req.params.id_convD;
 
   db.query(
-    "DELETE * FROM convenio_descuento WHERE id_convD = ? ",
+    "DELETE FROM convenio_descuento WHERE id_convD = ? ",
     [nombre_convD, fecha_convD, id_convD],
     (err, result) => {
       if (err) {
