@@ -17,7 +17,7 @@ const InfoSectionConvenioFinanciero = ({
       <Container>
         <ColumnLeft>
           <h1>{heading}</h1>
-          <Button to="/admFinanciero " primary="true">
+          <Button to="/admFinanciero" primary="true">
             {buttonLabel}
             <Icon/>
           </Button>
