@@ -73,16 +73,16 @@ app.put("/editConvenioF", (req, res) => {
   );
 });
 
-app.delete("/deleteConvenioF/:id", (req, res) => {
+app.delete("/deleteConvenioF/:id_convF", (req, res) => {
   const id_convF = req.params.id_convF;
   db.query(
-    "DELETE * FROM convenio_financiero WHERE id_convF = ? ",
+    "DELETE FROM convenio_financiero WHERE id_convF = ? ",
       id_convF, (err, result) => {
       if (err) {
         console.log(err);
       } else {
-        console.log("Valores eliminados de convenio_financiero", id_convF);
-      }
+        res.send(result);
+      } 
     }
   );
 });

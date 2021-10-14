@@ -189,7 +189,12 @@ function ConvenioDescuento() {
       />
       <br />
       <div align="right">
-        <Button color="primary" onClick={() => peticionPut()}>
+        <Button 
+        color="primary"
+        onClick={(e) => {
+          peticionPut();
+          OCModalEditar();
+        }}>
           Editar
         </Button>
         <Button onClick={() => OCModalEditar()}> Cancelar </Button>

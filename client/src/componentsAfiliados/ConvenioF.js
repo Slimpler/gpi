@@ -1,12 +1,8 @@
 //En este componente está la tabla con info de los pagos de afiliados + CRUD; Pertenece al perfil de Directiva.
 import React, { useState, useEffect } from "react";
-/* import { DataGrid } from "@material-ui/data-grid";
- */ import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Axios from "axios";
 import MaterialTable from "material-table";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
-import { Modal, TextField, Button } from "@material-ui/core";
 import Search from "@material-ui/icons/Search";
 import ResetSearch from "@material-ui/icons/Clear";
 import Filter from "@material-ui/icons/FilterList";

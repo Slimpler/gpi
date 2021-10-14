@@ -54,7 +54,7 @@ export default function FormDialog2() {
    const [fecha_convF, setfecha_convF] = useState("");
  
   const agregarConvenioF = () => {
-    setOpen(false);
+    setOpen(false); 
     Axios.post("http://localhost:3001/createConvenioF", {
       id_convF: id_convF,
       nombre_convF: nombre_convF,
@@ -91,18 +91,6 @@ export default function FormDialog2() {
             Para agregar un convenio llenar los siguientes campos:
           </DialogContentText>
           <p> Datos del Convenio </p>
-
-       {/*    <TextField
-            autofocus
-            margin="dense"
-            id="id_convF"
-            label="id convenio"
-            variant="outlined"
-            size="medium"
-            onChange={(e) => {
-              setid_convF(e.target.value);
-            }}
-          />  */}
 
           <p />
           <TextField

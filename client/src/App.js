@@ -13,7 +13,7 @@ import FormularioAfiliate from "./pages/FormularioAfiliate";
 import PagoAsociacionPage from "./pages/PagoAsociacionPage";
 import PagoBonosPage from "./pages/pagoBonosPage";
 import PagoPrestamosPage from "./pages/pagoPrestamosPage";
-/*import Buscarconvenios from './pages/Buscarconvenios';*/
+
 
 import ConvenioAfiliado from './pages/ConvenioAfiliado';
 

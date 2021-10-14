@@ -91,19 +91,6 @@ export default function FormDialog() {
             Para agregar un convenio llenar los siguientes campos:
           </DialogContentText>
           <p> Datos del Convenio </p>
-
-       {/*    <TextField
-            autofocus
-            margin="dense"
-            id="id_convD"
-            label="id convenio"
-            variant="outlined"
-            size="medium"
-            onChange={(e) => {
-              setid_convD(e.target.value);
-            }}
-          />  */}
-
           <p />
           <TextField
             autofocus
