@@ -201,12 +201,12 @@ function ConvenioComercial() {
   const bodyEliminar = (
     <div className={styles.modal}>
       <p>
-        Estás seguro que deseas eliminar el siguiente Convenio:{" "}
-        <b>{convenioCSelect && convenioCSelect.id_convC}</b>?{" "}
+        Eliminar el convenio con id:{" "}
+        <b>{convenioCSelect && convenioCSelect.id_convC}</b>{" "}
       </p>
       <div align="right">
         <Button color="secondary" onClick={() => peticionDelete()}>
-          Sí
+          SI
         </Button>
         <Button onClick={() => OCModalEliminar()}>No</Button>
       </div>

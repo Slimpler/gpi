@@ -85,7 +85,7 @@ export default function FormDialog() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">agregar convenio de descuento</DialogTitle>
+        <DialogTitle id="form-dialog-title">Agregar convenio de descuento</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Para agregar un convenio llenar los siguientes campos:

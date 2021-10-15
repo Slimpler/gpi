@@ -124,22 +124,6 @@ function ConvenioFinanciero() {
         console.log(error);
       });
   };
-
-  const peticionDelete = async (id) => {
-    await Axios.delete(`http://localhost:3001/deleteConvenioF/${id}`)
-      .then((response) => {
-        setListConvenioF(
-          listConvenioF.filter((val) => {
-            return val.id_convF !== convenioFSelect.id_convF;
-          })
-        );
-        OCModalEliminar();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const SelectConvenioF = (id_convF, caso) => {
     setConvenioFSelect(id_convF);
     caso === "Editar" ? OCModalEditar() : OCModalEliminar();
@@ -149,6 +133,21 @@ function ConvenioFinanciero() {
     setModalEditar(!modalEditar);
   };
 
+
+  const peticionDelete = async (id_convF) => {
+    await Axios.delete(`http://localhost:3001/deleteConvenioF/${id_convF}`)
+      .then((response) => {
+        setListConvenioF(
+          listConvenioF.map((val) => {
+            return val.id_convF != convenioFSelect.id_convF;
+          })
+        );
+        OCModalEliminar();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   const OCModalEliminar = () => {
     setModalEliminar(!modalEliminar);
   };
@@ -200,14 +199,16 @@ function ConvenioFinanciero() {
   const bodyEliminar = (
     <div className={styles.modal}>
       <p>
-        Estás seguro que deseas eliminar el siguiente Convenio:{" "}
-        <b>{convenioFSelect && convenioFSelect.id_convF}</b>?{" "}
+        Eliminar convenio con id:{" "}
+        <b>{convenioFSelect && convenioFSelect.id_convF}</b>{" "}
       </p>
       <div align="right">
-        <Button color="secondary" onClick={() => peticionDelete()}>
-          Sí
+        <Button onClick={() =>{peticionDelete();OCModalEliminar()}}>
+          SI
         </Button>
-        <Button onClick={() => OCModalEliminar()}>No</Button>
+        <Button onClick={() => OCModalEliminar()}>
+          NO
+        </Button>
       </div>
     </div>
   );

@@ -81,7 +81,7 @@ export default function FormDialog2() {
         onClose={handleClose}
         aria-labelledby="form"
       >
-        <DialogTitle id="form">agregar convenio financiero</DialogTitle>
+        <DialogTitle id="form">Agregar convenio financiero</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Para agregar un convenio llenar los siguientes campos:
