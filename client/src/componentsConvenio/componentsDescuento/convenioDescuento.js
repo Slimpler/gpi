@@ -127,8 +127,8 @@ function ConvenioDescuento() {
       });
   };
 
-  const peticionDelete = async (id) => {
-    await Axios.delete(`http://localhost:3001/deleteConvenioD/${id}`)
+  const peticionDelete = async (id_convD) => {
+    await Axios.delete(`http://localhost:3001/deleteConvenioD/${id_convD}`)
       .then((response) => {
         setListConvenioD(
           listConvenioD.filter((val) => {
@@ -205,7 +205,7 @@ function ConvenioDescuento() {
         <b>{convenioDSelect && convenioDSelect.id_convD}</b>?{" "}
       </p>
       <div align="right">
-        <Button color="secondary" onClick={() => peticionDelete()}>
+        <Button color="secondary" onClick={() => {peticionDelete();OCModalEliminar()}}>
           Sí
         </Button>
         <Button onClick={() => OCModalEliminar()}>No</Button>
