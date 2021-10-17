@@ -203,7 +203,7 @@ function ConvenioFinanciero() {
         <b>{convenioFSelect && convenioFSelect.id_convF}</b>{" "}
       </p>
       <div align="right">
-        <Button onClick={() =>{peticionDelete();OCModalEliminar()}}>
+        <Button color="secondary" onClick={() =>{peticionDelete();OCModalEliminar()}}>
           SI
         </Button>
         <Button onClick={() => OCModalEliminar()}>
@@ -216,7 +216,7 @@ function ConvenioFinanciero() {
   return (
     <div className={styles.container}>
       <MaterialTable
-        title="Lista de Convenios Financieros"
+        title="Lista de Convenios"
         data={listConvenioF}
         columns={columns}
         actions={[

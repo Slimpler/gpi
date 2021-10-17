@@ -127,8 +127,8 @@ function ConvenioComercial() {
       });
   };
 
-  const peticionDelete = async (id) => {
-    await Axios.delete(`http://localhost:3001/deleteConvenioC/${id}`)
+  const peticionDelete = async (id_convC) => {
+    await Axios.delete(`http://localhost:3001/deleteConvenioC/${id_convC}`)
       .then((response) => {
         setListConvenioC(
           listConvenioC.filter((val) => {
@@ -205,7 +205,7 @@ function ConvenioComercial() {
         <b>{convenioCSelect && convenioCSelect.id_convC}</b>{" "}
       </p>
       <div align="right">
-        <Button color="secondary" onClick={() => peticionDelete()}>
+        <Button color="secondary" onClick={() => {peticionDelete();OCModalEliminar()}}>
           SI
         </Button>
         <Button onClick={() => OCModalEliminar()}>No</Button>
