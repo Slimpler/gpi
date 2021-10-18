@@ -74,8 +74,9 @@ function ConvenioFinanciero() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
-
   const [listConvenioF, setListConvenioF] = useState([]);
+  
+  
   const [convenioFSelect, setConvenioFSelect] = useState({
     id_convF: "",
     nombre_convF: "",
@@ -102,16 +103,17 @@ function ConvenioFinanciero() {
   };
 
   const peticionPut = async (id) => {
-      Axios.put("http://localhost:3001/editConvenioF", {
+     await Axios.put("http://localhost:3001/editConvenioF", {
       id_convF: convenioFSelect.id_convF,
       nombre_convF: convenioFSelect.nombre_convF,
       fecha_convF: convenioFSelect.fecha_convF,
     })
       .then(() => {
         setListConvenioF(
-          listConvenioF.map((val) => {
+          listConvenioF.filter((val) => {
             return val.id_convF === convenioFSelect.id_convF
               ? {
+                id_convF: convenioFSelect.id_convF,
                 nombre_convF: convenioFSelect.nombre_convF,
                 fecha_convF: convenioFSelect.fecha_convF,
                 }
@@ -124,6 +126,7 @@ function ConvenioFinanciero() {
         console.log(error);
       });
   };
+
   const SelectConvenioF = (id_convF, caso) => {
     setConvenioFSelect(id_convF);
     caso === "Editar" ? OCModalEditar() : OCModalEliminar();
@@ -133,12 +136,15 @@ function ConvenioFinanciero() {
     setModalEditar(!modalEditar);
   };
 
+  const OCModalEliminar = () => {
+    setModalEliminar(!modalEliminar);
+  };
 
-  const peticionDelete = async (id_convF) => {
-    await Axios.delete(`http://localhost:3001/deleteConvenioF/${id_convF}`)
+  const peticionDelete = async () => {
+    await Axios.delete(`http://localhost:3001/deleteConvenioF/${convenioFSelect.id_convF}`)
       .then((response) => {
         setListConvenioF(
-          listConvenioF.map((val) => {
+          listConvenioF.filter((val) => {
             return val.id_convF != convenioFSelect.id_convF;
           })
         );
@@ -148,10 +154,7 @@ function ConvenioFinanciero() {
         console.log(error);
       });
   };
-  const OCModalEliminar = () => {
-    setModalEliminar(!modalEliminar);
-  };
-
+  
   useEffect(() => {
     peticionGet();
   }, []);

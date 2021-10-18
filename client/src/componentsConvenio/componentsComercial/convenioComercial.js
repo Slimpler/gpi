@@ -110,7 +110,7 @@ function ConvenioComercial() {
     })
       .then((response) => {
         setListConvenioC(
-          listConvenioC.map((val) => {
+          listConvenioC.filter((val) => {
             return val.id_convC === convenioCSelect.id_convC
               ? {
                 id_convC: convenioCSelect.id_convC,
@@ -121,21 +121,6 @@ function ConvenioComercial() {
           })
         );
         OCModalEditar();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const peticionDelete = async (id_convC) => {
-    await Axios.delete(`http://localhost:3001/deleteConvenioC/${id_convC}`)
-      .then((response) => {
-        setListConvenioC(
-          listConvenioC.filter((val) => {
-            return val.id_convC !== convenioCSelect.id_convC;
-          })
-        );
-        OCModalEliminar();
       })
       .catch((error) => {
         console.log(error);
@@ -153,6 +138,21 @@ function ConvenioComercial() {
 
   const OCModalEliminar = () => {
     setModalEliminar(!modalEliminar);
+  };
+
+  const peticionDelete = async () => {
+    await Axios.delete(`http://localhost:3001/deleteConvenioC/${convenioCSelect.id_convC}`)
+      .then((response) => {
+        setListConvenioC(
+          listConvenioC.filter((val) => {
+            return val.id_convC != convenioCSelect.id_convC;
+          })
+        );
+        OCModalEliminar();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
