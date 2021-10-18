@@ -24,6 +24,9 @@ export const  PerfilAfiliado = () => {
               <Boton to="pagosUsuario">
                 Mis Pagos
               </Boton>
+              <Boton to="pagosUsuario">
+                Formulario Desafiliacion
+              </Boton>
             </div>
           </Grid2>
           <Grid2>
