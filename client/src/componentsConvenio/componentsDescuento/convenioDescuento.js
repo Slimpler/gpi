@@ -127,21 +127,6 @@ function ConvenioDescuento() {
       });
   };
 
-  const peticionDelete = async (id_convD) => {
-    await Axios.delete(`http://localhost:3001/deleteConvenioD/${id_convD}`)
-      .then((response) => {
-        setListConvenioD(
-          listConvenioD.filter((val) => {
-            return val.id_convD !== convenioDSelect.id_convD;
-          })
-        );
-        OCModalEliminar();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   const SelectConvenioD = (id_convD, caso) => {
     setConvenioDSelect(id_convD);
     caso === "Editar" ? OCModalEditar() : OCModalEliminar();
@@ -153,6 +138,21 @@ function ConvenioDescuento() {
 
   const OCModalEliminar = () => {
     setModalEliminar(!modalEliminar);
+  };
+
+  const peticionDelete = async () => {
+    await Axios.delete(`http://localhost:3001/deleteConvenioD/${convenioDSelect.id_convD}`)
+      .then((response) => {
+        setListConvenioD(
+          listConvenioD.filter((val) => {
+            return val.id_convD != convenioDSelect.id_convD;
+          })
+        );
+        OCModalEliminar();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   useEffect(() => {
