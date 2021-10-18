@@ -1,5 +1,4 @@
 import React from "react";
-
 import Navbar from "../componentsAfiliados/Navbar/Navbar";
 import PerfilAfiliado from "../componentsAfiliados/PerfilAfiliado/PerfilAfiliado";
 

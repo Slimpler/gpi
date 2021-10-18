@@ -1,12 +1,8 @@
 //En este componente está la tabla con info de los pagos de afiliados + CRUD; Pertenece al perfil de Directiva.
 import React, { useState, useEffect } from "react";
-/* import { DataGrid } from "@material-ui/data-grid";
- */ import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Axios from "axios";
 import MaterialTable from "material-table";
-import DeleteIcon from "@material-ui/icons/Delete";
-import EditIcon from "@material-ui/icons/Edit";
-import { Modal, TextField, Button } from "@material-ui/core";
 import Search from "@material-ui/icons/Search";
 import ResetSearch from "@material-ui/icons/Clear";
 import Filter from "@material-ui/icons/FilterList";
@@ -70,7 +66,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ConvenioDescuento() {
+function ConvenioD() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
@@ -102,137 +98,23 @@ function ConvenioDescuento() {
       });
   };
 
-  const peticionPut = async (id) => {
-    await Axios.put("http://localhost:3001/editConvenioD", {
-      id_convD: convenioDSelect.id_convD,
-      nombre_convD: convenioDSelect.nombre_convD,
-      fecha_convD: convenioDSelect.fecha_convD,
-    })
-      .then((response) => {
-        setListConvenioD(
-          listConvenioD.map((val) => {
-            return val.id_convD === convenioDSelect.id_convD
-              ? {
-                id_convD: convenioDSelect.id_convD,
-                nombre_convD: convenioDSelect.nombre_convD,
-                fecha_convD: convenioDSelect.fecha_convD,
-                }
-              : val;
-          })
-        );
-        OCModalEditar();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const peticionDelete = async (id_convD) => {
-    await Axios.delete(`http://localhost:3001/deleteConvenioD/${id_convD}`)
-      .then((response) => {
-        setListConvenioD(
-          listConvenioD.filter((val) => {
-            return val.id_convD !== convenioDSelect.id_convD;
-          })
-        );
-        OCModalEliminar();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const SelectConvenioD = (id_convD, caso) => {
-    setConvenioDSelect(id_convD);
-    caso === "Editar" ? OCModalEditar() : OCModalEliminar();
-  };
-
-  const OCModalEditar = () => {
-    setModalEditar(!modalEditar);
-  };
-
-  const OCModalEliminar = () => {
-    setModalEliminar(!modalEliminar);
-  };
+  
 
   useEffect(() => {
     peticionGet();
   }, []);
 
-  //Interfaz de modal editar
-  const bodyEditar = (
-    <div className={styles.modal}>
-      <h3>Editar Convenio</h3>
-      <TextField
-        className={styles.inputMaterial}
-        label="Nombre del convenio"
-        name="nombre_convD"
-        variant= "outlined"
-        onChange={handleChange}
-        value={convenioDSelect && convenioDSelect.nombre_convD}
-      />
-      <br />
-      <br /> 
-      <TextField
-        className={styles.inputMaterial}
-        name="fecha_convD"
-        type="date"
-        variant= "outlined"
-        format="yyyy-MM-dd"
-        onChange={handleChange}
-        value={convenioDSelect && convenioDSelect.fecha_convD}
-      />
-      <br />
-      <div align="right">
-        <Button 
-        color="primary"
-        onClick={(e) => {
-          peticionPut();
-          OCModalEditar();
-        }}>
-          Editar
-        </Button>
-        <Button onClick={() => OCModalEditar()}> Cancelar </Button>
-      </div>
-    </div>
-  );
-
-  //interfaz de model eliminar
-  const bodyEliminar = (
-    <div className={styles.modal}>
-      <p>
-        Estás seguro que deseas eliminar el siguiente Convenio:{" "}
-        <b>{convenioDSelect && convenioDSelect.id_convD}</b>?{" "}
-      </p>
-      <div align="right">
-        <Button color="secondary" onClick={() => {peticionDelete();OCModalEliminar()}}>
-          Sí
-        </Button>
-        <Button onClick={() => OCModalEliminar()}>No</Button>
-      </div>
-    </div>
-  );
+  
 
   return (
     <div className={styles.container}>
       <MaterialTable
-        title="Lista de Convenios"
+        title="Lista de Convenios de Descuento"
         data={listConvenioD}
         columns={columns}
         actions={[
-          {
-            icon: EditIcon,
-            tooltip: "Editar Convenio",
-            onClick: (event, rowData) => SelectConvenioD(rowData, "Editar"),
-            iconProps: {
-              style: { backgroundColor: "#33ACFF" },
-            },
-          },
-          {
-            icon: DeleteIcon,
-            tooltip: "Eliminar Convenio",
-            onClick: (event, rowData) => SelectConvenioD(rowData, "Eliminar"),
-          },
+          
+            //agregar botones para postulacion
         ]}
         options={{
           actionsColumnIndex: -1,
@@ -275,15 +157,7 @@ function ConvenioDescuento() {
           SortArrow: SortArrow,
         }}
       />
-
-      <Modal open={modalEditar} onClose={OCModalEditar}>
-        {bodyEditar}
-      </Modal>
-
-      <Modal open={modalEliminar} onClose={OCModalEliminar}>
-        {bodyEliminar}
-      </Modal>
     </div>
   );
 }
-export default ConvenioDescuento;
+export default ConvenioD;

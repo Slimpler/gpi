@@ -8,7 +8,6 @@ export const homeObjOne = {
   headline: "Todo tipo de beneficios para ti",
   description:
     "Accede para empezar a disfutar y aprovechar",
-  /* buttonLabel: "Empieza ahora", */
   imgStart: false,
 /*   img: require("../../images/descargar.png").default, */
   alt: "Logo Quintero",
@@ -26,10 +25,9 @@ export const homeObjTwo = {
   headline: "Entra y disfruta",
   description:
     "Tenemos todo tipo de beneficios para una mayor comodidad de nuestros trabajadores",
- /*  buttonLabel: "Learn More", */
   imgStart: true,
   img: require("../../images/convenios.jpg").default, 
-  alt: "Clinica ejemplo",
+  alt: "",
   dark: false,
   primary: false,
   darkText: true,

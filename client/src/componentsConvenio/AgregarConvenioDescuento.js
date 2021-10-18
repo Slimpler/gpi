@@ -14,7 +14,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Box from "@material-ui/core/Box";
-
+ 
 import { useState } from "react";
 import Axios from "axios";
 
@@ -54,6 +54,7 @@ export default function FormDialog() {
    const [fecha_convD, setfecha_convD] = useState("");
  
   const agregarConvenioD = () => {
+    setOpen(false);
     Axios.post("http://localhost:3001/createConvenioD", {
       id_convD: id_convD,
       nombre_convD: nombre_convD,
@@ -84,25 +85,12 @@ export default function FormDialog() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">agregar convenio de descuento</DialogTitle>
+        <DialogTitle id="form-dialog-title">Agregar convenio de descuento</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Para agregar un convenio llenar los siguientes campos:
           </DialogContentText>
           <p> Datos del Convenio </p>
-
-       {/*    <TextField
-            autofocus
-            margin="dense"
-            id="id_convD"
-            label="id convenio"
-            variant="outlined"
-            size="medium"
-            onChange={(e) => {
-              setid_convD(e.target.value);
-            }}
-          />  */}
-
           <p />
           <TextField
             autofocus

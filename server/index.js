@@ -17,203 +17,15 @@ app.use(express.json());
 //routes
 app.use(require("./routes/FormAfiliate"));
 
+// Modulo 2: Administracion de pagos
+app.use(require("./routes/Modulo2/CRUDadmAfiliado"));
+app.use(require("./routes/Modulo2/CRUDadmAsociacion"));
+app.use(require("./routes/Modulo2/CRUDadmBonos"));
+
+
+
 // ------------------------------- Queries --------------------------------------
 
-// ------------------------------------------- Post ----------------------------------------
-// ------- ingresar un pago de afiliado ----------
-app.post("/createPagoAfiliado", (req, res) => {
-  console.log(req.body);
-  (id_pago = req.body.id_pago),
-    (monto_pago = req.body.monto_pago),
-    (fecha_pago = req.body.fecha_pago),
-    (estado_pago = req.body.estado_pago),
-    (descripcion = req.body.descripcion),
-    (tipo_pago = "Pago afiliado"),
-    db.query(
-      "INSERT INTO pagos (monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion) VALUES (?, ?, ?, ?, ?)",
-      [monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion],
-      (err, result) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(
-            monto_pago,
-            fecha_pago,
-            estado_pago,
-            tipo_pago,
-            descripcion,
-            "insertados"
-          );
-        }
-      }
-    );
-});
-
-// ------- Ingresar un pago de la asociacion ----------
-app.post("/createPagoAsociacion", (req, res) => {
-  console.log(req.body);
-  (id_pago = req.body.id_pago),
-    (monto_pago = req.body.monto_pago),
-    (fecha_pago = req.body.fecha_pago),
-    (estado_pago = req.body.estado_pago),
-    (descripcion = req.body.descripcion),
-    (tipo_pago = "Pago asociacion"),
-    db.query(
-      "INSERT INTO pagos (monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion) VALUES (?, ?, ?, ?, ?)",
-      [monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion],
-      (err, result) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(
-            monto_pago,
-            fecha_pago,
-            estado_pago,
-            tipo_pago,
-            descripcion,
-            "insertados"
-          );
-        }
-      }
-    );
-});
-
-// ----------- Actualizar tabla intermedia de pagos y afiliados -----------------------
-app.post("/createPagosAfiliados", (req, res) => {
-  (rut_afiliado = req.body.rut_afiliado),
-    db.query(
-      "INSERT INTO pagos_afiliados (id_pago, rut_afiliado) VALUES ((SELECT MAX(id_pago) FROM pagos), (SELECT rut_afiliado FROM afiliado where rut_afiliado = ?))",
-      [rut_afiliado],
-      (err, result) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log(rut_afiliado, "insertado");
-        }
-      }
-    );
-});
-
-// ----------------- Ingresar bono -------------------------
-
-// -------------------------------------------------------- Get ------------------------------------------------
-// ----------------- Mostrar pagos afiliados -------------------------
-app.get("/showPagosAfiliados", (req, res) => {
-  db.query(
-    "select p.id_pago, pa.rut_afiliado, p.monto_pago, p.fecha_pago, p.estado_pago, p.tipo_pago, p.descripcion from pagos p join pagos_afiliados pa on p.id_pago = pa.id_pago",
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.send(result);
-      }
-    }
-  );
-});
-
-// ---------------- Mostrar pagos asociacion -----------------------
-app.get("/showPagosAsociacion", (req, res) => {
-  db.query(
-    "SELECT id_pago, tipo_pago, monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion FROM pagos where tipo_pago = 'Pago asociacion'",
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.send(result);
-      }
-    }
-  );
-});
-
-// ---------------- Mostrar bonos -------------------------------
-app.get("/showBonosAfiliados", (req, res) => {
-  db.query(
-    "SELECT p.id_pago, pa.rut_afiliado, p.tipo_pago, p.monto_pago, p.fecha_pago, p.estado_pago, p.tipo_pago, p.descripcion FROM pagos p JOIN pagos_afiliados pa on p.id_pago = pa.id_pago where descripcion = 'Bono Fiestas Patrias' or descripcion = 'Bono navidad'",
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        res.send(result);
-      }
-    }
-  );
-});
-
-// --------------------------------------------------------- Put -----------------------------------------------
-// ------------------ Editar pagos -------------------------
-app.put("/editPagoAfiliado", (req, res) => {
-  const id_pago = req.body.id_pago;
-  const monto_pago = req.body.monto_pago;
-  const fecha_pago = req.body.fecha_pago;
-  const estado_pago = req.body.estado_pago;
-  const tipo_pago = req.body.tipo_pago;
-  const descripcion = req.body.descripcion;
-
-  db.query(
-    "UPDATE pagos SET monto_pago = ?, fecha_pago = ?, estado_pago = ?, tipo_pago = ?, descripcion = ? WHERE id_pago = ?",
-    [monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion, id_pago],
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log("Valores actualizados en la tabla pagos", id_pago);
-      }
-    }
-  );
-});
-
-// --------------------- Editar pagos afiliados ---------------------
-app.put("/editPagosAfiliados", (req, res) => {
-  const id_pago = req.body.id_pago;
-  const rut_afiliado = req.body.rut_afiliado;
-
-  db.query(
-    "UPDATE pagos_afiliados SET rut_afiliado = ? WHERE id_pago = ?",
-    [rut_afiliado, id_pago],
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(
-          "Valores actualizados en la tabla pagos_afiliados",
-          id_pago
-        );
-      }
-    }
-  );
-});
-
-app.put("/editPagosAfiliados", (req, res) => {
-  const id_pago = req.body.id_pago;
-  const rut_afiliado = req.body.rut_afiliado;
-
-  db.query(
-    "UPDATE pagos_afiliados SET rut_afiliado = ? WHERE id_pago = ?",
-    [rut_afiliado, id_pago],
-    (err, result) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log(
-          "Valores actualizados en la tabla pagos_afiliados",
-          id_pago
-        );
-      }
-    }
-  );
-});
-
-app.delete("/deletePagos/:id", (req, res) => {
-  const id_pago = req.params.id_pago;
-
-  db.query("DELETE FROM pagos WHERE id_pago = ?", id_pago, (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result);
-    }
-  });
-});
 //Convenio Financiero ----------------------------------------------------------------------------|
 //Crear Convenio Financiero
 app.post("/createConvenioF", (req, res) => {
@@ -227,14 +39,14 @@ app.post("/createConvenioF", (req, res) => {
       (err, result) => {
         if (err) {
           console.log(err);
-        } else {
+        } else { 
           res.send("Valores Insertados");
         }
       }
     );
 });
-//Mostrar convenios financioeros
-app.get("/showConvenioF", (req, res) => {
+//Mostrar convenios financieros
+ app.get("/showConvenioF", (req, res) => {
   db.query("SELECT * FROM convenio_financiero", (err, result) => {
     if (err) {
       console.log(err);
@@ -257,24 +69,23 @@ app.put("/editConvenioF", (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        console.log("Valores actualizados tabla convenio_financiero", id_convF);
+        console.log("Valores actualizados tabla convenio_financiero id:", id_convF);
       }
     }
   );
 });
 
-app.delete("/deleteConvenioF/:id", (req, res) => {
+app.delete("/deleteConvenioF/:id_convF", (req, res) => {
   const id_convF = req.params.id_convF;
-
   db.query(
-    "DELETE * FROM convenio_financiero WHERE id_convF = ? ",
+    "DELETE FROM convenio_financiero WHERE id_convF = ? ",
     [nombre_convF, fecha_convF, id_convF],
-    (err, result) => {
+      (err, result) => {
       if (err) {
         console.log(err);
       } else {
-        console.log("Valores eliminados de convenio_financiero", id_convF);
-      }
+        res.send(result);
+      } 
     }
   );
 });
@@ -310,7 +121,7 @@ app.get("/showConvenioC", (req, res) => {
   });
 });
 
-//Editar convenios financieros
+//Editar convenios comercial
 app.put("/editConvenioC", (req, res) => {
   const id_convC = req.body.id_convC;
   const nombre_convC = req.body.nombre_convC;
@@ -323,13 +134,13 @@ app.put("/editConvenioC", (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        console.log("Valores actualizados tabla convenio_comerical", id_convC);
+        console.log("Valores actualizados tabla convenio_comercial", id_convC);
       }
     }
   );
 });
 
-app.delete("/deleteConvenioC/:id", (req, res) => {
+app.delete("/deleteConvenioC/:id_convC", (req, res) => {
   const id_convC = req.params.id_convC;
 
   db.query(
@@ -395,11 +206,11 @@ app.put("/editConvenioD", (req, res) => {
   );
 });
 
-app.delete("/deleteConvenioD/:id", (req, res) => {
+app.delete("/deleteConvenioD/:id_convD", (req, res) => {
   const id_convD = req.params.id_convD;
 
   db.query(
-    "DELETE * FROM convenio_descuento WHERE id_convD = ? ",
+    "DELETE FROM convenio_descuento WHERE id_convD = ? ",
     [nombre_convD, fecha_convD, id_convD],
     (err, result) => {
       if (err) {

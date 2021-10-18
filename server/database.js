@@ -3,7 +3,7 @@ const mysql = require("mysql");
 const db = mysql.createConnection({
   user: "root",
   host: "localhost",
-  password: "clave123",
+  password: "password",
   database: "quintero_vf",
 });
 
@@ -12,7 +12,7 @@ db.connect(function (err) {
     console.log(err);
     return;
   } else {
-    console.log("BD is connected");
+    console.log("DB is connected");
   }
 });
 

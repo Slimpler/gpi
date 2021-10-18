@@ -9,10 +9,6 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 import Box from "@material-ui/core/Box";
 
 import { useState } from "react";
@@ -28,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FormDialog() {
+export default function FormDialog2() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -54,6 +50,7 @@ export default function FormDialog() {
    const [fecha_convF, setfecha_convF] = useState("");
  
   const agregarConvenioF = () => {
+    setOpen(false); 
     Axios.post("http://localhost:3001/createConvenioF", {
       id_convF: id_convF,
       nombre_convF: nombre_convF,
@@ -82,26 +79,14 @@ export default function FormDialog() {
       <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="form-dialog-title"
+        aria-labelledby="form"
       >
-        <DialogTitle id="form-dialog-title">agregar convenio financiero</DialogTitle>
+        <DialogTitle id="form">Agregar convenio financiero</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Para agregar un convenio llenar los siguientes campos:
           </DialogContentText>
           <p> Datos del Convenio </p>
-
-       {/*    <TextField
-            autofocus
-            margin="dense"
-            id="id_convF"
-            label="id convenio"
-            variant="outlined"
-            size="medium"
-            onChange={(e) => {
-              setid_convF(e.target.value);
-            }}
-          />  */}
 
           <p />
           <TextField
@@ -133,7 +118,13 @@ export default function FormDialog() {
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button onClick={agregarConvenioF} color="primary">
+          <Button 
+            onClick={(e) => {
+              agregarConvenioF();
+              handleClose();
+          }}
+              color="primary"
+          >
             Agregar Convenio 
           </Button>
         </DialogActions>

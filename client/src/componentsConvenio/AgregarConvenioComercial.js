@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FormDialog() {
+export default function FormDialog1() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -54,6 +54,7 @@ export default function FormDialog() {
    const [fecha_convC, setfecha_convC] = useState("");
  
   const agregarConvenioC = () => {
+    setOpen(false);
     Axios.post("http://localhost:3001/createConvenioC", {
       id_convC: id_convC,
       nombre_convC: nombre_convC,
@@ -84,25 +85,12 @@ export default function FormDialog() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">agregar convenio Comercial</DialogTitle>
+        <DialogTitle id="form-dialog-title">Agregar convenio Comercial</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Para agregar un convenio llenar los siguientes campos:
           </DialogContentText>
           <p> Datos del Convenio </p>
-
-       {/*    <TextField
-            autofocus
-            margin="dense"
-            id="id_convC"
-            label="id convenio"
-            variant="outlined"
-            size="medium"
-            onChange={(e) => {
-              setid_convC(e.target.value);
-            }}
-          />  */}
-
           <p />
           <TextField
             autofocus
