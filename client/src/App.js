@@ -13,6 +13,7 @@ import FormularioAfiliate from "./pages/FormularioAfiliate";
 import PagoAsociacionPage from "./pages/PagoAsociacionPage";
 import PagoBonosPage from "./pages/pagoBonosPage";
 import PagoPrestamosPage from "./pages/pagoPrestamosPage";
+import FormularioDesafiliacion from "./pages/FormularioDesafiliacion";
 
 
 import ConvenioAfiliado from './pages/ConvenioAfiliado';
@@ -38,6 +39,7 @@ function App() {
         
         {/* Paginas del usuario */}
         <Route path="/perfil" component={PerfilPage} exact />
+        <Route path="/Desafiliacion" component={FormularioDesafiliacion} exact />
 
         {/*<Route path='/buscarconvenios' component={Buscarconvenios} exact />*/}
 
