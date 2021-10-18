@@ -24,7 +24,7 @@ export const  PerfilAfiliado = () => {
               <Boton to="pagosUsuario">
                 Mis Pagos
               </Boton>
-              <Boton to="pagosUsuario">
+              <Boton to="Desafiliacion">
                 Formulario Desafiliacion
               </Boton>
             </div>
