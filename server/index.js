@@ -78,13 +78,14 @@ app.put("/editConvenioF", (req, res) => {
 app.delete("/deleteConvenioF/:id_convF", (req, res) => {
   const id_convF = req.params.id_convF;
   db.query(
-    "DELETE FROM convenio_financiero WHERE id_convF = ? ",
-    [nombre_convF, fecha_convF, id_convF],
+    "DELETE FROM convenio_financiero WHERE id_convF = ?",
+    [id_convF],
       (err, result) => {
       if (err) {
         console.log(err);
       } else {
         res.send(result);
+        console.log("Valores eliminados de convenio_financiero", id_convF);
       } 
     }
   );
@@ -142,14 +143,14 @@ app.put("/editConvenioC", (req, res) => {
 
 app.delete("/deleteConvenioC/:id_convC", (req, res) => {
   const id_convC = req.params.id_convC;
-
   db.query(
-    "DELETE * FROM convenio_comercial WHERE id_convC = ? ",
-    [nombre_convC, fecha_convC, id_convC],
+    "DELETE FROM convenio_financiero WHERE id_convF = ?",
+    [id_convC],
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
+        res.send(result);
         console.log("Valores eliminados de convenio_comercial", id_convC);
       }
     }
@@ -211,7 +212,7 @@ app.delete("/deleteConvenioD/:id_convD", (req, res) => {
 
   db.query(
     "DELETE FROM convenio_descuento WHERE id_convD = ? ",
-    [nombre_convD, fecha_convD, id_convD],
+    [id_convD],
     (err, result) => {
       if (err) {
         console.log(err);

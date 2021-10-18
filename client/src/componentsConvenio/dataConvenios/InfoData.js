@@ -2,16 +2,16 @@
 export const InfoData = {
   heading2: "Convenio Comercial",
   heading: "Convenio Financiero",
-  buttonLabel: "Postulaciones",
+  buttonLabel: "Ir",
   reverse: false,
   delay: 100,
 
 };
 
 export const InfoDataTwo = {
-/*   heading2:"Convenio de Descuento", */
+ heading2:"Postulaciones", 
   heading: "Convenio de Descuento",
-  buttonLabel: "Postulaciones",  
+  buttonLabel: "Ir",  
   reverse: false,
   delay: 300,
 };
