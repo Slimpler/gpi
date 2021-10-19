@@ -15,7 +15,8 @@ app.use(cors());
 app.use(express.json());
 
 //routes
-app.use(require("./routes/FormAfiliate"));
+app.use(require("./routes/Form/FormAfiliate"));
+app.use(require("./routes/Form/FormDesafiliate"));
 
 // Modulo 2: Administracion de pagos
 app.use(require("./routes/Modulo2/CRUDadmAfiliado"));
