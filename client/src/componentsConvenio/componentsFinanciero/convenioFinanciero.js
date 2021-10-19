@@ -202,7 +202,7 @@ function ConvenioFinanciero() {
   const bodyEliminar = (
     <div className={styles.modal}>
       <p>
-        Eliminar convenio con id:{" "}
+      Estás seguro que deseas eliminar el siguiente Convenio:{" "}
         <b>{convenioFSelect && convenioFSelect.id_convF}</b>{" "}
       </p>
       <div align="right">
