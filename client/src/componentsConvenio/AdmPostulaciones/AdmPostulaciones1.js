@@ -67,7 +67,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function AdmSolicitud1() {
+function AdmPostulaciones1() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
@@ -109,7 +109,7 @@ function AdmSolicitud1() {
   return (
     <div className={styles.container}>
       <MaterialTable
-        title="Lista de Convenios Comerciales"
+        title=""
         data={listConvenioC}
         columns={columns}
         actions={[
@@ -160,4 +160,4 @@ function AdmSolicitud1() {
     </div>
   );
 }
-export default AdmSolicitud1;
+export default AdmPostulaciones1;

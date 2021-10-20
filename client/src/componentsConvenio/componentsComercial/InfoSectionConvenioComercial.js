@@ -24,7 +24,7 @@ const InfoSectionAsociacion = ({
         </ColumnLeft>
         <ColumnRight>
           <h1>{heading2}</h1>
-          <Button to="/" primary="true">
+          <Button to="/admPostulaciones" primary="true">
             {buttonLabel}
             <Icon/>
           </Button>
