@@ -4,9 +4,7 @@ import Navbar from "../componentsAdministrador/Navbar/Navbar";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 
 import GlobalStyle from "../globalStyles";
-import AdmSolicitud1 from "../componentsConvenio/AdmSolicitud/AdmSolicitud1";
-
-
+import AdmPostulaciones1 from "../componentsConvenio/AdmPostulaciones/AdmPostulaciones1";
 
 
 
@@ -17,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function AdmSolicitud() {
+function AdmPostulaciones() {
 
   const classes = useStyles();
   const [buttonPopup, setButtonPopup] = useState(false);
@@ -30,11 +28,11 @@ function AdmSolicitud() {
 
         <div className='admsolicitud'>
 
-            <Navbar />
+            <Navbar toggle={toggle} /> 
             <GlobalStyle />
             
-            
-            <AdmSolicitud1 />
+           
+            <AdmPostulaciones1 />
            
             
             
@@ -45,4 +43,4 @@ function AdmSolicitud() {
     )
 }
 
-export default AdmSolicitud
+export default AdmPostulaciones
