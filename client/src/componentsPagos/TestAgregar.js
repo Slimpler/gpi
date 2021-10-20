@@ -38,23 +38,25 @@ export default function FormDialog() {
   };
 
   // Estados para datos de tabla convenios
-
+  const [modalEditar, setModalEditar] = useState(false);
   const [rut_afiliado, setRut_afiliado] = useState("");
-  const [monto_pago, setMonto_pago] = useState(0);
-  const [fecha_pago, setFecha_pago] = useState("");
+  const [monto, setMonto] = useState(0);
+  const [fecha, setFecha] = useState("");
+  const [id_deuda, setDeuda] = useState("");
+  const [listDeuda, setListDeuda] = useState([]);
 
   //estados
-  const [estado_pago, setEstado_pago] = useState("");
+  const [estado, setEstado] = useState("");
 
   const cambioEstado = (event) => {
-    setEstado_pago(event.target.value);
+    setEstado(event.target.value);
   };
 
-  const [descripcion, setDescripcion] = useState("");
+  /*const [descripcion, setDescripcion] = useState("");
 
   const cambioDescripcion = (event) => {
     setDescripcion(event.target.value);
-  };
+  };*/
 
   /*   const [monto, setMonto] = useState(0);
   const [fecha, setFecha] = useState("");
@@ -67,11 +69,10 @@ export default function FormDialog() {
 
   //--------------------------------
   const agregarPagos = () => {
-    Axios.post("http://localhost:3001/createPagoAfiliado", {
-      monto_pago: monto_pago,
-      fecha_pago: fecha_pago,
-      estado_pago: estado_pago,
-      descripcion: descripcion,
+    Axios.post("http://localhost:3001/createIngresoAfiliado", {
+      monto: monto,
+      fecha: fecha,
+      estado: estado,
     }).then(() => {
       console.log("Exitoso");
       handleClose();
@@ -79,7 +80,7 @@ export default function FormDialog() {
   };
 
   const agregarPagosAfiliados = () => {
-    Axios.post("http://localhost:3001/createPagosAfiliados", {
+    Axios.post("http://localhost:3001/createIngresosAfiliados", {
       rut_afiliado: rut_afiliado,
     }).then(() => {
       console.log("Exitoso");
@@ -87,6 +88,41 @@ export default function FormDialog() {
     });
   };
 
+  const agregarIngresosDeudas = () => {
+    Axios.post("http://localhost:3001/createIngresosDeudas", {
+      id_deuda: id_deuda,
+    }).then(() => {
+      console.log("Exitoso");
+      handleClose();
+    });
+  };
+
+  const actualizarDeuda = async (id) => {
+    Axios.put("http://localhost:3001/actualizarDeuda", {
+      id_deuda: id_deuda,
+      monto: monto,
+    })
+      .then(() => {
+        setListDeuda(
+          listDeuda.map((val) => {
+            return val.id_deuda === id_deuda
+              ? {
+                  monto: monto,
+                }
+              : val;
+          })
+        );
+        OCModalEditar();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const OCModalEditar = () => {
+    setModalEditar(!modalEditar);
+  };
+    
   return (
     <div>
       <div style={mystyle}>
@@ -133,24 +169,24 @@ export default function FormDialog() {
           <TextField
             autofocus
             margin="dense"
-            id="monto_pago"
-            label="monto_pago"
+            id="monto"
+            label="monto"
             variant="outlined"
             size="medium"
             onChange={(e) => {
-              setMonto_pago(e.target.value);
+              setMonto(e.target.value);
             }}
           />
           <p />
           <TextField
             autofocus
             margin="dense"
-            id="fecha_pago"
+            id="fecha"
             variant="outlined"
             size="medium"
             type="date"
             onChange={(e) => {
-              setFecha_pago(e.target.value);
+              setFecha(e.target.value);
             }}
           />
 
@@ -163,7 +199,7 @@ export default function FormDialog() {
             <Select
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select"
-              value={estado_pago}
+              value={estado}
               onChange={cambioEstado}
             >
               <MenuItem value={1}> Pendiente </MenuItem>
@@ -171,25 +207,19 @@ export default function FormDialog() {
               <MenuItem value={3}> Rechazado </MenuItem>
             </Select>
           </FormControl>
-
           <p />
 
-          <FormControl variant="outlined">
-            <InputLabel id="demo-simple-select-outlined-label">
-              Descripcion
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select"
-              value={descripcion}
-              onChange={cambioDescripcion}
-            >
-              <MenuItem value={1}> Pago cuota </MenuItem>
-              <MenuItem value={2}> Pago convenio </MenuItem>
-              <MenuItem value={3}> Pago prestamo </MenuItem>
-              <MenuItem value={4}> Pago incorporacion </MenuItem>
-            </Select>
-          </FormControl>
+          <TextField
+            autofocus
+            margin="dense"
+            id="id_deuda"
+            label="id_deuda"
+            variant="outlined"
+            size="medium"
+            onChange={(e) => {
+              setDeuda(e.target.value);
+            }}
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
@@ -199,11 +229,13 @@ export default function FormDialog() {
             onClick={(e) => {
               agregarPagos();
               agregarPagosAfiliados();
+              agregarIngresosDeudas();
+              actualizarDeuda();
               handleClose();
             }}
             color="primary"
           >
-            agregar pago
+            Agregar pago
           </Button>
         </DialogActions>
       </Dialog>
