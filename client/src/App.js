@@ -24,6 +24,7 @@ import MisConvenios from './pages/MisConvenios';
 import AdmAfiliados from "./pages/AdmAfiliados";
 import AdministracionAfiliados from "./pages/AdministracionAfiliados";
 import Convenios from "./pages/Convenios";
+import AdmPostulaciones from "./pages/AdmPostulaciones";
 
 
 
@@ -62,7 +63,7 @@ function App() {
         <Route path="/admDescuento" component={AdministrarConvenioDescuento} exact />
         <Route path="/AdmAfiliados" component={AdmAfiliados} exact />
         <Route path="/AdministracionAfiliados" component={AdministracionAfiliados} exact />
-        
+        <Route path="/AdmPostulaciones" component={AdmPostulaciones} exact />
       </Switch>
     </Router>
   );

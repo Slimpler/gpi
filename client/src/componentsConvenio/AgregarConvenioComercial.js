@@ -49,16 +49,18 @@ export default function FormDialog1() {
   };
 
    // Estados para datos de tabla convenios
-   const [id_convC, setid_convC] = useState(0);
-   const [nombre_convC, setnombre_convC] = useState(0);
-   const [fecha_convC, setfecha_convC] = useState("");
+   const [id_conv, setid_conv] = useState(0);
+   const [nombre_conv, setnombre_conv] = useState(0);
+   const [fecha_conv, setfecha_conv] = useState("");
+   const [descripcion_conv, setdescripcion_conv] = useState(0);
  
   const agregarConvenioC = () => {
     setOpen(false);
     Axios.post("http://localhost:3001/createConvenioC", {
-      id_convC: id_convC,
-      nombre_convC: nombre_convC,
-      fecha_convC: fecha_convC,
+      id_conv: id_conv,
+      nombre_conv: nombre_conv,
+      fecha_conv: fecha_conv,
+      descripcion_conv: descripcion_conv,
     }).then(() => {
       console.log("exitoso");
     });
@@ -95,26 +97,39 @@ export default function FormDialog1() {
           <TextField
             autofocus
             margin="dense"
-            id="nombre_convC"
+            id="nombre_conv"
             label="nombre convenio"
             variant="outlined"
             size="medium"
             onChange={(e) => {
-              setnombre_convC(e.target.value);
+              setnombre_conv(e.target.value);
             }}
           />
           <p />
           <TextField
             autofocus
             margin="dense"
-            id="fecha_convC"
+            id="fecha_conv"
             variant="outlined"
             size="medium"
             type="date"
             onChange={(e) => {
-              setfecha_convC(e.target.value);
+              setfecha_conv(e.target.value);
             }}
           />
+                    <p />
+          <TextField
+            autofocus
+            margin="dense"
+            id="descripcion_conv"
+            label="descripcion"
+            variant="outlined"
+            size="medium"
+            onChange={(e) => {
+              setdescripcion_conv(e.target.value);
+            }}
+          />
+          <p />
 
         </DialogContent>
         <DialogActions>

@@ -5,27 +5,25 @@ const db = require("../../database");
 
 // ------------------------------------------- Post ----------------------------------------
 // ------- ingresar un pago de afiliado ----------
-router.post("/createPagoAfiliado", (req, res) => {
+router.post("/createIngresoAfiliado", (req, res) => {
   console.log(req.body);
-  (id_pago = req.body.id_pago),
-    (monto_pago = req.body.monto_pago),
-    (fecha_pago = req.body.fecha_pago),
-    (estado_pago = req.body.estado_pago),
-    (descripcion = req.body.descripcion),
-    (tipo_pago = "Pago afiliado"),
+  (id_ingreso = req.body.id_ingreso),
+    (monto = req.body.monto),
+    (fecha = req.body.fecha),
+    (estado = req.body.estado),
+    (tipo = "Pago afiliado"),
     db.query(
-      "INSERT INTO pagos (monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion) VALUES (?, ?, ?, ?, ?)",
-      [monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion],
+      "INSERT INTO ingresos (monto, fecha, estado, tipo) VALUES (?, ?, ?, ?)",
+      [monto, fecha, estado, tipo],
       (err, result) => {
         if (err) {
           console.log(err);
         } else {
           console.log(
-            monto_pago,
-            fecha_pago,
-            estado_pago,
-            tipo_pago,
-            descripcion,
+            monto,
+            fecha,
+            estado,
+            tipo,
             "insertados"
           );
         }
@@ -33,11 +31,11 @@ router.post("/createPagoAfiliado", (req, res) => {
     );
 });
 
-// ----------- Actualizar tabla intermedia de pagos y afiliados -----------------------
-router.post("/createPagosAfiliados", (req, res) => {
+// ----------- Actualizar tabla intermedia de ingresos y afiliados -----------------------
+router.post("/createIngresosAfiliados", (req, res) => {
   (rut_afiliado = req.body.rut_afiliado),
     db.query(
-      "INSERT INTO pagos_afiliados (id_pago, rut_afiliado) VALUES ((SELECT MAX(id_pago) FROM pagos), (SELECT rut_afiliado FROM afiliado where rut_afiliado = ?))",
+      "INSERT INTO pagos_afiliados (id_ingreso, rut_afiliado) VALUES ((SELECT MAX(id_ingreso) FROM ingresos), (SELECT rut_afiliado FROM afiliado where rut_afiliado = ?))",
       [rut_afiliado],
       (err, result) => {
         if (err) {
@@ -49,11 +47,27 @@ router.post("/createPagosAfiliados", (req, res) => {
     );
 });
 
+// ------------- Actualizar tabla intermedia entre ingresos y deuda ----------------------
+router.post("/createIngresosDeudas", (req, res) => {
+  (id_deuda = req.body.id_deuda),
+    db.query(
+      "INSERT into pagos_deudas (id_ingreso, id_deuda) VALUES ((SELECT MAX(id_ingreso) FROM ingresos), (SELECT id_deuda FROM deudas where id_deuda = ?))",
+      [id_deuda],
+      (err, result) => {
+        if(err) {
+          console.log(err);
+        } else {
+          console.log(id_deuda, "insertado");
+        }
+      }
+    );
+});
+
 // -------------------------------------------------------- Get ------------------------------------------------
 // ----------------- Mostrar pagos afiliados -------------------------
-router.get("/showPagosAfiliados", (req, res) => {
+router.get("/showIngresosAfiliados", (req, res) => {
   db.query(
-    "select p.id_pago, pa.rut_afiliado, p.monto_pago, p.fecha_pago, p.estado_pago, p.tipo_pago, p.descripcion from pagos p join pagos_afiliados pa on p.id_pago = pa.id_pago",
+    "select i.id_ingreso, pa.rut_afiliado, i.monto, i.fecha, i.estado, i.tipo from ingresos i join pagos_afiliados pa on i.id_ingreso = pa.id_ingreso",
     (err, result) => {
       if (err) {
         console.log(err);
@@ -103,6 +117,24 @@ router.put("/editPagosAfiliados", (req, res) => {
       }
     }
   );
+});
+
+// ----------------- Actualizar deuda ----------------------
+router.put("/actualizarDeuda", (req, res) => {
+  const id_deuda = req.body.id_deuda;
+  const monto = req.body.monto;
+
+  db.query(
+    "UPDATE deudas SET remanente_deuda = (100000 - ?) WHERE id_deuda = ?",
+    [monto, id_deuda],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Valores actualizados en la tabla deuda");
+      }
+    }
+  )
 });
 
 // --------------------- Eliminar pagos afiliados ---------------------

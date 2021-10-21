@@ -20,25 +20,32 @@ import SortArrow from "@material-ui/icons/ArrowUpward";
 const columns = [ 
   {
     title: "id convenio",
-    field: "id_convC",
+    field: "id_conv",
     headerStyle: {
       backgroundColor: "#3374FF",
     },
   },
   {
     title: "Nombre Convenio",
-    field: "nombre_convC",
+    field: "nombre_conv",
     headerStyle: {
       backgroundColor: "#3374FF",
     },
   },
   {
     title: "Fecha de ingreso",
-    field: "fecha_convC",
+    field: "fecha_conv",
     type: "date",
     dateSetting: {
       format: "dd/MM/yyyy",
     },
+    headerStyle: {
+      backgroundColor: "#3374FF",
+    },
+  },
+  {
+    title: "Descripcion",
+    field: "descripcion_conv",
     headerStyle: {
       backgroundColor: "#3374FF",
     },
@@ -76,11 +83,12 @@ function ConvenioComercial() {
   const [modalEliminar, setModalEliminar] = useState(false);
 
   const [listConvenioC, setListConvenioC] = useState([]);
-/*   const [id_convC, setid_convC = useState([]); */
+/*   const [id_conv, setid_conv = useState([]); */
   const [convenioCSelect, setConvenioCSelect] = useState({
-    id_convC: "",
-    nombre_convC: "",
-    fecha_convC: "",
+    id_conv: "",
+    nombre_conv: "",
+    fecha_conv: "",
+    descripcion_conv: "",
   });
 
   const handleChange = (e) => {
@@ -104,18 +112,20 @@ function ConvenioComercial() {
 
   const peticionPut = async (id) => {
     await Axios.put("http://localhost:3001/editConvenioC", {
-      id_convC: convenioCSelect.id_convC,
-      nombre_convC: convenioCSelect.nombre_convC,
-      fecha_convC: convenioCSelect.fecha_convC,
+      id_conv: convenioCSelect.id_conv,
+      nombre_conv: convenioCSelect.nombre_conv,
+      fecha_conv: convenioCSelect.fecha_conv,
+      descripcion_conv: convenioCSelect.descripcion_conv,
     })
       .then((response) => {
         setListConvenioC(
           listConvenioC.filter((val) => {
-            return val.id_convC === convenioCSelect.id_convC
+            return val.id_conv === convenioCSelect.id_conv
               ? {
-                id_convC: convenioCSelect.id_convC,
-                nombre_convC: convenioCSelect.nombre_convC,
-                fecha_convC: convenioCSelect.fecha_convC,
+                id_conv: convenioCSelect.id_conv,
+                nombre_conv: convenioCSelect.nombre_conv,
+                fecha_conv: convenioCSelect.fecha_conv,
+                descripcion_conv: convenioCSelect.descripcion_conv,
                 }
               : val;
           })
@@ -127,8 +137,8 @@ function ConvenioComercial() {
       });
   };
 
-  const SelectConvenioC = (id_convC, caso) => {
-    setConvenioCSelect(id_convC);
+  const SelectConvenioC = (id_conv, caso) => {
+    setConvenioCSelect(id_conv);
     caso === "Editar" ? OCModalEditar() : OCModalEliminar();
   };
 
@@ -141,11 +151,11 @@ function ConvenioComercial() {
   };
 
   const peticionDelete = async () => {
-    await Axios.delete(`http://localhost:3001/deleteConvenioC/${convenioCSelect.id_convC}`)
+    await Axios.delete(`http://localhost:3001/deleteConvenioC/${convenioCSelect.id_conv}`)
       .then((response) => {
         setListConvenioC(
           listConvenioC.filter((val) => {
-            return val.id_convC != convenioCSelect.id_convC;
+            return val.id_conv != convenioCSelect.id_conv;
           })
         );
         OCModalEliminar();
@@ -166,21 +176,31 @@ function ConvenioComercial() {
       <TextField
         className={styles.inputMaterial}
         label="Nombre del convenio"
-        name="nombre_convC"
+        name="nombre_conv"
         variant= "outlined"
         onChange={handleChange}
-        value={convenioCSelect && convenioCSelect.nombre_convC}
+        value={convenioCSelect && convenioCSelect.nombre_conv}
       />
       <br />
       <br />
       <TextField
         className={styles.inputMaterial}
-        name="fecha_convC"
+        name="fecha_conv"
         type="date"
         variant= "outlined"
         format="yyyy-MM-dd"
         onChange={handleChange}
-        value={convenioCSelect && convenioCSelect.fecha_convC}
+        value={convenioCSelect && convenioCSelect.fecha_conv}
+      />
+      <br />
+      <br />
+      <TextField
+        className={styles.inputMaterial}
+        label="Descripción"
+        name="descripcion_conv"
+        variant= "outlined"
+        onChange={handleChange}
+        value={convenioCSelect && convenioCSelect.descripcion_conv}
       />
       <br />
       <div align="right">
@@ -201,8 +221,8 @@ function ConvenioComercial() {
   const bodyEliminar = (
     <div className={styles.modal}>
       <p>
-        Eliminar el convenio con id:{" "}
-        <b>{convenioCSelect && convenioCSelect.id_convC}</b>{" "}
+      Estás seguro que deseas eliminar el siguiente Convenio:{" "}
+        <b>{convenioCSelect && convenioCSelect.id_conv}</b>{" "}
       </p>
       <div align="right">
         <Button color="secondary" onClick={() => {peticionDelete();OCModalEliminar()}}>
