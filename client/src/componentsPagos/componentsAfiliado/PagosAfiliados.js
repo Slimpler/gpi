@@ -167,6 +167,7 @@ function PagosAfiliados() {
           })
         );
         OCModalEditar();
+        peticionGet();
       })
       .catch((error) => {
         console.log(error);
