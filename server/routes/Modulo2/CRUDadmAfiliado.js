@@ -19,13 +19,7 @@ router.post("/createIngresoAfiliado", (req, res) => {
         if (err) {
           console.log(err);
         } else {
-          console.log(
-            monto,
-            fecha,
-            estado,
-            tipo,
-            "insertados"
-          );
+          console.log("Ingreso admitido");
         }
       }
     );
@@ -41,7 +35,7 @@ router.post("/createIngresosAfiliados", (req, res) => {
         if (err) {
           console.log(err);
         } else {
-          console.log(rut_afiliado, "insertado");
+          console.log("Tabla intermedia de ingresos y afiliados actualizada");
         }
       }
     );
@@ -49,7 +43,7 @@ router.post("/createIngresosAfiliados", (req, res) => {
 
 // ------------- Actualizar tabla intermedia entre ingresos y deuda ----------------------
 router.post("/createIngresosDeudas", (req, res) => {
-  console.log("aqui ta", req.body),
+  console.log(req.body),
   (id_deuda = req.body.id_deuda),
     db.query(
       "INSERT into pagos_deudas (id_ingreso, id_deuda) VALUES ((SELECT MAX(id_ingreso) FROM ingresos), (SELECT id_deuda FROM deudas where id_deuda = ?))",
@@ -58,7 +52,8 @@ router.post("/createIngresosDeudas", (req, res) => {
         if(err) {
           console.log(err);
         } else {
-          console.log(id_deuda, "insertado");
+          res.send(result);
+          console.log("Tabla intermedia de ingresos y deudas actualizada");
         }
       }
     );
@@ -142,13 +137,13 @@ router.put("/actualizarDeuda", (req, res) => {
   const monto = req.body.monto;
 
   db.query(
-    "UPDATE deudas SET remanente_deuda = (remanente_deuda - ?), cuotas_pagadas = cuotas_pagadas + 1 WHERE id_deuda = ?",
+    "UPDATE deudas SET remanente_deuda = (remanente_deuda - ?), cuotas_pagadas = (cuotas_pagadas + 1) WHERE id_deuda = ?",
     [monto, id_deuda],
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
-        console.log("Valores actualizados en la tabla deuda por el monto", monto);
+        console.log("Deuda actualizada por el monto", monto);
       }
     }
   )
