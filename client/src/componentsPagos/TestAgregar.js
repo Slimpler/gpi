@@ -14,11 +14,63 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Box from "@material-ui/core/Box";
 
+// imports para material table
+import Add from "@material-ui/icons/Add";
+import Search from "@material-ui/icons/Search";
+import ResetSearch from "@material-ui/icons/Clear";
+import Filter from "@material-ui/icons/FilterList";
+import Export from "@material-ui/icons/SaveAlt";
+import FirstPage from "@material-ui/icons/FirstPage";
+import LastPage from "@material-ui/icons/LastPage";
+import NextPage from "@material-ui/icons/ChevronRight";
+import PreviousPage from "@material-ui/icons/ChevronLeft";
+import SortArrow from "@material-ui/icons/ArrowUpward";
+
 import { useState } from "react";
 import Axios from "axios";
+import MaterialTable from "material-table";
+
+const columns = [
+  {
+    title: "Deuda total",
+    field: "deuda_total",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+  },
+  {
+    title: "Remanente deuda",
+    field: "remanente_deuda",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+  },
+  {
+    title: "Cuotas Totales",
+    field: "cuotas_totales",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+  },
+  {
+    title: "Cuotas pagadas",
+    field: "cuotas_pagadas",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+  },
+  {
+    title: "Descripcion",
+    field: "descripcion",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+  },
+];
 
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
+  const [openTwo, setOpenTwo] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -28,7 +80,14 @@ export default function FormDialog() {
     setOpen(false);
   };
 
-  //-----------------------------------------//
+  const handleClickOpenTwo = () => {
+    setOpenTwo(true);
+  };
+
+  const handleCloseTwo = () => {
+    setOpenTwo(false);
+  };
+
   //Ubicación del botón
   const mystyle = {
     height: 80,
@@ -36,6 +95,34 @@ export default function FormDialog() {
     padding: "0px",
     margin: "80px 15px 15px 0px",
   };
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 400,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
+    boxShadow: 24,
+    p: 4,
+  };
+
+  const deudas = [
+    {
+      id: 1,
+      deudaTotal: 100,
+      remanenteDeuda: 100,
+      cuotasTotales: 10,
+      cuotasPagadas: 2,
+    },
+    {
+      id: 2,
+      deudaTotal: 300,
+      remanenteDeuda: 300,
+      cuotasTotales: 12,
+      cuotasPagadas: 5,
+    },
+  ];
 
   // Estados para datos de tabla convenios
   const [modalEditar, setModalEditar] = useState(false);
@@ -52,22 +139,6 @@ export default function FormDialog() {
     setEstado(event.target.value);
   };
 
-  /*const [descripcion, setDescripcion] = useState("");
-
-  const cambioDescripcion = (event) => {
-    setDescripcion(event.target.value);
-  };*/
-
-  /*   const [monto, setMonto] = useState(0);
-  const [fecha, setFecha] = useState("");
-  const [rutAfiliado, setRutafiliado] = useState(0);
-  const [estado, setEstado] = useState("");
-
-  const cambioEstado = (e) => {
-    setEstado(e.target.value);
-  }; */
-
-  //--------------------------------
   const agregarPagos = () => {
     Axios.post("http://localhost:3001/createIngresoAfiliado", {
       monto: monto,
@@ -108,7 +179,7 @@ export default function FormDialog() {
       });
   };
 
-  /*const actualizarDeuda = async (id) => {
+  /*   const actualizarDeuda = async (id) => {
     Axios.put("http://localhost:3001/actualizarDeuda", {
       id_deuda: id_deuda,
       monto: monto,
@@ -128,8 +199,10 @@ export default function FormDialog() {
       .catch((error) => {
         console.log(error);
       });
-  };*/
-    
+  }; */
+
+  const [dataStore, setDataStore] = useState([{ name: "", job: "", age: 0 }]);
+
   return (
     <div>
       <div style={mystyle}>
@@ -220,19 +293,82 @@ export default function FormDialog() {
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button
-            onClick={(e) => {
-              agregarPagos();
-              agregarPagosAfiliados();
-              //agregarIngresosDeudas();
-              getDeudas();
-              handleClose();
-            }}
-            color="primary"
-          >
-            Agregar pago
+          <Button onClick={handleClickOpenTwo} color="primary">
+            Seleccionar deuda
           </Button>
         </DialogActions>
+      </Dialog>
+
+      <Dialog
+        open={openTwo}
+        onClose={handleCloseTwo}
+        aria-labelledby="form-dialog-title"
+      >
+        <MaterialTable
+          data={dataStore}
+          title="Deudas"
+          columns={columns}
+          actions={[
+            {
+              tooltip: "Agregar pago",
+              icon: "Add",
+              onClick: (x) => {
+                handleCloseTwo();
+                handleClose();
+              },
+            },
+          ]}
+          options={{
+            actionsColumnIndex: -1,
+            search: true,
+            selection: true,
+            headerStyle: {
+              backgroundColor: "#009966",
+              color: "#FFF",
+              fontSize: "14px",
+            },
+            selectionProps: (rowData) => ({
+              color: "primary",
+            }),
+          }}
+          localization={{
+            header: {
+              backgroundColor: "#23BB77",
+            },
+            pagination: {
+              labelRowsSelect: "Filas",
+              labelDisplayedRows: "{count} de {from}-{to}",
+              firstTooltip: "Primera página",
+              previousTooltip: "Página anterior",
+              nextTooltip: "Próxima página",
+              lastTooltip: "Última página",
+            },
+            toolbar: {
+              searchTooltip: "Busqueda",
+              searchPlaceholder: "Buscar",
+            },
+          }}
+          icons={{
+            Search: Search,
+            ResetSearch: ResetSearch,
+            Filter: Filter,
+            Export: Export,
+            FirstPage: FirstPage,
+            LastPage: LastPage,
+            NextPage: NextPage,
+            PreviousPage: PreviousPage,
+            SortArrow: SortArrow,
+            Add: Add,
+          }}
+        />
+        <Button
+          onClick={(e) => {
+            handleCloseTwo();
+            handleClose();
+          }}
+        >
+          Cerrar
+        </Button>
       </Dialog>
     </div>
   );
