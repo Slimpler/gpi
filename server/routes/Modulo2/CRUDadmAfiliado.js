@@ -67,12 +67,29 @@ router.post("/createIngresosDeudas", (req, res) => {
 // ----------------- Mostrar pagos afiliados -------------------------
 router.get("/showIngresosAfiliados", (req, res) => {
   db.query(
-    "select i.id_ingreso, pa.rut_afiliado, i.monto, i.fecha, i.estado, i.tipo from ingresos i join pagos_afiliados pa on i.id_ingreso = pa.id_ingreso",
+    "SELECT i.id_ingreso, pa.rut_afiliado, i.monto, i.fecha, i.estado, i.tipo FROM ingresos i JOIN pagos_afiliados pa ON i.id_ingreso = pa.id_ingreso",
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
         res.send(result);
+      }
+    }
+  );
+});
+
+// ------------------- Obtener deudas --------------------------------
+router.get("/getDeudas/:rut_afiliado", (req, res) => {
+  const rut_afiliado = req.params.rut_afiliado;
+  db.query(
+    "SELECT id_deuda, deuda_total, remanente_deuda, cuotas_totales, cuotas_pagadas, descripcion FROM deudas WHERE rut_afiliado = ?",
+    [rut_afiliado],
+    (err, result) => {
+      if(err) {
+        console.log(err);
+      } else{
+        res.send(result);
+        console.log("Hola", rut_afiliado);
       }
     }
   );

@@ -42,7 +42,7 @@ export default function FormDialog() {
   const [rut_afiliado, setRut_afiliado] = useState("");
   const [monto, setMonto] = useState(0);
   const [fecha, setFecha] = useState("");
-  const [id_deuda, setDeuda] = useState("");
+  //const [id_deuda, setDeuda] = useState("");
   const [listDeuda, setListDeuda] = useState([]);
 
   //estados
@@ -88,16 +88,27 @@ export default function FormDialog() {
     });
   };
 
-  const agregarIngresosDeudas = () => {
+  /*const agregarIngresosDeudas = () => {
     Axios.post("http://localhost:3001/createIngresosDeudas", {
       id_deuda: id_deuda,
     }).then(() => {
       console.log("Exitoso");
       handleClose();
     });
+  };*/
+
+  const getDeudas = async () => {
+    await Axios.get(`http://localhost:3001/getDeudas/${rut_afiliado}`)
+      .then((response) => {
+        setListDeuda(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
-  const actualizarDeuda = async (id) => {
+  /*const actualizarDeuda = async (id) => {
     Axios.put("http://localhost:3001/actualizarDeuda", {
       id_deuda: id_deuda,
       monto: monto,
@@ -117,11 +128,7 @@ export default function FormDialog() {
       .catch((error) => {
         console.log(error);
       });
-  };
-
-  const OCModalEditar = () => {
-    setModalEditar(!modalEditar);
-  };
+  };*/
     
   return (
     <div>
@@ -145,7 +152,7 @@ export default function FormDialog() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">agregar pago</DialogTitle>
+        <DialogTitle id="form-dialog-title">Agregar pago</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Para agregar un pago de un afiliado llenar los siguientes campos:
@@ -208,18 +215,6 @@ export default function FormDialog() {
             </Select>
           </FormControl>
           <p />
-
-          <TextField
-            autofocus
-            margin="dense"
-            id="id_deuda"
-            label="id_deuda"
-            variant="outlined"
-            size="medium"
-            onChange={(e) => {
-              setDeuda(e.target.value);
-            }}
-          />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
@@ -229,8 +224,8 @@ export default function FormDialog() {
             onClick={(e) => {
               agregarPagos();
               agregarPagosAfiliados();
-              agregarIngresosDeudas();
-              actualizarDeuda();
+              //agregarIngresosDeudas();
+              getDeudas();
               handleClose();
             }}
             color="primary"
