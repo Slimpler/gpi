@@ -107,25 +107,7 @@ export default function FormDialog() {
     p: 4,
   };
 
-  const deudas = [
-    {
-      id: 1,
-      deudaTotal: 100,
-      remanenteDeuda: 100,
-      cuotasTotales: 10,
-      cuotasPagadas: 2,
-    },
-    {
-      id: 2,
-      deudaTotal: 300,
-      remanenteDeuda: 300,
-      cuotasTotales: 12,
-      cuotasPagadas: 5,
-    },
-  ];
-
   // Estados para datos de tabla convenios
-  const [modalEditar, setModalEditar] = useState(false);
   const [rut_afiliado, setRut_afiliado] = useState("");
   const [monto, setMonto] = useState(0);
   const [fecha, setFecha] = useState("");
@@ -168,7 +150,18 @@ export default function FormDialog() {
     });
   };
 
-  /*   const actualizarDeuda = async (id) => {
+  const getDeudas = async () => {
+    await Axios.get(`http://localhost:3001/getDeudas/${rut_afiliado}`)
+      .then((response) => {
+        setListDeuda(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const actualizarDeuda = async (id) => {
     Axios.put("http://localhost:3001/actualizarDeuda", {
       id_deuda: id_deuda,
       monto: monto,
@@ -183,14 +176,13 @@ export default function FormDialog() {
               : val;
           })
         );
-        OCModalEditar();
       })
       .catch((error) => {
         console.log(error);
       });
-  }; */
+  }; 
 
-  const [dataStore, setDataStore] = useState([{ name: "", job: "", age: 0 }]);
+ 
 
   return (
     <div>
@@ -214,7 +206,7 @@ export default function FormDialog() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">agregar pago</DialogTitle>
+        <DialogTitle id="form-dialog-title">Agregar pago</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Para agregar un pago de un afiliado llenar los siguientes campos:
@@ -282,7 +274,12 @@ export default function FormDialog() {
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button onClick={handleClickOpenTwo} color="primary">
+          <Button 
+            onClick={(e) => {
+              handleClickOpenTwo();
+              getDeudas();
+            }}
+            color="primary">
             Seleccionar deuda
           </Button>
         </DialogActions>
@@ -294,7 +291,7 @@ export default function FormDialog() {
         aria-labelledby="form-dialog-title"
       >
         <MaterialTable
-          data={dataStore}
+          data={listDeuda}
           title="Deudas"
           columns={columns}
           actions={[
@@ -302,6 +299,10 @@ export default function FormDialog() {
               tooltip: "Agregar pago",
               icon: "Add",
               onClick: (x) => {
+                agregarPagos();
+                agregarPagosAfiliados();
+                agregarIngresosDeudas();
+                actualizarDeuda();
                 handleCloseTwo();
                 handleClose();
               },
@@ -317,6 +318,11 @@ export default function FormDialog() {
               fontSize: "14px",
             },
             selectionProps: (rowData) => ({
+              onClick: (x) => {
+                listDeuda.map((e) => {
+                  console.log(e.id_deuda)
+                })  
+              },  
               color: "primary",
             }),
           }}
