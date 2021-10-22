@@ -4,9 +4,9 @@ import React, { useState, useEffect } from "react";
  */ import { makeStyles } from "@material-ui/core/styles";
 import Axios from "axios";
 import MaterialTable from "material-table";
+import { Modal, TextField, Button } from "@material-ui/core";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditIcon from "@material-ui/icons/Edit";
-import { Modal, TextField, Button } from "@material-ui/core";
 import Search from "@material-ui/icons/Search";
 import ResetSearch from "@material-ui/icons/Clear";
 import Filter from "@material-ui/icons/FilterList";
@@ -52,7 +52,7 @@ const columns = [
   },
 ];
 
-const useStyles = makeStyles((theme) => ({
+export const useStyles = makeStyles((theme) => ({
   modal: {
     position: "absolute",
     width: 400,
@@ -157,6 +157,7 @@ function IngresosAfiliados() {
           })
         );
         OCModalEditar();
+        peticionGet();
       })
       .catch((error) => {
         console.log(error);
@@ -311,12 +312,6 @@ function IngresosAfiliados() {
             previousTooltip: "Página anterior",
             nextTooltip: "Próxima página",
             lastTooltip: "Última página",
-          },
-          toolbar: {
-            searchTooltip: "Busqueda",
-            searchPlaceholder: "Buscar",
-            exportTitle: "Exportar",
-            exportName: "Exportar a CSV",
           },
         }}
         icons={{
