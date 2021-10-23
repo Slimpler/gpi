@@ -145,8 +145,8 @@ export default function FormDialog() {
     Axios.post("http://localhost:3001/createIngresosDeudas", {
       id_deuda: id_deuda,
     }).then(() => {
-      console.log("Exitoso");
-      handleClose();
+        console.log("Exitoso");
+        handleClose();
     });
   };
 
@@ -182,7 +182,12 @@ export default function FormDialog() {
       });
   }; 
 
- 
+const obtenerId = async () => {
+  listDeuda.map( (deuda) => {
+    id_deuda === deuda.id_deuda && setDeuda(id_deuda)
+    console.log(id_deuda)
+  }) 
+}
 
   return (
     <div>
@@ -298,7 +303,8 @@ export default function FormDialog() {
             {
               tooltip: "Agregar pago",
               icon: "Add",
-              onClick: (x) => {
+              onClick: () => {
+                obtenerId();
                 agregarPagos();
                 agregarPagosAfiliados();
                 agregarIngresosDeudas();
@@ -318,10 +324,9 @@ export default function FormDialog() {
               fontSize: "14px",
             },
             selectionProps: (rowData) => ({
-              onClick: (x) => {
-                listDeuda.map((e) => {
-                  console.log(e.id_deuda)
-                })  
+              onClick: () => {
+                setDeuda(rowData.id_deuda)
+                console.log(rowData.id_deuda)
               },  
               color: "primary",
             }),
