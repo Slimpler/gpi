@@ -103,9 +103,6 @@ function ConvenioComercial() {
     nombre_conv: "",
     fecha_conv: "",
     descripcion_conv: "",
-    monto_max_compra_c: "",
-    numero_max_cuotas_c: "",
-
   });
 
   const handleChange = (e) => {
@@ -133,8 +130,6 @@ function ConvenioComercial() {
       nombre_conv: convenioCSelect.nombre_conv,
       fecha_conv: convenioCSelect.fecha_conv,
       descripcion_conv: convenioCSelect.descripcion_conv,
-      monto_max_compra_c: convenioCSelect.monto_max_compra_c,
-      numero_max_cuotas_c: convenioCSelect.numero_max_cuotas_c,
     })
       .then((response) => {
         setListConvenioC(
@@ -145,8 +140,6 @@ function ConvenioComercial() {
                 nombre_conv: convenioCSelect.nombre_conv,
                 fecha_conv: convenioCSelect.fecha_conv,
                 descripcion_conv: convenioCSelect.descripcion_conv,
-                monto_max_compra_c: convenioCSelect.monto_max_compra_c,
-                numero_max_cuotas_c: convenioCSelect.numero_max_cuotas_c,
                 }
               : val;
           })
@@ -223,29 +216,6 @@ function ConvenioComercial() {
         onChange={handleChange}
         value={convenioCSelect && convenioCSelect.descripcion_conv}
       />
-
-      <br />
-      <br />
-      <TextField
-        className={styles.inputMaterial}
-        label="Monto máximo de compra"
-        name="monto_max_compra_c"
-        variant= "outlined"
-        onChange={handleChange}
-        value={convenioCSelect && convenioCSelect.monto_max_compra_c}
-      />
-      
-      <br />
-      <br />
-      <TextField
-        className={styles.inputMaterial}
-        label="N° máximo de cuotas"
-        name="numero_max_cuotas_c"
-        variant= "outlined"
-        onChange={handleChange}
-        value={convenioCSelect && convenioCSelect.numero_max_cuotas_c}
-      />
-      
       <br />
       <div align="right">
         <Button 
