@@ -37,14 +37,14 @@ export default function FormDialog() {
   };
 
   // Estados para datos de tabla convenios
-  const [monto_pago, setMonto_pago] = useState(0);
-  const [fecha_pago, setFecha_pago] = useState("");
+  const [monto, setMonto] = useState(0);
+  const [fecha, setFecha] = useState("");
 
   //estados
-  const [estado_pago, setEstado_pago] = useState("");
+  const [estado, setEstado] = useState("");
 
   const cambioEstado = (event) => {
-    setEstado_pago(event.target.value);
+    setEstado(event.target.value);
   };
 
   const [descripcion, setDescripcion] = useState("");
@@ -64,10 +64,10 @@ export default function FormDialog() {
 
   //--------------------------------
   const agregarPagos = () => {
-    Axios.post("http://localhost:3001/createPagoAsociacion", {
-      monto_pago: monto_pago,
-      fecha_pago: fecha_pago,
-      estado_pago: estado_pago,
+    Axios.post("http://localhost:3001/createIngresoExterno", {
+      monto: monto,
+      fecha: fecha,
+      estado: estado,
       descripcion: descripcion,
     }).then(() => {
       console.log("exitoso");
@@ -108,24 +108,24 @@ export default function FormDialog() {
           <TextField
             autofocus
             margin="dense"
-            id="monto_pago"
-            label="monto_pago"
+            id="monto"
+            label="monto"
             variant="outlined"
             size="medium"
             onChange={(e) => {
-              setMonto_pago(e.target.value);
+              setMonto(e.target.value);
             }}
           />
           <p />
           <TextField
             autofocus
             margin="dense"
-            id="fecha_pago"
+            id="fecha"
             variant="outlined"
             size="medium"
             type="date"
             onChange={(e) => {
-              setFecha_pago(e.target.value);
+              setFecha(e.target.value);
             }}
           />
 
@@ -138,7 +138,7 @@ export default function FormDialog() {
             <Select
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select"
-              value={estado_pago}
+              value={estado}
               onChange={cambioEstado}
             >
               <MenuItem value={1}> Pendiente </MenuItem>
