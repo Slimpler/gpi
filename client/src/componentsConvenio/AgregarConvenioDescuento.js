@@ -49,16 +49,26 @@ export default function FormDialog() {
   };
 
    // Estados para datos de tabla convenios
-   const [id_convD, setid_convD] = useState(0);
-   const [nombre_convD, setnombre_convD] = useState(0);
-   const [fecha_convD, setfecha_convD] = useState("");
+   const [id_conv, setid_conv] = useState(0);
+   const [nombre_conv, setnombre_conv] = useState(0);
+   const [fecha_conv, setfecha_conv] = useState("");
+   const [descripcion_conv, setdescripcion_conv] = useState(0);
+   const [tipo_conv,settipo_conv] = useState();
+   const [monto_max_compra_d, setnmonto_max_compra_d] = useState(0);
+   const [numero_max_usos_d, setnumero_max_usos_d] = useState(0);
  
   const agregarConvenioD = () => {
     setOpen(false);
     Axios.post("http://localhost:3001/createConvenioD", {
-      id_convD: id_convD,
-      nombre_convD: nombre_convD,
-      fecha_convD: fecha_convD,
+      id_conv: id_conv,
+      nombre_conv: nombre_conv,
+      fecha_conv: fecha_conv,
+      descripcion_conv: descripcion_conv,
+      tipo_conv: tipo_conv,
+      monto_max_compra_d: monto_max_compra_d,
+      numero_max_usos_d: numero_max_usos_d,
+
+
     }).then(() => {
       console.log("exitoso");
     });
@@ -86,7 +96,7 @@ export default function FormDialog() {
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">Agregar convenio de descuento</DialogTitle>
-        <DialogContent>
+        <DialogContent  style={{height:'425px'}}>
           <DialogContentText>
           Para agregar un nuevo convenio debe completar los siguientes campos:
           </DialogContentText>
@@ -95,26 +105,74 @@ export default function FormDialog() {
           <TextField
             autofocus
             margin="dense"
-            id="nombre_convD"
+            id="nombre_conv"
             label="Nombre convenio"
             variant="outlined"
             size="medium"
             onChange={(e) => {
-              setnombre_convD(e.target.value);
+              setnombre_conv(e.target.value);
             }}
           />
           <p />
           <TextField
             autofocus
             margin="dense"
-            id="fecha_convD"
+            id="fecha_conv"
             variant="outlined"
             size="medium"
             type="date"
             onChange={(e) => {
-              setfecha_convD(e.target.value);
+              setfecha_conv(e.target.value);
             }}
           />
+
+<p />
+          <TextField
+            style ={{width: '70%'}}
+            multiline={true}
+            rows={2}
+            autofocus
+            margin="dense"
+            id="descripcion_conv"
+            label="Descripción"
+            variant="outlined"
+            size="medium"
+            onChange={(e) => {
+              setdescripcion_conv(e.target.value);
+            }}
+          />
+          <p />
+          
+          <p />
+          <TextField
+            style ={{width: '43%'}}
+            autofocus
+            margin="dense"
+            id="monto_max_compra_d"
+            label="Monto máximo de compra"
+            variant="outlined"
+            size="medium"
+            onChange={(e) => {
+              setnmonto_max_compra_d(e.target.value);
+            }}
+          />
+          <p />
+
+          <p />
+          <TextField
+            autofocus
+            margin="dense"
+            id="numero_max_usos_d"
+            label="N° máximo de usos"
+            variant="outlined"
+            size="medium"
+            onChange={(e) => {
+              setnumero_max_usos_d(e.target.value);
+            }}
+          />
+          <p />
+
+          
 
         </DialogContent>
         <DialogActions>

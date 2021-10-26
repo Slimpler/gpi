@@ -45,17 +45,22 @@ export default function FormDialog2() {
   };
 
    // Estados para datos de tabla convenios
-   const [id_convF, setid_convF] = useState(0);
-   const [nombre_convF, setnombre_convF] = useState(0);
-   const [fecha_convF, setfecha_convF] = useState("");
+   const [id_conv, setid_convF] = useState(0);
+   const [nombre_conv, setnombre_convF] = useState(0);
+   const [fecha_conv, setfecha_convF] = useState("");
    const [descripcion_conv, setdescripcion_conv] = useState("");
- 
+   const [monto_max_credito_f, setmonto_max_credito_f] = useState("");
+   const [numero_max_cuotas_f, setnumero_max_cuotas_f] = useState("");
+   
   const agregarConvenioF = () => {
     setOpen(false); 
     Axios.post("http://localhost:3001/createConvenioF", {
-      id_convF: id_convF,
-      nombre_convF: nombre_convF,
-      fecha_convF: fecha_convF,
+      id_conv: id_conv,
+      nombre_conv: nombre_conv,
+      fecha_conv: fecha_conv,
+      descripcion_conv: descripcion_conv,
+      monto_max_credito_f: monto_max_credito_f,
+      numero_max_cuotas_f:numero_max_cuotas_f,
     }).then(() => {
       console.log("exitoso");
     });
@@ -83,7 +88,7 @@ export default function FormDialog2() {
         aria-labelledby="form"
       >
         <DialogTitle id="form">Agregar convenio financiero</DialogTitle>
-        <DialogContent>
+        <DialogContent style={{height:'410px'}}>
           <DialogContentText>
           Para agregar un nuevo convenio debe completar los siguientes campos:
           </DialogContentText>
@@ -93,7 +98,7 @@ export default function FormDialog2() {
           <TextField
             autofocus
             margin="dense"
-            id="nombre_convF"
+            id="nombre_conv"
             label="Nombre convenio"
             variant="outlined"
             size="medium"
@@ -105,7 +110,7 @@ export default function FormDialog2() {
           <TextField
             autofocus
             margin="dense"
-            id="fecha_convF"
+            id="fecha_conv"
             variant="outlined"
             size="medium"
             type="date"
@@ -127,6 +132,36 @@ export default function FormDialog2() {
             size="medium"
             onChange={(e) => {
               setdescripcion_conv(e.target.value);
+            }}   
+          />
+           <p />
+           <TextField
+            style ={{width: '50%'}}
+            multiline={true}
+            rows={1}
+            autofocus
+            margin="dense"
+            id="monto_max_credito_f"
+            label="Monto máximo de crédito"
+            variant="outlined"
+            size="medium"
+            onChange={(e) => {
+              setmonto_max_credito_f(e.target.value);
+            }}
+          />
+           <p />
+           <TextField
+            style ={{width: '40%'}}
+            multiline={true}
+            rows={1}
+            autofocus
+            margin="dense"
+            id="numero_max_cuotas_f"
+            label="N° máximo de cuotas"
+            variant="outlined"
+            size="medium"
+            onChange={(e) => {
+              setnumero_max_cuotas_f(e.target.value);
             }}
           />
 
