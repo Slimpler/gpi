@@ -248,7 +248,7 @@ function ConvenioDescuento() {
           header: {
             actions: "Acciones",
           },
-          pagination: {
+            pagination: {
             labelRowsSelect: "Filas",
             labelDisplayedRows: "{count} de {from}-{to}",
             firstTooltip: "Primera página",

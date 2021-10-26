@@ -236,6 +236,8 @@ function ConvenioFinanciero() {
             tooltip: "Eliminar Convenio",
             onClick: (event, rowData) => SelectConvenioF(rowData, "Eliminar"),
           },
+          
+        
         ]}
         options={{
           actionsColumnIndex: -1,
@@ -259,12 +261,14 @@ function ConvenioFinanciero() {
             nextTooltip: "Próxima página",
             lastTooltip: "Última página",
           },
+          
           toolbar: {
             searchTooltip: "Busqueda",
             searchPlaceholder: "Buscar",
             exportTitle: "Exportar",
             exportName: "Exportar a CSV",
           },
+          
         }}
         icons={{
           Search: Search,
@@ -278,6 +282,8 @@ function ConvenioFinanciero() {
           SortArrow: SortArrow,
         }}
       />
+
+      
 
       <Modal open={modalEditar} onClose={OCModalEditar}>
         {bodyEditar}
