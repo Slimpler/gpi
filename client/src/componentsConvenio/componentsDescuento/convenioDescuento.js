@@ -19,23 +19,53 @@ import SortArrow from "@material-ui/icons/ArrowUpward";
 
 const columns = [ 
   {
-    title: "id convenio",
-    field: "id_convD",
+    title: "Id convenio",
+    field: "id_conv",
     headerStyle: {
       backgroundColor: "#3374FF",
     },
   },
   {
     title: "Nombre Convenio",
-    field: "nombre_convD",
+    field: "nombre_conv",
     headerStyle: {
       backgroundColor: "#3374FF",
     },
   },
   {
     title: "Fecha de ingreso",
-    field: "fecha_convD",
+    field: "fecha_conv",
     type: "date",
+    dateSetting: {
+      format: "dd/MM/yyyy",
+    },
+    headerStyle: {
+      backgroundColor: "#3374FF",
+    },
+  },
+  {
+    title: "Descripción",
+    field: "descripcion_conv",
+    dateSetting: {
+      format: "dd/MM/yyyy",
+    },
+    headerStyle: {
+      backgroundColor: "#3374FF",
+    },
+  },
+  {
+    title: "Monto máximo de compra",
+    field: "monto_max_compra_d",
+    dateSetting: {
+      format: "dd/MM/yyyy",
+    },
+    headerStyle: {
+      backgroundColor: "#3374FF",
+    },
+  },
+  {
+    title: "N° máximo de usos",
+    field: "numero_max_usos_d",
     dateSetting: {
       format: "dd/MM/yyyy",
     },
@@ -74,13 +104,14 @@ function ConvenioDescuento() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
-
   const [listConvenioD, setListConvenioD] = useState([]);
-/*   const [id_convD, setid_convD = useState([]); */
   const [convenioDSelect, setConvenioDSelect] = useState({
-    id_convD: "",
-    nombre_convD: "",
-    fecha_convD: "",
+    id_conv: "",
+    nombre_conv: "",
+    fecha_conv: "",
+    descripcion: "",
+    monto_max_compra_c: "",
+    numero_max_usos_c: "",
   });
 
   const handleChange = (e) => {
@@ -104,18 +135,18 @@ function ConvenioDescuento() {
 
   const peticionPut = async (id) => {
     await Axios.put("http://localhost:3001/editConvenioD", {
-      id_convD: convenioDSelect.id_convD,
-      nombre_convD: convenioDSelect.nombre_convD,
-      fecha_convD: convenioDSelect.fecha_convD,
+      id_conv: convenioDSelect.id_conv,
+      nombre_conv: convenioDSelect.nombre_conv,
+      fecha_conv: convenioDSelect.fecha_conv,
     })
       .then((response) => {
         setListConvenioD(
-          listConvenioD.map((val) => {
-            return val.id_convD === convenioDSelect.id_convD
+          listConvenioD.filter((val) => {
+            return val.id_conv === convenioDSelect.id_conv
               ? {
-                id_convD: convenioDSelect.id_convD,
-                nombre_convD: convenioDSelect.nombre_convD,
-                fecha_convD: convenioDSelect.fecha_convD,
+                id_conv: convenioDSelect.id_conv,
+                nombre_conv: convenioDSelect.nombre_conv,
+                fecha_conv: convenioDSelect.fecha_conv,
                 }
               : val;
           })
@@ -127,8 +158,8 @@ function ConvenioDescuento() {
       });
   };
 
-  const SelectConvenioD = (id_convD, caso) => {
-    setConvenioDSelect(id_convD);
+  const SelectConvenioD = (id_conv, caso) => {
+    setConvenioDSelect(id_conv);
     caso === "Editar" ? OCModalEditar() : OCModalEliminar();
   };
 
@@ -141,11 +172,11 @@ function ConvenioDescuento() {
   };
 
   const peticionDelete = async () => {
-    await Axios.delete(`http://localhost:3001/deleteConvenioD/${convenioDSelect.id_convD}`)
+    await Axios.delete(`http://localhost:3001/deleteConvenioD/${convenioDSelect.id_conv}`)
       .then((response) => {
         setListConvenioD(
           listConvenioD.filter((val) => {
-            return val.id_convD != convenioDSelect.id_convD;
+            return val.id_conv != convenioDSelect.id_conv;
           })
         );
         OCModalEliminar();
@@ -159,6 +190,7 @@ function ConvenioDescuento() {
     peticionGet();
   }, []);
 
+
   //Interfaz de modal editar
   const bodyEditar = (
     <div className={styles.modal}>
@@ -166,21 +198,21 @@ function ConvenioDescuento() {
       <TextField
         className={styles.inputMaterial}
         label="Nombre del convenio"
-        name="nombre_convD"
+        name="nombre_conv"
         variant= "outlined"
         onChange={handleChange}
-        value={convenioDSelect && convenioDSelect.nombre_convD}
+        value={convenioDSelect && convenioDSelect.nombre_conv}
       />
       <br />
       <br /> 
       <TextField
         className={styles.inputMaterial}
-        name="fecha_convD"
+        name="fecha_conv"
         type="date"
         variant= "outlined"
         format="yyyy-MM-dd"
         onChange={handleChange}
-        value={convenioDSelect && convenioDSelect.fecha_convD}
+        value={convenioDSelect && convenioDSelect.fecha_conv}
       />
       <br />
       <div align="right">
@@ -202,7 +234,7 @@ function ConvenioDescuento() {
     <div className={styles.modal}>
       <p>
         Estás seguro que deseas eliminar el siguiente Convenio:{" "}
-        <b>{convenioDSelect && convenioDSelect.id_convD}</b>?{" "}
+        <b>{convenioDSelect && convenioDSelect.id_conv}</b>?{" "}
       </p>
       <div align="right">
         <Button color="secondary" onClick={() => {peticionDelete();OCModalEliminar()}}>
