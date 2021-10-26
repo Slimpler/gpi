@@ -44,8 +44,22 @@ const columns = [
     },
   },
   {
-    title: "Descripcion",
+    title: "Descripción",
     field: "descripcion_conv",
+    headerStyle: {
+      backgroundColor: "#3374FF",
+    },
+  },
+  {
+    title: "Monto máximo de compra",
+    field: "monto_max_compra_c",
+    headerStyle: {
+      backgroundColor: "#3374FF",
+    },
+  },
+  {
+    title: "N° máximo de cuotas",
+    field: "numero_max_cuotas_c",
     headerStyle: {
       backgroundColor: "#3374FF",
     },

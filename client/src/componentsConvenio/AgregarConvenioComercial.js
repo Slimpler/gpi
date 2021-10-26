@@ -87,18 +87,19 @@ export default function FormDialog1() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <DialogTitle id="form-dialog-title">Agregar convenio Comercial</DialogTitle>
-        <DialogContent>
+        <DialogTitle id="form-dialog-title">Agregar convenio comercial</DialogTitle>
+        <DialogContent style={{height:'430px'}}>
           <DialogContentText>
-            Para agregar un convenio llenar los siguientes campos:
+            Para agregar un nuevo convenio debe completar los siguientes campos:
           </DialogContentText>
           <p> Datos del Convenio </p>
           <p />
           <TextField
-            autofocus
+            style ={{width: '50%'}}
+            autofocus={true}
             margin="dense"
             id="nombre_conv"
-            label="nombre convenio"
+            label="Nombre convenio"
             variant="outlined"
             size="medium"
             onChange={(e) => {
@@ -117,12 +118,44 @@ export default function FormDialog1() {
               setfecha_conv(e.target.value);
             }}
           />
-                    <p />
+          <p />
           <TextField
+            style ={{width: '70%'}}
+            multiline={true}
+            rows={2}
             autofocus
             margin="dense"
             id="descripcion_conv"
-            label="descripcion"
+            label="Descripción"
+            variant="outlined"
+            size="medium"
+            onChange={(e) => {
+              setdescripcion_conv(e.target.value);
+            }}
+          />
+          <p />
+          
+          <p />
+          <TextField
+            style ={{width: '43%'}}
+            autofocus
+            margin="dense"
+            id="monto_max_compra_c"
+            label="Monto máximo de compra"
+            variant="outlined"
+            size="medium"
+            onChange={(e) => {
+              setdescripcion_conv(e.target.value);
+            }}
+          />
+          <p />
+
+          <p />
+          <TextField
+            autofocus
+            margin="dense"
+            id="numero_max_cuotas_c"
+            label="N° máximo de cuotas"
             variant="outlined"
             size="medium"
             onChange={(e) => {
