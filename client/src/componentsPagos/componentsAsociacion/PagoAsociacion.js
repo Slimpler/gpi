@@ -19,22 +19,15 @@ import SortArrow from "@material-ui/icons/ArrowUpward";
 
 const columns = [
   {
-    title: "Descripcion",
-    field: "descripcion",
-    headerStyle: {
-      backgroundColor: "#23BB77",
-    },
-  },
-  {
     title: "Monto del pago",
-    field: "monto_pago",
+    field: "monto",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
   },
   {
     title: "Fecha de pago",
-    field: "fecha_pago",
+    field: "fecha",
     type: "date",
     dateSetting: {
       format: "dd/MM/yyyy",
@@ -45,7 +38,7 @@ const columns = [
   },
   {
     title: "Estado del pago",
-    field: "estado_pago",
+    field: "estado",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
@@ -83,18 +76,17 @@ function PagosAsociacion() {
   const [modalEliminar, setModalEliminar] = useState(false);
 
   const [listPagos, setListpagos] = useState([]);
-  const [pagoSelect, setPagoSelect] = useState({
-    id_pago: "",
-    descripcion: "",
-    monto_pago: "",
-    fecha_pago: "",
-    tipo_pago: "",
-    estado_pago: "",
+  const [ingresoSelect, setIngresoSelect] = useState({
+    id_ingreso: "",
+    monto: "",
+    fecha: "",
+    tipo: "",
+    estado: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setPagoSelect((prevState) => ({
+    setIngresoSelect((prevState) => ({
       ...prevState,
       [name]: value,
     }));
@@ -113,23 +105,21 @@ function PagosAsociacion() {
 
   const peticionPut = async (id) => {
     await Axios.put("http://localhost:3001/editPagosAsociacion", {
-      id_pago: pagoSelect.id_pago,
-      descripcion: pagoSelect.descripcion,
-      monto_pago: pagoSelect.monto_pago,
-      fecha_pago: pagoSelect.fecha_pago,
-      tipo_pago: pagoSelect.tipo_pago,
-      estado_pago: pagoSelect.estado_pago,
+      id_ingreso: ingresoSelect.id_ingreso,
+      monto: ingresoSelect.monto,
+      fecha: ingresoSelect.fecha,
+      tipo: ingresoSelect.tipo,
+      estado: ingresoSelect.estado,
     })
       .then((response) => {
         setListpagos(
           listPagos.map((val) => {
-            return val.id_pago === pagoSelect.id_pago
+            return val.id_ingreso === ingresoSelect.id_ingreso
               ? {
-                  descripcion: pagoSelect.descripcion,
-                  monto_pago: pagoSelect.monto_pago,
-                  fecha_pago: pagoSelect.fecha_pago,
-                  tipo_pago: pagoSelect.tipo_pago,
-                  estado_pago: pagoSelect.estado_pago,
+                  monto: ingresoSelect.monto,
+                  fecha: ingresoSelect.fecha,
+                  tipo: ingresoSelect.tipo,
+                  estado: ingresoSelect.estado,
                 }
               : val;
           })
@@ -143,12 +133,12 @@ function PagosAsociacion() {
 
   const peticionDelete = async (id) => {
     await Axios.delete(`http://localhost:3001/deletePagos/${id}`, {
-      id_pago: pagoSelect.id_pago,
+      id_ingreso: ingresoSelect.id_ingreso,
     })
       .then((response) => {
         setListpagos(
           listPagos.filter((val) => {
-            return val.id_pago !== pagoSelect.id_pago;
+            return val.id_ingreso !== ingresoSelect.id_ingreso;
           })
         );
         OCModalEliminar();
@@ -158,8 +148,8 @@ function PagosAsociacion() {
       });
   };
 
-  const SelectPago = (id_pago, caso) => {
-    setPagoSelect(id_pago);
+  const SelectPago = (id_ingreso, caso) => {
+    setIngresoSelect(id_ingreso);
     caso === "Editar" ? OCModalEditar() : OCModalEliminar();
   };
 
@@ -182,18 +172,10 @@ function PagosAsociacion() {
       <br />
       <TextField
         className={styles.inputMaterial}
-        label="Descripcion"
-        name="descripcion"
-        onChange={handleChange}
-        value={pagoSelect && pagoSelect.descripcion}
-      />
-      <br />
-      <TextField
-        className={styles.inputMaterial}
         label="Monto de pago"
-        name="monto_pago"
+        name="monto"
         onChange={handleChange}
-        value={pagoSelect && pagoSelect.monto_pago}
+        value={ingresoSelect && ingresoSelect.monto}
       />
       <br />
       <TextField
@@ -202,7 +184,7 @@ function PagosAsociacion() {
         type="date"
         format="yyyy-MM-dd"
         onChange={handleChange}
-        value={pagoSelect && pagoSelect.fecha_pago}
+        value={ingresoSelect && ingresoSelect.fecha}
       />
       <br />
       <TextField
@@ -210,7 +192,7 @@ function PagosAsociacion() {
         label="Estado del pago"
         name="estado_pago"
         onChange={handleChange}
-        value={pagoSelect && pagoSelect.estado_pago}
+        value={ingresoSelect && ingresoSelect.estado}
       />
       <div align="right">
         <Button
@@ -232,7 +214,7 @@ function PagosAsociacion() {
     <div className={styles.modal}>
       <p>
         Estás seguro que deseas eliminar el siguiente pago:{" "}
-        <b>{pagoSelect && pagoSelect.monto_pago}</b>?{" "}
+        <b>{ingresoSelect && ingresoSelect.monto}</b>?{" "}
       </p>
       <div align="right">
         <Button color="secondary" onClick={() => peticionDelete()}>
