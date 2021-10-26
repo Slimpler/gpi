@@ -48,6 +48,7 @@ export default function FormDialog2() {
    const [id_convF, setid_convF] = useState(0);
    const [nombre_convF, setnombre_convF] = useState(0);
    const [fecha_convF, setfecha_convF] = useState("");
+   const [descripcion_conv, setdescripcion_conv] = useState("");
  
   const agregarConvenioF = () => {
     setOpen(false); 
@@ -84,7 +85,7 @@ export default function FormDialog2() {
         <DialogTitle id="form">Agregar convenio financiero</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Para agregar un convenio llenar los siguientes campos:
+          Para agregar un nuevo convenio debe completar los siguientes campos:
           </DialogContentText>
           <p> Datos del Convenio </p>
 
@@ -93,7 +94,7 @@ export default function FormDialog2() {
             autofocus
             margin="dense"
             id="nombre_convF"
-            label="nombre convenio"
+            label="Nombre convenio"
             variant="outlined"
             size="medium"
             onChange={(e) => {
@@ -110,6 +111,22 @@ export default function FormDialog2() {
             type="date"
             onChange={(e) => {
               setfecha_convF(e.target.value);
+            }}
+          />
+
+          <p />
+          <TextField
+            style ={{width: '70%'}}
+            multiline={true}
+            rows={2}
+            autofocus
+            margin="dense"
+            id="descripcion_conv"
+            label="Descripción"
+            variant="outlined"
+            size="medium"
+            onChange={(e) => {
+              setdescripcion_conv(e.target.value);
             }}
           />
 
