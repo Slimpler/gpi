@@ -147,7 +147,7 @@ export const EmpresasBtnLink = styled.a`
   border-radius: 50px;
   background: #7cf1b6;
   white-space: nowrap;
-  padding: 10px 64px;
+  padding: 10px 105px;
   color: #010606;
   font-size: 16px;
   outline: none;

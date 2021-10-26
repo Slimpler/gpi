@@ -88,7 +88,7 @@ export default function FormDialog() {
         <DialogTitle id="form-dialog-title">Agregar convenio de descuento</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Para agregar un convenio llenar los siguientes campos:
+          Para agregar un nuevo convenio debe completar los siguientes campos:
           </DialogContentText>
           <p> Datos del Convenio </p>
           <p />
@@ -96,7 +96,7 @@ export default function FormDialog() {
             autofocus
             margin="dense"
             id="nombre_convD"
-            label="nombre convenio"
+            label="Nombre convenio"
             variant="outlined"
             size="medium"
             onChange={(e) => {
