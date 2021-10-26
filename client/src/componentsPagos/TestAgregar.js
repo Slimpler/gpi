@@ -327,7 +327,6 @@ export default function FormDialog() {
             selectionProps: (rowData) => ({
               onClick: () => {
                 setDeuda(rowData.id_deuda);
-                console.log(rowData.id_deuda);
               },
               color: "primary",
             }),
