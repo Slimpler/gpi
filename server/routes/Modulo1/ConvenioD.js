@@ -10,12 +10,16 @@ const db = require("../../database");
 //Crear Convenio Descuento
 router.post("/createConvenioD", (req, res) => {
     console.log(req.body);
-    (id_convD = req.body.id_convD),
-      (nombre_convD = req.body.nombre_convD),
-      (fecha_convD = req.body.fecha_convD),
+      (id_conv = req.body.id_conv),
+      (nombre_conv = req.body.nombre_conv),
+      (fecha_conv = req.body.fecha_conv),
+      (descripcion_conv = req.body.descripcion_conv),
+      (tipo_conv = 'Descuento'),
+      (monto_max_compra_d = req.body.monto_max_compra_d),
+      (numero_max_usos_d = req.body.numero_max_usos_d),
       db.query(
-        "INSERT INTO convenio_descuento (id_convD, nombre_convD, fecha_convD) VALUES (?, ?, ?)",
-        [id_convD, nombre_convD, fecha_convD],
+        "INSERT INTO convenio (id_conv, nombre_conv, fecha_conv, descripcion_conv, tipo_conv, monto_max_compra_d, numero_max_usos_d) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        [id_conv, nombre_conv, fecha_conv, descripcion_conv, tipo_conv, monto_max_compra_d, numero_max_usos_d],
         (err, result) => {
           if (err) {
             console.log(err);
@@ -25,9 +29,10 @@ router.post("/createConvenioD", (req, res) => {
         }
       );
   });
+
   //Mostrar convenios Descuento
   router.get("/showConvenioD", (req, res) => {
-    db.query("SELECT * FROM convenio Where tipo_conv = 'Descuento'", (err, result) => {
+    db.query("SELECT id_conv, nombre_conv, fecha_conv, descripcion_conv, tipo_conv, monto_max_compra_d, numero_max_usos_d FROM convenio WHERE tipo_conv = 'Descuento'", (err, result) => {
       if (err) {
         console.log(err);
       } else {
@@ -38,34 +43,33 @@ router.post("/createConvenioD", (req, res) => {
   
   //Editar convenios descuento
   router.put("/editConvenioD", (req, res) => {
-    const id_convD = req.body.id_convD;
-    const nombre_convD = req.body.nombre_convD;
-    const fecha_convD = req.body.fecha_convD;
+    const id_conv = req.body.id_conv;
+    const nombre_conv = req.body.nombre_conv;
+    const fecha_conv = req.body.fecha_conv;
   
     db.query(
-      "UPDATE convenio_descuento SET nombre_convD = ?, fecha_convD = ?  WHERE id_convD = ?",
-      [nombre_convD, fecha_convD, id_convD],
+      "UPDATE convenio SET nombre_conv = ?, fecha_conv = ?  WHERE id_conv = ?",
+      [nombre_conv, fecha_conv, id_conv],
       (err, result) => {
         if (err) {
           console.log(err);
         } else {
-          console.log("Valores actualizados tabla convenio_comerical", id_convD);
+          console.log("Valores actualizados tabla convenio", id_conv);
         }
       }
     );
   });
   
-  router.delete("/deleteConvenioD/:id_convD", (req, res) => {
-    const id_convD = req.params.id_convD;
-  
+  router.delete("/deleteConvenioD/:id_conv", (req, res) => {
+    const id_conv = req.params.id_conv;
     db.query(
-      "DELETE FROM convenio_descuento WHERE id_convD = ? ",
-      [id_convD],
+      "DELETE FROM convenio WHERE id_conv = ? ",
+      [id_conv],
       (err, result) => {
         if (err) {
           console.log(err);
         } else {
-          console.log("Valores eliminados de convenio_descuento", id_convD);
+          console.log("Valores eliminados de convenio", id_conv);
         }
       }
     );

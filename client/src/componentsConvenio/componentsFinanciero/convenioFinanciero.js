@@ -178,7 +178,7 @@ function ConvenioFinanciero() {
       .then((response) => {
         setListConvenioF(
           listConvenioF.filter((val) => {
-            return val.id_convF != convenioFSelect.id_conv;
+            return val.id_conv != convenioFSelect.id_conv;
           })
         );
         OCModalEliminar();

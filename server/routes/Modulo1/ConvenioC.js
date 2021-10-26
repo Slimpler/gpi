@@ -12,7 +12,7 @@ router.post("/createConvenioC", (req, res) => {
       (nombre_conv = req.body.nombre_conv),
       (fecha_conv = req.body.fecha_conv),
       (descripcion_conv = req.body.descripcion_conv),
-      (tipo_conv = 'comercial'),
+      (tipo_conv = 'Comercial'),
       (monto_max_compra_c = req.body.monto_max_compra_c),
       (numero_max_cuotas_c = req.body.numero_max_cuotas_c),
       db.query(
@@ -29,7 +29,7 @@ router.post("/createConvenioC", (req, res) => {
   });
   //Mostrar convenios comercial
   router.get("/showConvenioC", (req, res) => {
-    db.query("SELECT * FROM convenio where tipo_conv = 'comercial'", (err, result) => {
+    db.query("SELECT * FROM convenio where tipo_conv = 'Comercial'", (err, result) => {
       if (err) {
         console.log(err);
       } else {
@@ -64,14 +64,13 @@ router.post("/createConvenioC", (req, res) => {
   router.delete("/deleteConvenioC/:id_conv", (req, res) => {
     const id_conv = req.params.id_conv;
     db.query(
-      "DELETE FROM convenio WHERE id_conv = ?",
+      "DELETE FROM convenio WHERE id_conv = ? ",
       [id_conv],
       (err, result) => {
         if (err) {
           console.log(err);
         } else {
-          res.send(result);
-          console.log("Valores eliminados de convenio_comercial", id_conv);
+          console.log("Valores eliminados de convenio", id_conv);
         }
       }
     );
