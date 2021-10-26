@@ -53,6 +53,9 @@ export default function FormDialog1() {
    const [nombre_conv, setnombre_conv] = useState(0);
    const [fecha_conv, setfecha_conv] = useState("");
    const [descripcion_conv, setdescripcion_conv] = useState(0);
+   const [id_conv_c, setid_conv_c] = useState(0);
+   const [numero_max_cuotas_c, setnumero_max_cuotas_c] = useState(0);
+   const [monto_max_compra_c, setmonto_max_compra_c] = useState(0);
  
   const agregarConvenioC = () => {
     setOpen(false);
@@ -61,6 +64,9 @@ export default function FormDialog1() {
       nombre_conv: nombre_conv,
       fecha_conv: fecha_conv,
       descripcion_conv: descripcion_conv,
+      id_conv: id_conv,
+      numero_max_cuotas_c: numero_max_cuotas_c,
+      monto_max_compra_c: monto_max_compra_c,
     }).then(() => {
       console.log("exitoso");
     });
@@ -93,6 +99,7 @@ export default function FormDialog1() {
             Para agregar un nuevo convenio debe completar los siguientes campos:
           </DialogContentText>
           <p> Datos del Convenio </p>
+
           <p />
           <TextField
             style ={{width: '50%'}}
@@ -145,7 +152,7 @@ export default function FormDialog1() {
             variant="outlined"
             size="medium"
             onChange={(e) => {
-              setdescripcion_conv(e.target.value);
+              setmonto_max_compra_c(e.target.value);
             }}
           />
           <p />
@@ -159,7 +166,7 @@ export default function FormDialog1() {
             variant="outlined"
             size="medium"
             onChange={(e) => {
-              setdescripcion_conv(e.target.value);
+              setnumero_max_cuotas_c(e.target.value);
             }}
           />
           <p />
