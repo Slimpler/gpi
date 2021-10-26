@@ -5,30 +5,22 @@ const db = require("../../database");
 
 // ------------------------------------------- Post ----------------------------------------
 
-// ------- Ingresar un pago de la asociacion ----------
-router.post("/createPagoAsociacion", (req, res) => {
+// ------- ingresar un pago externo ----------
+router.post("/createIngresoExterno", (req, res) => {
   console.log(req.body);
-  (id_pago = req.body.id_pago),
-    (monto_pago = req.body.monto_pago),
-    (fecha_pago = req.body.fecha_pago),
-    (estado_pago = req.body.estado_pago),
-    (descripcion = req.body.descripcion),
-    (tipo_pago = "Pago asociacion"),
+  (id_ingreso = req.body.id_ingreso),
+    (monto = req.body.monto),
+    (fecha = req.body.fecha),
+    (estado = req.body.estado),
+    (tipo = "Pago externo"),
     db.query(
-      "INSERT INTO pagos (monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion) VALUES (?, ?, ?, ?, ?)",
-      [monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion],
+      "INSERT INTO ingresos (monto, fecha, estado, tipo) VALUES (?, ?, ?, ?)",
+      [monto, fecha, estado, tipo],
       (err, result) => {
         if (err) {
           console.log(err);
         } else {
-          console.log(
-            monto_pago,
-            fecha_pago,
-            estado_pago,
-            tipo_pago,
-            descripcion,
-            "insertados"
-          );
+          console.log("Ingreso admitido");
         }
       }
     );
@@ -37,7 +29,7 @@ router.post("/createPagoAsociacion", (req, res) => {
 // ---------------- Mostrar pagos asociacion -----------------------
 router.get("/showPagosAsociacion", (req, res) => {
   db.query(
-    "SELECT id_pago, tipo_pago, monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion FROM pagos where tipo_pago = 'Pago asociacion'",
+    "SELECT id_ingreso, tipo, monto, fecha, estado, tipo FROM ingresos where tipo = 'Pago externo'",
     (err, result) => {
       if (err) {
         console.log(err);
