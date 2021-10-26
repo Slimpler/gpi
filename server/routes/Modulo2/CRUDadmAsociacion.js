@@ -4,10 +4,8 @@ const router = Router();
 const db = require("../../database");
 
 // ------------------------------------------- Post ----------------------------------------
-
 // ------- ingresar un pago externo ----------
 router.post("/createIngresoExterno", (req, res) => {
-  console.log(req.body);
   (id_ingreso = req.body.id_ingreso),
     (monto = req.body.monto),
     (fecha = req.body.fecha),
@@ -26,10 +24,29 @@ router.post("/createIngresoExterno", (req, res) => {
     );
 });
 
+
+// -------- Actualizar tabla intemedia entre convenio e ingreso -----------------
+router.post("/agregarIngresoConvenio", (req, res) => {
+    console.log(req.body);
+    (id_conv = req.body.id_conv),
+    db.query(
+      "INSERT INTO ingreso_convenio (id_ingreso, id_conv) VALUES ((SELECT MAX(id_ingreso) FROM ingresos), ?)",
+      [id_conv],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Tabla intemedia entre convenios e ingresos actualizada");
+        }
+      }
+    );
+});
+
+// -------------------------------------------- Get --------------------------------------------------
 // ---------------- Mostrar pagos asociacion -----------------------
 router.get("/showPagosAsociacion", (req, res) => {
   db.query(
-    "SELECT id_ingreso, tipo, monto, fecha, estado, tipo FROM ingresos where tipo = 'Pago externo'",
+    "SELECT i.id_ingreso, i.tipo, i.monto, i.fecha, i.estado, i.tipo, c.nombre_convenio FROM ingresos where tipo = 'Pago externo'",
     (err, result) => {
       if (err) {
         console.log(err);
@@ -40,6 +57,22 @@ router.get("/showPagosAsociacion", (req, res) => {
   );
 });
 
+// ---------------- Mostrar convenios -------------------------------
+router.get("/getConvenios", (req, res) => {
+  db.query(
+    "SELECT id_conv, nombre_conv, descripcion_conv from convenio",
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    }
+  );
+});
+
+
+// -------------------------------------------- Put --------------------------------------------------
 // --------------------- Editar pagos asociacion ---------------------
 
 router.put("/editPagosAsociacion", (req, res) => {
