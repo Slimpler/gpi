@@ -145,8 +145,8 @@ export default function FormDialog() {
     Axios.post("http://localhost:3001/createIngresosDeudas", {
       id_deuda: id_deuda,
     }).then(() => {
-        console.log("Exitoso");
-        handleClose();
+      console.log("Exitoso");
+      handleClose();
     });
   };
 
@@ -180,14 +180,14 @@ export default function FormDialog() {
       .catch((error) => {
         console.log(error);
       });
-  }; 
+  };
 
-const obtenerId = async () => {
-  listDeuda.map( (deuda) => {
-    id_deuda === deuda.id_deuda && setDeuda(id_deuda)
-    console.log(id_deuda)
-  }) 
-}
+  const obtenerId = async () => {
+    listDeuda.map((deuda) => {
+      id_deuda === deuda.id_deuda && setDeuda(id_deuda);
+      console.log(id_deuda);
+    });
+  };
 
   return (
     <div>
@@ -279,12 +279,13 @@ const obtenerId = async () => {
           <Button onClick={handleClose} color="primary">
             Cancelar
           </Button>
-          <Button 
+          <Button
             onClick={(e) => {
               handleClickOpenTwo();
               getDeudas();
             }}
-            color="primary">
+            color="primary"
+          >
             Seleccionar deuda
           </Button>
         </DialogActions>
@@ -325,9 +326,9 @@ const obtenerId = async () => {
             },
             selectionProps: (rowData) => ({
               onClick: () => {
-                setDeuda(rowData.id_deuda)
-                console.log(rowData.id_deuda)
-              },  
+                setDeuda(rowData.id_deuda);
+                console.log(rowData.id_deuda);
+              },
               color: "primary",
             }),
           }}
