@@ -12,9 +12,11 @@ router.post("/createConvenioC", (req, res) => {
       (nombre_conv = req.body.nombre_conv),
       (fecha_conv = req.body.fecha_conv),
       (descripcion_conv = req.body.descripcion_conv),
+      (monto_max_compra_c= req.body.monto_max_compra_c),
+      (numero_max_cuotas_c = req.body.numero_max_cuotas_c),
       db.query(
-        "INSERT INTO convenio (id_conv, nombre_conv, fecha_conv, descripcion_conv) VALUES (?, ?, ?, ?)",
-        [id_conv, nombre_conv, fecha_conv, descripcion_conv],
+        "INSERT INTO convenio (id_conv, nombre_conv, fecha_conv, descripcion_conv, monto_max_compra_c, numero_max_cuotas_c) VALUES (?, ?, ?, ?, ?, ?)",
+        [id_conv, nombre_conv, fecha_conv, descripcion_conv, monto_max_compra_c, numero_max_cuotas_c],
         (err, result) => {
           if (err) {
             console.log(err);
@@ -41,10 +43,12 @@ router.post("/createConvenioC", (req, res) => {
     const nombre_conv = req.body.nombre_conv;
     const fecha_conv = req.body.fecha_conv;
     const descripcion_conv = req.body.descripcion_conv;
+    const monto_max_compra_c = req.body.monto_max_compra_c;
+    const numero_max_cuotas_c = req.body.numero_max_cuotas_c;
    
     db.query(
-      "UPDATE convenio SET nombre_conv = ?, fecha_conv = ?, descripcion_conv = ? WHERE id_conv = ?",
-      [nombre_conv, fecha_conv, descripcion_conv, id_conv],
+      "UPDATE convenio SET nombre_conv = ?, fecha_conv = ?, descripcion_conv = ?, monto_max_compra_c = ?, numero_max_cuotas_c = ? WHERE id_conv = ?",
+      [nombre_conv, fecha_conv, descripcion_conv, monto_max_compra_c, numero_max_cuotas_c, id_conv],
       (err, result) => {
         if (err) {
           console.log(err);
