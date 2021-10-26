@@ -22,7 +22,7 @@ const columns = [
     },
   },
   {
-    title: "Nombre Convenio",
+    title: "Nombre convenio",
     field: "nombre_convC",
     headerStyle: {
       backgroundColor: "#3374FF",
