@@ -50,7 +50,7 @@ const columns = [
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
   const [openConvenio, setOpenConvenio] = useState(false);
-  const [listConvenio, setListConvenio] = useState("");
+  const [listConvenio, setListConvenio] = useState([]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -80,6 +80,7 @@ export default function FormDialog() {
   // Estados para datos de tabla convenios
   const [monto, setMonto] = useState(0);
   const [fecha, setFecha] = useState("");
+  const [id_convenio, setId_Convenio] = useState("");
 
   //estados
   const [estado, setEstado] = useState("");
@@ -88,28 +89,11 @@ export default function FormDialog() {
     setEstado(event.target.value);
   };
 
-  const [descripcion, setDescripcion] = useState("");
-
-  const cambioDescripcion = (event) => {
-    setDescripcion(event.target.value);
-  };
-
-  /*   const [monto, setMonto] = useState(0);
-  const [fecha, setFecha] = useState("");
-  const [rutAfiliado, setRutafiliado] = useState(0);
-  const [estado, setEstado] = useState("");
-
-  const cambioEstado = (e) => {
-    setEstado(e.target.value);
-  }; */
-
-  //--------------------------------
   const agregarPagos = () => {
     Axios.post("http://localhost:3001/createIngresoExterno", {
       monto: monto,
       fecha: fecha,
       estado: estado,
-      descripcion: descripcion,
     }).then(() => {
       console.log("exitoso");
       handleClose();
@@ -127,6 +111,16 @@ export default function FormDialog() {
       });
   };
 
+  const agregarIngresosConvenios = () => {
+    Axios.post("http://localhost:3001/agregarIngresoConvenio", {
+      id_conv: id_convenio,
+    }).then(() => {
+      console.log("Exitoso");
+      handleClose();
+    });    
+  };
+    
+
   return (
     <div>
       <div style={mystyle}>
@@ -136,7 +130,10 @@ export default function FormDialog() {
               style={{ backgroundColor: "#23BB77" }}
               variant="contained"
               color="primary"
-              onClick={handleOpenConvenio}
+              onClick={ () => {
+                handleOpenConvenio();
+                getConvenios();
+              }}
             >
               Agregar pago a la asociacion
             </Button>
@@ -151,7 +148,7 @@ export default function FormDialog() {
         aria-labelledby="form-dialog-title"
       >
         <MaterialTable
-          /* data={listConvenio}*/
+          data={listConvenio}
           title="Convenios"
           columns={columns}
           actions={[
@@ -174,7 +171,8 @@ export default function FormDialog() {
             },
             selectionProps: (rowData) => ({
               onClick: () => {
-                console.log("deuda");
+                setId_Convenio(rowData.id_conv)
+                console.log(rowData.id_conv)
               },
               color: "primary",
             }),
@@ -215,7 +213,7 @@ export default function FormDialog() {
             handleClickOpen();
           }}
         >
-          Agregar pago
+          Siguiente
         </Button>
       </Dialog>
 
@@ -273,23 +271,6 @@ export default function FormDialog() {
               <MenuItem value={3}> Rechazado </MenuItem>
             </Select>
           </FormControl>
-
-          <p />
-
-          <FormControl variant="outlined">
-            <InputLabel id="demo-simple-select-outlined-label">
-              Descripcion
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select"
-              value={descripcion}
-              onChange={cambioDescripcion}
-            >
-              <MenuItem value={4}> Subvencion </MenuItem>
-              <MenuItem value={5}> Convenio </MenuItem>
-            </Select>
-          </FormControl>
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
@@ -298,6 +279,7 @@ export default function FormDialog() {
           <Button
             onClick={(e) => {
               agregarPagos();
+              agregarIngresosConvenios();
               handleClose();
               handleCloseConvenio();
             }}

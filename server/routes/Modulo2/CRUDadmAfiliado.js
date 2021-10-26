@@ -59,27 +59,6 @@ router.post("/createIngresosDeudas", (req, res) => {
     );
 });
 
-// ------- ingresar un pago externo ----------
-router.post("/createIngresoExterno", (req, res) => {
-  console.log(req.body);
-  (id_ingreso = req.body.id_ingreso),
-    (monto = req.body.monto),
-    (fecha = req.body.fecha),
-    (estado = req.body.estado),
-    (tipo = "Pago externo"),
-    db.query(
-      "INSERT INTO ingresos (monto, fecha, estado, tipo) VALUES (?, ?, ?, ?)",
-      [monto, fecha, estado, tipo],
-      (err, result) => {
-        if (err) {
-          console.log(err);
-        } else {
-          console.log("Ingreso admitido");
-        }
-      }
-    );
-});
-
 // -------------------------------------------------------- Get ------------------------------------------------
 // ----------------- Mostrar pagos afiliados -------------------------
 router.get("/showIngresosAfiliados", (req, res) => {
