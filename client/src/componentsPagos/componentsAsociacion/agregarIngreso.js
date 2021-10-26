@@ -15,9 +15,42 @@ import Select from "@material-ui/core/Select";
 import Box from "@material-ui/core/Box";
 import { useState } from "react";
 import Axios from "axios";
+import MaterialTable from "material-table";
+
+//imports para material table - icons
+
+import Add from "@material-ui/icons/Add";
+import Search from "@material-ui/icons/Search";
+import ResetSearch from "@material-ui/icons/Clear";
+import Filter from "@material-ui/icons/FilterList";
+import Export from "@material-ui/icons/SaveAlt";
+import FirstPage from "@material-ui/icons/FirstPage";
+import LastPage from "@material-ui/icons/LastPage";
+import NextPage from "@material-ui/icons/ChevronRight";
+import PreviousPage from "@material-ui/icons/ChevronLeft";
+import SortArrow from "@material-ui/icons/ArrowUpward";
+
+const columns = [
+  {
+    title: "Nombre",
+    field: "nombre_conv",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+  },
+  {
+    title: "Descripcion",
+    field: "descripcion_conv",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+  },
+];
 
 export default function FormDialog() {
   const [open, setOpen] = React.useState(false);
+  const [openConvenio, setOpenConvenio] = useState(false);
+  const [listConvenio, setListConvenio] = useState("");
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -25,6 +58,14 @@ export default function FormDialog() {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleOpenConvenio = () => {
+    setOpenConvenio(true);
+  };
+
+  const handleCloseConvenio = () => {
+    setOpenConvenio(false);
   };
 
   //-----------------------------------------//
@@ -75,6 +116,17 @@ export default function FormDialog() {
     });
   };
 
+  const getConvenios = async () => {
+    await Axios.get("http://localhost:3001/getConvenios")
+      .then((response) => {
+        setListConvenio(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       <div style={mystyle}>
@@ -84,13 +136,88 @@ export default function FormDialog() {
               style={{ backgroundColor: "#23BB77" }}
               variant="contained"
               color="primary"
-              onClick={handleClickOpen}
+              onClick={handleOpenConvenio}
             >
               Agregar pago a la asociacion
             </Button>
           </Box>
         </Box>
       </div>
+
+      {/* tabla para ver los convenios y seleccionarlos */}
+      <Dialog
+        open={openConvenio}
+        onClose={handleCloseConvenio}
+        aria-labelledby="form-dialog-title"
+      >
+        <MaterialTable
+          /* data={listConvenio}*/
+          title="Convenios"
+          columns={columns}
+          actions={[
+            {
+              tooltip: "Agregar pago",
+              icon: "Add",
+              onClick: () => {
+                console.log("F");
+              },
+            },
+          ]}
+          options={{
+            actionsColumnIndex: -1,
+            search: true,
+            selection: true,
+            headerStyle: {
+              backgroundColor: "#009966",
+              color: "#FFF",
+              fontSize: "14px",
+            },
+            selectionProps: (rowData) => ({
+              onClick: () => {
+                console.log("deuda");
+              },
+              color: "primary",
+            }),
+          }}
+          localization={{
+            header: {
+              backgroundColor: "#23BB77",
+            },
+            pagination: {
+              labelRowsSelect: "Filas",
+              labelDisplayedRows: "{count} de {from}-{to}",
+              firstTooltip: "Primera página",
+              previousTooltip: "Página anterior",
+              nextTooltip: "Próxima página",
+              lastTooltip: "Última página",
+            },
+            toolbar: {
+              searchTooltip: "Busqueda",
+              searchPlaceholder: "Buscar",
+            },
+          }}
+          icons={{
+            Search: Search,
+            ResetSearch: ResetSearch,
+            Filter: Filter,
+            Export: Export,
+            FirstPage: FirstPage,
+            LastPage: LastPage,
+            NextPage: NextPage,
+            PreviousPage: PreviousPage,
+            SortArrow: SortArrow,
+            Add: Add,
+          }}
+        />
+        <Button onClick={handleCloseConvenio}>Cerrar</Button>
+        <Button
+          onClick={() => {
+            handleClickOpen();
+          }}
+        >
+          Agregar pago
+        </Button>
+      </Dialog>
 
       <Dialog
         open={open}
@@ -172,6 +299,7 @@ export default function FormDialog() {
             onClick={(e) => {
               agregarPagos();
               handleClose();
+              handleCloseConvenio();
             }}
             color="primary"
           >
