@@ -26,7 +26,7 @@ const columns = [
     },
   },
   {
-    title: "Nombre Convenio",
+    title: "Nombre convenio",
     field: "nombre_conv",
     headerStyle: {
       backgroundColor: "#3374FF",
