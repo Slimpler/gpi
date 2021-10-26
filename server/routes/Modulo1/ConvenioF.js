@@ -1,11 +1,7 @@
 
 const { Router } = require("express");
 const router = Router();
-
 const db = require("../../database");
-
-
-
 
 // ------------------------------- Queries --------------------------------------
 
@@ -13,12 +9,17 @@ const db = require("../../database");
 //Crear Convenio Financiero
 router.post("/createConvenioF", (req, res) => {
     console.log(req.body);
-    (id_convF = req.body.id_convF),
-      (nombre_convF = req.body.nombre_convF),
-      (fecha_convF = req.body.fecha_convF),
+      (id_conv = req.body.id_conv),
+      (nombre_conv = req.body.nombre_conv),
+      (fecha_conv = req.body.fecha_conv),
+      (descripcion_conv = req.body.descripcion_conv),
+      (tipo_conv = 'Financiero'),
+      (monto_max_credito_f = req.body.monto_max_credito_f),
+      (numero_max_cuotas_f = req.body.numero_max_cuotas_f),
+
       db.query(
-        "INSERT INTO convenio_financiero (id_convF, nombre_convF, fecha_convF) VALUES (?, ?, ?)",
-        [id_convF, nombre_convF, fecha_convF],
+        "INSERT INTO convenio (id_conv, nombre_conv, fecha_conv, descripcion_conv, tipo_conv, monto_max_credito_f, numero_max_cuotas_f) VALUES (?, ?, ?, ?, ?, ?, ?)",
+        [id_conv, nombre_conv, fecha_conv, descripcion_conv, tipo_conv, monto_max_credito_f, numero_max_cuotas_f],
         (err, result) => {
           if (err) {
             console.log(err);
@@ -30,7 +31,7 @@ router.post("/createConvenioF", (req, res) => {
   });
   //Mostrar convenios financieros
    router.get("/showConvenioF", (req, res) => {
-    db.query("SELECT * FROM convenio_financiero", (err, result) => {
+    db.query("SELECT * FROM convenio where tipo_conv = 'financiero'", (err, result) => {
       if (err) {
         console.log(err);
       } else {
@@ -41,34 +42,34 @@ router.post("/createConvenioF", (req, res) => {
   
   //Editar convenios financieros
   router.put("/editConvenioF", (req, res) => {
-    const id_convF = req.body.id_convF;
-    const nombre_convF = req.body.nombre_convF;
-    const fecha_convF = req.body.fecha_convF;
+    const id_conv = req.body.id_conv;
+    const nombre_conv = req.body.nombre_conv;
+    const fecha_conv = req.body.fecha_conv;
   
     db.query(
-      "UPDATE convenio_financiero SET nombre_convF = ?, fecha_convF = ?  WHERE id_convF = ?",
-      [nombre_convF, fecha_convF, id_convF],
+      "UPDATE convenio SET nombre_conv = ?, fecha_conv = ?  WHERE id_conv = ?",
+      [nombre_conv, fecha_conv, id_conv],
       (err, result) => {
         if (err) {
           console.log(err);
         } else {
-          console.log("Valores actualizados tabla convenio_financiero id:", id_convF);
+          console.log("Valores actualizados tabla convenio id:", id_conv);
         }
       }
     );
   });
   
-  router.delete("/deleteConvenioF/:id_convF", (req, res) => {
-    const id_convF = req.params.id_convF;
+  router.delete("/deleteConvenioF/:id_conv", (req, res) => {
+    const id_convF = req.params.id_conv;
     db.query(
-      "DELETE FROM convenio_financiero WHERE id_convF = ?",
-      [id_convF],
+      "DELETE FROM convenio WHERE id_conv = ?",
+      [id_conv],
         (err, result) => {
         if (err) {
           console.log(err);
         } else {
           res.send(result);
-          console.log("Valores eliminados de convenio_financiero", id_convF);
+          console.log("Valores eliminados de convenio_financiero", id_conv);
         } 
       }
     );

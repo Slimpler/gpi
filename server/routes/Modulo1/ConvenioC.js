@@ -29,7 +29,7 @@ router.post("/createConvenioC", (req, res) => {
   });
   //Mostrar convenios comercial
   router.get("/showConvenioC", (req, res) => {
-    db.query("SELECT * FROM convenio", (err, result) => {
+    db.query("SELECT * FROM convenio where tipo_conv = 'comercial'", (err, result) => {
       if (err) {
         console.log(err);
       } else {

@@ -19,22 +19,55 @@ import SortArrow from "@material-ui/icons/ArrowUpward";
 
 const columns = [ 
   {
-    title: "id convenio",
-    field: "id_convF",
+    title: "Id convenio",
+    field: "id_conv",
     headerStyle: {
       backgroundColor: "#3374FF",
     },
   },
   {
-    title: "Nombre Convenio",
-    field: "nombre_convF",
+    title: "Nombre convenio",
+    field: "nombre_conv",
     headerStyle: {
       backgroundColor: "#3374FF",
     },
   },
   {
     title: "Fecha de ingreso",
-    field: "fecha_convF",
+    field: "fecha_conv",
+    type: "date",
+    dateSetting: {
+      format: "dd/MM/yyyy",
+    },
+    headerStyle: {
+      backgroundColor: "#3374FF",
+    },
+  },
+  {
+    title: "Descripción",
+    field: "descripcion_conv",
+    type: "date",
+    dateSetting: {
+      format: "dd/MM/yyyy",
+    },
+    headerStyle: {
+      backgroundColor: "#3374FF",
+    },
+  },
+  {
+    title: "Monto máximo de crédito",
+    field: "monto_max_credito_f",
+    type: "date",
+    dateSetting: {
+      format: "dd/MM/yyyy",
+    },
+    headerStyle: {
+      backgroundColor: "#3374FF",
+    },
+  },
+  {
+    title: "N° máximo de cuotas",
+    field: "numero_max_cuotas_f",
     type: "date",
     dateSetting: {
       format: "dd/MM/yyyy",
@@ -78,9 +111,9 @@ function ConvenioFinanciero() {
   
   
   const [convenioFSelect, setConvenioFSelect] = useState({
-    id_convF: "",
-    nombre_convF: "",
-    fecha_convF: "",
+    id_conv: "",
+    nombre_conv: "",
+    fecha_conv: "",
   });
 
   const handleChange = (e) => {
@@ -104,18 +137,18 @@ function ConvenioFinanciero() {
 
   const peticionPut = async (id) => {
      await Axios.put("http://localhost:3001/editConvenioF", {
-      id_convF: convenioFSelect.id_convF,
-      nombre_convF: convenioFSelect.nombre_convF,
-      fecha_convF: convenioFSelect.fecha_convF,
+      id_conv: convenioFSelect.id_conv,
+      nombre_conv: convenioFSelect.nombre_conv,
+      fecha_conv: convenioFSelect.fecha_conv,
     })
       .then(() => {
         setListConvenioF(
           listConvenioF.filter((val) => {
-            return val.id_convF === convenioFSelect.id_convF
+            return val.id_conv === convenioFSelect.id_conv
               ? {
-                id_convF: convenioFSelect.id_convF,
-                nombre_convF: convenioFSelect.nombre_convF,
-                fecha_convF: convenioFSelect.fecha_convF,
+                id_conv: convenioFSelect.id_conv,
+                nombre_conv: convenioFSelect.nombre_conv,
+                fecha_conv: convenioFSelect.fecha_conv,
                 }
               : val;
           })
@@ -127,8 +160,8 @@ function ConvenioFinanciero() {
       });
   };
 
-  const SelectConvenioF = (id_convF, caso) => {
-    setConvenioFSelect(id_convF);
+  const SelectConvenioF = (id_conv, caso) => {
+    setConvenioFSelect(id_conv);
     caso === "Editar" ? OCModalEditar() : OCModalEliminar();
   };
 
@@ -141,11 +174,11 @@ function ConvenioFinanciero() {
   };
 
   const peticionDelete = async () => {
-    await Axios.delete(`http://localhost:3001/deleteConvenioF/${convenioFSelect.id_convF}`)
+    await Axios.delete(`http://localhost:3001/deleteConvenioF/${convenioFSelect.id_conv}`)
       .then((response) => {
         setListConvenioF(
           listConvenioF.filter((val) => {
-            return val.id_convF != convenioFSelect.id_convF;
+            return val.id_convF != convenioFSelect.id_conv;
           })
         );
         OCModalEliminar();
@@ -167,21 +200,21 @@ function ConvenioFinanciero() {
       <TextField
         className={styles.inputMaterial}
         label="Nombre del convenio"
-        name="nombre_convF"
+        name="nombre_conv"
         variant= "outlined"
         onChange={handleChange}
-        value={convenioFSelect && convenioFSelect.nombre_convF}
+        value={convenioFSelect && convenioFSelect.nombre_conv}
       />
       <br />
       <br />
       <TextField
         className={styles.inputMaterial}
-        name="fecha_convF"
+        name="fecha_conv"
         type="date"
         variant= "outlined"
         format="yyyy-MM-dd"
         onChange={handleChange}
-        value={convenioFSelect && convenioFSelect.fecha_convF}
+        value={convenioFSelect && convenioFSelect.fecha_conv}
       />
       <br />
       <div align="right">

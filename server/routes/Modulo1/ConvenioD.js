@@ -27,7 +27,7 @@ router.post("/createConvenioD", (req, res) => {
   });
   //Mostrar convenios Descuento
   router.get("/showConvenioD", (req, res) => {
-    db.query("SELECT * FROM convenio_descuento", (err, result) => {
+    db.query("SELECT * FROM convenio Where tipo_conv = 'Descuento'", (err, result) => {
       if (err) {
         console.log(err);
       } else {
