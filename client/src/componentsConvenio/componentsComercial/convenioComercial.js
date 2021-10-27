@@ -16,7 +16,7 @@ import LastPage from "@material-ui/icons/LastPage";
 import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
-
+ 
 const columns = [ 
   {
     title: "id convenio",
@@ -101,6 +101,9 @@ function ConvenioComercial() {
     nombre_conv: "",
     fecha_conv: "",
     descripcion_conv: "",
+    tipo_conv: "",
+    monto_max_credito_c: "",
+    numero_max_cuotas_c: "",
   });
 
   const handleChange = (e) => {
@@ -126,8 +129,9 @@ function ConvenioComercial() {
     await Axios.put("http://localhost:3001/editConvenioC", {
       id_conv: convenioCSelect.id_conv,
       nombre_conv: convenioCSelect.nombre_conv,
-      fecha_conv: convenioCSelect.fecha_conv,
       descripcion_conv: convenioCSelect.descripcion_conv,
+      monto_max_credito_c: convenioCSelect.monto_max_credito_c,
+      numero_max_cuotas_c: convenioCSelect.numero_max_cuotas_c,
     })
       .then((response) => {
         setListConvenioC(
@@ -136,8 +140,9 @@ function ConvenioComercial() {
               ? {
                 id_conv: convenioCSelect.id_conv,
                 nombre_conv: convenioCSelect.nombre_conv,
-                fecha_conv: convenioCSelect.fecha_conv,
                 descripcion_conv: convenioCSelect.descripcion_conv,
+                monto_max_credito_c: convenioCSelect.monto_max_credito_c,
+                numero_max_cuotas_c: convenioCSelect.numero_max_cuotas_c,
                 }
               : val;
           })
@@ -189,7 +194,7 @@ function ConvenioComercial() {
         className={styles.inputMaterial}
         label="Nombre del convenio"
         name="nombre_conv"
-        variant= "outlined"
+        variant= "standard"
         onChange={handleChange}
         value={convenioCSelect && convenioCSelect.nombre_conv}
       />
@@ -197,22 +202,30 @@ function ConvenioComercial() {
       <br />
       <TextField
         className={styles.inputMaterial}
-        name="fecha_conv"
-        type="date"
-        variant= "outlined"
-        format="yyyy-MM-dd"
+        label="Descripción"
+        name="descripcion_conv"
+        variant= "standard"
         onChange={handleChange}
-        value={convenioCSelect && convenioCSelect.fecha_conv}
+        value={convenioCSelect && convenioCSelect.descripcion_conv}
       />
       <br />
       <br />
       <TextField
         className={styles.inputMaterial}
-        label="Descripción"
-        name="descripcion_conv"
-        variant= "outlined"
+        label="Monto máximo de compra"
+        name="monto_max_credito_c"
+        variant= "standard"
         onChange={handleChange}
-        value={convenioCSelect && convenioCSelect.descripcion_conv}
+        value={convenioCSelect && convenioCSelect.monto_max_credito_c}
+      />
+      <br />
+      <TextField
+        className={styles.inputMaterial}
+        label="Número máximo de cuotas"
+        name="numero_max_cuotas_c"
+        variant= "standard"
+        onChange={handleChange}
+        value={convenioCSelect && convenioCSelect.numero_max_cuotas_c}
       />
       <br />
       <div align="right">

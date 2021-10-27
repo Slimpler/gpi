@@ -14,13 +14,7 @@ import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
 
 const columns = [ 
-  {
-    title: "Id convenio",
-    field: "id_conv",
-    headerStyle: {
-      backgroundColor: "#3374FF",
-    },
-  },
+ 
   {
     title: "Nombre Convenio",
     field: "nombre_conv",
@@ -28,17 +22,7 @@ const columns = [
       backgroundColor: "#3374FF",
     },
   },
-  {
-    title: "Fecha de ingreso",
-    field: "fecha_conv",
-    type: "date",
-    dateSetting: {
-      format: "dd/MM/yyyy",
-    },
-    headerStyle: {
-      backgroundColor: "#3374FF",
-    },
-  },
+
   {
     title: "Descripción",
     field: "descripcion_conv",

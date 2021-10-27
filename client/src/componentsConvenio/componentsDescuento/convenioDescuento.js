@@ -16,7 +16,7 @@ import LastPage from "@material-ui/icons/LastPage";
 import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
-
+ 
 const columns = [ 
   {
     title: "Id convenio",
@@ -110,8 +110,8 @@ function ConvenioDescuento() {
     nombre_conv: "",
     fecha_conv: "",
     descripcion: "",
-    monto_max_compra_c: "",
-    numero_max_usos_c: "",
+    monto_max_compra_d: "",
+    numero_max_usos_d: "",
   });
 
   const handleChange = (e) => {
@@ -137,7 +137,9 @@ function ConvenioDescuento() {
     await Axios.put("http://localhost:3001/editConvenioD", {
       id_conv: convenioDSelect.id_conv,
       nombre_conv: convenioDSelect.nombre_conv,
-      fecha_conv: convenioDSelect.fecha_conv,
+      descripcion_conv: convenioDSelect.descripcion_conv,
+      monto_max_compra_d: convenioDSelect.monto_max_compra_d,
+      numero_max_usos_d: convenioDSelect.numero_max_usos_d,
     })
       .then((response) => {
         setListConvenioD(
@@ -146,7 +148,9 @@ function ConvenioDescuento() {
               ? {
                 id_conv: convenioDSelect.id_conv,
                 nombre_conv: convenioDSelect.nombre_conv,
-                fecha_conv: convenioDSelect.fecha_conv,
+                descripcion_conv: convenioDSelect.descripcion_conv,
+                monto_max_compra_d: convenioDSelect.monto_max_compra_d,
+                numero_max_usos_d: convenioDSelect.numero_max_usos_d,
                 }
               : val;
           })
@@ -199,20 +203,37 @@ function ConvenioDescuento() {
         className={styles.inputMaterial}
         label="Nombre del convenio"
         name="nombre_conv"
-        variant= "outlined"
+        variant= "standard"
         onChange={handleChange}
         value={convenioDSelect && convenioDSelect.nombre_conv}
       />
       <br />
-      <br /> 
+      <br />
       <TextField
         className={styles.inputMaterial}
-        name="fecha_conv"
-        type="date"
-        variant= "outlined"
-        format="yyyy-MM-dd"
+        label="Descripcion"
+        name="descripcion_conv"
+        variant= "standard"
         onChange={handleChange}
-        value={convenioDSelect && convenioDSelect.fecha_conv}
+        value={convenioDSelect && convenioDSelect.descripcion_conv}
+      />
+      <br />
+      <TextField
+        className={styles.inputMaterial}
+        label="Monto máximo de la compra"
+        name="monto_max_compra_d"
+        variant= "standard"
+        onChange={handleChange}
+        value={convenioDSelect && convenioDSelect.monto_max_compra_d}
+      />
+      <br />
+      <TextField
+        className={styles.inputMaterial}
+        label="Número máximo de usos"
+        name="numero_max_usos_d"
+        variant= "standard"
+        onChange={handleChange}
+        value={convenioDSelect && convenioDSelect.numero_max_usos_c}
       />
       <br />
       <div align="right">

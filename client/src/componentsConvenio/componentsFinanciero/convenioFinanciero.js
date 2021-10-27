@@ -114,6 +114,10 @@ function ConvenioFinanciero() {
     id_conv: "",
     nombre_conv: "",
     fecha_conv: "",
+    descripcion_conv: "",
+    tipo_conv: "",
+    monto_max_credito_f: "",
+    numero_max_cuotas_f: "",
   });
 
   const handleChange = (e) => {
@@ -139,7 +143,9 @@ function ConvenioFinanciero() {
      await Axios.put("http://localhost:3001/editConvenioF", {
       id_conv: convenioFSelect.id_conv,
       nombre_conv: convenioFSelect.nombre_conv,
-      fecha_conv: convenioFSelect.fecha_conv,
+      descripcion_conv: convenioFSelect.descripcion_conv,
+      monto_max_credito_f: convenioFSelect.monto_max_credito_f,
+      numero_max_cuotas_f: convenioFSelect.numero_max_cuotas_f,
     })
       .then(() => {
         setListConvenioF(
@@ -148,7 +154,9 @@ function ConvenioFinanciero() {
               ? {
                 id_conv: convenioFSelect.id_conv,
                 nombre_conv: convenioFSelect.nombre_conv,
-                fecha_conv: convenioFSelect.fecha_conv,
+                descripcion_conv: convenioFSelect.descripcion_conv,
+                monto_max_credito_f: convenioFSelect.monto_max_credito_f,
+                numero_max_cuotas_f: convenioFSelect.numero_max_cuotas_f,
                 }
               : val;
           })
@@ -201,20 +209,36 @@ function ConvenioFinanciero() {
         className={styles.inputMaterial}
         label="Nombre del convenio"
         name="nombre_conv"
-        variant= "outlined"
+        variant= "standard"
         onChange={handleChange}
         value={convenioFSelect && convenioFSelect.nombre_conv}
       />
       <br />
+      <TextField
+        className={styles.inputMaterial}
+        label="Descripcion"
+        name="descripcion_conv"
+        variant= "standard"
+        onChange={handleChange}
+        value={convenioFSelect && convenioFSelect.descripcion_conv}
+      />
       <br />
       <TextField
         className={styles.inputMaterial}
-        name="fecha_conv"
-        type="date"
-        variant= "outlined"
-        format="yyyy-MM-dd"
+        label="Monto máximo de crédito"
+        name="monto_max_credito_f"
+        variant= "standard"
         onChange={handleChange}
-        value={convenioFSelect && convenioFSelect.fecha_conv}
+        value={convenioFSelect && convenioFSelect.monto_max_credito_f}
+      />
+      <br />
+      <TextField
+        className={styles.inputMaterial}
+        label="Número máximo de cuotas"
+        name="numero_max_cuotas_f"
+        variant= "standard"
+        onChange={handleChange}
+        value={convenioFSelect && convenioFSelect.numero_max_cuotas_f}
       />
       <br />
       <div align="right">
@@ -323,3 +347,4 @@ function ConvenioFinanciero() {
   );
 }
 export default ConvenioFinanciero;
+ 
