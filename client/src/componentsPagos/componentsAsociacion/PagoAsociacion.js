@@ -19,6 +19,13 @@ import SortArrow from "@material-ui/icons/ArrowUpward";
 
 const columns = [
   {
+    title: "Nombre convenio",
+    field: "nombre_conv",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+  },
+  {
     title: "Monto del pago",
     field: "monto",
     headerStyle: {
