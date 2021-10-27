@@ -128,6 +128,7 @@ export default function FormDialog() {
       estado: estado,
     }).then(() => {
       console.log("Exitoso");
+
       handleClose();
     });
   };
