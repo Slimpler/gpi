@@ -95,9 +95,7 @@ function ConvenioComercial() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
-
   const [listConvenioC, setListConvenioC] = useState([]);
-/*   const [id_conv, setid_conv = useState([]); */
   const [convenioCSelect, setConvenioCSelect] = useState({
     id_conv: "",
     nombre_conv: "",
