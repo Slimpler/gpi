@@ -74,6 +74,9 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     padding: "1%",
+    margin: "3%",
+    marginBottom: "0",
+    marginTop: "0",
   },
 }));
 

@@ -13,6 +13,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Box from "@material-ui/core/Box";
+import { Grid } from "@material-ui/core";
 
 // imports para material table
 import Add from "@material-ui/icons/Add";
@@ -86,25 +87,6 @@ export default function FormDialog() {
 
   const handleCloseTwo = () => {
     setOpenTwo(false);
-  };
-
-  //Ubicación del botón
-  const mystyle = {
-    height: 80,
-    width: "100%",
-    padding: "0px",
-    margin: "80px 15px 15px 0px",
-  };
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: 400,
-    bgcolor: "background.paper",
-    border: "2px solid #000",
-    boxShadow: 24,
-    p: 4,
   };
 
   // Estados para datos de tabla convenios
@@ -192,18 +174,34 @@ export default function FormDialog() {
 
   return (
     <div>
-      <div style={mystyle}>
-        <Box display="flex" justifyContent="center" m={1} p={1}>
-          <Box p={5}>
-            <Button
-              style={{ backgroundColor: "#23BB77" }}
-              variant="contained"
-              color="primary"
-              onClick={handleClickOpen}
-            >
-              Agregar pago
-            </Button>
-          </Box>
+      <div>
+        <h1 style={{ marginInline: "4%", marginTop: "3%" }}>
+          Pago de afiliados
+        </h1>
+        <h3 style={{ marginInline: "4%" }}>
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laborisLorem ipsum
+          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris
+        </h3>
+
+        <Box
+          display="flex"
+          justifyContent="right"
+          marginBottom="0%"
+          marginTop="2%"
+          marginX="4%"
+        >
+          <Button
+            style={{ backgroundColor: "#23BB77" }}
+            variant="contained"
+            color="primary"
+            onClick={handleClickOpen}
+          >
+            Agregar pago
+          </Button>
         </Box>
       </div>
 
