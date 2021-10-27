@@ -29,13 +29,6 @@ export default function FormDialog() {
   };
 
   //-----------------------------------------//
-  //Ubicación del botón
-  const mystyle = {
-    height: 80,
-    width: "100%",
-    padding: "0px",
-    margin: "80px 15px 15px 0px",
-  };
 
   // Estados para datos de tabla convenios
 
@@ -89,18 +82,31 @@ export default function FormDialog() {
 
   return (
     <div>
-      <div style={mystyle}>
-        <Box display="flex" justifyContent="center" m={1} p={1}>
-          <Box p={5}>
-            <Button
-              style={{ backgroundColor: "#23BB77" }}
-              variant="contained"
-              color="primary"
-              onClick={handleClickOpen}
-            >
-              Agregar bono
-            </Button>
-          </Box>
+      <div>
+        <h1 style={{ marginInline: "4%", marginTop: "3%" }}>Bonos</h1>
+        <h3 style={{ marginInline: "4%" }}>
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laborisLorem ipsum
+          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris
+        </h3>
+        <Box
+          display="flex"
+          justifyContent="right"
+          marginTop="3%"
+          marginX="3%"
+          paddingX="1%"
+        >
+          <Button
+            style={{ backgroundColor: "#23BB77" }}
+            variant="contained"
+            color="primary"
+            onClick={handleClickOpen}
+          >
+            Agregar bono
+          </Button>
         </Box>
       </div>
 
