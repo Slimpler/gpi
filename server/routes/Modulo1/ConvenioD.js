@@ -69,6 +69,7 @@ router.post("/createConvenioD", (req, res) => {
         if (err) {
           console.log(err);
         } else {
+          res.send(result);
           console.log("Valores eliminados de convenio", id_conv);
         }
       }

@@ -16,25 +16,46 @@ import SortArrow from "@material-ui/icons/ArrowUpward";
 const columns = [ 
   {
     title: "id convenio",
-    field: "id_convD",
+    field: "id_conv",
     headerStyle: {
       backgroundColor: "#3374FF",
     },
   },
   {
     title: "Nombre Convenio",
-    field: "nombre_convD",
+    field: "nombre_conv",
     headerStyle: {
       backgroundColor: "#3374FF",
     },
   },
   {
     title: "Fecha de ingreso",
-    field: "fecha_convD",
+    field: "fecha_conv",
     type: "date",
     dateSetting: {
       format: "dd/MM/yyyy",
     },
+    headerStyle: {
+      backgroundColor: "#3374FF",
+    },
+  },
+  {
+    title: "Descripción",
+    field: "descripcion_conv",
+    headerStyle: {
+      backgroundColor: "#3374FF",
+    },
+  },
+  {
+    title: "Monto máximo de compra",
+    field: "monto_max_compra_d",
+    headerStyle: {
+      backgroundColor: "#3374FF",
+    },
+  },
+  {
+    title: "N° máximo de usos",
+    field: "numero_max_usos_d",
     headerStyle: {
       backgroundColor: "#3374FF",
     },
@@ -74,9 +95,9 @@ function ConvenioD() {
   const [listConvenioD, setListConvenioD] = useState([]);
 /*   const [id_convD, setid_convD = useState([]); */
   const [convenioDSelect, setConvenioDSelect] = useState({
-    id_convD: "",
-    nombre_convD: "",
-    fecha_convD: "",
+    id_conv: "",
+    nombre_conv: "",
+    fecha_conv: "",
   });
 
   const handleChange = (e) => {
@@ -109,7 +130,7 @@ function ConvenioD() {
   return (
     <div className={styles.container}>
       <MaterialTable
-        title="Lista de Convenios de Descuento"
+        title="Lista de convenios de descuento"
         data={listConvenioD}
         columns={columns}
         actions={[
