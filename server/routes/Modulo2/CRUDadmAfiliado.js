@@ -90,6 +90,20 @@ router.get("/getDeudas/:rut_afiliado", (req, res) => {
   );
 });
 
+// ------------------- Ruts de afiliados --------------------------------
+router.get("/GetRUTafiliados", (req, res) => {
+ db.query(
+   "SELECT rut_afiliado from afiliado",
+   (err, result) => {
+    if(err) {
+      console.log(err);
+    } else{
+      res.send(result);
+    }
+   }
+ );
+});
+ 
 // --------------------------------------------------------- Put -----------------------------------------------
 // ------------------ Editar pagos -------------------------
 router.put("/editPagoAfiliado", (req, res) => {
