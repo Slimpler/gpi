@@ -55,6 +55,7 @@ router.post("/createConvenioF", (req, res) => {
         if (err) {
           console.log(err);
         } else {
+          
           console.log("Valores actualizados tabla convenio id:", id_conv);
         }
       }

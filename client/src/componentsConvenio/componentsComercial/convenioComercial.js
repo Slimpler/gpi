@@ -102,7 +102,7 @@ function ConvenioComercial() {
     fecha_conv: "",
     descripcion_conv: "",
     tipo_conv: "",
-    monto_max_credito_c: "",
+    monto_max_compra_c: "",
     numero_max_cuotas_c: "",
   });
 
@@ -130,7 +130,7 @@ function ConvenioComercial() {
       id_conv: convenioCSelect.id_conv,
       nombre_conv: convenioCSelect.nombre_conv,
       descripcion_conv: convenioCSelect.descripcion_conv,
-      monto_max_credito_c: convenioCSelect.monto_max_credito_c,
+      monto_max_compra_c: convenioCSelect.monto_max_compra_c,
       numero_max_cuotas_c: convenioCSelect.numero_max_cuotas_c,
     })
       .then((response) => {
@@ -141,7 +141,7 @@ function ConvenioComercial() {
                 id_conv: convenioCSelect.id_conv,
                 nombre_conv: convenioCSelect.nombre_conv,
                 descripcion_conv: convenioCSelect.descripcion_conv,
-                monto_max_credito_c: convenioCSelect.monto_max_credito_c,
+                monto_max_compra_c: convenioCSelect.monto_max_compra_c,
                 numero_max_cuotas_c: convenioCSelect.numero_max_cuotas_c,
                 }
               : val;
@@ -213,10 +213,10 @@ function ConvenioComercial() {
       <TextField
         className={styles.inputMaterial}
         label="Monto máximo de compra"
-        name="monto_max_credito_c"
+        name="monto_max_compra_c"
         variant= "standard"
         onChange={handleChange}
-        value={convenioCSelect && convenioCSelect.monto_max_credito_c}
+        value={convenioCSelect && convenioCSelect.monto_max_compra_c}
       />
       <br />
       <TextField

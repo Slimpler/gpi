@@ -172,9 +172,16 @@ export default function FormDialog1() {
         <DialogActions>
           <Button onClick={handleClose} color="primary">
             Cancelar
+          
           </Button>
-          <Button onClick={agregarConvenioC} color="primary">
-            Agregar Convenio
+          <Button 
+            onClick={(e) => {
+              agregarConvenioC();
+              handleClose();
+          }}
+              color="primary"
+          >
+            Agregar Convenio 
           </Button>
         </DialogActions>
       </Dialog>
