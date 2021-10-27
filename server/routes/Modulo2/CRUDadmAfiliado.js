@@ -91,7 +91,7 @@ router.get("/getDeudas/:rut_afiliado", (req, res) => {
 });
 
 // ------------------- Ruts de afiliados --------------------------------
-router.get("/GetRUTafiliados", (req, res) => {
+router.get("/getRUTafiliados", (req, res) => {
  db.query(
    "SELECT rut_afiliado from afiliado",
    (err, result) => {
@@ -103,46 +103,81 @@ router.get("/GetRUTafiliados", (req, res) => {
    }
  );
 });
+
+// ------------------- Deuda asociada a un ingreso --------------------------
+router.get("/getDeudaIngreso/:id_ingreso", (req, res) => {
+  const id_ingreso = req.params.id_ingreso;
+  db.query(
+    "SELECT pd.id_deuda, d.remanente_deuda from pagos_deudas pd JOIN deudas d ON pd.id_deuda = d.id_deuda WHERE pd.id_ingreso = ?",
+    [id_ingreso],
+    (err, result) => {
+     if(err) {
+       console.log(err);
+     } else{
+       res.send(result);
+     }
+    }
+  );
+ });
  
 // --------------------------------------------------------- Put -----------------------------------------------
 // ------------------ Editar pagos -------------------------
-router.put("/editPagoAfiliado", (req, res) => {
-  const id_pago = req.body.id_pago;
-  const monto_pago = req.body.monto_pago;
-  const fecha_pago = req.body.fecha_pago;
-  const estado_pago = req.body.estado_pago;
-  const tipo_pago = req.body.tipo_pago;
-  const descripcion = req.body.descripcion;
+router.put("/editIngresoAfiliado", (req, res) => {
+  const id_ingreso = req.body.id_ingreso;
+  const monto = req.body.monto;
+  const fecha = req.body.fecha;
+  const estado = req.body.estado;
 
   db.query(
-    "UPDATE pagos SET monto_pago = ?, fecha_pago = ?, estado_pago = ?, tipo_pago = ?, descripcion = ? WHERE id_pago = ?",
-    [monto_pago, fecha_pago, estado_pago, tipo_pago, descripcion, id_pago],
+    "UPDATE ingresos SET monto = ?, fecha = ?, estado = ? WHERE id_ingreso = ?",
+    [monto, fecha, estado, id_ingreso],
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
-        console.log("Valores actualizados en la tabla pagos", id_pago);
+        console.log("Ingreso actualizado");
       }
     }
   );
 });
 
 // --------------- Editar pagos afiliados -----------------
-router.put("/editPagosAfiliados", (req, res) => {
-  const id_pago = req.body.id_pago;
+router.put("/editIngresosAfiliados", (req, res) => {
+  const id_ingreso = req.body.id_ingreso;
   const rut_afiliado = req.body.rut_afiliado;
 
   db.query(
-    "UPDATE pagos_afiliados SET id_pago = ?, rut_afiliado = ? WHERE id_pago = ?",
-    [id_pago, rut_afiliado, id_pago],
+    "UPDATE pagos_afiliados SET rut_afiliado = ? WHERE id_ingreso = ?",
+    [rut_afiliado, id_ingreso],
     (err, result) => {
       if (err) {
         console.log(err);
       } else {
-        console.log("Valores actualizados en la tabla pagos_afiliados", id_pago);
+        console.log("RUT del ingreso actualizado");
       }
     }
   );
+});
+
+// --------------- Actualizar deuda desde un editar ---------
+router.put("/actualizarDeudaEdit", (req, res) => {
+  console.log(req.body);
+  const remanente = req.body.remanente;
+  const id_deuda = req.body.id_deuda;
+  const oldMonto = req.body.oldMonto;
+  const monto = req.body.monto;
+
+  db.query(
+    "UPDATE deudas SET remanente_deuda = ? - (? - ?) WHERE id_deuda = ?",
+    [remanente, monto, oldMonto, id_deuda],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Deuda actualizada por el monto", monto);
+      }
+    }
+  )
 });
 
 // ----------------- Actualizar deuda ----------------------

@@ -13,9 +13,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Box from "@material-ui/core/Box";
-import Snackbar from "@material-ui/core/Snackbar";
-import { makeStyles } from "@material-ui/core";
-import MuiAlert from "@material-ui/lab/Alert";
 
 // imports para material table
 import Add from "@material-ui/icons/Add";
@@ -32,11 +29,6 @@ import SortArrow from "@material-ui/icons/ArrowUpward";
 import { useState } from "react";
 import Axios from "axios";
 import MaterialTable from "material-table";
-
-
-function Alert(props){
-  return <MuiAlert elevation={6} variant="filled" {...props} />
-}
 
 const columns = [
   {
@@ -193,10 +185,9 @@ export default function FormDialog() {
   };
 
   const RutsAfiliados = async () => {
-    await Axios.get("http://localhost:3001/GetRUTafiliados")
+    await Axios.get("http://localhost:3001/getRUTafiliados")
       .then((response) => {
         setListAfiliados(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -209,15 +200,20 @@ export default function FormDialog() {
     });
   };
 
-  
-  const comprobarRUT = () => {
-    listAfiliados.map((afiliado) => {
-      if(rut_afiliado !== afiliado.rut_afiliado){
-        alert("RUT no existe")
+  const comprobarRUT = async () => {
+    var x = false
+    listAfiliados.map((afiliados) => {
+      if(rut_afiliado == afiliados.rut_afiliado){
+        x = true;
       }
-      handleClose();
     });
+    console.log(x)
+    if(x == false){
+      alert("RUT no existe")
+      handleCloseTwo();
+    }
   };
+
 
   return (
     <div>
