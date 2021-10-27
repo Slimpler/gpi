@@ -236,7 +236,7 @@ function ConvenioFinanciero() {
     <div className={styles.modal}>
       <p>
       Estás seguro que deseas eliminar el siguiente Convenio:{" "}
-        <b>{convenioFSelect && convenioFSelect.id_convF}</b>{" "}
+        <b>{convenioFSelect && convenioFSelect.id_conv}</b>{" "}
       </p>
       <div align="right">
         <Button color="secondary" onClick={() =>{peticionDelete();OCModalEliminar()}}>
