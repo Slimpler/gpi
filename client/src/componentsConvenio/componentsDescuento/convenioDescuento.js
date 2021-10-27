@@ -233,7 +233,7 @@ function ConvenioDescuento() {
         name="numero_max_usos_d"
         variant= "standard"
         onChange={handleChange}
-        value={convenioDSelect && convenioDSelect.numero_max_usos_c}
+        value={convenioDSelect && convenioDSelect.numero_max_usos_d}
       />
       <br />
       <div align="right">
@@ -301,7 +301,7 @@ function ConvenioDescuento() {
           header: {
             actions: "Acciones",
           },
-          pagination: {
+            pagination: {
             labelRowsSelect: "Filas",
             labelDisplayedRows: "{count} de {from}-{to}",
             firstTooltip: "Primera página",
