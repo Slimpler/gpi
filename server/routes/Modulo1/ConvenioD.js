@@ -45,11 +45,12 @@ router.post("/createConvenioD", (req, res) => {
   router.put("/editConvenioD", (req, res) => {
     const id_conv = req.body.id_conv;
     const nombre_conv = req.body.nombre_conv;
-    const fecha_conv = req.body.fecha_conv;
-  
+    const descripcion_conv = req.body.descripcion_conv;
+    const monto_max_compra_d = req.body.monto_max_compra_d;
+    const numero_max_usos_d = req.body.numero_max_usos_d;
     db.query(
-      "UPDATE convenio SET nombre_conv = ?, fecha_conv = ?  WHERE id_conv = ?",
-      [nombre_conv, fecha_conv, id_conv],
+      "UPDATE convenio SET nombre_conv = ?, descripcion_conv = ?, monto_max_compra_d = ?, numero_max_usos_d = ?  WHERE id_conv = ?",
+      [nombre_conv, descripcion_conv, monto_max_compra_d, numero_max_usos_d, id_conv],
       (err, result) => {
         if (err) {
           console.log(err);
@@ -69,6 +70,7 @@ router.post("/createConvenioD", (req, res) => {
         if (err) {
           console.log(err);
         } else {
+          res.send(result);
           console.log("Valores eliminados de convenio", id_conv);
         }
       }

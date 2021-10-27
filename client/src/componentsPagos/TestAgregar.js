@@ -95,6 +95,7 @@ export default function FormDialog() {
   const [fecha, setFecha] = useState("");
   const [id_deuda, setDeuda] = useState("");
   const [listDeuda, setListDeuda] = useState([]);
+  const [listAfiliados, setListAfiliados] = useState([]);
 
   //estados
   const [estado, setEstado] = useState("");
@@ -165,10 +166,29 @@ export default function FormDialog() {
       });
   };
 
+  const RutsAfiliados = async () => {
+    await Axios.get("http://localhost:3001/GetRUTafiliados")
+      .then((response) => {
+        setListAfiliados(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   const obtenerId = async () => {
     listDeuda.map((deuda) => {
       id_deuda === deuda.id_deuda && setDeuda(id_deuda);
-      console.log(id_deuda);
+    });
+  };
+
+  const comprobarRUT = () => {
+    listAfiliados.map((afiliado) => {
+      if (rut_afiliado !== afiliado.rut_afiliado) {
+        alert("RUT no existe");
+      }
+      handleClose();
     });
   };
 
@@ -279,13 +299,14 @@ export default function FormDialog() {
             Cancelar
           </Button>
           <Button
-            onClick={(e) => {
+            onClick={() => {
               handleClickOpenTwo();
+              comprobarRUT();
               getDeudas();
             }}
             color="primary"
           >
-            Seleccionar deuda
+            Siguiente
           </Button>
         </DialogActions>
       </Dialog>
@@ -309,6 +330,7 @@ export default function FormDialog() {
                 agregarPagosAfiliados();
                 agregarIngresosDeudas();
                 actualizarDeuda();
+                alert("Pago agregado");
                 handleCloseTwo();
                 handleClose();
               },

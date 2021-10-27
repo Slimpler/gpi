@@ -14,27 +14,35 @@ import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
 
 const columns = [ 
-  {
-    title: "id convenios",
-    field: "id_convF",
-    headerStyle: {
-      backgroundColor: "#3374FF",
-    },
-  },
+ 
   {
     title: "Nombre Convenio",
-    field: "nombre_convF",
+    field: "nombre_conv",
     headerStyle: {
       backgroundColor: "#3374FF",
     },
   },
+
   {
-    title: "Fecha de ingreso",
-    field: "fecha_convF",
-    type: "date",
+    title: "Descripción",
+    field: "descripcion_conv",
     dateSetting: {
       format: "dd/MM/yyyy",
     },
+    headerStyle: {
+      backgroundColor: "#3374FF",
+    },
+  },
+  {
+    title: "Monto máximo de crédito",
+    field: "monto_max_credito_f",
+    headerStyle: {
+      backgroundColor: "#3374FF",
+    },
+  },
+  {
+    title: "N° máximo de cuotas",
+    field: "numero_max_cuotas_f",
     headerStyle: {
       backgroundColor: "#3374FF",
     },
@@ -74,9 +82,9 @@ function ConvenioF() {
   const [listConvenioF, setListConvenioF] = useState([]);
 /*   const [id_convF, setid_convF = useState([]); */
   const [convenioFSelect, setConvenioFSelect] = useState({
-    id_convF: "",
-    nombre_convF: "",
-    fecha_convF: "",
+    id_conv: "",
+    nombre_conv: "",
+    fecha_conv: "",
   });
 
   const handleChange = (e) => {
@@ -109,7 +117,7 @@ function ConvenioF() {
   return (
     <div className={styles.container}>
       <MaterialTable
-        title="Lista de Convenios Financiero"
+        title="Lista de convenios financieros"
         data={listConvenioF}
         columns={columns}
         actions={[
