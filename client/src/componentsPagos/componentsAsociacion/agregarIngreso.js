@@ -94,7 +94,7 @@ export default function FormDialog() {
       monto: monto,
       fecha: fecha,
       estado: estado,
-    }).then(() => {
+    }).then((response) => {
       console.log("exitoso");
       handleClose();
     });
@@ -117,27 +117,41 @@ export default function FormDialog() {
     }).then(() => {
       console.log("Exitoso");
       handleClose();
-    });    
+    });
   };
-    
 
   return (
     <div>
-      <div style={mystyle}>
-        <Box display="flex" justifyContent="center" m={1} p={1}>
-          <Box p={5}>
-            <Button
-              style={{ backgroundColor: "#23BB77" }}
-              variant="contained"
-              color="primary"
-              onClick={ () => {
-                handleOpenConvenio();
-                getConvenios();
-              }}
-            >
-              Agregar pago a la asociacion
-            </Button>
-          </Box>
+      <div>
+        <h1 style={{ marginInline: "4%", marginTop: "3%" }}>
+          Pagos de asociacion
+        </h1>
+        <h3 style={{ marginInline: "4%" }}>
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laborisLorem ipsum
+          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris
+        </h3>
+        <Box
+          display="flex"
+          justifyContent="right"
+          marginTop="3%"
+          marginX="3%"
+          paddingX="1%"
+        >
+          <Button
+            style={{ backgroundColor: "#23BB77" }}
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              handleOpenConvenio();
+              getConvenios();
+            }}
+          >
+            Agregar pago a la asociacion
+          </Button>
         </Box>
       </div>
 
@@ -171,8 +185,8 @@ export default function FormDialog() {
             },
             selectionProps: (rowData) => ({
               onClick: () => {
-                setId_Convenio(rowData.id_conv)
-                console.log(rowData.id_conv)
+                setId_Convenio(rowData.id_conv);
+                console.log(rowData.id_conv);
               },
               color: "primary",
             }),

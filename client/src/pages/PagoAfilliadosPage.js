@@ -1,6 +1,6 @@
 //Esto es pagos de afiliados; vista desde la directiva
 import React, { useState } from "react";
- 
+
 import GlobalStyle from "../globalStyles";
 import PagosAfiliados from "../componentsPagos/componentsAfiliado/PagosAfiliados";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
@@ -22,13 +22,13 @@ function PagoAfiliadosPage() {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => {
     setIsOpen(!isOpen);
-  }; 
+  };
 
   return (
     </*  style={{ backgroundColor: "#eee", height: "100v" }} */>
       <GlobalStyle />
       <Navbar toggle={toggle} />
-      
+
       <FormDialog />
       <PagosAfiliados />
     </>

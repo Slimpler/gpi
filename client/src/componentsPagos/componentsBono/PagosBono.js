@@ -81,6 +81,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     padding: "1%",
+    margin: "3%",
+    marginBottom: "0",
+    marginTop: "0",
   },
 }));
 
@@ -288,7 +291,7 @@ function PagosAfiliados() {
   return (
     <div className={styles.container}>
       <MaterialTable
-        title="Lista de pagos"
+        title="Lista de bonos"
         data={listPagos}
         columns={columns}
         actions={[

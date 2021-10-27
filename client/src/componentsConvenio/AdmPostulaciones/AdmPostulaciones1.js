@@ -109,7 +109,7 @@ function AdmPostulaciones1() {
   return (
     <div className={styles.container}>
       <MaterialTable
-        title=""
+        title="hola"
         data={listConvenioC}
         columns={columns}
         actions={[
