@@ -14,10 +14,6 @@ app.use(morgan("dev"));
 app.use(cors());
 app.use(express.json());
 
-//routes
-app.use(require("./routes/Form/FormAfiliate"));
-app.use(require("./routes/Form/FormDesafiliate"));
-
 // Modulo 1: Administracion de Convenios
 app.use(require("./routes/Modulo1/ConvenioC"));
 app.use(require("./routes/Modulo1/ConvenioD"));
@@ -27,6 +23,10 @@ app.use(require("./routes/Modulo1/ConvenioF"));
 app.use(require("./routes/Modulo2/CRUDadmAfiliado"));
 app.use(require("./routes/Modulo2/CRUDadmAsociacion"));
 app.use(require("./routes/Modulo2/CRUDadmBonos"));
+
+//routes
+app.use(require("./routes/Modulo3/FormAfiliate"));
+app.use(require("./routes/Modulo3/FormDesafiliate"));
 
 
 
