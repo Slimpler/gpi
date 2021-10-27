@@ -13,7 +13,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Box from "@material-ui/core/Box";
-import { Grid } from "@material-ui/core";
 
 // imports para material table
 import Add from "@material-ui/icons/Add";
@@ -167,10 +166,9 @@ export default function FormDialog() {
   };
 
   const RutsAfiliados = async () => {
-    await Axios.get("http://localhost:3001/GetRUTafiliados")
+    await Axios.get("http://localhost:3001/getRUTafiliados")
       .then((response) => {
         setListAfiliados(response.data);
-        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -183,14 +181,20 @@ export default function FormDialog() {
     });
   };
 
-  const comprobarRUT = () => {
-    listAfiliados.map((afiliado) => {
-      if (rut_afiliado !== afiliado.rut_afiliado) {
-        alert("RUT no existe");
+  const comprobarRUT = async () => {
+    var x = false
+    listAfiliados.map((afiliados) => {
+      if(rut_afiliado == afiliados.rut_afiliado){
+        x = true;
       }
-      handleClose();
     });
+    console.log(x)
+    if(x == false){
+      alert("RUT no existe")
+      handleCloseTwo();
+    }
   };
+
 
   return (
     <div>

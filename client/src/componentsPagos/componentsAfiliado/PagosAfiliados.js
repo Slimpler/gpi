@@ -84,9 +84,13 @@ function IngresosAfiliados() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
-
+  const [listDeuda, setListDeuda] = useState([]);
   const [listIngresos, setListIngresos] = useState([]);
   const [rutAfiliado, setRutAfiliado] = useState([]);
+  const [deuda, setDeuda] = useState([]);
+  const [oldMonto, setOldMonto] = useState("");
+  const [id_deuda, setId_Deuda] = useState("");
+  const [remanente, setRemanente] = useState("");
 
   const [ingresoSelect, setIngresoSelect] = useState({
     id_ingreso: "",
@@ -94,7 +98,6 @@ function IngresosAfiliados() {
     monto: "",
     fecha: "",
     estado: "",
-    tipo_pago: "",
   });
 
   const handleChange = (e) => {
@@ -116,13 +119,12 @@ function IngresosAfiliados() {
       });
   };
 
-  const peticionPut = async (id) => {
+  const actualizarIngreso = async (id) => {
     Axios.put("http://localhost:3001/editIngresoAfiliado", {
       id_ingreso: ingresoSelect.id_ingreso,
       monto: ingresoSelect.monto,
       fecha: ingresoSelect.fecha,
       estado: ingresoSelect.estado,
-      tipo: ingresoSelect.tipo,
     })
       .then(() => {
         setListIngresos(
@@ -132,7 +134,6 @@ function IngresosAfiliados() {
                   monto: ingresoSelect.monto,
                   fecha: ingresoSelect.fecha,
                   estado: ingresoSelect.estado,
-                  tipo: ingresoSelect.tipo,
                 }
               : val;
           })
@@ -144,7 +145,7 @@ function IngresosAfiliados() {
       });
   };
 
-  const peticionPutAfiliado = async (id) => {
+  const actualizarAfiliadoIngreso = async (id) => {
     await Axios.put("http://localhost:3001/editIngresosAfiliados", {
       id_ingreso: ingresoSelect.id_ingreso,
       rut_afiliado: ingresoSelect.rut_afiliado,
@@ -174,7 +175,7 @@ function IngresosAfiliados() {
       .then((response) => {
         setListIngresos(
           listIngresos.filter((val) => {
-            return val.id_ingresos !== ingresoSelect.id_ingreso;
+            return val.id_ingreso !== ingresoSelect.id_ingreso;
           })
         );
         OCModalEliminar();
@@ -183,6 +184,45 @@ function IngresosAfiliados() {
         console.log(error);
       });
   };
+
+  const getDeuda = async (id) => {
+    await Axios.get(`http://localhost:3001/getDeudaIngreso/${id}`)
+      .then((response) => {
+        setDeuda(response.data);
+        console.log(response.data);
+        setId_Deuda(response.data[0].id_deuda);
+        setRemanente(response.data[0].remanente_deuda);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const actualizarDeudaEdit = async (id) => {
+    await Axios.put("http://localhost:3001/actualizarDeudaEdit", {
+      id_deuda: id_deuda,
+      remanente: remanente,
+      oldMonto: oldMonto,
+      monto: ingresoSelect.monto,
+    })
+    .then(() => {
+      setListDeuda(
+        listDeuda.map((val) => {
+          return val.id_deuda === id_deuda
+            ? {
+                rut_afiliado: ingresoSelect.rut_afiliado,
+                remanente: remanente,
+              }
+            : val;
+        })
+      );
+      OCModalEditar();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  };
+
 
   const SelectIngreso = (id_ingreso, caso) => {
     setIngresoSelect(id_ingreso);
@@ -218,24 +258,24 @@ function IngresosAfiliados() {
       <TextField
         className={styles.inputMaterial}
         label="Monto de pago"
-        name="monto_pago"
+        name="monto"
         onChange={handleChange}
         value={ingresoSelect && ingresoSelect.monto}
       />
       <br />
       <TextField
         className={styles.inputMaterial}
-        name="fecha_pago"
+        name="fecha"
         type="date"
-        format="yyyy-MM-dd"
+        format="yyyy-MM-dd hh:mm:ss A Z"
         onChange={handleChange}
-        value={ingresoSelect && ingresoSelect.fecha}
+        value={ingresoSelect.fecha && ingresoSelect.fecha}
       />
       <br />
       <TextField
         className={styles.inputMaterial}
         label="Estado del pago"
-        name="estado_pago"
+        name="estado"
         onChange={handleChange}
         value={ingresoSelect && ingresoSelect.estado}
       />
@@ -244,8 +284,9 @@ function IngresosAfiliados() {
         <Button
           color="primary"
           onClick={(e) => {
-            peticionPutAfiliado();
-            peticionPut();
+            actualizarIngreso();
+            actualizarAfiliadoIngreso();
+            actualizarDeudaEdit();
             OCModalEditar();
           }}
         >
@@ -282,7 +323,13 @@ function IngresosAfiliados() {
           {
             icon: EditIcon,
             tooltip: "Editar Pago",
-            onClick: (event, rowData) => SelectIngreso(rowData, "Editar"),
+            onClick: (event, rowData) => {
+              var fecha = new Date(rowData.fecha)
+              setIngresoSelect({...ingresoSelect, fecha: `${fecha.getFullYear()}-${fecha.getMonth()+1}-${fecha.getDate()}`})
+              getDeuda(rowData.id_ingreso);
+              setOldMonto(rowData.monto);
+              SelectIngreso(rowData, "Editar")
+            },
             iconProps: {
               style: { backgroundColor: "#33ACFF" },
             },
