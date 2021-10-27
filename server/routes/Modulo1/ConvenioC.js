@@ -42,15 +42,13 @@ router.post("/createConvenioC", (req, res) => {
   router.put("/editConvenioC", (req, res) => {
     const id_conv = req.body.id_conv;
     const nombre_conv = req.body.nombre_conv;
-    const fecha_conv = req.body.fecha_conv;
     const descripcion_conv = req.body.descripcion_conv;
-    /* 
     const monto_max_compra_c = req.body.monto_max_compra_c;
-    const numero_max_cuotas_c = req.body.numero_max_cuotas_c */
+    const numero_max_cuotas_c = req.body.numero_max_cuotas_c 
    
     db.query(
-      "UPDATE convenio SET nombre_conv = ?, fecha_conv = ?, descripcion_conv = ? WHERE id_conv = ?",
-      [nombre_conv, fecha_conv, descripcion_conv, id_conv],
+      "UPDATE convenio SET nombre_conv = ?, descripcion_conv = ?, monto_max_compra_c = ?, numero_max_cuotas_c = ? WHERE id_conv = ?",
+      [nombre_conv, descripcion_conv, monto_max_compra_c, numero_max_cuotas_c, id_conv],
       (err, result) => {
         if (err) {
           console.log(err);
