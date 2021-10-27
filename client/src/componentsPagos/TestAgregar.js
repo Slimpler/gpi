@@ -80,6 +80,7 @@ export default function FormDialog() {
   
   const [open, setOpen] = React.useState(false);
   const [openTwo, setOpenTwo] = useState(false);
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -208,10 +209,11 @@ export default function FormDialog() {
     });
   };
 
+  
   const comprobarRUT = () => {
     listAfiliados.map((afiliado) => {
       if(rut_afiliado !== afiliado.rut_afiliado){
-        alert("RUT no existe");
+        alert("RUT no existe")
       }
       handleClose();
     });
