@@ -13,9 +13,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Box from "@material-ui/core/Box";
-import Snackbar from "@material-ui/core/Snackbar";
-import { makeStyles } from "@material-ui/core";
-import MuiAlert from "@material-ui/lab/Alert";
+
 
 // imports para material table
 import Add from "@material-ui/icons/Add";
@@ -34,9 +32,6 @@ import Axios from "axios";
 import MaterialTable from "material-table";
 
 
-function Alert(props){
-  return <MuiAlert elevation={6} variant="filled" {...props} />
-}
 
 const columns = [
   {
