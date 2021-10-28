@@ -182,19 +182,18 @@ export default function FormDialog() {
   };
 
   const comprobarRUT = async () => {
-    var x = false
+    var x = false;
     listAfiliados.map((afiliados) => {
-      if(rut_afiliado == afiliados.rut_afiliado){
+      if (rut_afiliado === afiliados.rut_afiliado) {
         x = true;
       }
     });
-    console.log(x)
-    if(x == false){
-      alert("RUT no existe")
+    console.log(x);
+    if (x === false) {
+      alert("RUT no existe");
       handleCloseTwo();
     }
   };
-
 
   return (
     <div>
