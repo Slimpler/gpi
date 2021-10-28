@@ -12,22 +12,19 @@ import PagoAfiliadosPage from "./pages/PagoAfilliadosPage";
 import FormularioAfiliate from "./pages/FormularioAfiliate";
 import PagoAsociacionPage from "./pages/PagoAsociacionPage";
 import PagoBonosPage from "./pages/pagoBonosPage";
+import PagoDeudasPage from "./pages/PagoDeudasPage";
 import PagoPrestamosPage from "./pages/pagoPrestamosPage";
 import FormularioDesafiliacion from "./pages/FormularioDesafiliacion";
 
+import ConvenioAfiliado from "./pages/ConvenioAfiliado";
 
-import ConvenioAfiliado from './pages/ConvenioAfiliado';
-
-import BonosAfiliadoPage from './pages/BonosAfiliadoPage';
-import PagosUsuarioPage from './pages/PagosUsuarioPage';
-import MisConvenios from './pages/MisConvenios';
+import BonosAfiliadoPage from "./pages/BonosAfiliadoPage";
+import PagosUsuarioPage from "./pages/PagosUsuarioPage";
+import MisConvenios from "./pages/MisConvenios";
 import AdmAfiliados from "./pages/AdmAfiliados";
 import AdministracionAfiliados from "./pages/AdministracionAfiliados";
 import Convenios from "./pages/Convenios";
 import AdmPostulaciones from "./pages/AdmPostulaciones";
-
-
-
 
 function App() {
   return (
@@ -35,18 +32,26 @@ function App() {
       <Switch>
         {/* Pagina Principal */}
         <Route path="/" component={Home} exact />
-        <Route path="/formularioAfiliate" component={FormularioAfiliate} exact />
+        <Route
+          path="/formularioAfiliate"
+          component={FormularioAfiliate}
+          exact
+        />
         <Route path="/entrar" component={EntrarPage} exact />
-        
+
         {/* Paginas del usuario */}
         <Route path="/perfil" component={PerfilPage} exact />
-        <Route path="/Desafiliacion" component={FormularioDesafiliacion} exact />
+        <Route
+          path="/Desafiliacion"
+          component={FormularioDesafiliacion}
+          exact
+        />
 
         {/*<Route path='/buscarconvenios' component={Buscarconvenios} exact />*/}
 
-        <Route path='/ConvenioAfiliado' component={ConvenioAfiliado} exact />
+        <Route path="/ConvenioAfiliado" component={ConvenioAfiliado} exact />
 
-        <Route path='/MisConvenios' component={MisConvenios} exact />
+        <Route path="/MisConvenios" component={MisConvenios} exact />
         <Route path="/pagosUsuario" component={PagosUsuarioPage} exact />
         <Route path="/bonosAfiliado" component={BonosAfiliadoPage} exact />
 
@@ -57,12 +62,29 @@ function App() {
         <Route path="/pagoAsociacion" component={PagoAsociacionPage} exact />
         <Route path="/pagoBonos" component={PagoBonosPage} exact />
         <Route path="/pagoPrestamos" component={PagoPrestamosPage} exact />
-        <Route path="/Convenios" component={Convenios} exact />       
-        <Route path="/admFinanciero" component={AdministrarConvenioFinanciero} exact />
-        <Route path="/admComercial" component={AdministrarConvenioComercial} exact />
-        <Route path="/admDescuento" component={AdministrarConvenioDescuento} exact />
+        <Route path="/pagoDeudas" component={PagoDeudasPage} exact />
+        <Route path="/Convenios" component={Convenios} exact />
+        <Route
+          path="/admFinanciero"
+          component={AdministrarConvenioFinanciero}
+          exact
+        />
+        <Route
+          path="/admComercial"
+          component={AdministrarConvenioComercial}
+          exact
+        />
+        <Route
+          path="/admDescuento"
+          component={AdministrarConvenioDescuento}
+          exact
+        />
         <Route path="/AdmAfiliados" component={AdmAfiliados} exact />
-        <Route path="/AdministracionAfiliados" component={AdministracionAfiliados} exact />
+        <Route
+          path="/AdministracionAfiliados"
+          component={AdministracionAfiliados}
+          exact
+        />
         <Route path="/AdmPostulaciones" component={AdmPostulaciones} exact />
       </Switch>
     </Router>
