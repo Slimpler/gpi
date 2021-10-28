@@ -19,14 +19,14 @@ const columns = [
     title: "id convenio",
     field: "id_convC",
     headerStyle: {
-      backgroundColor: "#3374FF",
+      backgroundColor: "#23BB77",
     },
   },
   {
     title: "Nombre Convenio",
     field: "nombre_convC",
     headerStyle: {
-      backgroundColor: "#3374FF",
+      backgroundColor: "#23BB77",
     },
   },
   {
@@ -37,7 +37,7 @@ const columns = [
       format: "dd/MM/yyyy",
     },
     headerStyle: {
-      backgroundColor: "#3374FF",
+      backgroundColor: "#23BB77",
     },
   },
 ];
@@ -109,7 +109,7 @@ function AdmPostulaciones1() {
   return (
     <div className={styles.container}>
       <MaterialTable
-        title="hola"
+        title="Lista de postulaciones"
         data={listConvenioC}
         columns={columns}
         actions={[
@@ -121,7 +121,7 @@ function AdmPostulaciones1() {
           search: true,
           exportButton: true,
           headerStyle: {
-            backgroundColor: "#3374FF",
+            backgroundColor: "#009966",
             color: "#FFF",
             fontSize: "14px",
           },
