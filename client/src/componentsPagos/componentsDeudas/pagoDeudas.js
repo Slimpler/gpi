@@ -1,7 +1,5 @@
-//En este componente está la tabla con info de los pagos de afiliados + CRUD; Pertenece al perfil de Directiva.
 import React, { useState, useEffect } from "react";
-/* import { DataGrid } from "@material-ui/data-grid";
- */ import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Axios from "axios";
 import MaterialTable from "material-table";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -16,59 +14,32 @@ import LastPage from "@material-ui/icons/LastPage";
 import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
- 
-const columns = [ 
+
+const columns = [
   {
-    title: "Id convenio",
-    field: "id_conv",
+    title: "Deuda Total",
+    field: "deuda_total",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
   },
   {
-    title: "Nombre Convenio",
-    field: "nombre_conv",
+    title: "Remanente deuda",
+    field: "remanente_deuda",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
   },
   {
-    title: "Fecha de ingreso",
-    field: "fecha_conv",
-    type: "date",
-    dateSetting: {
-      format: "dd/MM/yyyy",
-    },
+    title: "Descripcion",
+    field: "descripcion",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
   },
   {
-    title: "Descripción",
-    field: "descripcion_conv",
-    dateSetting: {
-      format: "dd/MM/yyyy",
-    },
-    headerStyle: {
-      backgroundColor: "#23BB77",
-    },
-  },
-  {
-    title: "Monto máximo de compra",
-    field: "monto_max_compra_d",
-    dateSetting: {
-      format: "dd/MM/yyyy",
-    },
-    headerStyle: {
-      backgroundColor: "#23BB77",
-    },
-  },
-  {
-    title: "N° máximo de usos",
-    field: "numero_max_usos_d",
-    dateSetting: {
-      format: "dd/MM/yyyy",
-    },
+    title: "Rut afiliado",
+    field: "rut_afiliado",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
@@ -97,35 +68,40 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     padding: "1%",
+    margin: "3%",
+    marginBottom: "0",
+    marginTop: "0",
   },
 }));
 
-function ConvenioDescuento() {
+function PagosDeudas() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
-  const [listConvenioD, setListConvenioD] = useState([]);
-  const [convenioDSelect, setConvenioDSelect] = useState({
-    id_conv: "",
-    nombre_conv: "",
-    fecha_conv: "",
+  const [listDeuda, setListDeuda] = useState([]);
+
+  const [deudaSelect, setDeudaSelect] = useState({
+    id_deuda: "",
+    deuda_total: "",
+    remanente_deuda: "",
+    cuotas_totales: "",
+    cuotas_pagadas: "",
     descripcion: "",
-    monto_max_compra_d: "",
-    numero_max_usos_d: "",
+    rut_afiliado: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setConvenioDSelect((prevState) => ({
+    setDeudaSelect((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
 
-  const peticionGet = async () => {
-    await Axios.get("http://localhost:3001/showConvenioD")
+  const getDeudasAfiliados = async () => {
+    await Axios.get("http://localhost:3001/getDeudas")
       .then((response) => {
-        setListConvenioD(response.data);
+        setListDeuda(response.data);
         console.log(response.data);
       })
       .catch((error) => {
@@ -133,37 +109,8 @@ function ConvenioDescuento() {
       });
   };
 
-  const peticionPut = async (id) => {
-    await Axios.put("http://localhost:3001/editConvenioD", {
-      id_conv: convenioDSelect.id_conv,
-      nombre_conv: convenioDSelect.nombre_conv,
-      descripcion_conv: convenioDSelect.descripcion_conv,
-      monto_max_compra_d: convenioDSelect.monto_max_compra_d,
-      numero_max_usos_d: convenioDSelect.numero_max_usos_d,
-    })
-      .then((response) => {
-        setListConvenioD(
-          listConvenioD.filter((val) => {
-            return val.id_conv === convenioDSelect.id_conv
-              ? {
-                id_conv: convenioDSelect.id_conv,
-                nombre_conv: convenioDSelect.nombre_conv,
-                descripcion_conv: convenioDSelect.descripcion_conv,
-                monto_max_compra_d: convenioDSelect.monto_max_compra_d,
-                numero_max_usos_d: convenioDSelect.numero_max_usos_d,
-                }
-              : val;
-          })
-        );
-        OCModalEditar();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const SelectConvenioD = (id_conv, caso) => {
-    setConvenioDSelect(id_conv);
+  const SelectDeuda = (id_deuda, caso) => {
+    setDeudaSelect(id_deuda);
     caso === "Editar" ? OCModalEditar() : OCModalEliminar();
   };
 
@@ -175,74 +122,53 @@ function ConvenioDescuento() {
     setModalEliminar(!modalEliminar);
   };
 
-  const peticionDelete = async () => {
-    await Axios.delete(`http://localhost:3001/deleteConvenioD/${convenioDSelect.id_conv}`)
-      .then((response) => {
-        setListConvenioD(
-          listConvenioD.filter((val) => {
-            return val.id_conv != convenioDSelect.id_conv;
-          })
-        );
-        OCModalEliminar();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   useEffect(() => {
-    peticionGet();
+    getDeudasAfiliados();
   }, []);
-
 
   //Interfaz de modal editar
   const bodyEditar = (
     <div className={styles.modal}>
-      <h3>Editar Convenio</h3>
+      <h3>Editar Pago</h3>
+      <br />
       <TextField
         className={styles.inputMaterial}
-        label="Nombre del convenio"
-        name="nombre_conv"
-        variant= "standard"
+        label="Deuda Total"
+        name="deuda_total"
         onChange={handleChange}
-        value={convenioDSelect && convenioDSelect.nombre_conv}
+        value={deudaSelect && deudaSelect.deuda_total}
       />
       <br />
+      <TextField
+        className={styles.inputMaterial}
+        name="remanente_deuda"
+        label="remanente deuda"
+        onChange={handleChange}
+        value={deudaSelect && deudaSelect.remanente_deuda}
+      />
       <br />
       <TextField
         className={styles.inputMaterial}
         label="Descripcion"
-        name="descripcion_conv"
-        variant= "standard"
+        name="descripcion"
         onChange={handleChange}
-        value={convenioDSelect && convenioDSelect.descripcion_conv}
+        value={deudaSelect && deudaSelect.descripcion}
       />
       <br />
       <TextField
         className={styles.inputMaterial}
-        label="Monto máximo de la compra"
-        name="monto_max_compra_d"
-        variant= "standard"
+        label="Rut afiliado"
+        name="rut_afiliado"
         onChange={handleChange}
-        value={convenioDSelect && convenioDSelect.monto_max_compra_d}
+        value={deudaSelect && deudaSelect.rut_afiliado}
       />
-      <br />
-      <TextField
-        className={styles.inputMaterial}
-        label="Número máximo de usos"
-        name="numero_max_usos_d"
-        variant= "standard"
-        onChange={handleChange}
-        value={convenioDSelect && convenioDSelect.numero_max_usos_d}
-      />
-      <br />
       <div align="right">
-        <Button 
-        color="primary"
-        onClick={(e) => {
-          peticionPut();
-          OCModalEditar();
-        }}>
+        <Button
+          color="primary"
+          onClick={() => {
+            OCModalEditar();
+          }}
+        >
           Editar
         </Button>
         <Button onClick={() => OCModalEditar()}> Cancelar </Button>
@@ -254,11 +180,11 @@ function ConvenioDescuento() {
   const bodyEliminar = (
     <div className={styles.modal}>
       <p>
-        Estás seguro que deseas eliminar el siguiente Convenio:{" "}
-        <b>{convenioDSelect && convenioDSelect.id_conv}</b>?{" "}
+        Estás seguro que deseas eliminar el siguiente pago:{" "}
+        <b>{deudaSelect /*  && deudaSelect.monto */}</b>?{" "}
       </p>
       <div align="right">
-        <Button color="secondary" onClick={() => {peticionDelete();OCModalEliminar()}}>
+        <Button color="secondary" onClick={() => OCModalEliminar()}>
           Sí
         </Button>
         <Button onClick={() => OCModalEliminar()}>No</Button>
@@ -269,22 +195,22 @@ function ConvenioDescuento() {
   return (
     <div className={styles.container}>
       <MaterialTable
-        title="Lista de Convenios"
-        data={listConvenioD}
+        title="Lista de pagos"
+        data={listDeuda}
         columns={columns}
         actions={[
           {
             icon: EditIcon,
-            tooltip: "Editar Convenio",
-            onClick: (event, rowData) => SelectConvenioD(rowData, "Editar"),
+            tooltip: "Editar Pago",
+            onClick: (event, rowData) => SelectDeuda(rowData, "Editar"),
             iconProps: {
               style: { backgroundColor: "#33ACFF" },
             },
           },
           {
             icon: DeleteIcon,
-            tooltip: "Eliminar Convenio",
-            onClick: (event, rowData) => SelectConvenioD(rowData, "Eliminar"),
+            tooltip: "Eliminar Pago",
+            onClick: (event, rowData) => SelectDeuda(rowData, "Eliminar"),
           },
         ]}
         options={{
@@ -300,8 +226,9 @@ function ConvenioDescuento() {
         localization={{
           header: {
             actions: "Acciones",
+            backgroundColor: "#23BB77",
           },
-            pagination: {
+          pagination: {
             labelRowsSelect: "Filas",
             labelDisplayedRows: "{count} de {from}-{to}",
             firstTooltip: "Primera página",
@@ -339,4 +266,4 @@ function ConvenioDescuento() {
     </div>
   );
 }
-export default ConvenioDescuento;
+export default PagosDeudas;

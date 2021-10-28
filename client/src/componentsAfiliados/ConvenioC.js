@@ -19,7 +19,7 @@ const columns = [
     title: "Nombre convenio",
     field: "nombre_conv",
     headerStyle: {
-      backgroundColor: "#3374FF",
+      backgroundColor: "#23BB77",
     },
   },
 
@@ -27,21 +27,21 @@ const columns = [
     title: "Descripción",
     field: "descripcion_conv",
     headerStyle: {
-      backgroundColor: "#3374FF",
+      backgroundColor: "#23BB77",
     },
   },
   {
     title: "Monto máximo de compra",
     field: "monto_max_compra_c",
     headerStyle: {
-      backgroundColor: "#3374FF",
+      backgroundColor: "#23BB77",
     },
   },
   {
     title: "N° máximo de cuotas",
     field: "numero_max_cuotas_c",
     headerStyle: {
-      backgroundColor: "#3374FF",
+      backgroundColor: "#23BB77",
     },
   },
   
@@ -127,7 +127,7 @@ function ConvenioC() {
           search: true,
           exportButton: true,
           headerStyle: {
-            backgroundColor: "#3374FF",
+            backgroundColor: "#009966",
             color: "#FFF",
             fontSize: "14px",
           },

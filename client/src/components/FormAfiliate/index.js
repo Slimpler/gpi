@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import Axios from 'axios';
 import emailjs from 'emailjs-com';
-// import{ init } from 'emailjs-com';
-// init("user_GaIPXs4FUkl829Cj8QN7G");
+import { validateRUT, getCheckDigit } from 'validar-rut';
+
 import {
   ButtonStyled,
   ContainerAll,
@@ -23,61 +23,85 @@ import SelectContract from "./Select/index";
 
 
 const FormAfiliate = () => {
-//     const url = "http://localhost:3001/createFormAfiliacion"
-//     const [values, setValues] = useState({
-//         rut_func: "",
-//         digito: "",
-//         nombre_func: "",
-//         telefono: "",
-//         celular: "",
-//         sueldo_func: "",
-//         antiguedad_func: "",
-//         // error: false,
-//      });
+    const url = "http://localhost:3001/createFormAfiliacion"
+    const [values, setValues] = useState({
+        digito: "",
+        nombre_func: "",
+        telefono: "",
+        celular: "",
+        sueldo_func: "",
+        antiguedad_func: "",
+     });
+     const[rut_func, setRutIngresado] = React.useState("");
+     const[digito, setDVIngresado] = React.useState("");
+
     
-//      function submit(e){
-//       //  e.preventDefault();
-//        Axios.post(url, {
-//           rut_func: values.rut_func,
-//           digito: values.digito,
-//           nombre_func: values.nombre_func,
-//           telefono: values.telefono,
-//           celular: values.celular,
-//           sueldo_func: values.sueldo_func,
-//           antiguedad_func: values.antiguedad_func,
-//         }).then(res=> {
-//           console.log("Envio exitoso");
-//       })
-//   }
 
-//    function handle(e){
-//     const newvalues={...values}
-//     newvalues[e.target.id] = e.target.value
-//     setValues(newvalues)
-//     console.log(newvalues)
-//  }
+  function changeDV(e){
+    setDVIngresado(e.target.value);
+  }
 
- function enviarEmail(e){
-  e.preventDefault();
+  function change(e){
+    setRutIngresado(e.target.value);
+  }
+  
 
+   function handle(e){
+    const newvalues={...values}
+    newvalues[e.target.id] = e.target.value
+    setValues(newvalues)
+    console.log(newvalues)
+ }
+
+ function enviarBackend(e){
+  //  e.preventDefault();
+   Axios.post(url, {
+      rut_func: rut_func,
+      digito: digito,
+      nombre_func: values.nombre_func,
+      telefono: values.telefono,
+      celular: values.celular,
+      sueldo_func: values.sueldo_func,
+      antiguedad_func: values.antiguedad_func,
+    }).then(res=> {
+      console.log("Envio exitoso");
+  })
+}
+ 
+ function verificarRut(){
+  // e.preventDefault();
+  let result = getCheckDigit(rut_func);
+  if(digito === result){
+    return true
+  }else{
+    alert('EL RUT ' + rut_func + '-'+ digito + ' ES INVALIDO');
+    return false
+  }
+};
+
+  function enviarEmail(e){
   emailjs.sendForm('gmailMessage', 'template_246wjmb', e.target, 'user_GaIPXs4FUkl829Cj8QN7G')
-    .then((result) => {
-        console.log(result.text);
-    }, (error) => {
-        alert(error.text)
-    });
-    e.target.reset()
-    alert('Mensaje enviado exito! Muchas gracias');
+      .then((result) => {
+          console.log(result.text);
+      }, (error) => {
+          alert(error.text)
+          alert('Formulario no pudo ser enviado :( \n Intentelo más tarde')
+      });
+      e.target.reset()
+      alert('Formulario enviado exito! Muchas gracias');
+    
 };
  
-
-
  return(
     <ContainerAll>
       <Wrap>
         <IconStyled to="/">Quintero</IconStyled>
         <Content>
-          <FormStyled onSubmit={(e)=> enviarEmail(e)}>
+          <FormStyled onSubmit={(e)=> {enviarBackend(e);
+          verificarRut(e);
+          if (verificarRut(e) == true){
+            enviarEmail(e);
+          }}}>
           <center>
             <H1styled>Formulario para Afiliación {'\n'}</H1styled>
             <H1styled> </H1styled>
@@ -89,10 +113,10 @@ const FormAfiliate = () => {
               <LabelStyled>Nombres y Apellidos: </LabelStyled>
 
               <InputStyled 
-              // onChange={(e)=>handle(e)} 
+              onChange={(e)=>handle(e)} 
               id="nombre_func" 
               name="nombre_func"
-              // value={values.nombre_func} 
+              value={values.nombre_func} 
               type="text" 
               required 
               size="35"/>            
@@ -113,36 +137,38 @@ const FormAfiliate = () => {
               <LabelStyled>RUT (sin puntos ni DV): </LabelStyled>
 
               <InputStyled
-                // onChange={(e)=>handle(e)}
-                // value={values.rut_func}
-                type="number"
+                onChange={(e)=>change(e)}
+                value={rut_func}
+                type="text"
                 id="rut_func"
                 name="rut_func"
-                min="9999999"
-                max="99999999"
-                placeholder="Ejemplo: 11111111"
+                minLength="7"
+                maxLength="8"
+                placeholder="Ejemplo: XXXXXXXX"
                 required/>
             
                {/* Pedir DV del funcionario */}
                <LabelStyled>Digito verificador:</LabelStyled>
-                        
+                       
                 <InputStyled 
-                // onChange={(e)=>handle(e)} 
-                id="digito" 
-                // value={values.digito.toUpperCase()} 
-                type="text" 
-                placeholder="0..9, k" 
-                maxLength="1" required />
+                onChange={(e)=>changeDV(e)}
+                value={digito.toUpperCase()} 
+                type="text"
+                id="digito"
+                name="digito" 
+                // placeholder="0..9, k" 
+                maxLength="1" 
+                required />
 
 
               {/* Pedir telefono del funcionario no obligatorio */}
               <LabelStyled>Teléfono: </LabelStyled>
 
               <InputStyled 
-              // onChange={(e)=>handle(e)} 
+              onChange={(e)=>handle(e)} 
               id="telefono" 
               name="telefono"
-              // value={values.telefono} 
+              value={values.telefono} 
               maxLength="12" 
               type="tel"/>
              
@@ -150,11 +176,11 @@ const FormAfiliate = () => {
               <LabelStyled>Celular:</LabelStyled>
 
               <InputStyled 
-              // onChange={(e)=>handle(e)} 
+              onChange={(e)=>handle(e)} 
               id="celular"
               name="celular" 
               placeholder="Ejemplo: 994589528" 
-              // value={values.celular} 
+              value={values.celular} 
               type="tel"
               minLength="9" 
               maxLength="9" required /> 
@@ -163,10 +189,10 @@ const FormAfiliate = () => {
               <LabelStyled>Sueldo:</LabelStyled>
 
               <InputStyled 
-              // onChange={(e)=>handle(e)} 
+              onChange={(e)=>handle(e)} 
               id="sueldo_func" 
               name="sueldo_func"
-              // value={values.sueldo_func} 
+              value={values.sueldo_func} 
               type="number" 
               min="600000" 
               placeholder="600000" 
@@ -175,10 +201,10 @@ const FormAfiliate = () => {
              {/* Pedir la antiguedad del funcionario */}
               <LabelStyled>Antiguedad:</LabelStyled>
               <InputStyled 
-              // onChange={(e)=>handle(e)}
+              onChange={(e)=>handle(e)}
               id="antiguedad_func" 
               name="antiguedad_func"
-              // value={values.antiguedad_func} 
+              value={values.antiguedad_func} 
               type="date" 
               max="2021-04-28" required  />
           

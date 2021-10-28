@@ -184,19 +184,20 @@ export default function FormDialog() {
   };
 
   const comprobarRUT = async () => {
-    var x = false
+    var x = false;
     listAfiliados.map((afiliados) => {
-      if(rut_afiliado == afiliados.rut_afiliado){
+      if (rut_afiliado === afiliados.rut_afiliado) {
         x = true;
       }
     });
-    console.log(x)
-    if(x == false){
-      alert("RUT no existe")
+    console.log(x);
+    if (x === false) {
+      alert("RUT no existe");
       handleCloseTwo();
     }
   };
 
+<<<<<<< HEAD
   const controlarIngreso = () => {
     var z = false
     if(monto > remanente){
@@ -217,6 +218,8 @@ export default function FormDialog() {
   }
 
 
+=======
+>>>>>>> 9c4419adf65fb2ce72b3042c7017cbe3da02ad60
   return (
     <div>
       <div>
