@@ -235,14 +235,39 @@ router.put("/actualizarDeuda", (req, res) => {
   );
 });
 
-// --------------------- Eliminar pagos afiliados ---------------------
-router.delete("/deletePagos/:id", (req, res) => {
-  const id_pago = req.params.id_pago;
+// ---------------------- Actualizar deuda de pago eliminado -----------------------
+router.put("/actualizarDeudaEliminado", (req, res) => {
+  console.log(req.body)
+  const id_deuda = req.body.id_deuda;
+  const oldMonto = req.body.oldMonto;
+  const remanente = req.body.remanente;
 
-  db.query("DELETE FROM pagos WHERE id_pago = ?", id_pago, (err, result) => {
+  db.query(
+    "UPDATE deudas SET remanente_deuda = (? + ?), cuotas_pagadas = (cuotas_pagadas - 1) WHERE id_deuda = ?",
+    [remanente, oldMonto, id_deuda],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Deuda actualizada para pago eliminado");
+      }
+    }
+  )
+});
+
+// -------------------------------------------- Delete -------------------------------
+// --------------------- Eliminar pagos afiliados ---------------------
+router.delete("/eliminarIngreso/:id_ingreso", (req, res) => {
+  console.log(req.params)
+  const id_ingreso = req.params.id_ingreso;
+
+  db.query("DELETE FROM ingresos WHERE id_ingreso = ?", 
+    [id_ingreso], 
+    (err, result) => {
     if (err) {
       console.log(err);
     } else {
+      console.log("Pago eliminado");
       res.send(result);
     }
   });

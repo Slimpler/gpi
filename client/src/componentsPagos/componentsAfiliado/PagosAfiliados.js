@@ -16,6 +16,10 @@ import LastPage from "@material-ui/icons/LastPage";
 import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
 
 const columns = [
   {
@@ -91,6 +95,7 @@ function IngresosAfiliados() {
   const [oldMonto, setOldMonto] = useState("");
   const [id_deuda, setId_Deuda] = useState("");
   const [remanente, setRemanente] = useState("");
+  const [ingreso, setIngreso] = useState("");
 
   const [ingresoSelect, setIngresoSelect] = useState({
     id_ingreso: "",
@@ -161,21 +166,18 @@ function IngresosAfiliados() {
           })
         );
         OCModalEditar();
-        peticionGet();
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  const peticionDelete = async (id) => {
-    await Axios.delete(`http://localhost:3001/deletePagos/${id}`, {
-      id_ingreso: ingresoSelect.id_ingreso,
-    })
+  const eliminarIngreso = async () => {
+    await Axios.delete(`http://localhost:3001/eliminarIngreso/${ingreso}`)
       .then((response) => {
         setListIngresos(
           listIngresos.filter((val) => {
-            return val.id_ingreso !== ingresoSelect.id_ingreso;
+            return val.id_ingreso !== ingreso;
           })
         );
         OCModalEliminar();
@@ -184,6 +186,29 @@ function IngresosAfiliados() {
         console.log(error);
       });
   };
+
+  const actualizarDeudaEliminado = async (id) => {
+    await Axios.put("http://localhost:3001/actualizarDeudaEliminado", {
+      id_deuda: id_deuda,
+      oldMonto: oldMonto,
+      remanente: remanente,
+    })
+      .then(() => {
+        setDeuda(
+          deuda.map((val) => {
+            return val.id_deuda === id_deuda
+              ? {
+                  remanente: remanente,
+                }
+              : val;
+          })
+        );
+        OCModalEditar();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   const getDeuda = async (id) => {
     await Axios.get(`http://localhost:3001/getDeudaIngreso/${id}`)
@@ -197,6 +222,14 @@ function IngresosAfiliados() {
         console.log(error);
       });
   };
+
+  const controlarIngreso = () => {
+    var y = false 
+    if(ingresoSelect.monto > remanente){
+      y = true
+    }
+    return y;
+  } 
 
   const actualizarDeudaEdit = async (id) => {
     await Axios.put("http://localhost:3001/actualizarDeudaEdit", {
@@ -272,22 +305,37 @@ function IngresosAfiliados() {
         value={ingresoSelect.fecha && ingresoSelect.fecha}
       />
       <br />
-      <TextField
-        className={styles.inputMaterial}
-        label="Estado del pago"
-        name="estado"
-        onChange={handleChange}
-        value={ingresoSelect && ingresoSelect.estado}
-      />
+      <FormControl variant="outlined">
+        <InputLabel id="demo-simple-select-outlined-label">
+          Estado de pago
+        </InputLabel>
+        <Select
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select"
+          name="estado"
+          onChange={handleChange}
+        >
+          <MenuItem value={1}> Pendiente </MenuItem>
+          <MenuItem value={2}> Aceptado </MenuItem>
+          <MenuItem value={3}> Rechazado </MenuItem>
+        </Select>
+      </FormControl>
       <br />
       <div align="right">
         <Button
           color="primary"
           onClick={(e) => {
-            actualizarIngreso();
-            actualizarAfiliadoIngreso();
-            actualizarDeudaEdit();
-            OCModalEditar();
+            var y = controlarIngreso();
+            if(y == false){
+              actualizarIngreso();
+              actualizarAfiliadoIngreso();
+              actualizarDeudaEdit();
+              OCModalEditar();
+              alert("Ingreso actualizado");
+            }
+            else{
+              alert("Monto no puede superar la deuda")
+            }
           }}
         >
           Editar
@@ -301,14 +349,19 @@ function IngresosAfiliados() {
   const bodyEliminar = (
     <div className={styles.modal}>
       <p>
-        Estás seguro que deseas eliminar el siguiente pago:{" "}
-        <b>{ingresoSelect && ingresoSelect.monto}</b>?{" "}
+        ¿Estás seguro que deseas eliminar el pago seleccionado?
       </p>
       <div align="right">
-        <Button color="secondary" onClick={() => peticionDelete()}>
-          Sí
+        <Button color="secondary" 
+        onClick={() => {
+          eliminarIngreso();
+          actualizarDeudaEliminado();
+          alert("Ingreso eliminado")
+          }}>
+            Sí
         </Button>
-        <Button onClick={() => OCModalEliminar()}>No</Button>
+        <Button onClick={() => 
+          OCModalEliminar()}>No</Button>
       </div>
     </div>
   );
@@ -337,7 +390,15 @@ function IngresosAfiliados() {
           {
             icon: DeleteIcon,
             tooltip: "Eliminar Pago",
-            onClick: (event, rowData) => SelectIngreso(rowData, "Eliminar"),
+            onClick: (event, rowData) => {
+              getDeuda(rowData.id_ingreso);
+              setOldMonto(rowData.monto);
+              setIngreso(rowData.id_ingreso);
+              SelectIngreso(rowData, "Eliminar")
+            },
+            iconProps: {
+              style: { backgroundColor: "#33ACFF" },
+            },
           },
         ]}
         options={{

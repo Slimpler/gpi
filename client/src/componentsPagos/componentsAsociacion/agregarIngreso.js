@@ -127,12 +127,7 @@ export default function FormDialog() {
           Pagos de asociacion
         </h1>
         <h3 style={{ marginInline: "4%" }}>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laborisLorem ipsum
-          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris
+          En esta tabla se ingresan los pagos hechos a la asociación, distintos a los pagos hechos por afiliados. Por ejemplo: pago de subvención municipal
         </h3>
         <Box
           display="flex"
@@ -186,7 +181,6 @@ export default function FormDialog() {
             selectionProps: (rowData) => ({
               onClick: () => {
                 setId_Convenio(rowData.id_conv);
-                console.log(rowData.id_conv);
               },
               color: "primary",
             }),
@@ -267,9 +261,7 @@ export default function FormDialog() {
               setFecha(e.target.value);
             }}
           />
-
           <p />
-
           <FormControl variant="outlined">
             <InputLabel id="demo-simple-select-outlined-label">
               Estado de pago

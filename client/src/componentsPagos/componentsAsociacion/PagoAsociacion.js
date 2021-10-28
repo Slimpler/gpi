@@ -16,6 +16,10 @@ import LastPage from "@material-ui/icons/LastPage";
 import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import InputLabel from "@material-ui/core/InputLabel";
 
 const columns = [
   {
@@ -84,8 +88,9 @@ function PagosAsociacion() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
+  const [ingreso, setIngreso] = useState("");
 
-  const [listPagos, setListpagos] = useState([]);
+  const [listIngresos, setListIngresos] = useState([]);
   const [ingresoSelect, setIngresoSelect] = useState({
     id_ingreso: "",
     monto: "",
@@ -105,7 +110,7 @@ function PagosAsociacion() {
   const peticionGet = async () => {
     await Axios.get("http://localhost:3001/showPagosAsociacion")
       .then((response) => {
-        setListpagos(response.data);
+        setListIngresos(response.data);
         console.log(response.data);
       })
       .catch((error) => {
@@ -113,7 +118,8 @@ function PagosAsociacion() {
       });
   };
 
-  const peticionPut = async (id) => {
+  const actualizarIngresoExterno = async (id) => {
+    console.log(ingresoSelect)
     await Axios.put("http://localhost:3001/editPagosAsociacion", {
       id_ingreso: ingresoSelect.id_ingreso,
       monto: ingresoSelect.monto,
@@ -122,8 +128,8 @@ function PagosAsociacion() {
       estado: ingresoSelect.estado,
     })
       .then((response) => {
-        setListpagos(
-          listPagos.map((val) => {
+        setListIngresos(
+          listIngresos.map((val) => {
             return val.id_ingreso === ingresoSelect.id_ingreso
               ? {
                   monto: ingresoSelect.monto,
@@ -141,14 +147,12 @@ function PagosAsociacion() {
       });
   };
 
-  const peticionDelete = async (id) => {
-    await Axios.delete(`http://localhost:3001/deletePagos/${id}`, {
-      id_ingreso: ingresoSelect.id_ingreso,
-    })
+  const eliminarIngreso = async () => {
+    await Axios.delete(`http://localhost:3001/eliminarIngreso/${ingreso}`)
       .then((response) => {
-        setListpagos(
-          listPagos.filter((val) => {
-            return val.id_ingreso !== ingresoSelect.id_ingreso;
+        setListIngresos(
+          listIngresos.filter((val) => {
+            return val.id_ingreso !== ingreso;
           })
         );
         OCModalEliminar();
@@ -190,26 +194,35 @@ function PagosAsociacion() {
       <br />
       <TextField
         className={styles.inputMaterial}
-        name="fecha_pago"
+        name="fecha"
         type="date"
-        format="yyyy-MM-dd"
+        format="yyyy-MM-dd hh:mm:ss A Z"
         onChange={handleChange}
         value={ingresoSelect && ingresoSelect.fecha}
       />
       <br />
-      <TextField
-        className={styles.inputMaterial}
-        label="Estado del pago"
-        name="estado_pago"
-        onChange={handleChange}
-        value={ingresoSelect && ingresoSelect.estado}
-      />
+      <FormControl variant="outlined">
+        <InputLabel id="demo-simple-select-outlined-label">
+          Estado de pago
+        </InputLabel>
+        <Select
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select"
+          name="estado"
+          onChange={handleChange}
+        >
+          <MenuItem value={1}> Pendiente </MenuItem>
+          <MenuItem value={2}> Aceptado </MenuItem>
+          <MenuItem value={3}> Rechazado </MenuItem>
+        </Select>
+      </FormControl>
       <div align="right">
         <Button
           color="primary"
           onClick={() => {
-            peticionPut();
+            actualizarIngresoExterno();
             OCModalEditar();
+            alert("Ingreso actualizado");
           }}
         >
           Editar
@@ -227,8 +240,11 @@ function PagosAsociacion() {
         <b>{ingresoSelect && ingresoSelect.monto}</b>?{" "}
       </p>
       <div align="right">
-        <Button color="secondary" onClick={() => peticionDelete()}>
-          Sí
+        <Button color="secondary" onClick={() => {
+          eliminarIngreso();
+          alert("Ingreso eliminado")
+          }}>
+            Sí
         </Button>
         <Button onClick={() => OCModalEliminar()}>No</Button>
       </div>
@@ -239,7 +255,7 @@ function PagosAsociacion() {
     <div className={styles.container}>
       <MaterialTable
         title="Lista de pagos"
-        data={listPagos}
+        data={listIngresos}
         columns={columns}
         actions={[
           {
@@ -253,8 +269,14 @@ function PagosAsociacion() {
           {
             icon: DeleteIcon,
             tooltip: "Eliminar Pago",
-            onClick: (event, rowData) => SelectPago(rowData, "Eliminar"),
-          },
+            onClick: (event, rowData) => {
+              setIngreso(rowData.id_ingreso);
+              SelectPago(rowData, "Eliminar")
+            },
+            iconProps: {
+              style: { backgroundColor: "#33ACFF" },
+            },
+          }
         ]}
         options={{
           actionsColumnIndex: -1,

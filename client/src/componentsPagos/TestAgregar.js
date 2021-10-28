@@ -95,6 +95,7 @@ export default function FormDialog() {
   const [id_deuda, setDeuda] = useState("");
   const [listDeuda, setListDeuda] = useState([]);
   const [listAfiliados, setListAfiliados] = useState([]);
+  const [remanente, setRemanente] = useState([]);
 
   //estados
   const [estado, setEstado] = useState("");
@@ -103,6 +104,7 @@ export default function FormDialog() {
     setEstado(event.target.value);
   };
 
+  // Agregar un ingreso al sistema
   const agregarPagos = () => {
     Axios.post("http://localhost:3001/createIngresoAfiliado", {
       monto: monto,
@@ -195,6 +197,29 @@ export default function FormDialog() {
     }
   };
 
+<<<<<<< HEAD
+  const controlarIngreso = () => {
+    var z = false
+    if(monto > remanente){
+      z = true
+    }
+    return z;
+  }
+
+  const controlarMonto = async () => { 
+    var y = false
+    if(monto == 0){
+      y = true
+    }
+    if(y == true){
+      alert("Monto no puede ser 0")
+      handleCloseTwo();
+    }
+  }
+
+
+=======
+>>>>>>> 9c4419adf65fb2ce72b3042c7017cbe3da02ad60
   return (
     <div>
       <div>
@@ -202,12 +227,7 @@ export default function FormDialog() {
           Pago de afiliados
         </h1>
         <h3 style={{ marginInline: "4%" }}>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laborisLorem ipsum
-          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris
+           En esta tabla se ingresan los pagos de cuotas asociadas a las deudas de los afiliados
         </h3>
 
         <Box
@@ -221,8 +241,11 @@ export default function FormDialog() {
             style={{ backgroundColor: "#23BB77" }}
             variant="contained"
             color="primary"
-            onClick={handleClickOpen}
-          >
+            onClick={() => {
+              handleClickOpen();
+              RutsAfiliados();
+            }}
+            >
             Agregar pago
           </Button>
         </Box>
@@ -277,9 +300,7 @@ export default function FormDialog() {
               setFecha(e.target.value);
             }}
           />
-
           <p />
-
           <FormControl variant="outlined">
             <InputLabel id="demo-simple-select-outlined-label">
               Estado de pago
@@ -305,6 +326,7 @@ export default function FormDialog() {
             onClick={() => {
               handleClickOpenTwo();
               comprobarRUT();
+              controlarMonto();
               getDeudas();
             }}
             color="primary"
@@ -329,13 +351,21 @@ export default function FormDialog() {
               icon: "Add",
               onClick: () => {
                 obtenerId();
-                agregarPagos();
-                agregarPagosAfiliados();
-                agregarIngresosDeudas();
-                actualizarDeuda();
-                alert("Pago agregado");
-                handleCloseTwo();
-                handleClose();
+                var z = controlarIngreso();
+                if(z == false){
+                  agregarPagos();
+                  agregarPagosAfiliados();
+                  agregarIngresosDeudas();
+                  actualizarDeuda();
+                  alert("Pago agregado");
+                  handleCloseTwo();
+                  handleClose();
+                }
+                else{
+                  alert("Monto no puede superar la deuda")
+                  handleCloseTwo();
+                }
+               
               },
             },
           ]}
@@ -351,6 +381,7 @@ export default function FormDialog() {
             selectionProps: (rowData) => ({
               onClick: () => {
                 setDeuda(rowData.id_deuda);
+                setRemanente(rowData.remanente_deuda);
               },
               color: "primary",
             }),
