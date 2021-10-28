@@ -115,7 +115,23 @@ function ConvenioF() {
 
 
   return (
+    
     <div className={styles.container}>
+        <div>
+        <h1 style={{ marginInline: "4%", marginTop: "3%" }}>
+         Lista de convenios disponibles
+         
+        </h1>
+        <h3 style={{ marginInline: "4%" }}>
+        A continuación se muestran los convenios disponibles, tanto financieros, comerciales y de descuento.
+        Ud como afiliado podrá postular a ellos, luego en la sección "Mis convenios" ud podrá ver si se aprueba o se rechaza su solicitud.
+        
+        </h3>
+        <h3>
+
+        </h3>
+        </div>
+      
       <MaterialTable
         title="Lista de convenios financieros"
         data={listConvenioF}

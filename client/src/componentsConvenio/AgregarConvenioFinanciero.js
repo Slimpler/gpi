@@ -68,24 +68,34 @@ export default function FormDialog2() {
 
   return (
     <div>
-      <div style={mystyle}>
-        {/* <Box display="flex" justifyContent="center" m={1} p={1}>
-          <Box p={5}> */}
-           <Box display="flex" justifyContent="right" marginTop="3%"
-                                                   marginX="-2%"
-                                                   paddingX="1%">
-            <Box p={5}>
-            <Button
-              style={{ backgroundColor: "#23BB77" }}
-              variant="contained"
-              color="primary"
-              onClick={handleClickOpen}
-            >
-              Agregar Convenio Financiero
-            </Button>
-          </Box>
+      <div>
+        <h1 style={{ marginInline: "4%", marginTop: "3%" }}>
+         Convenio Financiero
+
+        </h1>
+        <h3 style={{ marginInline: "4%" }}>
+        A continuación podrá ingresar convenios financieros al sistema, con el objetivo de que los afiliados puedan postular a estos. 
+        En la siguiente tabla se muestran los convenios existentes, tendrá la opción de editarlos y eliminarlos.
+        </h3>
+
+        <Box
+          display="flex"
+          justifyContent="right"
+          marginBottom="0%"
+          marginTop="2%"
+          marginX="1%"
+        >
+          <Button
+            style={{ backgroundColor: "#23BB77" }}
+            variant="contained"
+            color="primary"
+            onClick={handleClickOpen}
+          >
+            Agregar convenio
+          </Button>
         </Box>
       </div>
+
 
       <Dialog
         open={open}

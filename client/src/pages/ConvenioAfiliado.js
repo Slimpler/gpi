@@ -8,10 +8,6 @@ import ConvenioF from "../componentsAfiliados/ConvenioF";
 import ConvenioC from "../componentsAfiliados/ConvenioC";
 import ConvenioD from "../componentsAfiliados/ConvenioD";
 
-
-
-
-
 const useStyles = makeStyles((theme) => ({
     margin: {
       margin: theme.spacing(1),
@@ -20,25 +16,18 @@ const useStyles = makeStyles((theme) => ({
 
 function ConvenioAfiliado() {
 
-  
-
  return (
 
         <div className='convenioafiliado'>
 
             <Navbar />
             <GlobalStyle />
-            
-            
+
             <ConvenioF />
             <ConvenioC />
-            
-            
             <ConvenioD/> 
             
-            
             <center>
-               
             </center>
         </div>
     )
