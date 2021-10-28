@@ -37,26 +37,29 @@ const FormDesafiliacion = () => {
 
     const url = "http://localhost:3001/createFormDesafiliacion"
     const [values, setValues] = useState({
-      rut_afiliado: "",
-      nombre: "",
-      telefono: "",
-      celular: "",
-      antiguedad_afiliado: "",  
+      // rut_afiliado: "",
+      // nombre: "",
+      // telefono: "",
+      // celular: "",
+      // antiguedad_afiliado: "",  
       motivo: "",
      });
      
      function submit(e){
       //  e.preventDefault();
        Axios.post(url, {
-          rut_afiliado: values.rut_afiliado,
-          nombre: values.nombre,
-          telefono: values.telefono,
-          celular: values.celular,
-          antiguedad_afiliado: values.antiguedad_afiliado,
+          // rut_afiliado: values.rut_afiliado,
+          // nombre: values.nombre,
+          // telefono: values.telefono,
+          // celular: values.celular,
+          // antiguedad_afiliado: values.antiguedad_afiliado,
           motivo: values.motivo,
        }).then(res=> {
-           console.log("Envio exitoso");
-       })
+           alert("Formulario enviado con exito")
+       }, (error) => {
+        alert(error.text)
+        alert("Formulario no pudo ser enviado :(\n inténtelo mas tarde")
+    });
    }
 
    function handle(e){
@@ -134,6 +137,7 @@ const FormDesafiliacion = () => {
                    <LabelStyled>Fecha afiliación:</LabelStyled>
                    <InputStyled onChange={(e)=>handle(e)}
                    id="antiguedad_afiliado"
+                   
                    value={item.antiguedad_afiliado.substring(0,10).toString()}
                    
                   required/>
@@ -144,7 +148,10 @@ const FormDesafiliacion = () => {
               {/* Pedir el motivo de la desafiliación */}
               <LabelStyled>Motivo desafiliación:</LabelStyled>
               <InputStyled onChange={(e)=>handle(e)}
-              id="motivo" 
+              id="motivo"
+              aria-setsize="30"
+              // cols="30"
+              // rows="8"
               value={values.motivo} 
               type="text" />
           

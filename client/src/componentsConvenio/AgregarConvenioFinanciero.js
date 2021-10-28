@@ -69,8 +69,12 @@ export default function FormDialog2() {
   return (
     <div>
       <div style={mystyle}>
-        <Box display="flex" justifyContent="center" m={1} p={1}>
-          <Box p={5}>
+        {/* <Box display="flex" justifyContent="center" m={1} p={1}>
+          <Box p={5}> */}
+           <Box display="flex" justifyContent="right" marginTop="3%"
+                                                   marginX="-2%"
+                                                   paddingX="1%">
+            <Box p={5}>
             <Button
               style={{ backgroundColor: "#23BB77" }}
               variant="contained"
