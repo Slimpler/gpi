@@ -44,16 +44,45 @@ router.post("/createIngresosAfiliados", (req, res) => {
 // ------------- Actualizar tabla intermedia entre ingresos y deuda ----------------------
 router.post("/createIngresosDeudas", (req, res) => {
   console.log(req.body),
-  (id_deuda = req.body.id_deuda),
+    (id_deuda = req.body.id_deuda),
     db.query(
       "INSERT into pagos_deudas (id_ingreso, id_deuda) VALUES ((SELECT MAX(id_ingreso) FROM ingresos), (SELECT id_deuda FROM deudas where id_deuda = ?))",
       [id_deuda],
       (err, result) => {
-        if(err) {
+        if (err) {
           console.log(err);
         } else {
           res.send(result);
           console.log("Tabla intermedia de ingresos y deudas actualizada");
+        }
+      }
+    );
+});
+
+router.post("/createDeudaAfiliado", (req, res) => {
+  console.log(req.body);
+  (id_deuda = req.body.id_deuda),
+    (deuda_total = req.body.deuda_total),
+    (remanente_deuda = req.body.remanente_deuda),
+    (cuotas_totales = req.body.cuotas_totales),
+    (cuotas_pagadas = req.body.cuotas_pagadas),
+    (descripcion = req.body.descripcion),
+    (rut_afiliado = req.body.rut_afiliado),
+    db.query(
+      "INSERT INTO deudas (deuda_total, remanente_deuda,cuotas_totales,cuotas_pagadas, descripcion, rut_afiliado) VALUES (?, ?, ?, ?, ?, ?)",
+      [
+        deuda_total,
+        remanente_deuda,
+        cuotas_totales,
+        cuotas_pagadas,
+        descripcion,
+        rut_afiliado,
+      ],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Deuda admitido");
         }
       }
     );
@@ -81,9 +110,9 @@ router.get("/getDeudas/:rut_afiliado", (req, res) => {
     "SELECT id_deuda, deuda_total, remanente_deuda, cuotas_totales, cuotas_pagadas, descripcion FROM deudas WHERE rut_afiliado = ?",
     [rut_afiliado],
     (err, result) => {
-      if(err) {
+      if (err) {
         console.log(err);
-      } else{
+      } else {
         res.send(result);
       }
     }
@@ -92,16 +121,13 @@ router.get("/getDeudas/:rut_afiliado", (req, res) => {
 
 // ------------------- Ruts de afiliados --------------------------------
 router.get("/getRUTafiliados", (req, res) => {
- db.query(
-   "SELECT rut_afiliado from afiliado",
-   (err, result) => {
-    if(err) {
+  db.query("SELECT rut_afiliado from afiliado", (err, result) => {
+    if (err) {
       console.log(err);
-    } else{
+    } else {
       res.send(result);
     }
-   }
- );
+  });
 });
 
 // ------------------- Deuda asociada a un ingreso --------------------------
@@ -111,15 +137,26 @@ router.get("/getDeudaIngreso/:id_ingreso", (req, res) => {
     "SELECT pd.id_deuda, d.remanente_deuda from pagos_deudas pd JOIN deudas d ON pd.id_deuda = d.id_deuda WHERE pd.id_ingreso = ?",
     [id_ingreso],
     (err, result) => {
-     if(err) {
-       console.log(err);
-     } else{
-       res.send(result);
-     }
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
     }
   );
- });
- 
+});
+
+// -------------------- Todas las deudas --------------------------------
+router.get("/getDeudas", (req, res) => {
+  db.query("SELECT * from deudas", (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
+  });
+});
+
 // --------------------------------------------------------- Put -----------------------------------------------
 // ------------------ Editar pagos -------------------------
 router.put("/editIngresoAfiliado", (req, res) => {
@@ -177,7 +214,7 @@ router.put("/actualizarDeudaEdit", (req, res) => {
         console.log("Deuda actualizada por el monto", monto);
       }
     }
-  )
+  );
 });
 
 // ----------------- Actualizar deuda ----------------------
@@ -195,17 +232,42 @@ router.put("/actualizarDeuda", (req, res) => {
         console.log("Deuda actualizada por el monto", monto);
       }
     }
+  );
+});
+
+// ---------------------- Actualizar deuda de pago eliminado -----------------------
+router.put("/actualizarDeudaEliminado", (req, res) => {
+  console.log(req.body)
+  const id_deuda = req.body.id_deuda;
+  const oldMonto = req.body.oldMonto;
+  const remanente = req.body.remanente;
+
+  db.query(
+    "UPDATE deudas SET remanente_deuda = (? + ?), cuotas_pagadas = (cuotas_pagadas - 1) WHERE id_deuda = ?",
+    [remanente, oldMonto, id_deuda],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Deuda actualizada para pago eliminado");
+      }
+    }
   )
 });
 
+// -------------------------------------------- Delete -------------------------------
 // --------------------- Eliminar pagos afiliados ---------------------
-router.delete("/deletePagos/:id", (req, res) => {
-  const id_pago = req.params.id_pago;
+router.delete("/eliminarIngreso/:id_ingreso", (req, res) => {
+  console.log(req.params)
+  const id_ingreso = req.params.id_ingreso;
 
-  db.query("DELETE FROM pagos WHERE id_pago = ?", id_pago, (err, result) => {
+  db.query("DELETE FROM ingresos WHERE id_ingreso = ?", 
+    [id_ingreso], 
+    (err, result) => {
     if (err) {
       console.log(err);
     } else {
+      console.log("Pago eliminado");
       res.send(result);
     }
   });

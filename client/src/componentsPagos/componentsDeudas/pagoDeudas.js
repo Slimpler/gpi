@@ -1,7 +1,5 @@
-//En este componente está la tabla con info de los pagos de afiliados + CRUD; Pertenece al perfil de Directiva.
 import React, { useState, useEffect } from "react";
-/* import { DataGrid } from "@material-ui/data-grid";
- */ import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Axios from "axios";
 import MaterialTable from "material-table";
 import DeleteIcon from "@material-ui/icons/Delete";
@@ -16,40 +14,32 @@ import LastPage from "@material-ui/icons/LastPage";
 import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
 
 const columns = [
   {
-    title: "Nombre convenio",
-    field: "nombre_conv",
+    title: "Deuda Total",
+    field: "deuda_total",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
   },
   {
-    title: "Monto del pago",
-    field: "monto",
+    title: "Remanente deuda",
+    field: "remanente_deuda",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
   },
   {
-    title: "Fecha de pago",
-    field: "fecha",
-    type: "date",
-    dateSetting: {
-      format: "dd/MM/yyyy",
-    },
+    title: "Descripcion",
+    field: "descripcion",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
   },
   {
-    title: "Estado del pago",
-    field: "estado",
+    title: "Rut afiliado",
+    field: "rut_afiliado",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
@@ -84,33 +74,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PagosAsociacion() {
+function PagosDeudas() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
-  const [ingreso, setIngreso] = useState("");
+  const [listDeuda, setListDeuda] = useState([]);
 
-  const [listIngresos, setListIngresos] = useState([]);
-  const [ingresoSelect, setIngresoSelect] = useState({
-    id_ingreso: "",
-    monto: "",
-    fecha: "",
-    tipo: "",
-    estado: "",
+  const [deudaSelect, setDeudaSelect] = useState({
+    id_deuda: "",
+    deuda_total: "",
+    remanente_deuda: "",
+    cuotas_totales: "",
+    cuotas_pagadas: "",
+    descripcion: "",
+    rut_afiliado: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setIngresoSelect((prevState) => ({
+    setDeudaSelect((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
 
-  const peticionGet = async () => {
-    await Axios.get("http://localhost:3001/showPagosAsociacion")
+  const getDeudasAfiliados = async () => {
+    await Axios.get("http://localhost:3001/getDeudas")
       .then((response) => {
-        setListIngresos(response.data);
+        setListDeuda(response.data);
         console.log(response.data);
       })
       .catch((error) => {
@@ -118,52 +109,8 @@ function PagosAsociacion() {
       });
   };
 
-  const actualizarIngresoExterno = async (id) => {
-    console.log(ingresoSelect)
-    await Axios.put("http://localhost:3001/editPagosAsociacion", {
-      id_ingreso: ingresoSelect.id_ingreso,
-      monto: ingresoSelect.monto,
-      fecha: ingresoSelect.fecha,
-      tipo: ingresoSelect.tipo,
-      estado: ingresoSelect.estado,
-    })
-      .then((response) => {
-        setListIngresos(
-          listIngresos.map((val) => {
-            return val.id_ingreso === ingresoSelect.id_ingreso
-              ? {
-                  monto: ingresoSelect.monto,
-                  fecha: ingresoSelect.fecha,
-                  tipo: ingresoSelect.tipo,
-                  estado: ingresoSelect.estado,
-                }
-              : val;
-          })
-        );
-        OCModalEditar();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const eliminarIngreso = async () => {
-    await Axios.delete(`http://localhost:3001/eliminarIngreso/${ingreso}`)
-      .then((response) => {
-        setListIngresos(
-          listIngresos.filter((val) => {
-            return val.id_ingreso !== ingreso;
-          })
-        );
-        OCModalEliminar();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const SelectPago = (id_ingreso, caso) => {
-    setIngresoSelect(id_ingreso);
+  const SelectDeuda = (id_deuda, caso) => {
+    setDeudaSelect(id_deuda);
     caso === "Editar" ? OCModalEditar() : OCModalEliminar();
   };
 
@@ -176,7 +123,7 @@ function PagosAsociacion() {
   };
 
   useEffect(() => {
-    peticionGet();
+    getDeudasAfiliados();
   }, []);
 
   //Interfaz de modal editar
@@ -186,43 +133,40 @@ function PagosAsociacion() {
       <br />
       <TextField
         className={styles.inputMaterial}
-        label="Monto de pago"
-        name="monto"
+        label="Deuda Total"
+        name="deuda_total"
         onChange={handleChange}
-        value={ingresoSelect && ingresoSelect.monto}
+        value={deudaSelect && deudaSelect.deuda_total}
       />
       <br />
       <TextField
         className={styles.inputMaterial}
-        name="fecha"
-        type="date"
-        format="yyyy-MM-dd hh:mm:ss A Z"
+        name="remanente_deuda"
+        label="remanente deuda"
         onChange={handleChange}
-        value={ingresoSelect && ingresoSelect.fecha}
+        value={deudaSelect && deudaSelect.remanente_deuda}
       />
       <br />
-      <FormControl variant="outlined">
-        <InputLabel id="demo-simple-select-outlined-label">
-          Estado de pago
-        </InputLabel>
-        <Select
-          labelId="demo-simple-select-outlined-label"
-          id="demo-simple-select"
-          name="estado"
-          onChange={handleChange}
-        >
-          <MenuItem value={1}> Pendiente </MenuItem>
-          <MenuItem value={2}> Aceptado </MenuItem>
-          <MenuItem value={3}> Rechazado </MenuItem>
-        </Select>
-      </FormControl>
+      <TextField
+        className={styles.inputMaterial}
+        label="Descripcion"
+        name="descripcion"
+        onChange={handleChange}
+        value={deudaSelect && deudaSelect.descripcion}
+      />
+      <br />
+      <TextField
+        className={styles.inputMaterial}
+        label="Rut afiliado"
+        name="rut_afiliado"
+        onChange={handleChange}
+        value={deudaSelect && deudaSelect.rut_afiliado}
+      />
       <div align="right">
         <Button
           color="primary"
           onClick={() => {
-            actualizarIngresoExterno();
             OCModalEditar();
-            alert("Ingreso actualizado");
           }}
         >
           Editar
@@ -237,14 +181,11 @@ function PagosAsociacion() {
     <div className={styles.modal}>
       <p>
         Estás seguro que deseas eliminar el siguiente pago:{" "}
-        <b>{ingresoSelect && ingresoSelect.monto}</b>?{" "}
+        <b>{deudaSelect /*  && deudaSelect.monto */}</b>?{" "}
       </p>
       <div align="right">
-        <Button color="secondary" onClick={() => {
-          eliminarIngreso();
-          alert("Ingreso eliminado")
-          }}>
-            Sí
+        <Button color="secondary" onClick={() => OCModalEliminar()}>
+          Sí
         </Button>
         <Button onClick={() => OCModalEliminar()}>No</Button>
       </div>
@@ -255,13 +196,13 @@ function PagosAsociacion() {
     <div className={styles.container}>
       <MaterialTable
         title="Lista de pagos"
-        data={listIngresos}
+        data={listDeuda}
         columns={columns}
         actions={[
           {
             icon: EditIcon,
             tooltip: "Editar Pago",
-            onClick: (event, rowData) => SelectPago(rowData, "Editar"),
+            onClick: (event, rowData) => SelectDeuda(rowData, "Editar"),
             iconProps: {
               style: { backgroundColor: "#33ACFF" },
             },
@@ -269,14 +210,8 @@ function PagosAsociacion() {
           {
             icon: DeleteIcon,
             tooltip: "Eliminar Pago",
-            onClick: (event, rowData) => {
-              setIngreso(rowData.id_ingreso);
-              SelectPago(rowData, "Eliminar")
-            },
-            iconProps: {
-              style: { backgroundColor: "#33ACFF" },
-            },
-          }
+            onClick: (event, rowData) => SelectDeuda(rowData, "Eliminar"),
+          },
         ]}
         options={{
           actionsColumnIndex: -1,
@@ -331,4 +266,4 @@ function PagosAsociacion() {
     </div>
   );
 }
-export default PagosAsociacion;
+export default PagosDeudas;
