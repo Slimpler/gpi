@@ -22,14 +22,14 @@ const columns = [
     title: "Id convenio",
     field: "id_conv",
     headerStyle: {
-      backgroundColor: "#3374FF",
+      backgroundColor: "#23BB77",
     },
   },
   {
     title: "Nombre Convenio",
     field: "nombre_conv",
     headerStyle: {
-      backgroundColor: "#3374FF",
+      backgroundColor: "#23BB77",
     },
   },
   {
@@ -40,7 +40,7 @@ const columns = [
       format: "dd/MM/yyyy",
     },
     headerStyle: {
-      backgroundColor: "#3374FF",
+      backgroundColor: "#23BB77",
     },
   },
   {
@@ -50,7 +50,7 @@ const columns = [
       format: "dd/MM/yyyy",
     },
     headerStyle: {
-      backgroundColor: "#3374FF",
+      backgroundColor: "#23BB77",
     },
   },
   {
@@ -60,7 +60,7 @@ const columns = [
       format: "dd/MM/yyyy",
     },
     headerStyle: {
-      backgroundColor: "#3374FF",
+      backgroundColor: "#23BB77",
     },
   },
   {
@@ -70,7 +70,7 @@ const columns = [
       format: "dd/MM/yyyy",
     },
     headerStyle: {
-      backgroundColor: "#3374FF",
+      backgroundColor: "#23BB77",
     },
   },
 ];
@@ -292,7 +292,7 @@ function ConvenioDescuento() {
           search: true,
           exportButton: true,
           headerStyle: {
-            backgroundColor: "#3374FF",
+            backgroundColor: "#009966",
             color: "#FFF",
             fontSize: "14px",
           },
