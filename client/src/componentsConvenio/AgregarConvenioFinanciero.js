@@ -75,7 +75,7 @@ export default function FormDialog2() {
         </h1>
         <h3 style={{ marginInline: "4%" }}>
         A continuación podrá ingresar convenios financieros al sistema, con el objetivo de que los afiliados puedan postular a estos. 
-        En la siguiente tabla se muestran los convenios existentes, tendrá la opción de editarlos y eliminarlos.
+        En la siguiente tabla se muestran los convenios existentes, tendrá la opción de editarlos.
         </h3>
 
         <Box
