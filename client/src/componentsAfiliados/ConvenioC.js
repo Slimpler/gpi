@@ -12,6 +12,7 @@ import LastPage from "@material-ui/icons/LastPage";
 import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 const columns = [ 
 
@@ -43,16 +44,6 @@ const columns = [
     headerStyle: {
       backgroundColor: "#23BB77",
     },
-    
-  },
-
-  {
-    title: "Estado",
-    field: "Estado_conv_c",
-    headerStyle: {
-      backgroundColor: "#23BB77",
-    },
-    
   },
   
   
@@ -129,8 +120,21 @@ function ConvenioC() {
         data={listConvenioC}
         columns={columns}
         actions={[
-            //aqui debemos agregar las consultas para postular a los convenios
-            //debemos crear tabla para postulaciones.
+          {
+            icon: AddCircleIcon,
+            tooltip: "Postular al convenio",
+           /*  onClick: (event, rowData) => SelectConvenioF(rowData, "Editar"), */
+            iconProps: {
+              style: { backgroundColor: "#33ACFF" },
+            },
+          },
+        /*   {
+            icon: DeleteIcon,
+            tooltip: "Eliminar Convenio",
+            onClick: (event, rowData) => SelectConvenioF(rowData, "Eliminar"),
+          },
+           */
+        
         ]}
         options={{
           actionsColumnIndex: -1,
@@ -139,12 +143,12 @@ function ConvenioC() {
           headerStyle: {
             backgroundColor: "#009966",
             color: "#FFF",
-            fontSize: "14px",
+            fontSize: "15px",
           },
         }}
         localization={{
           header: {
-            actions: "Acciones",
+            actions: "    Postular aquí  ",
           },
           pagination: {
             labelRowsSelect: "Filas",

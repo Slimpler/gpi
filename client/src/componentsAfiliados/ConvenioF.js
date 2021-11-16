@@ -12,6 +12,7 @@ import LastPage from "@material-ui/icons/LastPage";
 import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 const columns = [ 
  
@@ -137,7 +138,21 @@ function ConvenioF() {
         data={listConvenioF}
         columns={columns}
         actions={[
-          
+          {
+            icon: AddCircleIcon,
+            tooltip: "Postular al convenio",
+           /*  onClick: (event, rowData) => SelectConvenioF(rowData, "Editar"), */
+            iconProps: {
+              style: { backgroundColor: "#33ACFF" },
+            },
+          },
+        /*   {
+            icon: DeleteIcon,
+            tooltip: "Eliminar Convenio",
+            onClick: (event, rowData) => SelectConvenioF(rowData, "Eliminar"),
+          },
+           */
+        
         ]}
         options={{
           actionsColumnIndex: -1,
@@ -146,12 +161,12 @@ function ConvenioF() {
           headerStyle: {
             backgroundColor: "#009966",
             color: "#FFF",
-            fontSize: "14px",
+            fontSize: "15px",
           },
         }}
         localization={{
           header: {
-            actions: "Acciones",
+            actions: "     Postular    ",
           },
           pagination: {
             labelRowsSelect: "Filas",

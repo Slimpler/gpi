@@ -303,7 +303,7 @@ function ConvenioDescuento() {
           headerStyle: {
             backgroundColor: "#009966",
             color: "#FFF",
-            fontSize: "14px",
+            fontSize: "15px",
           },
         }}
         localization={{
