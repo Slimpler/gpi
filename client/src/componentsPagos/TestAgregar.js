@@ -197,7 +197,6 @@ export default function FormDialog() {
     }
   };
 
-<<<<<<< HEAD
   const controlarIngreso = () => {
     var z = false
     if(monto > remanente){
@@ -218,8 +217,6 @@ export default function FormDialog() {
   }
 
 
-=======
->>>>>>> 9c4419adf65fb2ce72b3042c7017cbe3da02ad60
   return (
     <div>
       <div>

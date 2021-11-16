@@ -76,6 +76,15 @@ const columns = [
       backgroundColor: "#23BB77",
     },
   },
+
+  {
+    title: "Estado",
+    field: "Estado_conv_c",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+    
+  },
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -288,12 +297,12 @@ function ConvenioFinanciero() {
               style: { backgroundColor: "#33ACFF" },
             },
           },
-          {
+        /*   {
             icon: DeleteIcon,
             tooltip: "Eliminar Convenio",
             onClick: (event, rowData) => SelectConvenioF(rowData, "Eliminar"),
           },
-          
+           */
         
         ]}
         options={{
@@ -308,7 +317,7 @@ function ConvenioFinanciero() {
         }}
         localization={{
           header: {
-            actions: "Acciones",
+            actions: "   Editar   ",
           },
           pagination: {
             labelRowsSelect: "Filas",
