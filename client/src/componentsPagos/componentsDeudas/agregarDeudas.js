@@ -53,14 +53,9 @@ export default function FormDialog() {
   return (
     <div>
       <div>
-        <h1 style={{ marginInline: "4%", marginTop: "3%" }}>Pagos de deudas</h1>
+        <h1 style={{ marginInline: "4%", marginTop: "3%" }}>Lista de deudas</h1>
         <h3 style={{ marginInline: "4%" }}>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laborisLorem ipsum
-          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris
+          En esta tabla se ingresa el monto que debe pagar un afiliado por un tipo de convenio (por ejemplo)
         </h3>
         <Box
           display="flex"
@@ -75,7 +70,7 @@ export default function FormDialog() {
             color="primary"
             onClick={handleClickOpen}
           >
-            Agregar pago de deuda
+            Agregar deuda
           </Button>
         </Box>
       </div>
@@ -87,7 +82,7 @@ export default function FormDialog() {
         <DialogTitle id="form-dialog-title">Agregar deuda</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Para agregar un pago de una deuda del afiliado debe llenar los
+            Para agregar una deuda de afiliado debe llenar los
             siguientes campos:
           </DialogContentText>
 

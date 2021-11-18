@@ -7,15 +7,15 @@ export const InfoData = {
 };
 
 export const InfoDataTwo = {
-  heading2: "Pagos de prestamos",
-  heading: "Pagos de bonos",
+  heading2: "Voucher prestamo",
+  heading: "Egresos",
   buttonLabel: "Ir!",
   reverse: false,
   delay: 300,
 };
 
 export const InfoDataThree = {
-  heading: "Pagos de Deudas",
+  heading: "Deudas",
   buttonLabel: "Ir!",
   reverse: false,
   delay: 300,

@@ -286,6 +286,7 @@ export default function FormDialog() {
             onClick={(e) => {
               agregarPagos();
               agregarIngresosConvenios();
+              alert("Pago Ingresado")
               handleClose();
               handleCloseConvenio();
             }}

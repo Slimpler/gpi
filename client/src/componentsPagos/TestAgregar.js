@@ -96,6 +96,7 @@ export default function FormDialog() {
   const [listDeuda, setListDeuda] = useState([]);
   const [listAfiliados, setListAfiliados] = useState([]);
   const [remanente, setRemanente] = useState([]);
+  const [montoCuota, setMontoCuota] = useState("");
 
   //estados
   const [estado, setEstado] = useState("");
@@ -107,9 +108,8 @@ export default function FormDialog() {
   // Agregar un ingreso al sistema
   const agregarPagos = () => {
     Axios.post("http://localhost:3001/createIngresoAfiliado", {
-      monto: monto,
+      monto: montoCuota,
       fecha: fecha,
-      estado: estado,
     }).then(() => {
       console.log("Exitoso");
 
@@ -149,14 +149,14 @@ export default function FormDialog() {
   const actualizarDeuda = async (id) => {
     Axios.put("http://localhost:3001/actualizarDeuda", {
       id_deuda: id_deuda,
-      monto: monto,
+      monto: montoCuota,
     })
       .then(() => {
         setListDeuda(
           listDeuda.map((val) => {
             return val.id_deuda === id_deuda
               ? {
-                  monto: monto,
+                  monto: montoCuota,
                 }
               : val;
           })
@@ -190,6 +190,7 @@ export default function FormDialog() {
         x = true;
       }
     });
+    
     console.log(x);
     if (x === false) {
       alert("RUT no existe");
@@ -197,29 +198,6 @@ export default function FormDialog() {
     }
   };
 
-<<<<<<< HEAD
-  const controlarIngreso = () => {
-    var z = false
-    if(monto > remanente){
-      z = true
-    }
-    return z;
-  }
-
-  const controlarMonto = async () => { 
-    var y = false
-    if(monto == 0){
-      y = true
-    }
-    if(y == true){
-      alert("Monto no puede ser 0")
-      handleCloseTwo();
-    }
-  }
-
-
-=======
->>>>>>> 9c4419adf65fb2ce72b3042c7017cbe3da02ad60
   return (
     <div>
       <div>
@@ -280,18 +258,6 @@ export default function FormDialog() {
           <TextField
             autofocus
             margin="dense"
-            id="monto"
-            label="monto"
-            variant="outlined"
-            size="medium"
-            onChange={(e) => {
-              setMonto(e.target.value);
-            }}
-          />
-          <p />
-          <TextField
-            autofocus
-            margin="dense"
             id="fecha"
             variant="outlined"
             size="medium"
@@ -300,22 +266,6 @@ export default function FormDialog() {
               setFecha(e.target.value);
             }}
           />
-          <p />
-          <FormControl variant="outlined">
-            <InputLabel id="demo-simple-select-outlined-label">
-              Estado de pago
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select"
-              value={estado}
-              onChange={cambioEstado}
-            >
-              <MenuItem value={1}> Pendiente </MenuItem>
-              <MenuItem value={2}> Aceptado </MenuItem>
-              <MenuItem value={3}> Rechazado </MenuItem>
-            </Select>
-          </FormControl>
           <p />
         </DialogContent>
         <DialogActions>
@@ -326,7 +276,6 @@ export default function FormDialog() {
             onClick={() => {
               handleClickOpenTwo();
               comprobarRUT();
-              controlarMonto();
               getDeudas();
             }}
             color="primary"
@@ -351,21 +300,13 @@ export default function FormDialog() {
               icon: "Add",
               onClick: () => {
                 obtenerId();
-                var z = controlarIngreso();
-                if(z == false){
-                  agregarPagos();
-                  agregarPagosAfiliados();
-                  agregarIngresosDeudas();
-                  actualizarDeuda();
-                  alert("Pago agregado");
-                  handleCloseTwo();
-                  handleClose();
-                }
-                else{
-                  alert("Monto no puede superar la deuda")
-                  handleCloseTwo();
-                }
-               
+                agregarPagos();
+                agregarPagosAfiliados();
+                agregarIngresosDeudas();
+                actualizarDeuda();
+                alert("Pago agregado");
+                handleCloseTwo();
+                handleClose();
               },
             },
           ]}
@@ -381,6 +322,7 @@ export default function FormDialog() {
             selectionProps: (rowData) => ({
               onClick: () => {
                 setDeuda(rowData.id_deuda);
+                setMontoCuota(rowData.deuda_total/rowData.cuotas_totales);
                 setRemanente(rowData.remanente_deuda);
               },
               color: "primary",

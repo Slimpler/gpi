@@ -32,18 +32,20 @@ export default function FormDialog() {
 
   // Estados para datos de tabla convenios
 
-  const [rut_afiliado, setRut_afiliado] = useState(0);
-  const [monto_pago, setMonto_pago] = useState(0);
-  const [fecha_pago, setFecha_pago] = useState("");
+  const [rut_afiliado, setRut_afiliado] = useState("");
+  const [monto, setMonto] = useState(0);
+  const [fecha, setFecha] = useState("");
+  const [listAfiliados, setListAfiliados] = useState([]);
+  const [rut_dir, setRut_dir] = useState("");
 
   //estados
-  const [estado_pago, setEstado_pago] = useState("");
-
-  const cambioEstado = (event) => {
-    setEstado_pago(event.target.value);
-  };
+  const [estado, setEstado] = useState("");
 
   const [descripcion, setDescripcion] = useState("");
+
+  const cambioEstado = (event) => {
+    setEstado(event.target.value);
+  };
 
   const cambioDescripcion = (event) => {
     setDescripcion(event.target.value);
@@ -59,38 +61,49 @@ export default function FormDialog() {
   }; */
 
   //--------------------------------
-  const agregarPagos = () => {
-    Axios.post("http://localhost:3001/createPagoAfiliado", {
-      monto_pago: monto_pago,
-      fecha_pago: fecha_pago,
-      estado_pago: estado_pago,
+  const agregarEgreso = () => {
+    Axios.post("http://localhost:3001/agregarEgreso", {
+      monto: monto,
+      fecha: fecha,
+      estado: estado,
       descripcion: descripcion,
+      rut_dir: rut_dir,
     }).then(() => {
-      console.log("Bono agregado exitosamente");
+      console.log("Egreso agregado exitosamente");
       handleClose();
     });
   };
 
-  const agregarPagosAfiliados = () => {
-    Axios.post("http://localhost:3001/createPagosAfiliados", {
-      rut_afiliado: rut_afiliado,
-    }).then(() => {
-      console.log("Exitoso");
+  const agregarEgresoAfiliado = async (rut_afiliado) => {
+    await Axios.post(`http://localhost:3001/agregarEgresoAfiliado/${rut_afiliado}`) 
+    .then(() => {
+      console.log("Egreso de afiliado agregado exitosamente");
       handleClose();
     });
+  }
+
+  const RutsAfiliados = async () => {
+    await Axios.get("http://localhost:3001/getRUTafiliados")
+      .then((response) => {
+        setListAfiliados(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
+
+  const asignarBonos = async () => {
+    listAfiliados.map((afiliado) => {
+      agregarEgresoAfiliado(afiliado.rut_afiliado)
+    });
+  }
 
   return (
     <div>
       <div>
         <h1 style={{ marginInline: "4%", marginTop: "3%" }}>Bonos</h1>
         <h3 style={{ marginInline: "4%" }}>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laborisLorem ipsum
-          dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris
+          Dinero que se asigna desde la asociacion a un afiliado
         </h3>
         <Box
           display="flex"
@@ -103,7 +116,10 @@ export default function FormDialog() {
             style={{ backgroundColor: "#23BB77" }}
             variant="contained"
             color="primary"
-            onClick={handleClickOpen}
+            onClick={() => {
+              handleClickOpen();
+              RutsAfiliados();
+            }}
           >
             Agregar bono
           </Button>
@@ -120,19 +136,6 @@ export default function FormDialog() {
           <DialogContentText>
             Para agregar un bono a un afiliado llenar los siguientes campos:
           </DialogContentText>
-          <p> Datos Personales </p>
-
-          <TextField
-            autofocus
-            margin="dense"
-            id="rut_afiliado"
-            label="rut_afiliado"
-            variant="outlined"
-            size="medium"
-            onChange={(e) => {
-              setRut_afiliado(e.target.value);
-            }}
-          />
 
           <p> Datos del bono </p>
           <p />
@@ -140,26 +143,25 @@ export default function FormDialog() {
             autofocus
             margin="dense"
             id="monto_pago"
-            label="monto_pago"
+            label="monto_bono"
             variant="outlined"
             size="medium"
             onChange={(e) => {
-              setMonto_pago(e.target.value);
+              setMonto(e.target.value);
             }}
           />
           <p />
           <TextField
             autofocus
             margin="dense"
-            id="fecha_pago"
+            id="fecha_bono"
             variant="outlined"
             size="medium"
             type="date"
             onChange={(e) => {
-              setFecha_pago(e.target.value);
+              setFecha(e.target.value);
             }}
           />
-
           <p />
 
           <FormControl variant="outlined">
@@ -169,7 +171,7 @@ export default function FormDialog() {
             <Select
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select"
-              value={estado_pago}
+              value={estado}
               onChange={cambioEstado}
             >
               <MenuItem value={1}> Pendiente </MenuItem>
@@ -177,9 +179,7 @@ export default function FormDialog() {
               <MenuItem value={3}> Rechazado </MenuItem>
             </Select>
           </FormControl>
-
           <p />
-
           <FormControl variant="outlined">
             <InputLabel id="demo-simple-select-outlined-label">
               Descripcion
@@ -190,10 +190,23 @@ export default function FormDialog() {
               value={descripcion}
               onChange={cambioDescripcion}
             >
-              <MenuItem value={6}> Bono Fiestas Patrias </MenuItem>
-              <MenuItem value={7}> Bono navidad </MenuItem>
+              <MenuItem value={1}> Bono Fiestas Patrias </MenuItem>
+              <MenuItem value={2}> Bono Navidad </MenuItem>
             </Select>
           </FormControl>
+          <p />
+          <TextField
+            autofocus
+            margin="dense"
+            id="rut_directiva"
+            label="rut_directiva"
+            variant="outlined"
+            size="medium"
+            onChange={(e) => {
+              setRut_dir(e.target.value);
+            }}
+          />
+
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} color="primary">
@@ -201,8 +214,7 @@ export default function FormDialog() {
           </Button>
           <Button
             onClick={(e) => {
-              agregarPagos();
-              agregarPagosAfiliados();
+              agregarEgreso().then(asignarBonos());
               handleClose();
             }}
             color="primary"
