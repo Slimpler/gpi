@@ -76,7 +76,7 @@ const columns = [
 
   {
     title: "Estado",
-    field: "Estado_conv_f",
+    field: "estado",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
@@ -121,6 +121,7 @@ function ConvenioDescuento() {
     descripcion: "",
     monto_max_compra_d: "",
     numero_max_usos_d: "",
+    estado: "",
   });
 
   const handleChange = (e) => {
@@ -149,6 +150,7 @@ function ConvenioDescuento() {
       descripcion_conv: convenioDSelect.descripcion_conv,
       monto_max_compra_d: convenioDSelect.monto_max_compra_d,
       numero_max_usos_d: convenioDSelect.numero_max_usos_d,
+      estado: convenioDSelect.estado,
     })
       .then((response) => {
         setListConvenioD(
@@ -160,6 +162,7 @@ function ConvenioDescuento() {
                 descripcion_conv: convenioDSelect.descripcion_conv,
                 monto_max_compra_d: convenioDSelect.monto_max_compra_d,
                 numero_max_usos_d: convenioDSelect.numero_max_usos_d,
+                estado: convenioDSelect.estado,
                 }
               : val;
           })
@@ -244,6 +247,17 @@ function ConvenioDescuento() {
         onChange={handleChange}
         value={convenioDSelect && convenioDSelect.numero_max_usos_d}
       />
+
+      <br />
+      <TextField
+        className={styles.inputMaterial}
+        label="Estado convenio"
+        name="estado"
+        variant= "standard"
+        onChange={handleChange}
+        value={convenioDSelect && convenioDSelect.Estado_conv_d}
+      />
+
       <br />
       <div align="right">
         <Button 

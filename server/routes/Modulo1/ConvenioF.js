@@ -16,10 +16,10 @@ router.post("/createConvenioF", (req, res) => {
       (tipo_conv = 'Financiero'),
       (monto_max_credito_f = req.body.monto_max_credito_f),
       (numero_max_cuotas_f = req.body.numero_max_cuotas_f),
-
+      (estado = 'Activo'),
       db.query(
-        "INSERT INTO convenio (id_conv, nombre_conv, fecha_conv, descripcion_conv, tipo_conv, monto_max_credito_f, numero_max_cuotas_f) VALUES (?, ?, ?, ?, ?, ?, ?)",
-        [id_conv, nombre_conv, fecha_conv, descripcion_conv, tipo_conv, monto_max_credito_f, numero_max_cuotas_f],
+        "INSERT INTO convenio (id_conv, nombre_conv, fecha_conv, descripcion_conv, tipo_conv, monto_max_credito_f, numero_max_cuotas_f, estado) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        [id_conv, nombre_conv, fecha_conv, descripcion_conv, tipo_conv, monto_max_credito_f, numero_max_cuotas_f, estado],
         (err, result) => {
           if (err) {
             console.log(err);
@@ -47,10 +47,11 @@ router.post("/createConvenioF", (req, res) => {
     const descripcion_conv = req.body.descripcion_conv;
     const monto_max_credito_f = req.body.monto_max_credito_f;
     const numero_max_cuotas_f = req.body.numero_max_cuotas_f;
+    const estado = req.body.estado;
    
     db.query(
-      "UPDATE convenio SET nombre_conv = ?, descripcion_conv = ?, monto_max_credito_f = ?, numero_max_cuotas_f = ?  WHERE id_conv = ?",
-      [nombre_conv, descripcion_conv, monto_max_credito_f, numero_max_cuotas_f, id_conv],
+      "UPDATE convenio SET nombre_conv = ?, descripcion_conv = ?, monto_max_credito_f = ?, numero_max_cuotas_f = ?, estado = ?  WHERE id_conv = ?",
+      [nombre_conv, descripcion_conv, monto_max_credito_f, numero_max_cuotas_f, estado, id_conv],
       (err, result) => {
         if (err) {
           console.log(err);

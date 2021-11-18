@@ -67,7 +67,7 @@ const columns = [
 
   {
     title: "Estado",
-    field: "Estado_conv_c",
+    field: "estado",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
@@ -114,6 +114,7 @@ function ConvenioComercial() {
     tipo_conv: "",
     monto_max_compra_c: "",
     numero_max_cuotas_c: "",
+    estado: "",
   });
 
   const handleChange = (e) => {
@@ -142,6 +143,7 @@ function ConvenioComercial() {
       descripcion_conv: convenioCSelect.descripcion_conv,
       monto_max_compra_c: convenioCSelect.monto_max_compra_c,
       numero_max_cuotas_c: convenioCSelect.numero_max_cuotas_c,
+      estado: convenioCSelect.estado,
     })
       .then((response) => {
         setListConvenioC(
@@ -153,6 +155,7 @@ function ConvenioComercial() {
                 descripcion_conv: convenioCSelect.descripcion_conv,
                 monto_max_compra_c: convenioCSelect.monto_max_compra_c,
                 numero_max_cuotas_c: convenioCSelect.numero_max_cuotas_c,
+                estado: convenioCSelect.estado,
                 }
               : val;
           })
@@ -236,6 +239,16 @@ function ConvenioComercial() {
         variant= "standard"
         onChange={handleChange}
         value={convenioCSelect && convenioCSelect.numero_max_cuotas_c}
+      />
+
+      <br />
+      <TextField
+        className={styles.inputMaterial}
+        label="Estado convenio"
+        name="estado"
+        variant= "standard"
+        onChange={handleChange}
+        value={convenioCSelect && convenioCSelect.Estado_conv_d}
       />
       <br />
       <div align="right">
