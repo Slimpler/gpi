@@ -148,7 +148,7 @@ function ConvenioC() {
         }}
         localization={{
           header: {
-            actions: "    Postular aquí  ",
+            actions: "    Postular",
           },
           pagination: {
             labelRowsSelect: "Filas",
