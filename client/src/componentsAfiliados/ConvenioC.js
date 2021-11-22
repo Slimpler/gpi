@@ -13,6 +13,7 @@ import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { Modal, TextField, Button } from "@material-ui/core";
 
 const columns = [ 
 
@@ -74,6 +75,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+  
+
+   // Estados para datos de tabla convenios
+
+
+   /* const [afiliado_rut_afiliado, setafiliado_rut_afiliado] = useState(0);
+   const [convenio_id_conv, setconvenio_id_conv] = useState(0);
+   const [nombre_convenio, setnombre_convenio] = useState("");
+   const [comentario_postulacion, setcomentario_postulacion] = useState(0);
+  */
+ 
+  /* const agregarConvenioC = () => {
+    setOpen(false);
+    Axios.post("http://localhost:3001/createConvenioC", {
+      afiliado_rut_afiliado: afiliado_rut_afiliado, 
+      convenio_id_conv: convenio_id_conv,
+      nombre_convenio: nombre_convenio,
+      comentario_postulacion: comentario_postulacion,
+
+    }).then(() => {
+      console.log("exitoso");
+    });
+  }; */
+
 function ConvenioC() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
@@ -82,9 +107,10 @@ function ConvenioC() {
   const [listConvenioC, setListConvenioC] = useState([]);
 /*   const [id_convC, setid_convC = useState([]); */
   const [convenioCSelect, setConvenioCSelect] = useState({
-    id_conv: "",
-    nombre_conv: "",
-    fecha_conv: "",
+    afiliado_rut_afiliado: "", 
+    convenio_id_conv: "",
+    nombre_convenio: "",
+    comentario_postulacion: "",
   });
 
   const handleChange = (e) => {
@@ -106,11 +132,55 @@ function ConvenioC() {
       });
   };
 
+  const SelectConvenioC = (id_conv, caso) => {
+    setConvenioCSelect(id_conv);
+    caso === "Editar" ? OCModalEditar() : OCModalEliminar();
+  };
+
+  const OCModalEditar = () => {
+    setModalEditar(!modalEditar);
+  };
+
+  const OCModalEliminar = () => {
+    setModalEliminar(!modalEliminar);
+  };
+
+  const peticionDelete = async () => {
+    await Axios.delete(`http://localhost:3001/deleteConvenioC/${convenioCSelect.id_conv}`)
+      .then((response) => {
+        setListConvenioC(
+          listConvenioC.filter((val) => {
+            return val.id_conv != convenioCSelect.id_conv;
+          })
+        );
+        OCModalEliminar();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   
 
   useEffect(() => {
     peticionGet();
   }, []);
+
+  //interfaz de model eliminar
+  const bodyEliminar = (
+    <div className={styles.modal}>
+      <p>
+      Estás seguro que deseas postular al siguiente Convenio:{" "}
+        <b>{convenioCSelect && convenioCSelect.id_conv}</b>{" "}
+      </p>
+      <div align="right">
+        <Button color="secondary" onClick={() => {peticionDelete();OCModalEliminar()}}>
+          SI
+        </Button>
+        <Button onClick={() => OCModalEliminar()}>No</Button>
+      </div>
+    </div>
+  );
 
 
   return (
@@ -123,7 +193,7 @@ function ConvenioC() {
           {
             icon: AddCircleIcon,
             tooltip: "Postular al convenio",
-           /*  onClick: (event, rowData) => SelectConvenioF(rowData, "Editar"), */
+            onClick: (event, rowData) => SelectConvenioC(rowData, "Eliminar"),
             iconProps: {
               style: { backgroundColor: "#33ACFF" },
             },
@@ -177,6 +247,9 @@ function ConvenioC() {
           SortArrow: SortArrow,
         }}
       />
+      <Modal open={modalEliminar} onClose={OCModalEliminar}>
+        {bodyEliminar}
+      </Modal>
     </div>
   );
 }

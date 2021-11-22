@@ -15,31 +15,39 @@ import SortArrow from "@material-ui/icons/ArrowUpward";
 
 
 const columns = [ 
+  
   {
-    title: "id convenio",
-    field: "id_convC",
+    title: "Rut afiliado",
+    field: "afiliado_rut afiliado",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
   },
+
+  {
+    title: "Id convenio",
+    field: "convenio_id_conv",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+  },
+
   {
     title: "Nombre Convenio",
-    field: "nombre_convC",
+    field: "nombre_convenio",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
   },
+
   {
-    title: "Fecha de ingreso",
-    field: "fecha_convC",
-    type: "date",
-    dateSetting: {
-      format: "dd/MM/yyyy",
-    },
+    title: "Comentario",
+    field: "comentario_postulacion",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
   },
+  
 ];
 
 const useStyles = makeStyles((theme) => ({
