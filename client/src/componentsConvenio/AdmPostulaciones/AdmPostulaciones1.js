@@ -12,6 +12,9 @@ import LastPage from "@material-ui/icons/LastPage";
 import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
+import CheckIcon from '@material-ui/icons/Check';
+import ClearIcon from '@material-ui/icons/Clear';
+
 
 
 const columns = [ 
@@ -48,6 +51,7 @@ const columns = [
     },
   },
   
+
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -134,8 +138,24 @@ function AdmPostulaciones1() {
         data={listConvenioC}
         columns={columns}
         actions={[
-            //aqui debemos agregar las consultas para postular a los convenios
-            //debemos crear tabla para postulaciones.
+          {
+            icon: CheckIcon,
+            tooltip: "Aceptar",
+            /* onClick: (event, rowData) => SelectConvenioC(rowData, "Eliminar"), */
+            iconProps: {
+              style: { backgroundColor: "#33ACFF" },
+            },
+          },
+
+          {
+            icon: ClearIcon,
+            tooltip: "Rechazar",
+            /* onClick: (event, rowData) => SelectConvenioC(rowData, "Eliminar"), */
+            iconProps: {
+              style: { backgroundColor: "#33ACFF" },
+            },
+          },
+          
         ]}
         options={{
           actionsColumnIndex: -1,

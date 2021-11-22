@@ -122,7 +122,7 @@ function ConvenioC() {
   };
 
   const peticionGet = async () => {
-    await Axios.get("http://localhost:3001/showConvenioC")
+    await Axios.get("http://localhost:3001/showConvenioDisponiblesC")
       .then((response) => {
         setListConvenioC(response.data);
         console.log(response.data);

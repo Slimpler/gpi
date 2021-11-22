@@ -30,6 +30,17 @@ router.post("/createConvenioC", (req, res) => {
   });
   //Mostrar convenios comercial
   router.get("/showConvenioC", (req, res) => {
+    db.query("SELECT * FROM convenio where tipo_conv = 'Comercial'", (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
+  //Mostrar convenios comerciales disponibles
+  router.get("/showConvenioDisponiblesC", (req, res) => {
     db.query("SELECT * FROM convenio where tipo_conv = 'Comercial' and estado = 'activo'", (err, result) => {
       if (err) {
         console.log(err);
