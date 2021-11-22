@@ -90,10 +90,10 @@ router.post("/createConvenioC", (req, res) => {
 
   router.post("/createPostulacion", (req, res) => {
     console.log(req.body);
-    (afiliado_rut_afiliado = '19551319-8'), 
-    (convenio_id_conv = '9'),
-    (nombre_convenio =  'sasdasd'),
-    (comentario_postulacion = 'sdsddsd'),
+    (afiliado_rut_afiliado = '19771819-8'), 
+    (convenio_id_conv = '8'),
+    (nombre_convenio = 'convenio 1'),
+    (comentario_postulacion = '    '),
     db.query(
         "INSERT INTO convenio_afiliado (afiliado_rut_afiliado, convenio_id_conv, nombre_convenio, comentario_postulacion) VALUES (?, ?, ?, ?)",
         [afiliado_rut_afiliado, convenio_id_conv, nombre_convenio, comentario_postulacion],

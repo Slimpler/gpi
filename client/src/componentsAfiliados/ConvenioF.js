@@ -13,6 +13,7 @@ import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { Modal, TextField, Button } from "@material-ui/core";
 
 const columns = [ 
  
@@ -83,9 +84,10 @@ function ConvenioF() {
   const [listConvenioF, setListConvenioF] = useState([]);
 /*   const [id_convF, setid_convF = useState([]); */
   const [convenioFSelect, setConvenioFSelect] = useState({
-    id_conv: "",
-    nombre_conv: "",
-    fecha_conv: "",
+    afiliado_rut_afiliado: "", 
+    convenio_id_conv: "",
+    nombre_convenio: "",
+    comentario_postulacion: "",
   });
 
   const handleChange = (e) => {
@@ -107,11 +109,64 @@ function ConvenioF() {
       });
   };
 
+  const SelectConvenioF = (id_conv, caso) => {
+    setConvenioFSelect(id_conv);
+    caso === "Editar" ? OCModalEditar() : OCModalEliminar();
+  };
+
+  const OCModalEditar = () => {
+    setModalEditar(!modalEditar);
+  };
+
+  const OCModalEliminar = () => {
+    setModalEliminar(!modalEliminar);
+  };
+
+  const [afiliado_rut_afiliado, setafiliado_rut_afiliado] = useState(0);
+  const [convenio_id_conv, setconvenio_id_conv] = useState(0);
+  const [nombre_convenio, setnombre_convenio] = useState("");
+  const [comentario_postulacion, setcomentario_postulacion] = useState(0);
+
+  const peticionPostulacion = async () => {
+    Axios.post(`http://localhost:3001/createPostulacion`, {
+    afiliado_rut_afiliado: afiliado_rut_afiliado, 
+    convenio_id_conv: convenio_id_conv,
+    nombre_convenio: nombre_convenio,
+    comentario_postulacion: comentario_postulacion,
+  }).then((response) => {
+        setListConvenioF(
+          listConvenioF.filter((val) => {
+            return val.id_conv != convenioFSelect.id_conv;
+          })
+        );
+        OCModalEliminar();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
 
 
   useEffect(() => {
     peticionGet();
   }, []);
+
+  const bodyEliminar = (
+    <div className={styles.modal}>
+      <p>
+      Estás seguro que deseas postular al siguiente Convenio:{" "}
+        <b>{convenioFSelect && convenioFSelect.id_conv}</b>{" "}
+      </p>
+      <div align="right">
+        <Button color="secondary" onClick={() => {peticionPostulacion();OCModalEliminar()}}>
+          SI
+        </Button>
+        <Button onClick={() => OCModalEliminar()}>No</Button>
+      </div>
+    </div>
+  );
 
 
 
@@ -141,7 +196,7 @@ function ConvenioF() {
           {
             icon: AddCircleIcon,
             tooltip: "Postular al convenio",
-           /*  onClick: (event, rowData) => SelectConvenioF(rowData, "Editar"), */
+            onClick: (event, rowData) => SelectConvenioF(rowData, "Eliminar"),
             iconProps: {
               style: { backgroundColor: "#33ACFF" },
             },
@@ -195,6 +250,9 @@ function ConvenioF() {
           SortArrow: SortArrow,
         }}
       />
+      <Modal open={modalEliminar} onClose={OCModalEliminar}>
+        {bodyEliminar}
+      </Modal>
     </div>
   );
 }
