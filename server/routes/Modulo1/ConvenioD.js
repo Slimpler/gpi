@@ -33,7 +33,7 @@ router.post("/createConvenioD", (req, res) => {
 
   //Mostrar convenios Descuento
   router.get("/showConvenioD", (req, res) => {
-    db.query("SELECT id_conv, nombre_conv, fecha_conv, descripcion_conv, tipo_conv, monto_max_compra_d, numero_max_usos_d, estado FROM convenio WHERE tipo_conv = 'Descuento'", (err, result) => {
+    db.query("SELECT id_conv, nombre_conv, fecha_conv, descripcion_conv, tipo_conv, monto_max_compra_d, numero_max_usos_d, estado FROM convenio WHERE tipo_conv = 'Descuento' and estado = 'activo'", (err, result) => {
       if (err) {
         console.log(err);
       } else {

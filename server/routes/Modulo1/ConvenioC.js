@@ -30,7 +30,7 @@ router.post("/createConvenioC", (req, res) => {
   });
   //Mostrar convenios comercial
   router.get("/showConvenioC", (req, res) => {
-    db.query("SELECT * FROM convenio where tipo_conv = 'Comercial'", (err, result) => {
+    db.query("SELECT * FROM convenio where tipo_conv = 'Comercial' and estado = 'activo'", (err, result) => {
       if (err) {
         console.log(err);
       } else {
@@ -76,6 +76,36 @@ router.post("/createConvenioC", (req, res) => {
       }
     );
   });
+
+  router.post("/createPostulacion", (req, res) => {
+    console.log(req.body);
+    (afiliado_rut_afiliado = '19551319-8'), 
+    (convenio_id_conv = '9'),
+    (nombre_convenio =  'sasdasd'),
+    (comentario_postulacion = 'sdsddsd'),
+    db.query(
+        "INSERT INTO convenio_afiliado (afiliado_rut_afiliado, convenio_id_conv, nombre_convenio, comentario_postulacion) VALUES (?, ?, ?, ?)",
+        [afiliado_rut_afiliado, convenio_id_conv, nombre_convenio, comentario_postulacion],
+        (err, result) => {
+          if (err) {
+            console.log(err);
+          } else {
+            res.send("Valores Insertados");
+          }
+        }
+      );
+  });
+
+  router.get("/showPostulaciones", (req, res) => {
+    db.query("SELECT * FROM convenio_afiliado", (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
   //Convenio Comercial ----------------------------------------------------------------------------|
 
   module.exports = router;

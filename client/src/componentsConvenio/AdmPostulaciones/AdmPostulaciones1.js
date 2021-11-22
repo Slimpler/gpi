@@ -18,7 +18,7 @@ const columns = [
   
   {
     title: "Rut afiliado",
-    field: "afiliado_rut afiliado",
+    field: "afiliado_rut_afiliado",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
@@ -97,7 +97,7 @@ function AdmPostulaciones1() {
   };
 
   const peticionGet = async () => {
-    await Axios.get("http://localhost:3001/showConvenioC")
+    await Axios.get("http://localhost:3001/showPostulaciones")
       .then((response) => {
         setListConvenioC(response.data);
         console.log(response.data);
@@ -108,14 +108,27 @@ function AdmPostulaciones1() {
   };
 
   
-
   useEffect(() => {
     peticionGet();
   }, []);
 
-
   return (
     <div className={styles.container}>
+      <div>
+        <h1 style={{ marginInline: "4%", marginTop: "2%" }}>
+        Postulaciones
+         
+        </h1>
+        <h3 style={{ marginInline: "4%" }}>
+        A continuación se muestran las postulaciones realizadas por los afiliados.
+        Ud como administrador podrá aceptarlas o rechazarlas, luego de revisar si el afiliado cumple o no con los requisitos para optar a un convenio. 
+        
+        </h3>
+        <h3>
+
+        </h3>
+        </div>
+
       <MaterialTable
         title="Lista de postulaciones"
         data={listConvenioC}
