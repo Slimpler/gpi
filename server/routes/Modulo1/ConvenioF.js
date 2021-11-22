@@ -39,6 +39,18 @@ router.post("/createConvenioF", (req, res) => {
       }
     });
   });
+
+    //Mostrar convenios financieros
+    router.get("/showConvenioDisponiblesF", (req, res) => {
+      db.query("SELECT * FROM convenio where tipo_conv = 'financiero' and estado =  'activo'", (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          res.send(result);
+        }
+      });
+    });
+
   
   //Editar convenios financieros
   router.put("/editConvenioF", (req, res) => {

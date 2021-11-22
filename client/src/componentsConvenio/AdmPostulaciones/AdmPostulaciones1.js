@@ -12,34 +12,46 @@ import LastPage from "@material-ui/icons/LastPage";
 import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
+import CheckIcon from '@material-ui/icons/Check';
+import ClearIcon from '@material-ui/icons/Clear';
+
 
 
 const columns = [ 
+  
   {
-    title: "id convenio",
-    field: "id_convC",
+    title: "Rut afiliado",
+    field: "afiliado_rut_afiliado",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
   },
+
+  {
+    title: "Id convenio",
+    field: "convenio_id_conv",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+  },
+
   {
     title: "Nombre Convenio",
-    field: "nombre_convC",
+    field: "nombre_convenio",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
   },
+
   {
-    title: "Fecha de ingreso",
-    field: "fecha_convC",
-    type: "date",
-    dateSetting: {
-      format: "dd/MM/yyyy",
-    },
+    title: "Comentario",
+    field: "comentario_postulacion",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
   },
+  
+
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -89,7 +101,7 @@ function AdmPostulaciones1() {
   };
 
   const peticionGet = async () => {
-    await Axios.get("http://localhost:3001/showConvenioC")
+    await Axios.get("http://localhost:3001/showPostulaciones")
       .then((response) => {
         setListConvenioC(response.data);
         console.log(response.data);
@@ -100,21 +112,50 @@ function AdmPostulaciones1() {
   };
 
   
-
   useEffect(() => {
     peticionGet();
   }, []);
 
-
   return (
     <div className={styles.container}>
+      <div>
+        <h1 style={{ marginInline: "4%", marginTop: "2%" }}>
+        Postulaciones
+         
+        </h1>
+        <h3 style={{ marginInline: "4%" }}>
+        A continuación se muestran las postulaciones realizadas por los afiliados.
+        Ud como administrador podrá aceptarlas o rechazarlas, luego de revisar si el afiliado cumple o no con los requisitos para optar a un convenio. 
+        
+        </h3>
+        <h3>
+
+        </h3>
+        </div>
+
       <MaterialTable
         title="Lista de postulaciones"
         data={listConvenioC}
         columns={columns}
         actions={[
-            //aqui debemos agregar las consultas para postular a los convenios
-            //debemos crear tabla para postulaciones.
+          {
+            icon: CheckIcon,
+            tooltip: "Aceptar",
+            /* onClick: (event, rowData) => SelectConvenioC(rowData, "Eliminar"), */
+            iconProps: {
+              style: { backgroundColor: "#33ACFF" },
+            },
+          },
+
+          {
+            icon: ClearIcon,
+            tooltip: "Rechazar",
+            /* onClick: (event, rowData) => SelectConvenioC(rowData, "Eliminar"), */
+            iconProps: {
+              style: { backgroundColor: "#33ACFF" },
+            },
+          },
+          
         ]}
         options={{
           actionsColumnIndex: -1,
