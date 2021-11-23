@@ -256,7 +256,7 @@ function ConvenioFinanciero() {
       <br />
       <TextField
         className={styles.inputMaterial}
-        label="Estado convenio"
+        label="Estado convenio: Activo o Inactivo"
         name="estado"
         variant= "standard"
         onChange={handleChange}
