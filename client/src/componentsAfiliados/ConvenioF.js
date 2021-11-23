@@ -134,11 +134,12 @@ function ConvenioF() {
     nombre_convenio: nombre_convenio,
     comentario_postulacion: comentario_postulacion,
   }).then((response) => {
-        setListConvenioF(
+        // Esto hacía que al apretar postular el convenio se eliminará.
+        /* setListConvenioF(
           listConvenioF.filter((val) => {
             return val.id_conv != convenioFSelect.id_conv;
-          })
-        );
+          }) 
+        );*/
         OCModalEliminar();
       })
       .catch((error) => {

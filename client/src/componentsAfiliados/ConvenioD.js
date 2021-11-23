@@ -129,11 +129,11 @@ function ConvenioD() {
     nombre_convenio: nombre_convenio,
     comentario_postulacion: comentario_postulacion,
   }).then((response) => {
-        setListConvenioD(
+       /*  setListConvenioD(
           listConvenioD.filter((val) => {
             return val.id_conv != convenioDSelect.id_conv;
-          })
-        );
+          }) 
+        );*/
         OCModalEliminar();
       })
       .catch((error) => {

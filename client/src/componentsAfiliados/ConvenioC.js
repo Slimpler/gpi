@@ -75,30 +75,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-  
-
-   // Estados para datos de tabla convenios
-
-
-   /* const [afiliado_rut_afiliado, setafiliado_rut_afiliado] = useState(0);
-   const [convenio_id_conv, setconvenio_id_conv] = useState(0);
-   const [nombre_convenio, setnombre_convenio] = useState("");
-   const [comentario_postulacion, setcomentario_postulacion] = useState(0);
-  */
-
-  /* const agregarConvenioC = () => {
-    setOpen(false);
-    Axios.post("http://localhost:3001/createConvenioC", {
-      afiliado_rut_afiliado: afiliado_rut_afiliado, 
-      convenio_id_conv: convenio_id_conv,
-      nombre_convenio: nombre_convenio,
-      comentario_postulacion: comentario_postulacion,
-
-    }).then(() => {
-      console.log("exitoso");
-    });
-  }; */
-
 function ConvenioC() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
@@ -157,11 +133,12 @@ function ConvenioC() {
     nombre_convenio: nombre_convenio,
     comentario_postulacion: comentario_postulacion,
   }).then((response) => {
-        setListConvenioC(
+        // Esto hacía que al apretar postular el convenio se eliminará.
+        /* setListConvenioC(
           listConvenioC.filter((val) => {
             return val.id_conv != convenioCSelect.id_conv;
           })
-        );
+        ); */
         OCModalEliminar();
       })
       .catch((error) => {
