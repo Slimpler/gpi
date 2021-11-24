@@ -7,15 +7,15 @@ const db = require("../../database");
 
 //--------------------GET------------------------------
 //Mostrar los datos del afiliado que relleno el formulario desafiliaciónn
-router.get('/formDesafiliacion', (req, res) => {
-    db.query('SELECT * FROM solicitudd', (err, result) => {
-        if(!err) {
-            res.json(result);
-        }else{
-            console.log(err);
-        }
-    });
-});
+// router.get('/formDesafiliacion', (req, res) => {
+//     db.query('SELECT * FROM solicitudd', (err, result) => {
+//         if(!err) {
+//             res.json(result);
+//         }else{
+//             console.log(err);
+//         }
+//     });
+// });
 
 //Mostrar datos del afiliado en el formulario
 router.get("/datosAfiliadoForm", (req,res) => {
@@ -23,6 +23,7 @@ router.get("/datosAfiliadoForm", (req,res) => {
     if(err) {
       console.log(err);
     } else {
+      console.log(result);
       res.send(result);
     }
   });

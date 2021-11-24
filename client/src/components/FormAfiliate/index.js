@@ -188,7 +188,7 @@ const FormAfiliate = () => {
               required /> 
 
               {/* Pedir sueldo funcionario */}
-              <LabelStyled>Sueldo:</LabelStyled>
+              {/* <LabelStyled>Sueldo:</LabelStyled>
 
               <InputStyled 
               onChange={(e)=>handle(e)} 
@@ -198,7 +198,7 @@ const FormAfiliate = () => {
               type="number" 
               min="600000" 
               placeholder="600000" 
-              required />
+              required /> */}
              
              {/* Pedir la antiguedad del funcionario */}
               <LabelStyled>Antiguedad:</LabelStyled>
@@ -208,7 +208,19 @@ const FormAfiliate = () => {
               name="antiguedad_func"
               value={values.antiguedad_func} 
               type="date" 
-              max="2021-04-28" required  />
+              max="2021-04-23" required  />
+
+              {/* Pedir un motivo de afiliación */}
+              <LabelStyled>Motivo afiliación:</LabelStyled>
+              <InputStyled 
+              // onChange={(e)=>emailjs(e)}
+              id="motivo"
+              name="motivo"
+              // aria-setsize="3"
+              // cols="30"
+              // rows="8"
+              // value={values.motivo} 
+              type="text" />
           
               {/* Enviar formulario */}
               <ButtonStyled >Enviar</ButtonStyled>

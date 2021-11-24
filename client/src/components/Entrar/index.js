@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {
   Container,
   FormContent,
@@ -14,27 +14,66 @@ import {
 } from "./EntrarElements";
 
 import SimpleModal from "./modalPassword";
+import { useHistory } from "react-router";
+import axios from "axios";
+const url = "http://localhost:3001/loginAfiliado";
 
 const Entrar = () => {
+  const { push } = useHistory()
+  const [rut_afiliado, setRut_afiliado] = useState("");
+  const [pass_afi, setPass_afi] = useState("");
+
+const login = () => {
+  axios.post(url, {
+    rut_afiliado: rut_afiliado,
+    pass_afi: pass_afi,
+  }).then((response) => {
+
+    if(response.data.message) {
+      console.log(response.data.message);
+    }else{
+      push('/perfil')
+    }
+    
+  });
+};
+
   return (
     <>
       <Container>
         <FormWrap>
           <Icon to="/">Quintero</Icon>
-          <FormContent>
-            <Form action="#">
+          <FormContent >
+            <Form>
               <FormH1>Ingreso al sistema de la corporación</FormH1>
               <FormLabel htmlFor="email">Rut</FormLabel>
-              <FormInput type="email" id="email" placeholder="Ej: 13.450.233-2" required />
+              <FormInput 
+              onChange={(e) => {setRut_afiliado(e.target.value);}}
+              type="text"  
+              id='rut_afiliado'
+              name='rut_afiliado'
+              // minLength="7"
+              // maxLength="8"
+              placeholder= "11242111-1" 
+              required/>
+
               <FormLabel htmlFor="password">Contraseña</FormLabel>
-              <FormInput type="password" id="password" placeholder ="minimo 4 digitos y maximo 8" required />
+              <FormInput 
+              onChange={(e) => {setPass_afi(e.target.value);}}
+              name='pass_afi' 
+              type="password" 
+              id="pass_afi" 
+              placeholder ="minimo 4 digitos y maximo 8" 
+              required/>
               <FormLabel style={{ textAlign:"center"}}>
                 ¿Has olvidado tu Contraseña?  
                 <SimpleModal />
               </FormLabel>
+              <button onClick={login}>Iniciar Sesión</button>
               <FormLabel ></FormLabel>
               <FormLabel ></FormLabel>
               <FormLabel ></FormLabel>
+              
               <FormBtnWrap>
                 <FormRoute to="../perfil">Afiliados</FormRoute>
               </FormBtnWrap>
@@ -44,6 +83,7 @@ const Entrar = () => {
               <FormBtnWrap>
                 <FormRoute to="../admin">Directiva</FormRoute>
               </FormBtnWrap>
+              
                {/* <FormButton type="submit">Continue</FormButton>  */}
               {/*<Text>Forgot password?</Text>}*/}
             </Form>
