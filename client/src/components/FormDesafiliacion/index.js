@@ -18,7 +18,6 @@ import {
   Grid2
 } from "./FormDesafiliacionElement";
 
-
 const FormDesafiliacion = () => {
 
   const [datos, setDatos] = useState([]);
@@ -83,7 +82,6 @@ function enviarEmail(e){
     
 };
 
- 
  return(
     <ContainerAll>
       <Wrap>
