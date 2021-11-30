@@ -1,7 +1,7 @@
 export const InfoData = {
   heading2: "Pagos de la Asociación",
   heading: "Pagos de Afiliados",
-  buttonLabel: "Ir!",
+  buttonLabel: "Ir",
   reverse: false,
   delay: 100,
 };
@@ -9,14 +9,14 @@ export const InfoData = {
 export const InfoDataTwo = {
   heading2: "Voucher prestamo",
   heading: "Egresos",
-  buttonLabel: "Ir!",
+  buttonLabel: "Ir",
   reverse: false,
   delay: 300,
 };
 
 export const InfoDataThree = {
   heading: "Deudas",
-  buttonLabel: "Ir!",
+  buttonLabel: "Ir",
   reverse: false,
   delay: 300,
 };
@@ -26,7 +26,7 @@ export const InfoDataFive = {
   paragraphOne: "Zona de administracion De Afiliados",
   paragraphTwo:
     "Se podra agregar, eliminar y modificar informacion de los afiliados",
-  buttonLabel: "Ir!",
+  buttonLabel: "Ir",
   reverse: true,
   delay: 300,
 };

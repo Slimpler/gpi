@@ -257,7 +257,6 @@ router.put("/actualizarDeudaEliminado", (req, res) => {
 // -------------------------------------------- Delete -------------------------------
 // --------------------- Eliminar pagos afiliados ---------------------
 router.delete("/eliminarIngreso/:id_ingreso", (req, res) => {
-  console.log(req.params)
   const id_ingreso = req.params.id_ingreso;
 
   db.query("DELETE FROM ingresos WHERE id_ingreso = ?", 

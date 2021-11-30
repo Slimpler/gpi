@@ -111,8 +111,7 @@ export default function FormDialog() {
       monto: montoCuota,
       fecha: fecha,
     }).then(() => {
-      console.log("Exitoso");
-
+      console.log("aqui Exitoso");
       handleClose();
     });
   };
@@ -121,7 +120,7 @@ export default function FormDialog() {
     Axios.post("http://localhost:3001/createIngresosAfiliados", {
       rut_afiliado: rut_afiliado,
     }).then(() => {
-      console.log("Exitoso");
+      console.log("aca Exitoso");
       handleClose();
     });
   };

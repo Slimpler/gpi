@@ -26,8 +26,15 @@ const columns = [
     },
   },
   {
+    title: "Nombre afiliado",
+    field: "nombre",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+  },
+  {
     title: "Monto",
-    field: "monto",
+    field: "monto_egreso",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
@@ -100,9 +107,10 @@ function Egresos() {
   const [modalEliminar, setModalEliminar] = useState(false);
 
   const [listEgresos, setListEgresos] = useState([]);
-  const [rutAfiliado, setRutAfiliado] = useState([]);
   const [egresoSelect, setEgresoSelect] = useState({
     rut_afiliado: "",
+    nombre:"",
+    monto_egreso: "",
     id: "",
     monto: "",
     fecha: "",
