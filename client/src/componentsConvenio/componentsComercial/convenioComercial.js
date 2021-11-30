@@ -64,6 +64,16 @@ const columns = [
       backgroundColor: "#23BB77",
     },
   },
+
+  {
+    title: "Estado",
+    field: "estado",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+    
+  },
+
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -104,6 +114,7 @@ function ConvenioComercial() {
     tipo_conv: "",
     monto_max_compra_c: "",
     numero_max_cuotas_c: "",
+    estado: "",
   });
 
   const handleChange = (e) => {
@@ -132,6 +143,7 @@ function ConvenioComercial() {
       descripcion_conv: convenioCSelect.descripcion_conv,
       monto_max_compra_c: convenioCSelect.monto_max_compra_c,
       numero_max_cuotas_c: convenioCSelect.numero_max_cuotas_c,
+      estado: convenioCSelect.estado,
     })
       .then((response) => {
         setListConvenioC(
@@ -143,6 +155,7 @@ function ConvenioComercial() {
                 descripcion_conv: convenioCSelect.descripcion_conv,
                 monto_max_compra_c: convenioCSelect.monto_max_compra_c,
                 numero_max_cuotas_c: convenioCSelect.numero_max_cuotas_c,
+                estado: convenioCSelect.estado,
                 }
               : val;
           })
@@ -227,6 +240,16 @@ function ConvenioComercial() {
         onChange={handleChange}
         value={convenioCSelect && convenioCSelect.numero_max_cuotas_c}
       />
+
+      <br />
+      <TextField
+        className={styles.inputMaterial}
+        label="Estado convenio: Activo o Inactivo"
+        name="estado"
+        variant= "standard"
+        onChange={handleChange}
+        value={convenioCSelect && convenioCSelect.Estado_conv_d}
+      />
       <br />
       <div align="right">
         <Button 
@@ -273,11 +296,11 @@ function ConvenioComercial() {
               style: { backgroundColor: "#33ACFF" },
             },
           },
-          {
+          /* {
             icon: DeleteIcon,
             tooltip: "Eliminar Convenio",
             onClick: (event, rowData) => SelectConvenioC(rowData, "Eliminar"),
-          },
+          }, */
         ]}
         options={{
           actionsColumnIndex: -1,
@@ -291,7 +314,7 @@ function ConvenioComercial() {
         }}
         localization={{
           header: {
-            actions: "Acciones",
+            actions: "   Editar   ",
           },
           pagination: {
             labelRowsSelect: "Filas",

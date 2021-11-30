@@ -13,7 +13,6 @@ import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Box from "@material-ui/core/Box";
-
 // imports para material table
 import Add from "@material-ui/icons/Add";
 import Search from "@material-ui/icons/Search";
@@ -190,7 +189,6 @@ export default function FormDialog() {
       }
     });
     
-    console.log(x);
     if (x === false) {
       alert("RUT no existe");
       handleCloseTwo();

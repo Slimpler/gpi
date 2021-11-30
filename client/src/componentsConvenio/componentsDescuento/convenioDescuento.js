@@ -73,6 +73,15 @@ const columns = [
       backgroundColor: "#23BB77",
     },
   },
+
+  {
+    title: "Estado",
+    field: "estado",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+    
+  },
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -112,6 +121,7 @@ function ConvenioDescuento() {
     descripcion: "",
     monto_max_compra_d: "",
     numero_max_usos_d: "",
+    estado: "",
   });
 
   const handleChange = (e) => {
@@ -140,6 +150,7 @@ function ConvenioDescuento() {
       descripcion_conv: convenioDSelect.descripcion_conv,
       monto_max_compra_d: convenioDSelect.monto_max_compra_d,
       numero_max_usos_d: convenioDSelect.numero_max_usos_d,
+      estado: convenioDSelect.estado,
     })
       .then((response) => {
         setListConvenioD(
@@ -151,6 +162,7 @@ function ConvenioDescuento() {
                 descripcion_conv: convenioDSelect.descripcion_conv,
                 monto_max_compra_d: convenioDSelect.monto_max_compra_d,
                 numero_max_usos_d: convenioDSelect.numero_max_usos_d,
+                estado: convenioDSelect.estado,
                 }
               : val;
           })
@@ -235,6 +247,17 @@ function ConvenioDescuento() {
         onChange={handleChange}
         value={convenioDSelect && convenioDSelect.numero_max_usos_d}
       />
+
+      <br />
+      <TextField
+        className={styles.inputMaterial}
+        label="Estado convenio: Activo o Inactivo"
+        name="estado"
+        variant= "standard"
+        onChange={handleChange}
+        value={convenioDSelect && convenioDSelect.Estado_conv_d}
+      />
+
       <br />
       <div align="right">
         <Button 
@@ -281,11 +304,11 @@ function ConvenioDescuento() {
               style: { backgroundColor: "#33ACFF" },
             },
           },
-          {
+         /*  {
             icon: DeleteIcon,
             tooltip: "Eliminar Convenio",
             onClick: (event, rowData) => SelectConvenioD(rowData, "Eliminar"),
-          },
+          }, */
         ]}
         options={{
           actionsColumnIndex: -1,
@@ -294,12 +317,12 @@ function ConvenioDescuento() {
           headerStyle: {
             backgroundColor: "#009966",
             color: "#FFF",
-            fontSize: "14px",
+            fontSize: "15px",
           },
         }}
         localization={{
           header: {
-            actions: "Acciones",
+            actions: "   Editar   ",
           },
             pagination: {
             labelRowsSelect: "Filas",

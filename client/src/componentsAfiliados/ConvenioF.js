@@ -12,6 +12,8 @@ import LastPage from "@material-ui/icons/LastPage";
 import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { Modal, TextField, Button } from "@material-ui/core";
 
 const columns = [ 
  
@@ -82,9 +84,10 @@ function ConvenioF() {
   const [listConvenioF, setListConvenioF] = useState([]);
 /*   const [id_convF, setid_convF = useState([]); */
   const [convenioFSelect, setConvenioFSelect] = useState({
-    id_conv: "",
-    nombre_conv: "",
-    fecha_conv: "",
+    afiliado_rut_afiliado: "", 
+    convenio_id_conv: "",
+    nombre_convenio: "",
+    comentario_postulacion: "",
   });
 
   const handleChange = (e) => {
@@ -96,7 +99,7 @@ function ConvenioF() {
   };
 
   const peticionGet = async () => {
-    await Axios.get("http://localhost:3001/showConvenioF")
+    await Axios.get("http://localhost:3001/showConvenioDisponiblesF")
       .then((response) => {
         setListConvenioF(response.data);
         console.log(response.data);
@@ -106,22 +109,106 @@ function ConvenioF() {
       });
   };
 
+  const SelectConvenioF = (id_conv, caso) => {
+    setConvenioFSelect(id_conv);
+    caso === "Editar" ? OCModalEditar() : OCModalEliminar();
+  };
+
+  const OCModalEditar = () => {
+    setModalEditar(!modalEditar);
+  };
+
+  const OCModalEliminar = () => {
+    setModalEliminar(!modalEliminar);
+  };
+
+  const [afiliado_rut_afiliado, setafiliado_rut_afiliado] = useState(0);
+  const [convenio_id_conv, setconvenio_id_conv] = useState(0);
+  const [nombre_convenio, setnombre_convenio] = useState("");
+  const [comentario_postulacion, setcomentario_postulacion] = useState(0);
+
+  const peticionPostulacion = async () => {
+    Axios.post(`http://localhost:3001/createPostulacion`, {
+    afiliado_rut_afiliado: afiliado_rut_afiliado, 
+    convenio_id_conv: convenio_id_conv,
+    nombre_convenio: nombre_convenio,
+    comentario_postulacion: comentario_postulacion,
+  }).then((response) => {
+        // Esto hacía que al apretar postular el convenio se eliminará.
+        /* setListConvenioF(
+          listConvenioF.filter((val) => {
+            return val.id_conv != convenioFSelect.id_conv;
+          }) 
+        );*/
+        OCModalEliminar();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
 
 
   useEffect(() => {
     peticionGet();
   }, []);
 
+  const bodyEliminar = (
+    <div className={styles.modal}>
+      <p>
+      Estás seguro que deseas postular al siguiente Convenio:{" "}
+        <b>{convenioFSelect && convenioFSelect.id_conv}</b>{" "}
+      </p>
+      <div align="right">
+        <Button color="secondary" onClick={() => {peticionPostulacion();OCModalEliminar()}}>
+          SI
+        </Button>
+        <Button onClick={() => OCModalEliminar()}>No</Button>
+      </div>
+    </div>
+  );
+
 
 
   return (
+    
     <div className={styles.container}>
+        <div>
+        <h1 style={{ marginInline: "4%", marginTop: "3%" }}>
+         Lista de convenios disponibles
+         
+        </h1>
+        <h3 style={{ marginInline: "4%" }}>
+        A continuación se muestran los convenios disponibles, tanto financieros, comerciales y de descuento.
+        Ud como afiliado podrá postular a ellos, luego en la sección "Mis convenios" ud podrá ver si se aprueba o se rechaza su solicitud.
+        
+        </h3>
+        <h3>
+
+        </h3>
+        </div>
+      
       <MaterialTable
         title="Lista de convenios financieros"
         data={listConvenioF}
         columns={columns}
         actions={[
-          
+          {
+            icon: AddCircleIcon,
+            tooltip: "Postular al convenio",
+            onClick: (event, rowData) => SelectConvenioF(rowData, "Eliminar"),
+            iconProps: {
+              style: { backgroundColor: "#33ACFF" },
+            },
+          },
+        /*   {
+            icon: DeleteIcon,
+            tooltip: "Eliminar Convenio",
+            onClick: (event, rowData) => SelectConvenioF(rowData, "Eliminar"),
+          },
+           */
+        
         ]}
         options={{
           actionsColumnIndex: -1,
@@ -130,12 +217,12 @@ function ConvenioF() {
           headerStyle: {
             backgroundColor: "#009966",
             color: "#FFF",
-            fontSize: "14px",
+            fontSize: "15px",
           },
         }}
         localization={{
           header: {
-            actions: "Acciones",
+            actions: "     Postular    ",
           },
           pagination: {
             labelRowsSelect: "Filas",
@@ -164,6 +251,9 @@ function ConvenioF() {
           SortArrow: SortArrow,
         }}
       />
+      <Modal open={modalEliminar} onClose={OCModalEliminar}>
+        {bodyEliminar}
+      </Modal>
     </div>
   );
 }

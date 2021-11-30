@@ -25,7 +25,6 @@ import SelectContract from "./Select/index";
 const FormAfiliate = () => {
     const url = "http://localhost:3001/createFormAfiliacion"
     const [values, setValues] = useState({
-        digito: "",
         nombre_func: "",
         telefono: "",
         celular: "",
@@ -57,7 +56,7 @@ const FormAfiliate = () => {
   //  e.preventDefault();
    Axios.post(url, {
       rut_func: rut_func,
-      digito: digito,
+      digito: digito.toUpperCase(),
       nombre_func: values.nombre_func,
       telefono: values.telefono,
       celular: values.celular,
@@ -70,8 +69,9 @@ const FormAfiliate = () => {
  
  function verificarRut(){
   // e.preventDefault();
+  // digito.toUpperCase();
   let result = getCheckDigit(rut_func);
-  if(digito === result){
+  if(digito.toUpperCase() === result){
     return true
   }else{
     alert('EL RUT ' + rut_func + '-'+ digito + ' ES INVALIDO');
@@ -98,7 +98,7 @@ const FormAfiliate = () => {
         <IconStyled to="/">Quintero</IconStyled>
         <Content>
           <FormStyled onSubmit={(e)=> {enviarBackend(e);
-          verificarRut(e);
+          // verificarRut(e);
           if (verificarRut(e) == true){
             enviarEmail(e);
           }}}>
@@ -169,7 +169,8 @@ const FormAfiliate = () => {
               id="telefono" 
               name="telefono"
               value={values.telefono} 
-              maxLength="12" 
+              minLength="9" 
+              maxLength="9"
               type="tel"/>
              
              {/* Pedir celular del funcionario */}
@@ -182,11 +183,12 @@ const FormAfiliate = () => {
               placeholder="Ejemplo: 994589528" 
               value={values.celular} 
               type="tel"
-              minLength="9" 
-              maxLength="9" required /> 
+              minLength="9"
+              maxLength="9" 
+              required /> 
 
               {/* Pedir sueldo funcionario */}
-              <LabelStyled>Sueldo:</LabelStyled>
+              {/* <LabelStyled>Sueldo:</LabelStyled>
 
               <InputStyled 
               onChange={(e)=>handle(e)} 
@@ -196,7 +198,7 @@ const FormAfiliate = () => {
               type="number" 
               min="600000" 
               placeholder="600000" 
-              required />
+              required /> */}
              
              {/* Pedir la antiguedad del funcionario */}
               <LabelStyled>Antiguedad:</LabelStyled>
@@ -206,7 +208,19 @@ const FormAfiliate = () => {
               name="antiguedad_func"
               value={values.antiguedad_func} 
               type="date" 
-              max="2021-04-28" required  />
+              max="2021-04-23" required  />
+
+              {/* Pedir un motivo de afiliación */}
+              <LabelStyled>Motivo afiliación:</LabelStyled>
+              <InputStyled 
+              // onChange={(e)=>emailjs(e)}
+              id="motivo"
+              name="motivo"
+              // aria-setsize="3"
+              // cols="30"
+              // rows="8"
+              // value={values.motivo} 
+              type="text" />
           
               {/* Enviar formulario */}
               <ButtonStyled >Enviar</ButtonStyled>

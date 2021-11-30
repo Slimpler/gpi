@@ -76,6 +76,15 @@ const columns = [
       backgroundColor: "#23BB77",
     },
   },
+
+  {
+    title: "Estado",
+    field: "estado",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+    
+  },
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -118,6 +127,7 @@ function ConvenioFinanciero() {
     tipo_conv: "",
     monto_max_credito_f: "",
     numero_max_cuotas_f: "",
+    estado: "",
   });
 
   const handleChange = (e) => {
@@ -146,6 +156,7 @@ function ConvenioFinanciero() {
       descripcion_conv: convenioFSelect.descripcion_conv,
       monto_max_credito_f: convenioFSelect.monto_max_credito_f,
       numero_max_cuotas_f: convenioFSelect.numero_max_cuotas_f,
+      estado: convenioFSelect.estado,
     })
       .then(() => {
         setListConvenioF(
@@ -157,7 +168,8 @@ function ConvenioFinanciero() {
                 descripcion_conv: convenioFSelect.descripcion_conv,
                 monto_max_credito_f: convenioFSelect.monto_max_credito_f,
                 numero_max_cuotas_f: convenioFSelect.numero_max_cuotas_f,
-                }
+                estado: convenioFSelect.estado,  
+              }
               : val;
           })
         );
@@ -240,6 +252,17 @@ function ConvenioFinanciero() {
         onChange={handleChange}
         value={convenioFSelect && convenioFSelect.numero_max_cuotas_f}
       />
+
+      <br />
+      <TextField
+        className={styles.inputMaterial}
+        label="Estado convenio: Activo o Inactivo"
+        name="estado"
+        variant= "standard"
+        onChange={handleChange}
+        value={convenioFSelect && convenioFSelect.Estado_conv_d}
+      />
+
       <br />
       <div align="right">
         <Button 
@@ -288,12 +311,12 @@ function ConvenioFinanciero() {
               style: { backgroundColor: "#33ACFF" },
             },
           },
-          {
+        /*   {
             icon: DeleteIcon,
             tooltip: "Eliminar Convenio",
             onClick: (event, rowData) => SelectConvenioF(rowData, "Eliminar"),
           },
-          
+           */
         
         ]}
         options={{
@@ -303,12 +326,12 @@ function ConvenioFinanciero() {
           headerStyle: {
             backgroundColor: "#009966",
             color: "#FFF",
-            fontSize: "14px",
+            fontSize: "15px",
           },
         }}
         localization={{
           header: {
-            actions: "Acciones",
+            actions: "   Editar   ",
           },
           pagination: {
             labelRowsSelect: "Filas",

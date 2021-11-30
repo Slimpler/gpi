@@ -12,6 +12,8 @@ import LastPage from "@material-ui/icons/LastPage";
 import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { Modal, TextField, Button } from "@material-ui/core";
 
 const columns = [ 
 
@@ -81,9 +83,10 @@ function ConvenioC() {
   const [listConvenioC, setListConvenioC] = useState([]);
 /*   const [id_convC, setid_convC = useState([]); */
   const [convenioCSelect, setConvenioCSelect] = useState({
-    id_conv: "",
-    nombre_conv: "",
-    fecha_conv: "",
+    afiliado_rut_afiliado: "", 
+    convenio_id_conv: "",
+    nombre_convenio: "",
+    comentario_postulacion: "",
   });
 
   const handleChange = (e) => {
@@ -95,10 +98,48 @@ function ConvenioC() {
   };
 
   const peticionGet = async () => {
-    await Axios.get("http://localhost:3001/showConvenioC")
+    await Axios.get("http://localhost:3001/showConvenioDisponiblesC")
       .then((response) => {
         setListConvenioC(response.data);
         console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const SelectConvenioC = (id_conv, caso) => {
+    setConvenioCSelect(id_conv);
+    caso === "Editar" ? OCModalEditar() : OCModalEliminar();
+  };
+
+  const OCModalEditar = () => {
+    setModalEditar(!modalEditar);
+  };
+
+  const OCModalEliminar = () => {
+    setModalEliminar(!modalEliminar);
+  };
+
+  const [afiliado_rut_afiliado, setafiliado_rut_afiliado] = useState(0);
+  const [convenio_id_conv, setconvenio_id_conv] = useState(0);
+  const [nombre_convenio, setnombre_convenio] = useState("");
+  const [comentario_postulacion, setcomentario_postulacion] = useState(0);
+
+  const peticionPostulacion = async () => {
+    Axios.post(`http://localhost:3001/createPostulacion`, {
+    afiliado_rut_afiliado: afiliado_rut_afiliado, 
+    convenio_id_conv: convenio_id_conv,
+    nombre_convenio: nombre_convenio,
+    comentario_postulacion: comentario_postulacion,
+  }).then((response) => {
+        // Esto hacía que al apretar postular el convenio se eliminará.
+        /* setListConvenioC(
+          listConvenioC.filter((val) => {
+            return val.id_conv != convenioCSelect.id_conv;
+          })
+        ); */
+        OCModalEliminar();
       })
       .catch((error) => {
         console.log(error);
@@ -111,6 +152,22 @@ function ConvenioC() {
     peticionGet();
   }, []);
 
+  //interfaz de model eliminar
+  const bodyEliminar = (
+    <div className={styles.modal}>
+      <p>
+      Estás seguro que deseas postular al siguiente Convenio:{" "}
+        <b>{convenioCSelect && convenioCSelect.id_conv}</b>{" "}
+      </p>
+      <div align="right">
+        <Button color="secondary" onClick={() => {peticionPostulacion();OCModalEliminar()}}>
+          SI
+        </Button>
+        <Button onClick={() => OCModalEliminar()}>No</Button>
+      </div>
+    </div>
+  );
+
 
   return (
     <div className={styles.container}>
@@ -119,8 +176,21 @@ function ConvenioC() {
         data={listConvenioC}
         columns={columns}
         actions={[
-            //aqui debemos agregar las consultas para postular a los convenios
-            //debemos crear tabla para postulaciones.
+          {
+            icon: AddCircleIcon,
+            tooltip: "Postular al convenio",
+            onClick: (event, rowData) => SelectConvenioC(rowData, "Eliminar"),
+            iconProps: {
+              style: { backgroundColor: "#33ACFF" },
+            },
+          },
+        /*   {
+            icon: DeleteIcon,
+            tooltip: "Eliminar Convenio",
+            onClick: (event, rowData) => SelectConvenioF(rowData, "Eliminar"),
+          },
+           */
+        
         ]}
         options={{
           actionsColumnIndex: -1,
@@ -129,12 +199,12 @@ function ConvenioC() {
           headerStyle: {
             backgroundColor: "#009966",
             color: "#FFF",
-            fontSize: "14px",
+            fontSize: "15px",
           },
         }}
         localization={{
           header: {
-            actions: "Acciones",
+            actions: "    Postular",
           },
           pagination: {
             labelRowsSelect: "Filas",
@@ -163,6 +233,9 @@ function ConvenioC() {
           SortArrow: SortArrow,
         }}
       />
+      <Modal open={modalEliminar} onClose={OCModalEliminar}>
+        {bodyEliminar}
+      </Modal>
     </div>
   );
 }

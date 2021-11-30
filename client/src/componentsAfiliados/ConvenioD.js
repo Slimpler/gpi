@@ -12,6 +12,8 @@ import LastPage from "@material-ui/icons/LastPage";
 import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import { Modal, TextField, Button } from "@material-ui/core";
 
 const columns = [ 
   {
@@ -77,9 +79,10 @@ function ConvenioD() {
   const [listConvenioD, setListConvenioD] = useState([]);
 /*   const [id_convD, setid_convD = useState([]); */
   const [convenioDSelect, setConvenioDSelect] = useState({
-    id_conv: "",
-    nombre_conv: "",
-    fecha_conv: "",
+    afiliado_rut_afiliado: "", 
+    convenio_id_conv: "",
+    nombre_convenio: "",
+    comentario_postulacion: "",
   });
 
   const handleChange = (e) => {
@@ -91,7 +94,7 @@ function ConvenioD() {
   };
 
   const peticionGet = async () => {
-    await Axios.get("http://localhost:3001/showConvenioD")
+    await Axios.get("http://localhost:3001/showConvenioDisponiblesD")
       .then((response) => {
         setListConvenioD(response.data);
         console.log(response.data);
@@ -101,11 +104,62 @@ function ConvenioD() {
       });
   };
 
-  
+  const SelectConvenioD = (id_conv, caso) => {
+    setConvenioDSelect(id_conv);
+    caso === "Editar" ? OCModalEditar() : OCModalEliminar();
+  };
+
+  const OCModalEditar = () => {
+    setModalEditar(!modalEditar);
+  };
+
+  const OCModalEliminar = () => {
+    setModalEliminar(!modalEliminar);
+  };
+
+  const [afiliado_rut_afiliado, setafiliado_rut_afiliado] = useState(0);
+  const [convenio_id_conv, setconvenio_id_conv] = useState(0);
+  const [nombre_convenio, setnombre_convenio] = useState("");
+  const [comentario_postulacion, setcomentario_postulacion] = useState(0);
+
+  const peticionPostulacion = async () => {
+    Axios.post(`http://localhost:3001/createPostulacion`, {
+    afiliado_rut_afiliado: afiliado_rut_afiliado, 
+    convenio_id_conv: convenio_id_conv,
+    nombre_convenio: nombre_convenio,
+    comentario_postulacion: comentario_postulacion,
+  }).then((response) => {
+       /*  setListConvenioD(
+          listConvenioD.filter((val) => {
+            return val.id_conv != convenioDSelect.id_conv;
+          }) 
+        );*/
+        OCModalEliminar();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   useEffect(() => {
     peticionGet();
   }, []);
+
+//interfaz de model postular
+const bodyEliminar = (
+  <div className={styles.modal}>
+    <p>
+    Estás seguro que deseas postular al siguiente Convenio:{" "}
+      <b>{convenioDSelect && convenioDSelect.id_conv}</b>{" "}
+    </p>
+    <div align="right">
+      <Button color="secondary" onClick={() => {peticionPostulacion();OCModalEliminar()}}>
+        SI
+      </Button>
+      <Button onClick={() => OCModalEliminar()}>No</Button>
+    </div>
+  </div>
+);
 
   
 
@@ -116,8 +170,21 @@ function ConvenioD() {
         data={listConvenioD}
         columns={columns}
         actions={[
-          
-            //agregar botones para postulacion
+          {
+            icon: AddCircleIcon,
+            tooltip: "Postular al convenio",
+            onClick: (event, rowData) => SelectConvenioD(rowData, "Eliminar"),
+            iconProps: {
+              style: { backgroundColor: "#33ACFF" },
+            },
+          },
+        /*   {
+            icon: DeleteIcon,
+            tooltip: "Eliminar Convenio",
+            onClick: (event, rowData) => SelectConvenioF(rowData, "Eliminar"),
+          },
+           */
+        
         ]}
         options={{
           actionsColumnIndex: -1,
@@ -131,7 +198,7 @@ function ConvenioD() {
         }}
         localization={{
           header: {
-            actions: "Acciones",
+            actions: "Postular",
           },
           pagination: {
             labelRowsSelect: "Filas",
@@ -160,6 +227,9 @@ function ConvenioD() {
           SortArrow: SortArrow,
         }}
       />
+      <Modal open={modalEliminar} onClose={OCModalEliminar}>
+        {bodyEliminar}
+      </Modal>
     </div>
   );
 }

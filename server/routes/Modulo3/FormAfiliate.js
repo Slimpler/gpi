@@ -20,7 +20,6 @@ router.get('/formAfiliacion', (req, res) => {
 //Enviar datos de los funcionarios que rellenaron el formulario afiliación
 router.post("/createFormAfiliacion", (req, res) => {
       (rut_func = req.body.rut_func);
-      let digito = "";
       (digito = req.body.digito);
       result = getCheckDigit(rut_func);
       if(digito === result){
