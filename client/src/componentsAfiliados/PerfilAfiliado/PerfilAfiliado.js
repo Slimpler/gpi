@@ -1,9 +1,9 @@
 import React from 'react';
 import { ContainerPerfil, Grid, Grid2, ItemImg,Item, Boton, BtnEdit} from "./PerfilAfiliados.styled"
-
+import Cookies from 'universal-cookie';
 
 export const  PerfilAfiliado = () => {
-
+  const cookies = new Cookies;
   return (
     <div>
 
@@ -32,43 +32,39 @@ export const  PerfilAfiliado = () => {
           <Grid2>
             <Item>
               <div>
-                <h5 class="mb-0">Nombre Completo</h5>
-                <div class="text-primary">Jose Enrique Coronado</div>
+                <h5 class="mb-0">Nombre</h5>
+                <div class="text-primary">{cookies.get('nombre')}</div>
+                <div class="text-primary"></div>
               </div>
+                
             </Item>
             <Item>
               <div>
                 <h5 class="mb-0">Rut</h5>
-                <div class="text-primary">12345678-9</div>
-              </div>
-            </Item>
-            <Item>
-              <div>
-                <h5 class="mb-0">Edad</h5>
-                <div class="text-primary">35 años</div>
+                <div class="text-primary">{cookies.get('rut_afiliado')}</div>
               </div>
             </Item>
             <Item>
               <div>
               <div class="col-sm-3">
-                <h5 class="mb-0">Ciudad</h5>
+                <h5 class="mb-0">Telefono</h5>
                 </div>
-                <div class="text-primary">Ciudad afiliado</div>            
+                <div class="text-primary">{cookies.get('telefono')}</div>            
               </div>
             </Item>
             <Item>
                 <div>
-                    <h5 class="mb-0">Comuna</h5>
-                    <div class="text-primary">Comuna afiliado</div>
+                    <h5 class="mb-0">Celular</h5>
+                    <div class="text-primary">{cookies.get('celular')}</div>
                 </div>
             </Item>
             <Item>
                 <div>
-                    <h5 class="mb-0">Tipo De Contrato</h5>
-                    <div class="text-primary">Contrato Del Afiliado</div>
+                    <h5 class="mb-0">Antiguedad</h5>
+                    <div class="text-primary">{cookies.get('antiguedad_afiliado')}</div>
                 </div>
             </Item>
-            <BtnEdit>Editar</BtnEdit>
+           
           </Grid2>
         </Grid>
       </ContainerPerfil>

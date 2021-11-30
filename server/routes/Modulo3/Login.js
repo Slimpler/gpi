@@ -1,47 +1,50 @@
+
 const { Router } = require("express");
 const router = Router();
 const { validateRUT, getCheckDigit } = require('validar-rut');
 
 const db = require("../../database");
 
+
+
 router.post("/loginAfiliado", (req, res) => {
-    const rut_afiliado = req.body.rut_afiliado;
-    const pass_afi = req.body.pass_afi;
-
+    const { rut_afiliado, pass_afi } = req.body
+	const values = [rut_afiliado, pass_afi]
+    
+  
     db.query(
-        "SELECT * FROM afiliado WHERE rut_afiliado = ? AND pass_afi = ?",
-        [rut_afiliado, pass_afi],
+        "SELECT * FROM afiliado where rut_afiliado = ? and pass_afi = ?",
+        values,
         (err, result) => {
-            if(err){
-                res.send({err: err})
-            }
-            if(result.length > 0 ){
-                res.send(result);
-            }else{
-                res.send({message: "Rut o clave incorrecta"});
+            if (err) {
+                res.status(500).send(err)
+            } else {
+                if (result.length > 0) {
+                    res.status(200).send(result[0])
+                } else {
+                    res.status(400).send('Usuario no existe');
+                    
+                    
+                }
             }
         }
     );
 });
 
-router.post("/loginDirectiva", (req, res) => {
-    const rut_dir = req.body.rut_dir;
-    const pass_dir = req.body.pass_dir;
+router.get('/', (req, res)=>{
+    if(req.session.loggedin){
+        res.render('perfil',{
+            login:true,
+            name: req.session.name
+        });
+    }else {
+        res.render('perfil', {
+            login: false,
+            name: 'Debe iniciar sesión'
+        })
+    }
+})
 
-    db.query(
-        "SELECT * FROM directiva WHERE rut_dir = ? AND pass_dir = ?",
-        [rut_dir, pass_dir],
-        (err, result) => {
-            if(err){
-                res.send({err: err})
-            }
-            if(result.length > 0 ){
-                res.send(result);
-            }else{
-                res.send({message: "Rut o clave incorrecta"});
-            }
-        }
-    );
-});
+
 
 module.exports = router;
