@@ -164,8 +164,9 @@ export default function FormDialog() {
             {
               tooltip: "Agregar pago",
               icon: "Add",
-              onClick: () => {
-                console.log("F");
+              onClick: () => {{
+                  // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+                }
               },
             },
           ]}
@@ -286,12 +287,13 @@ export default function FormDialog() {
             onClick={(e) => {
               agregarPagos();
               agregarIngresosConvenios();
+              alert("Pago Ingresado")
               handleClose();
               handleCloseConvenio();
             }}
             color="primary"
           >
-            agregar pago
+            Agregar pago
           </Button>
         </DialogActions>
       </Dialog>

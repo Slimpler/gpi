@@ -6,11 +6,10 @@ const db = require("../../database");
 // ------------------------------------------- Post ----------------------------------------
 // ------- ingresar un pago de afiliado ----------
 router.post("/createIngresoAfiliado", (req, res) => {
-  console.log(req.body);
   (id_ingreso = req.body.id_ingreso),
     (monto = req.body.monto),
     (fecha = req.body.fecha),
-    (estado = req.body.estado),
+    (estado = "Pendiente"),
     (tipo = "Pago afiliado"),
     db.query(
       "INSERT INTO ingresos (monto, fecha, estado, tipo) VALUES (?, ?, ?, ?)",
@@ -82,7 +81,7 @@ router.post("/createDeudaAfiliado", (req, res) => {
         if (err) {
           console.log(err);
         } else {
-          console.log("Deuda admitido");
+          console.log("Deuda admitida");
         }
       }
     );
@@ -258,7 +257,6 @@ router.put("/actualizarDeudaEliminado", (req, res) => {
 // -------------------------------------------- Delete -------------------------------
 // --------------------- Eliminar pagos afiliados ---------------------
 router.delete("/eliminarIngreso/:id_ingreso", (req, res) => {
-  console.log(req.params)
   const id_ingreso = req.params.id_ingreso;
 
   db.query("DELETE FROM ingresos WHERE id_ingreso = ?", 

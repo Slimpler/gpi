@@ -22,7 +22,7 @@ app.use(require("./routes/Modulo1/ConvenioF"));
 // Modulo 2: Administracion de pagos
 app.use(require("./routes/Modulo2/CRUDadmAfiliado"));
 app.use(require("./routes/Modulo2/CRUDadmAsociacion"));
-app.use(require("./routes/Modulo2/CRUDadmBonos"));
+app.use(require("./routes/Modulo2/CRUDadmEgresos"));
 
 //routes
 app.use(require("./routes/Modulo3/FormAfiliate"));

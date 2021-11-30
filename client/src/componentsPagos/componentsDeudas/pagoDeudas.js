@@ -38,6 +38,13 @@ const columns = [
     },
   },
   {
+    title: "Cuotas pagadas",
+    field: "cuotas_pagadas",
+    headerStyle: {
+      backgroundColor: "#23BB77",
+    },
+  },
+  {
     title: "Rut afiliado",
     field: "rut_afiliado",
     headerStyle: {
@@ -74,7 +81,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function PagosDeudas() {
+function Deudas() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
@@ -129,7 +136,7 @@ function PagosDeudas() {
   //Interfaz de modal editar
   const bodyEditar = (
     <div className={styles.modal}>
-      <h3>Editar Pago</h3>
+      <h3>Editar deuda</h3>
       <br />
       <TextField
         className={styles.inputMaterial}
@@ -180,8 +187,7 @@ function PagosDeudas() {
   const bodyEliminar = (
     <div className={styles.modal}>
       <p>
-        Estás seguro que deseas eliminar el siguiente pago:{" "}
-        <b>{deudaSelect /*  && deudaSelect.monto */}</b>?{" "}
+        Estás seguro que deseas eliminar la siguiente deuda?
       </p>
       <div align="right">
         <Button color="secondary" onClick={() => OCModalEliminar()}>
@@ -195,13 +201,13 @@ function PagosDeudas() {
   return (
     <div className={styles.container}>
       <MaterialTable
-        title="Lista de pagos"
+        title="Lista de deudas"
         data={listDeuda}
         columns={columns}
         actions={[
           {
             icon: EditIcon,
-            tooltip: "Editar Pago",
+            tooltip: "Editar deuda",
             onClick: (event, rowData) => SelectDeuda(rowData, "Editar"),
             iconProps: {
               style: { backgroundColor: "#33ACFF" },
@@ -209,7 +215,7 @@ function PagosDeudas() {
           },
           {
             icon: DeleteIcon,
-            tooltip: "Eliminar Pago",
+            tooltip: "Eliminar deuda",
             onClick: (event, rowData) => SelectDeuda(rowData, "Eliminar"),
           },
         ]}
@@ -266,4 +272,4 @@ function PagosDeudas() {
     </div>
   );
 }
-export default PagosDeudas;
+export default Deudas;
