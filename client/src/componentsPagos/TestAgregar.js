@@ -188,7 +188,7 @@ export default function FormDialog() {
         x = true;
       }
     });
-    
+
     if (x === false) {
       alert("RUT no existe");
       handleCloseTwo();
@@ -202,7 +202,8 @@ export default function FormDialog() {
           Pago de afiliados
         </h1>
         <h3 style={{ marginInline: "4%" }}>
-           En esta tabla se ingresan los pagos de cuotas asociadas a las deudas de los afiliados
+          En esta tabla se ingresan los pagos de cuotas asociadas a las deudas
+          de los afiliados
         </h3>
 
         <Box
@@ -220,7 +221,7 @@ export default function FormDialog() {
               handleClickOpen();
               RutsAfiliados();
             }}
-            >
+          >
             Agregar pago
           </Button>
         </Box>
@@ -293,8 +294,8 @@ export default function FormDialog() {
           columns={columns}
           actions={[
             {
+              icon: Add,
               tooltip: "Agregar pago",
-              icon: "Add",
               onClick: () => {
                 obtenerId();
                 agregarPagos();
@@ -319,11 +320,12 @@ export default function FormDialog() {
             selectionProps: (rowData) => ({
               onClick: () => {
                 setDeuda(rowData.id_deuda);
-                setMontoCuota(rowData.deuda_total/rowData.cuotas_totales);
+                setMontoCuota(rowData.deuda_total / rowData.cuotas_totales);
                 setRemanente(rowData.remanente_deuda);
               },
               color: "primary",
             }),
+            showTextRowsSelected: true,
           }}
           localization={{
             header: {
@@ -340,9 +342,11 @@ export default function FormDialog() {
             toolbar: {
               searchTooltip: "Busqueda",
               searchPlaceholder: "Buscar",
+              nRowsSelected: "{0} Fila(s) seleccionada(s)",
             },
           }}
           icons={{
+            Add: Add,
             Search: Search,
             ResetSearch: ResetSearch,
             Filter: Filter,
@@ -352,7 +356,6 @@ export default function FormDialog() {
             NextPage: NextPage,
             PreviousPage: PreviousPage,
             SortArrow: SortArrow,
-            Add: Add,
           }}
         />
         <Button
