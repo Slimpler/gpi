@@ -7,15 +7,8 @@ export const InfoData = {
 };
 
 export const InfoDataTwo = {
-  heading2: "Voucher prestamo",
+  heading2: "Deudas",
   heading: "Egresos",
-  buttonLabel: "Ir",
-  reverse: false,
-  delay: 300,
-};
-
-export const InfoDataThree = {
-  heading: "Deudas",
   buttonLabel: "Ir",
   reverse: false,
   delay: 300,

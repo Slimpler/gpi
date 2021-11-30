@@ -13,7 +13,6 @@ import FormularioAfiliate from "./pages/FormularioAfiliate";
 import PagoAsociacionPage from "./pages/PagoAsociacionPage";
 import PagoBonosPage from "./pages/pagoBonosPage";
 import PagoDeudasPage from "./pages/PagoDeudasPage";
-import PagoPrestamosPage from "./pages/pagoPrestamosPage";
 import FormularioDesafiliacion from "./pages/FormularioDesafiliacion";
 
 import ConvenioAfiliado from "./pages/ConvenioAfiliado";
@@ -61,7 +60,6 @@ function App() {
         <Route path="/pagoAfiliados" component={PagoAfiliadosPage} exact />
         <Route path="/pagoAsociacion" component={PagoAsociacionPage} exact />
         <Route path="/pagoBonos" component={PagoBonosPage} exact />
-        <Route path="/pagoPrestamos" component={PagoPrestamosPage} exact />
         <Route path="/pagoDeudas" component={PagoDeudasPage} exact />
         <Route path="/Convenios" component={Convenios} exact />
         <Route

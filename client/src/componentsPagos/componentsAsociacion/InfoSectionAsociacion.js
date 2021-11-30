@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Button } from "../Button";
-import Icon from '@material-ui/icons/ArrowForward';
+import Icon from "@material-ui/icons/ArrowForward";
 
 const InfoSectionAsociacion = ({
   heading,
@@ -19,14 +19,14 @@ const InfoSectionAsociacion = ({
           <h1>{heading}</h1>
           <Button to="/pagoBonos" primary="true">
             {buttonLabel}
-            <Icon/>
+            <Icon />
           </Button>
         </ColumnLeft>
         <ColumnRight>
           <h1>{heading2}</h1>
-          <Button to="/pagoPrestamos" primary="true">
+          <Button to="/pagoDeudas" primary="true">
             {buttonLabel}
-            <Icon/>
+            <Icon />
           </Button>
         </ColumnRight>
       </Container>
@@ -81,25 +81,25 @@ const ColumnLeft = styled.div`
 `;
 
 const ColumnRight = styled.div`
-display: flex;
-align-items: center;
-padding: 1rem 2rem;
-flex-flow: column;
-width: 90%;
-height: 115%;
-margin: -5em 1em;
-border: 2px solid #000;
-border-radius: 20px;
-background: #eee;
+  display: flex;
+  align-items: center;
+  padding: 1rem 2rem;
+  flex-flow: column;
+  width: 90%;
+  height: 115%;
+  margin: -5em 1em;
+  border: 2px solid #000;
+  border-radius: 20px;
+  background: #eee;
 
-h1 {
-  margin-bottom: 1rem;
-  font-size: clamp(1.5rem, 6vw, 2rem);
-}
+  h1 {
+    margin-bottom: 1rem;
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
 
-p {
-  margin-bottom: 2rem;
-}
+  p {
+    margin-bottom: 2rem;
+  }
 `;
 
 export default InfoSectionAsociacion;
