@@ -24,10 +24,11 @@ app.use(require("./routes/Modulo2/CRUDadmAfiliado"));
 app.use(require("./routes/Modulo2/CRUDadmAsociacion"));
 app.use(require("./routes/Modulo2/CRUDadmEgresos"));
 
-//routes
+// Modulo 3: 
 app.use(require("./routes/Modulo3/FormAfiliate"));
 app.use(require("./routes/Modulo3/FormDesafiliate"));
 app.use(require("./routes/Modulo3/Login"));
+app.use(require("./routes/Modulo3/CRUDafiliados"));
 
 
 app.listen(3001, () => {
