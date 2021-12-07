@@ -81,8 +81,10 @@ const Navbar = ({ toggle }) => {
               
             </NavMenu>
             <NavBtn>
-              <NavBtnLink to="/entrar">Entrar</NavBtnLink>
+              <NavBtnLink to="/entrar">Inicio Sesión Afiliado</NavBtnLink>
+              <NavBtnLink to="/entrarDirectiva">Inicio Sesión Directiva</NavBtnLink>
             </NavBtn>
+            
           </NavbarContainer>
         </Nav>
       </IconContext.Provider>

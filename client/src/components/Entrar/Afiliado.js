@@ -104,9 +104,6 @@ const Entrar = () => {
               <FormLabel ></FormLabel>
               <FormLabel ></FormLabel>
               <FormLabel ></FormLabel>
-              <FormBtnWrap>
-                <FormRoute to="../admin">Directiva</FormRoute>
-              </FormBtnWrap>
               <FormLabel ></FormLabel>
               <FormLabel ></FormLabel>
               <FormLabel ></FormLabel>

@@ -31,6 +31,33 @@ router.post("/loginAfiliado", (req, res) => {
     );
 });
 
+router.post("/loginDirectiva", (req, res) => {
+    const { rut_dir, pass_dir } = req.body
+	const values = [rut_dir, pass_dir]
+    
+  
+    db.query(
+        "SELECT * FROM directiva where rut_dir = ? and pass_dir = ?",
+        values,
+        (err, result) => {
+            if (err) {
+                res.status(500).send(err)
+            } else {
+                if (result.length > 0) {
+                    res.status(200).send(result[0])
+                } else {
+                    res.status(400).send('Usuario no existe');
+                    
+                    
+                }
+            }
+        }
+    );
+});
+
+ 
+
+
 router.get('/', (req, res)=>{
     if(req.session.loggedin){
         res.render('perfil',{
