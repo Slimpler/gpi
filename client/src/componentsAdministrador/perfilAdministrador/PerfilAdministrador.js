@@ -1,9 +1,9 @@
 import React from 'react';
 import { ContainerPerfil, Grid, Grid2, ItemImg,Item, Boton, BtnEdit} from "./PerfilAdministrador.styled"
-
+import Cookies from 'universal-cookie';
 
 export const  PerfilAdministrador = () => {
-
+  const cookies = new Cookies;
   return (
     <div>
 
@@ -19,46 +19,31 @@ export const  PerfilAdministrador = () => {
               />
             </ItemImg>
             <div style={{textAlign:"center"}}>
-              <p style={{color:"#fff", marginBottom:"10%", fontFamily:"'Baloo Tammudu 2', cursive"}}> * CARGO EN LA MUNICIPALIDAD * </p>
-              <Boton to="misconvenios">
-                Mis Convenios
-              </Boton>
+              <p style={{color:"#fff", marginBottom:"10%", fontFamily:"'Baloo Tammudu 2', cursive"}}> </p>
+              
             </div>
           </Grid2>
           <Grid2>
             <Item>
               <div>
                 <h5 class="mb-0">Nombre Completo</h5>
-                <div class="text-primary">Jose Enrique Coronado</div>
+                <div class="text-primary">{cookies.get('nombre_dir')}</div>
               </div>
             </Item>
             <Item>
               <div>
                 <h5 class="mb-0">Rut</h5>
-                <div class="text-primary">12345678-9</div>
-              </div>
-            </Item>
-            <Item>
-              <div>
-                <h5 class="mb-0">Edad</h5>
-                <div class="text-primary">35 años</div>
+                <div class="text-primary">{cookies.get('rut_dir')}</div>
               </div>
             </Item>
             <Item>
               <div>
               <div class="col-sm-3">
-                <h5 class="mb-0">Ciudad</h5>
+                <h5 class="mb-0">Cargo</h5>
                 </div>             
-                <div class="text-primary">Ciudad afiliado</div>
+                <div class="text-primary">{cookies.get('tipo_directiva')}</div>
               </div>
             </Item>
-            <Item>
-                <div>
-                    <h5 class="mb-0">Comuna</h5>
-                    <div class="text-primary">Comuna afiliado</div>
-                </div>
-            </Item>
-            <BtnEdit>Editar</BtnEdit>
           </Grid2>
         </Grid>
       </ContainerPerfil>

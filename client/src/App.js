@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages";
 import EntrarPage from "./pages/EntrarPage";
+import EntrarPageDirectiva from "./pages/EntrarPageDirectiva";
 import PerfilPage from "./pages/PerfilPage";
 import AdministrarConvenioFinanciero from "./pages/AdministrarConvenioFinanciero";
 import AdministrarConvenioComercial from "./pages/AdministrarConvenioComercial";
@@ -37,7 +38,7 @@ function App() {
           exact
         />
         <Route path="/entrar" component={EntrarPage} exact />
-
+        <Route path="/entrarDirectiva" component={EntrarPageDirectiva} exact />
         {/* Paginas del usuario */}
         <Route path="/perfil" component={PerfilPage} exact />
         <Route

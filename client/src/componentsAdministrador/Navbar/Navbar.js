@@ -1,4 +1,6 @@
 import React from "react";
+import { Button } from "@material-ui/core";
+import Cookies from 'universal-cookie';
 import {
   Nav, 
   NavbarContainer, 
@@ -10,7 +12,15 @@ import {
   NavBtnLink
 } from "./Navbar.styled"
 
+const cookies = new Cookies();
 const Navbar = () => {
+
+    const cerrarSesion=()=>{
+        cookies.remove("nombre_dir", {path:"/"})
+        cookies.remove("rut_dir", {path:"/"})
+        cookies.remove("tipo_directiva", {path:"/"})
+        window.location.href='./';
+    }
   
     return (
         <>
@@ -42,7 +52,13 @@ const Navbar = () => {
                             </NavItem>
                         </NavMenu>
                         <NavBtn>
-                            <NavBtnLink to="/">Salir</NavBtnLink>
+                        <Button 
+              fullWidth
+              variant ='contained'
+              color = 'primary'
+              onClick = {(cerrarSesion)}>
+                Cerrar Sesión 
+                </Button>
                         </NavBtn>
                 </NavbarContainer>
             </Nav>
