@@ -12,7 +12,7 @@ router.post("/agregarEgreso", (req, res) => {
     (fecha = req.body.fecha),
     (estado = req.body.estado),
     (descripcion = req.body.descripcion),
-    (rut_dir = "Pendiente"),
+    (rut_dir = req.body.rut_dir),
     db.query(
       "INSERT INTO egresos (monto, fecha, estado, descripcion, rut_dir) VALUES (?, ?, ?, ?, ?)",
       [monto, fecha, estado, descripcion, rut_dir],

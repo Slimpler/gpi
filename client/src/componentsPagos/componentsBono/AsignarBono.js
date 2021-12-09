@@ -177,8 +177,9 @@ export default function FormDialog() {
     });;
   };
 
-  const agregarEgresoAfiliado = async (rut_afiliado,monto_egreso) => {
-    await Axios.post(`http://localhost:3001/agregarEgresoAfiliado/${rut_afiliado}/${monto_egreso}`) 
+  const agregarEgresoAfiliado = (rut_afiliado,monto_egreso) => {
+    console.log("aaaaaaaaa", rut_afiliado, monto_egreso)
+    Axios.post(`http://localhost:3001/agregarEgresoAfiliado/${rut_afiliado}/${monto_egreso}`) 
     .then(() => {
       console.log("Bono asociado a cada afiliado");
       handleClose();
@@ -218,18 +219,18 @@ export default function FormDialog() {
       return aux;
   }
 
-  const asignarBonos = () => {
+  const asignarBonos = async () => {
+    console.log("list de la funcion", listAfiliados)
     var montoReal = monto
-    const assign = async () => {
-      listAfiliados.map((afiliado) => {
-        var date = new Date(afiliado.antiguedad_afiliado)
+    listAfiliados.map((afiliado) => {
+        
+        /*var date = new Date(afiliado.antiguedad_afiliado)
         var diff = difference(date, actualDate)
-        var montoBono = porFecha(montoReal,diff)
-        agregarEgresoAfiliado(afiliado.rut_afiliado,montoBono)
+        var montoBono = porFecha(montoReal,diff)*/
+        agregarEgresoAfiliado(afiliado.rut_afiliado,montoReal)
+        console.log(afiliado)
       });
-    } 
-    assign();
-  }
+  } 
 
   const eliminarEgreso = async () => {
     await Axios.delete(`http://localhost:3001/eliminarEgreso`)
@@ -266,6 +267,7 @@ export default function FormDialog() {
     }
     return x;
   };
+
 
    // Obtener todos los bonos
    const getBonos = async () => {
@@ -337,7 +339,8 @@ export default function FormDialog() {
             onClick={() => {
               handleClickOpen();
               Afiliados();
-            }}
+              getDirectiva();
+          }}
           >
             Agregar bono
           </Button>
