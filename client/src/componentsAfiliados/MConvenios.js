@@ -19,7 +19,7 @@ const columns = [
  
   {
     title: "Nombre Convenio",
-    field: "nombre_conv",
+    field: "nombre_convenio",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
@@ -27,7 +27,7 @@ const columns = [
 
   {
     title: "Estado",
-    field: "estado",
+    field: "estado_postulacion",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
@@ -35,7 +35,7 @@ const columns = [
 
   {
     title: "Comentario",
-    field: "Comentario",
+    field: "comentario_postulacion",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
@@ -76,9 +76,8 @@ function MisConvenios() {
   const [listConvenioF, setListConvenioF] = useState([]);
 /*   const [id_convF, setid_convF = useState([]); */
   const [convenioFSelect, setConvenioFSelect] = useState({
-    afiliado_rut_afiliado: "", 
-    convenio_id_conv: "",
-    nombre_convenio: "",
+    nombre_convenio: "", 
+    estado_postulacion: "",
     comentario_postulacion: "",
   });
 
@@ -91,7 +90,7 @@ function MisConvenios() {
   };
 
   const peticionGet = async () => {
-    await Axios.get("http://localhost:3001/showConvenioDisponiblesF")
+    await Axios.get("http://localhost:3001/showMisConvenios")
       .then((response) => {
         setListConvenioF(response.data);
         console.log(response.data);
@@ -114,12 +113,16 @@ function MisConvenios() {
     setModalEliminar(!modalEliminar);
   };
 
-  const [afiliado_rut_afiliado, setafiliado_rut_afiliado] = useState(0);
-  const [convenio_id_conv, setconvenio_id_conv] = useState(0);
+  useEffect(() => {
+    peticionGet();
+  }, []);
+
+
   const [nombre_convenio, setnombre_convenio] = useState("");
+  const [estado_postulacion, setestado_postulacion] = useState(0);
   const [comentario_postulacion, setcomentario_postulacion] = useState(0);
 
-  const peticionPostulacion = async () => {
+/*   const peticionPostulacion = async () => {
     Axios.post(`http://localhost:3001/createPostulacion`, {
     afiliado_rut_afiliado: afiliado_rut_afiliado, 
     convenio_id_conv: convenio_id_conv,
@@ -127,22 +130,20 @@ function MisConvenios() {
     comentario_postulacion: comentario_postulacion,
   }).then((response) => {
         // Esto hacía que al apretar postular el convenio se eliminará.
-        /* setListConvenioF(
+         setListConvenioF(
           listConvenioF.filter((val) => {
             return val.id_conv != convenioFSelect.id_conv;
           }) 
-        );*/
+        );
         OCModalEliminar();
       })
       .catch((error) => {
         console.log(error);
       });
   };
+ */
 
-
-
-
-  useEffect(() => {
+/*   useEffect(() => {
     peticionGet();
   }, []);
 
@@ -160,8 +161,7 @@ function MisConvenios() {
       </div>
     </div>
   );
-
-
+ */
 
   return (
     
@@ -245,7 +245,7 @@ function MisConvenios() {
         }}
       />
       <Modal open={modalEliminar} onClose={OCModalEliminar}>
-        {bodyEliminar}
+       {/*  {bodyEliminar} */}
       </Modal>
     </div>
   );
