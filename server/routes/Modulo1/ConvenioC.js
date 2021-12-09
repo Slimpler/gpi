@@ -109,7 +109,7 @@ router.post("/createConvenioC", (req, res) => {
   });
 
   router.get("/showPostulaciones", (req, res) => {
-    db.query("SELECT * FROM convenio_afiliado", (err, result) => {
+    db.query("SELECT * FROM convenio_afiliado where estado_postulacion = 'pendiente'", (err, result) => {
       if (err) {
         console.log(err);
       } else {
