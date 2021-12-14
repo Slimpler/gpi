@@ -285,7 +285,7 @@ export default function FormDialog() {
     Axios.put("http://localhost:3001/editBono", {
       id: idBono,
       estado: estado,
-      descripcion: descripcion,
+      rut_dir: rut_dir,
     })
       .then(() => {
         setListBonos(
@@ -293,7 +293,7 @@ export default function FormDialog() {
             return bono.id === idBono
               ? {
                   estado: estado,
-                  descripcion: descripcion
+                  rut_dir: rut_dir
                 }
               : bono;
           })
@@ -597,7 +597,8 @@ export default function FormDialog() {
           <Button
             onClick={() => {
               var y = comprobarDirectiva();
-              if(y == true){
+              console.log("aaaaaaa",y);
+              if(y === true){
                 actualizarBono();
                 alert("Bono actualizado")
                 handleCloseFour();
