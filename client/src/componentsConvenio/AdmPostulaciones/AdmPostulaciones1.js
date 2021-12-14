@@ -14,6 +14,7 @@ import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
+import { Modal, TextField, Button } from "@material-ui/core";
 
 
 const columns = [ 
@@ -77,10 +78,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
+
+
+
+
 function AdmPostulaciones1() {
   const styles = useStyles();
-  const [modalEditar, setModalEditar] = useState(false);
-  const [modalEliminar, setModalEliminar] = useState(false);
+
+  const [modalAceptar, setModalAceptar] = useState(false);
 
   const [listConvenioC, setListConvenioC] = useState([]);
 /*   const [id_convC, setid_convC = useState([]); */
@@ -90,6 +97,15 @@ function AdmPostulaciones1() {
     fecha_convC: "",
   });
 
+  const OCModalAceptar = () => {
+    setModalAceptar(!modalAceptar);
+  };
+
+  const SelectConvenioC = (id_convC, caso) => {
+    setConvenioCSelect(id_convC);
+    caso === "Editar" ? OCModalAceptar() : OCModalAceptar();
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setConvenioCSelect((prevState) => ({
@@ -97,6 +113,22 @@ function AdmPostulaciones1() {
       [name]: value,
     }));
   };
+
+    //interfaz de model eliminar
+    const bodyEliminar = (
+      <div className={styles.modal}>
+        <p>
+        ¿ Estás seguro que deseas aceptar la postulación ?
+          <b>{convenioCSelect && convenioCSelect.id_convC}</b>{" "}
+        </p>
+        <div align="right">
+          <Button color="secondary" onClick={() => {peticionPut() ;OCModalAceptar()}}>
+            SI
+          </Button>
+          <Button onClick={() => OCModalAceptar()}>No</Button>
+        </div>
+      </div>
+    );
 
   const peticionGet = async () => {
     await Axios.get("http://localhost:3001/showPostulaciones")
@@ -113,6 +145,29 @@ function AdmPostulaciones1() {
     peticionGet();
   }, []);
 
+
+  const peticionPut = async (id) => {
+    await Axios.put("http://localhost:3001/AceptarPostulacion", {
+      convenio_id_conv: convenioCSelect.convenio_id_conv,
+      estado_postulacion: convenioCSelect.estado_postulacion,
+    })
+      .then((response) => {
+        setListConvenioC(
+          listConvenioC.filter((val) => {
+            return val.id_conv === convenioCSelect.id_conv
+              ? {
+                id_conv: convenioCSelect.id_conv,
+                estado_postulacion: convenioCSelect.estado_postulacion,
+                }
+              : val;
+          })
+        );
+        OCModalAceptar();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <div className={styles.container}>
       <div>
@@ -138,7 +193,7 @@ function AdmPostulaciones1() {
           {
             icon: CheckIcon,
             tooltip: "Aceptar",
-            /* onClick: (event, rowData) => SelectConvenioC(rowData, "Eliminar"), */
+            onClick: (event, rowData) => SelectConvenioC(rowData, "Eliminar"), 
             iconProps: {
               style: { backgroundColor: "#33ACFF" },
             },
@@ -195,6 +250,9 @@ function AdmPostulaciones1() {
           SortArrow: SortArrow,
         }}
       />
+      <Modal open={modalAceptar} onClose={OCModalAceptar}>
+        {bodyEliminar}
+      </Modal>
     </div>
   );
 }
