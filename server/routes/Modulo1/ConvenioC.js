@@ -109,7 +109,7 @@ router.post("/createConvenioC", (req, res) => {
   });
 
   router.get("/showPostulaciones", (req, res) => {
-    db.query("SELECT * FROM convenio_afiliado", (err, result) => {
+    db.query("SELECT * FROM convenio_afiliado where estado_postulacion = 'pendiente'", (err, result) => {
       if (err) {
         console.log(err);
       } else {
@@ -126,6 +126,24 @@ router.post("/createConvenioC", (req, res) => {
         res.send(result);
       }
     });
+  });
+
+  router.put("/AceptarPostulacion", (req, res) => {
+    
+    const estado_postulacion = 'aceptada';
+    const convenio_id_conv = req.body.convenio_id_conv;
+  
+    db.query(
+      "UPDATE convenio_afiliado SET estado_postulacion = ? WHERE convenio_id_conv = ?",
+      [estado_postulacion, convenio_id_conv],
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Valores actualizados tabla convenio_afiliado", convenio_id_conv);
+        }
+      }
+    );
   });
 
   //Convenio Comercial ----------------------------------------------------------------------------|
