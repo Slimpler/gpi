@@ -26,6 +26,8 @@ import LastPage from "@material-ui/icons/LastPage";
 import NextPage from "@material-ui/icons/ChevronRight";
 import PreviousPage from "@material-ui/icons/ChevronLeft";
 import SortArrow from "@material-ui/icons/ArrowUpward";
+import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 
 const columns = [
   {
@@ -313,6 +315,8 @@ export default function FormDialog() {
       });
   };
   
+  //tests
+  
 
   return (
     <div>
@@ -480,7 +484,7 @@ export default function FormDialog() {
           data={listBonos}
           title="Bonos"
           columns={columns}
-          actions={[
+          /* actions={[
             {
               tooltip: "Seleccionar bono",
               icon: "Add",
@@ -488,26 +492,35 @@ export default function FormDialog() {
                 handleClickOpenFour();
               },
             },
+          ]} */
+          actions={[
+            {
+              icon: EditIcon,
+              tooltip: "Editar bono",
+              onClick: (event, rowData) => console.log("xd"),
+              iconProps: {
+                style: { backgroundColor: "#33ACFF" },
+              },
+            },
+            {
+              icon: DeleteIcon,
+              tooltip: "Eliminar bono",
+              onClick: (event, rowData) => console.log("xd 2"),
+            },
           ]}
+
           options={{
             actionsColumnIndex: -1,
             search: true,
-            selection: true,
             headerStyle: {
-              backgroundColor: "#009966",
+              backgroundColor: "#23BB77",
               color: "#FFF",
               fontSize: "14px",
-            },
-            selectionProps: (rowData) => ({
-              onClick: () => {
-                console.log(rowData.id)
-                setIdBono(rowData.id)
-              },
-              color: "primary",
-            }),
+            }
           }}
           localization={{
             header: {
+              actions: "Acciones",
               backgroundColor: "#23BB77",
             },
             pagination: {
@@ -562,7 +575,7 @@ export default function FormDialog() {
               value={estado}
               onChange={cambioEstado}
             >
-              <MenuItem value={2}> Aceptado </MenuItem>
+              <MenuItem value={2}> Aprobado </MenuItem>
               <MenuItem value={3}> Rechazado </MenuItem>
             </Select>
           </FormControl>
