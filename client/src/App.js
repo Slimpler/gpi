@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./pages";
 import EntrarPage from "./pages/EntrarPage";
+import EntrarPageDirectiva from "./pages/EntrarPageDirectiva";
 import PerfilPage from "./pages/PerfilPage";
 import AdministrarConvenioFinanciero from "./pages/AdministrarConvenioFinanciero";
 import AdministrarConvenioComercial from "./pages/AdministrarConvenioComercial";
@@ -13,7 +14,6 @@ import FormularioAfiliate from "./pages/FormularioAfiliate";
 import PagoAsociacionPage from "./pages/PagoAsociacionPage";
 import PagoBonosPage from "./pages/pagoBonosPage";
 import PagoDeudasPage from "./pages/PagoDeudasPage";
-import PagoPrestamosPage from "./pages/pagoPrestamosPage";
 import FormularioDesafiliacion from "./pages/FormularioDesafiliacion";
 
 import ConvenioAfiliado from "./pages/ConvenioAfiliado";
@@ -38,7 +38,7 @@ function App() {
           exact
         />
         <Route path="/entrar" component={EntrarPage} exact />
-
+        <Route path="/entrarDirectiva" component={EntrarPageDirectiva} exact />
         {/* Paginas del usuario */}
         <Route path="/perfil" component={PerfilPage} exact />
         <Route
@@ -61,7 +61,6 @@ function App() {
         <Route path="/pagoAfiliados" component={PagoAfiliadosPage} exact />
         <Route path="/pagoAsociacion" component={PagoAsociacionPage} exact />
         <Route path="/pagoBonos" component={PagoBonosPage} exact />
-        <Route path="/pagoPrestamos" component={PagoPrestamosPage} exact />
         <Route path="/pagoDeudas" component={PagoDeudasPage} exact />
         <Route path="/Convenios" component={Convenios} exact />
         <Route

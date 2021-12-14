@@ -90,13 +90,14 @@ router.post("/createConvenioC", (req, res) => {
 
   router.post("/createPostulacion", (req, res) => {
     console.log(req.body);
-    (afiliado_rut_afiliado = '19771819-8'), 
-    (convenio_id_conv = '8'),
-    (nombre_convenio = 'convenio 1'),
+    (convenio_id_conv = '1'),
+    (afiliado_rut_afiliado = '10698199-K'), 
+    (nombre_convenio = 'COOPEUCH'),
     (comentario_postulacion = '    '),
+    (estado_postulacion = 'Pendiente'),
     db.query(
-        "INSERT INTO convenio_afiliado (afiliado_rut_afiliado, convenio_id_conv, nombre_convenio, comentario_postulacion) VALUES (?, ?, ?, ?)",
-        [afiliado_rut_afiliado, convenio_id_conv, nombre_convenio, comentario_postulacion],
+        "INSERT INTO convenio_afiliado (convenio_id_conv, afiliado_rut_afiliado, nombre_convenio, comentario_postulacion, estado_postulacion) VALUES (?, ?, ?, ?, ?)",
+        [convenio_id_conv, afiliado_rut_afiliado, nombre_convenio, comentario_postulacion, estado_postulacion],
         (err, result) => {
           if (err) {
             console.log(err);
@@ -108,6 +109,16 @@ router.post("/createConvenioC", (req, res) => {
   });
 
   router.get("/showPostulaciones", (req, res) => {
+    db.query("SELECT * FROM convenio_afiliado", (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
+  router.get("/showMisConvenios", (req, res) => {
     db.query("SELECT * FROM convenio_afiliado", (err, result) => {
       if (err) {
         console.log(err);

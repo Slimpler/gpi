@@ -16,7 +16,6 @@ import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
 
 
-
 const columns = [ 
   
   {
@@ -51,7 +50,6 @@ const columns = [
     },
   },
   
-
 ];
 
 const useStyles = makeStyles((theme) => ({
@@ -111,7 +109,6 @@ function AdmPostulaciones1() {
       });
   };
 
-  
   useEffect(() => {
     peticionGet();
   }, []);
