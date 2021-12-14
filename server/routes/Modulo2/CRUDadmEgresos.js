@@ -10,12 +10,13 @@ router.post("/agregarEgreso", (req, res) => {
     (id = req.body.id),
     (monto = req.body.monto),
     (fecha = req.body.fecha),
-    (estado = req.body.estado),
+    (estado = "Pendiente"),
     (descripcion = req.body.descripcion),
     (rut_dir = req.body.rut_dir),
+    (activo = "Si"),
     db.query(
-      "INSERT INTO egresos (monto, fecha, estado, descripcion, rut_dir) VALUES (?, ?, ?, ?, ?)",
-      [monto, fecha, estado, descripcion, rut_dir],
+      "INSERT INTO egresos (monto, fecha, estado, descripcion, rut_dir, activo) VALUES (?, ?, ?, ?, ?, ?)",
+      [monto, fecha, estado, descripcion, rut_dir, activo],
       (err, result) => {
         if (err) {
           console.log(err);
@@ -48,7 +49,7 @@ router.post("/agregarEgresoAfiliado/:rut_afiliado/:monto_egreso", (req, res) => 
 // ---------------- Mostrar bonos de afiliados -------------------------------
 router.get("/showEgresosAfiliados", (req, res) => {
   db.query(
-    "SELECT e.id, ea.rut_afiliado, a.nombre, ea.monto_egreso, e.fecha, e.estado, e.descripcion, e.rut_dir FROM egresos e JOIN egresos_afiliados ea ON e.id = ea.id JOIN afiliado a ON ea.rut_afiliado = a.rut_afiliado",
+    "SELECT e.id, ea.rut_afiliado, a.nombre, ea.monto_egreso, e.fecha, e.estado, e.descripcion, e.rut_dir FROM egresos e JOIN egresos_afiliados ea ON e.id = ea.id JOIN afiliado a ON ea.rut_afiliado = a.rut_afiliado WHERE e.activo = 'Si'",
     (err, result) => {
       if (err) {
         console.log(err);
@@ -115,6 +116,25 @@ router.put("/editBono", (req, res) => {
     }
   );
 });
+
+// --------------- Desactivar bonos ---------------
+router.put("/desactivarEgreso", (req, res) => {
+  const id = req.body.id;
+  const activo = "No";
+
+  db.query(
+    "UPDATE egresos SET activo = ? WHERE id = ?",
+    [activo, id],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Bono desactivado");
+      }
+    }
+  );
+});
+
 
 // ------------------------------------------- Delete ----------------------------------------------
 router.delete("/eliminarEgreso", (req, res) => {

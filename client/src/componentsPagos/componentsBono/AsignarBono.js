@@ -223,11 +223,10 @@ export default function FormDialog() {
     console.log("list de la funcion", listAfiliados)
     var montoReal = monto
     listAfiliados.map((afiliado) => {
-        
-        /*var date = new Date(afiliado.antiguedad_afiliado)
+        var date = new Date(afiliado.antiguedad_afiliado)
         var diff = difference(date, actualDate)
-        var montoBono = porFecha(montoReal,diff)*/
-        agregarEgresoAfiliado(afiliado.rut_afiliado,montoReal)
+        var montoBono = porFecha(montoReal,diff)
+        agregarEgresoAfiliado(afiliado.rut_afiliado,montoBono)
         console.log(afiliado)
       });
   } 
@@ -241,6 +240,16 @@ export default function FormDialog() {
         console.log(error);
       });
   };
+
+  const desactivarEgreso = async () => {
+    await Axios.delete(`http://localhost:3001/desactivarEgreso`)
+    .then(() => {
+      handleClose();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
 
   const getDirectiva = async () => {
     await Axios.get("http://localhost:3001/getDirectiva")
@@ -383,23 +392,6 @@ export default function FormDialog() {
               setFecha(e.target.value);
             }}
           />
-          <p />
-
-          <FormControl variant="outlined">
-            <InputLabel id="demo-simple-select-outlined-label">
-              Estado del bono
-            </InputLabel>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select"
-              value={estado}
-              onChange={cambioEstado}
-            >
-              <MenuItem value={1}> Pendiente </MenuItem>
-              <MenuItem value={2}> Aceptado </MenuItem>
-              <MenuItem value={3}> Rechazado </MenuItem>
-            </Select>
-          </FormControl>
           <p />
           <FormControl variant="outlined">
             <InputLabel id="demo-simple-select-outlined-label">
