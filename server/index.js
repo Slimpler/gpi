@@ -29,6 +29,7 @@ app.use(require("./routes/Modulo3/FormAfiliate"));
 app.use(require("./routes/Modulo3/FormDesafiliate"));
 app.use(require("./routes/Modulo3/Login"));
 app.use(require("./routes/Modulo3/CRUDafiliados"));
+app.use(require("./routes/Modulo3/CRUDSolicitudes"));
 
 
 app.listen(3001, () => {

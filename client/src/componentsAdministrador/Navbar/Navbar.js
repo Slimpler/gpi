@@ -50,6 +50,11 @@ const Navbar = () => {
                                     Afiliados
                                 </NavLinks>
                             </NavItem>
+                            <NavItem>
+                                <NavLinks to="AdmSolicitud">
+                                    Solicitudes
+                                </NavLinks>
+                            </NavItem>
                         </NavMenu>
                         <NavBtn>
                         <Button 
