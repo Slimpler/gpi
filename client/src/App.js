@@ -22,6 +22,7 @@ import BonosAfiliadoPage from "./pages/BonosAfiliadoPage";
 import PagosUsuarioPage from "./pages/PagosUsuarioPage";
 import MisConvenios from "./pages/MisConvenios";
 import AdmAfiliados from "./pages/AdmAfiliados";
+import AdmSolicitud from "./pages/AdmSolicitud";
 import AdministracionAfiliados from "./pages/AdministracionAfiliados";
 import Convenios from "./pages/Convenios";
 import AdmPostulaciones from "./pages/AdmPostulaciones";
@@ -79,6 +80,7 @@ function App() {
           exact
         />
         <Route path="/AdmAfiliados" component={AdmAfiliados} exact />
+        <Route path="/AdmSolicitud" component={AdmSolicitud} exact />
         <Route
           path="/AdministracionAfiliados"
           component={AdministracionAfiliados}

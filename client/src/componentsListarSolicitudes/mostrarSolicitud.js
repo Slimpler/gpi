@@ -17,15 +17,15 @@ import SortArrow from "@material-ui/icons/ArrowUpward";
 
 const columns = [
   {
-    title: "Rut Afiliado",
-    field: "rut_afiliado",
+    title: "Rut Funcionario",
+    field: "rut_func",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
   },
   {
     title: "Nombre",
-    field: "nombre",
+    field: "nombre_func",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
@@ -46,14 +46,14 @@ const columns = [
   },
   {
     title: "Antiguedad",
-    field: "antiguedad_afiliado",
+    field: "antiguedad_func",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
   },
   {
     title: "Estado",
-    field: "estado_afi",
+    field: "estado_sa",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
@@ -88,40 +88,42 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Afiliados() {
+function Solicitud() {
   const styles = useStyles();
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
-  const [listAfiliado, setListAfiliado] = useState([]);
-  const [nombre, setNombre] = useState("");
-  const [afiliado, setAfiliado] = useState("");
+  
+  const [listSolicitud, setListSolicitud] = useState([]);
+  const [nombre_func, setNombre] = useState("");
+  
+  const [solicitud, setSolicitud] = useState("");
   const [celular, setCelular] = useState("");
   const [telefono, setTelefono] = useState("");
-  const [antiguedad_afiliado, setAntiguedadAfiliado] = useState("");
-  const [estado_afi, setEstadoAfi] = useState("");
+  const [antiguedad_func, setAntiguedadFunc] = useState("");
+  const [estado_sa, setEstadoFunc] = useState("");
   // const [rutAfiliado, setRutAfiliado] = useState("");
 
-  const [afiliadoSelect, setAfiliadoSelect] = useState({
-    rut_afiliado: "",
-    nombre: "",
+  const [solicitudSelect, setSolicitudSelect] = useState({
+    rut_func: "",
+    nombre_func: "",
     celular: "",
     telefono: "",
-    antiguedad_afiliado: "",
-    estado_afi: "",
+    antiguedad_func: "",
+    estado_sa: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setAfiliadoSelect((prevState) => ({
+    setSolicitudSelect((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
 
-  const getAfiliados = async () => {
-    await Axios.get("http://localhost:3001/getAfiliados")
+  const getSolicitud = async () => {
+    await Axios.get("http://localhost:3001/getSolicitud")
       .then((response) => {
-        setListAfiliado(response.data);
+        setListSolicitud(response.data);
         console.log(response.data);
       })
       .catch((error) => {
@@ -129,27 +131,26 @@ function Afiliados() {
       });
   };
 
-  const actualizarAfiliado = async (id) => {
-    Axios.put("http://localhost:3001/editAfiliado", {
-      rut_afiliado: afiliadoSelect.rut_afiliado,
-      // rutAfiliado: rutAfiliado,
-      nombre: afiliadoSelect.nombre,
-      celular: afiliadoSelect.celular,
-      telefono: afiliadoSelect.telefono,
-      antiguedad_afiliado: afiliadoSelect.antiguedad_afiliado.substring(0,10).toString(),
-      estado_afi: afiliadoSelect.estado_afi,
+  const actualizarSolicitud = async (id) => {
+    Axios.put("http://localhost:3001/editSolicitud", {
+      rut_func: solicitudSelect.rut_func,
+      nombre_func: solicitudSelect.nombre_func,
+      celular: solicitudSelect.celular,
+      telefono: solicitudSelect.telefono,
+      antiguedad_func: solicitudSelect.antiguedad_func.substring(0,10).toString(),
+      estado_sa: solicitudSelect.estado_sa,
     })
       .then(() => {
-        setListAfiliado(
-          listAfiliado.map((val) => {
-            return val.rut_afiliado === afiliadoSelect.rut_afiliado
+        setListSolicitud(
+          listSolicitud.map((val) => {
+            return val.rut_func === solicitudSelect.rut_func
               ? {
                   // rutAfiliado: rutAfiliado,
-                  celular: afiliadoSelect.celular,
-                  nombre: afiliadoSelect.nombre,
-                  telefono: afiliadoSelect.telefono,
-                  antiguedad_afiliado: afiliadoSelect.antiguedad_afiliado.substring(0,10).toString(),
-                  estado_afi: afiliadoSelect.estado_afi,
+                  celular: solicitudSelect.celular,
+                  nombre_func: solicitudSelect.nombre_func,
+                  telefono: solicitudSelect.telefono,
+                  antiguedad_func: solicitudSelect.antiguedad_func.substring(0,10).toString(),
+                  estado_sa: solicitudSelect.estado_sa,
                 }
               : val;
           })
@@ -161,12 +162,12 @@ function Afiliados() {
       });
   };
 
-  const eliminarAfiliado = async () => {
-    await Axios.delete(`http://localhost:3001/eliminarAfiliado/${afiliado}`)
+  const eliminarSolicitud = async () => {
+    await Axios.delete(`http://localhost:3001/eliminarSolicitud/${solicitud}`)
       .then((response) => {
-        setListAfiliado(
-          listAfiliado.filter((val) => {
-            return val.rut_afiliado !== afiliado;
+        setListSolicitud(
+          listSolicitud.filter((val) => {
+            return val.rut_func !== solicitud;
           })
         );
         OCModalEliminar();
@@ -176,8 +177,8 @@ function Afiliados() {
       });
   };
 
-  const SelectAfiliado = (rut_afiliado, caso) => {
-    setAfiliadoSelect(rut_afiliado);
+  const SelectSolicitud = (rut_func, caso) => {
+    setSolicitudSelect(rut_func);
     caso === "Editar" ? OCModalEditar() : OCModalEliminar();
   };
 
@@ -190,28 +191,44 @@ function Afiliados() {
   };
 
   useEffect(() => {
-    getAfiliados();
+    getSolicitud();
   }, []);
 
   //Interfaz de modal editar
   const bodyEditar = (
     <div className={styles.modal}>
-      <h3>Editar Afiliado</h3>
+      <h3>Editar Estado</h3>
+      <h5>Estados: Pendiente, Rechazado, Revision</h5>
       <br />
       <TextField
         className={styles.inputMaterial}
-        label="Rut Afiliado"
-        name="rut_afiliado"
+        label="Estado Solicitud"
+        name="estado_sa"
         onChange={handleChange}
-        value={afiliadoSelect && afiliadoSelect.rut_afiliado }
+        value={solicitudSelect && solicitudSelect.estado_sa}
+        
       />
-      <br />
+      <h5>Datos no modificables</h5>
       <TextField
         className={styles.inputMaterial}
-        name="nombre"
+        label="Rut Funcionario"
+        name="rut_func"
+        onChange={handleChange}
+        value={solicitudSelect && solicitudSelect.rut_func}
+        inputProps={
+          {readOnly:true, }
+        }
+      />
+      
+      <TextField
+        className={styles.inputMaterial}
+        name="nombre_func"
         label="Nombre"
         onChange={handleChange}
-        value={afiliadoSelect && afiliadoSelect.nombre}
+        value={solicitudSelect && solicitudSelect.nombre_func}
+        inputProps={
+          {readOnly:true, }
+        }
       />
       <br />
       <TextField
@@ -219,7 +236,10 @@ function Afiliados() {
         label="Celular"
         name="celular"
         onChange={handleChange}
-        value={afiliadoSelect && afiliadoSelect.celular}
+        value={solicitudSelect && solicitudSelect.celular}
+        inputProps={
+          {readOnly:true, }
+        }
       />
       <br />
       <TextField
@@ -227,36 +247,30 @@ function Afiliados() {
         label="Teléfono"
         name="telefono"
         onChange={handleChange}
-        value={afiliadoSelect && afiliadoSelect.telefono}
+        value={solicitudSelect && solicitudSelect.telefono}
+        inputProps={
+          {readOnly:true, }
+        }
       />
       <TextField
         className={styles.inputMaterial}
         label="Antiguedad"
-        name="antiguedad_afiliado"
+        name="antiguedad_func"
         onChange={handleChange}
         type="date"
-        value={afiliadoSelect && afiliadoSelect.antiguedad_afiliado.substring(0,10).toString()}
-      />
-      <br />
-      <h3>Editar Estado</h3>
-      <h5>Estados: asociado, retirado</h5>
-      <br />
-      <TextField
-        className={styles.inputMaterial}
-        label="Estado Solicitud"
-        name="estado_afi"
-        onChange={handleChange}
-        value={afiliadoSelect && afiliadoSelect.estado_afi}
-        
+        value={solicitudSelect && solicitudSelect.antiguedad_func.substring(0,10).toString()}
+        inputProps={
+          {readOnly:true, }
+        }
       />
       <div align="right">
         <Button
           color="primary"
           onClick={() => { 
-            actualizarAfiliado(); 
+            actualizarSolicitud(); 
             alert("Afiliado actualizado")
             OCModalEditar();
-            getAfiliados();
+            getSolicitud();
           }
         }
         >
@@ -276,7 +290,7 @@ function Afiliados() {
       <div align="right">
         <Button color="secondary" 
         onClick={() => { 
-          eliminarAfiliado();
+          eliminarSolicitud();
           alert("Afiliado eliminado")
         }}>
           Sí
@@ -289,22 +303,22 @@ function Afiliados() {
   return (
     <div className={styles.container}>
       <MaterialTable
-        title="Lista de Afiliados"
-        data={listAfiliado}
+        title="Lista de Solicitudes"
+        data={listSolicitud}
         columns={columns}
         actions={[
           {
             icon: EditIcon,
-            tooltip: "Editar Afiliado",
+            tooltip: "Editar Solicitud",
             onClick: (event, rowData) => {
-              getAfiliados(rowData.rut_afiliado);
+              getSolicitud(rowData.rut_func);
               // setRutAfiliado(rowData.rutAfiliado);
-              setNombre(rowData.nombre);
+              setNombre(rowData.nombre_func);
               setCelular(rowData.celular);
               setTelefono(rowData.telefono);
-              setAntiguedadAfiliado(rowData.antiguedad_afiliado.substring(0,10).toString());
-              setEstadoAfi(rowData.estado_afi);
-              SelectAfiliado(rowData, "Editar")
+              setAntiguedadFunc(rowData.antiguedad_func.substring(0,10).toString());
+              setEstadoFunc(rowData.estado_sa);
+              SelectSolicitud(rowData, "Editar")
             },
             iconProps: {
               style: { backgroundColor: "#33ACFF" },
@@ -312,11 +326,11 @@ function Afiliados() {
           },
           {
             icon: DeleteIcon,
-            tooltip: "Eliminar Afiliado",
+            tooltip: "Eliminar Solicitud",
             onClick: (event, rowData) => {
-              getAfiliados(rowData.rut_afiliado);
-              setAfiliado(rowData.rut_afiliado);
-              SelectAfiliado(rowData, "Eliminar")
+              getSolicitud(rowData.rut_func);
+              setSolicitud(rowData.rut_func);
+              SelectSolicitud(rowData, "Eliminar")
           },
           iconProps: {
             style: { backgroundColor: "#33ACFF" },
@@ -376,4 +390,4 @@ function Afiliados() {
     </div>
   );
 }
-export default Afiliados;
+export default Solicitud;
