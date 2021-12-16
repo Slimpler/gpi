@@ -44,9 +44,9 @@ router.post("/agregarIngresoConvenio", (req, res) => {
 
 // -------------------------------------------- Get --------------------------------------------------
 // ---------------- Mostrar pagos asociacion -----------------------
-router.get("/showPagosAsociacion", (req, res) => {
+router.get("/showIngresosExternos", (req, res) => {
   db.query(
-    "SELECT i.id_ingreso, c.nombre_conv, i.monto, i.fecha, i.estado FROM convenio c JOIN ingresos i JOIN ingreso_convenio ic WHERE i.id_ingreso = ic.id_ingreso AND c.id_conv = ic.id_conv",
+    "SELECT id_ingreso, monto, fecha, estado, tipo FROM ingresos where tipo = 'Pago externo'",
     (err, result) => {
       if (err) {
         console.log(err);
@@ -56,6 +56,7 @@ router.get("/showPagosAsociacion", (req, res) => {
     }
   );
 });
+
 
 // ---------------- Mostrar convenios -------------------------------
 router.get("/getConvenios", (req, res) => {

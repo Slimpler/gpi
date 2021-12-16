@@ -95,18 +95,6 @@ export default function FormDialog() {
             size="medium"
             onChange={(e) => {
               setDeuda_total(e.target.value);
-            }}
-          />
-
-          <p />
-          <TextField
-            autofocus
-            margin="dense"
-            id="remanente_deuda"
-            label="remanente deuda"
-            variant="outlined"
-            size="medium"
-            onChange={(e) => {
               setRemanente_deuda(e.target.value);
             }}
           />
@@ -120,19 +108,6 @@ export default function FormDialog() {
             size="medium"
             onChange={(e) => {
               setCuotas_totales(e.target.value);
-            }}
-          />
-          <p />
-
-          <TextField
-            autofocus
-            margin="dense"
-            id="cuotas_pagadas"
-            label="cuotas pagadas"
-            variant="outlined"
-            size="medium"
-            onChange={(e) => {
-              setCuotas_pagadas(e.target.value);
             }}
           />
           <p />

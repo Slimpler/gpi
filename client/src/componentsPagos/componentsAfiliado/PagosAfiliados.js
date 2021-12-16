@@ -278,23 +278,6 @@ function IngresosAfiliados() {
   const bodyEditar = (
     <div className={styles.modal}>
       <h3>Editar Pago</h3>
-      {
-        <TextField
-          className={styles.inputMaterial}
-          label="Rut afiliado"
-          name="rut_afiliado"
-          onChange={handleChange}
-          value={ingresoSelect && ingresoSelect.rut_afiliado}
-        />
-      }
-      <br />
-      <TextField
-        className={styles.inputMaterial}
-        label="Monto de pago"
-        name="monto"
-        onChange={handleChange}
-        value={ingresoSelect && ingresoSelect.monto}
-      />
       <br />
       <TextField
         className={styles.inputMaterial}

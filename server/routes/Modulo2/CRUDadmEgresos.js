@@ -10,12 +10,13 @@ router.post("/agregarEgreso", (req, res) => {
     (id = req.body.id),
     (monto = req.body.monto),
     (fecha = req.body.fecha),
-    (estado = req.body.estado),
+    (estado = "Pendiente"),
     (descripcion = req.body.descripcion),
-    (rut_dir = "Pendiente"),
+    (rut_dir = req.body.rut_dir),
+    (activo = "Si"),
     db.query(
-      "INSERT INTO egresos (monto, fecha, estado, descripcion, rut_dir) VALUES (?, ?, ?, ?, ?)",
-      [monto, fecha, estado, descripcion, rut_dir],
+      "INSERT INTO egresos (monto, fecha, estado, descripcion, rut_dir, activo) VALUES (?, ?, ?, ?, ?, ?)",
+      [monto, fecha, estado, descripcion, rut_dir, activo],
       (err, result) => {
         if (err) {
           console.log(err);
@@ -28,7 +29,7 @@ router.post("/agregarEgreso", (req, res) => {
 
 // -------------------------- Actualizar tabla intermedia afiliado agreso ---------------------
 router.post("/agregarEgresoAfiliado/:rut_afiliado/:monto_egreso", (req, res) => {
-  console.log("a",req.params);
+  console.log("aaaa",req.params);
   const rut_afiliado = req.params.rut_afiliado;
   const monto_egreso = req.params.monto_egreso;
     db.query(
@@ -38,6 +39,7 @@ router.post("/agregarEgresoAfiliado/:rut_afiliado/:monto_egreso", (req, res) => 
         if (err) {
           console.log(err);
         } else {
+          res.status(301).send(result)
           console.log("Bono ingresado para", rut_afiliado);
         }
       }
@@ -48,7 +50,7 @@ router.post("/agregarEgresoAfiliado/:rut_afiliado/:monto_egreso", (req, res) => 
 // ---------------- Mostrar bonos de afiliados -------------------------------
 router.get("/showEgresosAfiliados", (req, res) => {
   db.query(
-    "SELECT e.id, ea.rut_afiliado, a.nombre, ea.monto_egreso, e.fecha, e.estado, e.descripcion, e.rut_dir FROM egresos e JOIN egresos_afiliados ea ON e.id = ea.id JOIN afiliado a ON ea.rut_afiliado = a.rut_afiliado",
+    "SELECT e.id, ea.rut_afiliado, a.nombre, ea.monto_egreso, e.fecha, e.estado, e.descripcion, e.rut_dir FROM egresos e JOIN egresos_afiliados ea ON e.id = ea.id JOIN afiliado a ON ea.rut_afiliado = a.rut_afiliado WHERE e.activo = 'Si'",
     (err, result) => {
       if (err) {
         console.log(err);
@@ -61,7 +63,7 @@ router.get("/showEgresosAfiliados", (req, res) => {
 
 // ---------------- Mostrar bonos --------------------------------
 router.get("/getBonos", (req, res) => {
-  db.query("SELECT * from egresos WHERE descripcion = 'Bono Fiestas Patrias' or descripcion = 'Bono Navidad'",
+  db.query("SELECT * FROM egresos WHERE activo = 'Si' AND descripcion = 'Bono Fiestas Patrias' OR activo = 'Si' AND descripcion = 'Bono Navidad'",
    (err, result) => {
     if (err) {
       console.log(err);
@@ -115,6 +117,26 @@ router.put("/editBono", (req, res) => {
     }
   );
 });
+
+// --------------- Desactivar bonos ---------------
+router.put("/desactivarEgreso", (req, res) => {
+  console.log("eeeeeeeeeeeeee",req.body)
+  const id = req.body.id;
+  const activo = "No";
+
+  db.query(
+    "UPDATE egresos SET activo = ? WHERE id = ?",
+    [activo, id],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log("Bono desactivado");
+      }
+    }
+  );
+});
+
 
 // ------------------------------------------- Delete ----------------------------------------------
 router.delete("/eliminarEgreso", (req, res) => {

@@ -64,11 +64,11 @@ router.post("/createDeudaAfiliado", (req, res) => {
     (deuda_total = req.body.deuda_total),
     (remanente_deuda = req.body.remanente_deuda),
     (cuotas_totales = req.body.cuotas_totales),
-    (cuotas_pagadas = req.body.cuotas_pagadas),
+    (cuotas_pagadas = 0),
     (descripcion = req.body.descripcion),
     (rut_afiliado = req.body.rut_afiliado),
     db.query(
-      "INSERT INTO deudas (deuda_total, remanente_deuda,cuotas_totales,cuotas_pagadas, descripcion, rut_afiliado) VALUES (?, ?, ?, ?, ?, ?)",
+      "INSERT INTO deudas (deuda_total, remanente_deuda,cuotas_totales, cuotas_pagadas, descripcion, rut_afiliado) VALUES (?, ?, ?, ?, ?, ?)",
       [
         deuda_total,
         remanente_deuda,
