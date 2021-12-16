@@ -7,7 +7,7 @@ const db = require('../../database')
 //--------------------GET------------------------------
 //Mostrar los funcionarios que rellenaron el formulario afiliación
 router.get('/formAfiliacion', (req, res) => {
-    db.query('SELECT * FROM solicituda', (err, result) => {
+    db.query('SELECT * FROM solicitudafiliacion', (err, result) => {
         if(!err) {
             res.json(result);
         }else{
@@ -29,12 +29,11 @@ router.post("/createFormAfiliacion", (req, res) => {
           (nombre_func = req.body.nombre_func),
           (telefono = req.body.telefono),
           (celular = req.body.celular),
-          (sueldo_func = req.body.sueldo_func),
           (antiguedad_func = req.body.antiguedad_func),
 
           db.query(
-            "INSERT INTO solicituda (rut_func, nombre_func, telefono, celular, sueldo_func, antiguedad_func) VALUES (?, ?, ?, ?, ?, ?)",
-            [rut_func, nombre_func, telefono, celular, sueldo_func, antiguedad_func],
+            "INSERT INTO solicitudafiliacion (rut_func, nombre_func, telefono, celular, antiguedad_func, estado_sa, rut_dir) VALUES (?, ?, ?, ?, ?, '"+ "Pendiente" +"', '"+ '11518418-0' +"')",
+            [rut_func, nombre_func, telefono, celular, antiguedad_func],
             (err, result) => {
               if (err) {
                 console.log(err);

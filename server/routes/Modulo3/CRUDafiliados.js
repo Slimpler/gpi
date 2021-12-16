@@ -42,10 +42,11 @@ router.put("/editAfiliado", (req, res) => {
     const celular = req.body.celular;
     const telefono = req.body.telefono;
     const antiguedad_afiliado = req.body.antiguedad_afiliado;
+    const estado_afi = req.body.estado_afi;
   
     db.query(
-      "UPDATE afiliado SET nombre = ?, celular = ?, telefono = ?, antiguedad_afiliado= ? WHERE rut_afiliado = ?",
-      [nombre, celular, telefono, antiguedad_afiliado, rut_afiliado],
+      "UPDATE afiliado SET nombre = ?, celular = ?, telefono = ?, antiguedad_afiliado= ?, estado_afi = ? WHERE rut_afiliado = ?",
+      [nombre, celular, telefono, antiguedad_afiliado, estado_afi, rut_afiliado],
       (err, result) => {
         if (err) {
           console.log(err);
@@ -67,7 +68,7 @@ router.post("/ingresarAfiliado", (req, res) => {
           (antiguedad_afiliado = req.body.antiguedad_afiliado),
           (pass_afi = req.body.pass_afi),
           db.query(
-            "INSERT INTO afiliado (rut_afiliado, nombre, telefono, celular, pass_afi, antiguedad_afiliado) VALUES (?, ?, ?, ?, ?, ?)",
+            "INSERT INTO afiliado (rut_afiliado, nombre, telefono, celular, pass_afi, antiguedad_afiliado, estado_afi) VALUES (?, ?, ?, ?, ?, ?, '"+ "asociado" +"')",
             [rut_afiliado, nombre, telefono, celular, pass_afi, antiguedad_afiliado],
             (err, result) => {
                 if (err) {
