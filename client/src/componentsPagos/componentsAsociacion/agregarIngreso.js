@@ -111,15 +111,6 @@ export default function FormDialog() {
       });
   };
 
-  const agregarIngresosConvenios = () => {
-    Axios.post("http://localhost:3001/agregarIngresoConvenio", {
-      id_conv: id_convenio,
-    }).then(() => {
-      console.log("Exitoso");
-      handleClose();
-    });
-  };
-
   return (
     <div>
       <div>
@@ -141,7 +132,7 @@ export default function FormDialog() {
             variant="contained"
             color="primary"
             onClick={() => {
-              handleOpenConvenio();
+              handleClickOpen();
               getConvenios();
             }}
           >
@@ -149,82 +140,6 @@ export default function FormDialog() {
           </Button>
         </Box>
       </div>
-
-      {/* tabla para ver los convenios y seleccionarlos */}
-      <Dialog
-        open={openConvenio}
-        onClose={handleCloseConvenio}
-        aria-labelledby="form-dialog-title"
-      >
-        <MaterialTable
-          data={listConvenio}
-          title="Convenios"
-          columns={columns}
-          actions={[
-            {
-              tooltip: "Agregar pago",
-              icon: "Add",
-              onClick: () => {{
-                  // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-                }
-              },
-            },
-          ]}
-          options={{
-            actionsColumnIndex: -1,
-            search: true,
-            selection: true,
-            headerStyle: {
-              backgroundColor: "#009966",
-              color: "#FFF",
-              fontSize: "14px",
-            },
-            selectionProps: (rowData) => ({
-              onClick: () => {
-                setId_Convenio(rowData.id_conv);
-              },
-              color: "primary",
-            }),
-          }}
-          localization={{
-            header: {
-              backgroundColor: "#23BB77",
-            },
-            pagination: {
-              labelRowsSelect: "Filas",
-              labelDisplayedRows: "{count} de {from}-{to}",
-              firstTooltip: "Primera página",
-              previousTooltip: "Página anterior",
-              nextTooltip: "Próxima página",
-              lastTooltip: "Última página",
-            },
-            toolbar: {
-              searchTooltip: "Busqueda",
-              searchPlaceholder: "Buscar",
-            },
-          }}
-          icons={{
-            Search: Search,
-            ResetSearch: ResetSearch,
-            Filter: Filter,
-            Export: Export,
-            FirstPage: FirstPage,
-            LastPage: LastPage,
-            NextPage: NextPage,
-            PreviousPage: PreviousPage,
-            SortArrow: SortArrow,
-            Add: Add,
-          }}
-        />
-        <Button onClick={handleCloseConvenio}>Cerrar</Button>
-        <Button
-          onClick={() => {
-            handleClickOpen();
-          }}
-        >
-          Siguiente
-        </Button>
-      </Dialog>
 
       <Dialog
         open={open}
@@ -286,10 +201,8 @@ export default function FormDialog() {
           <Button
             onClick={(e) => {
               agregarPagos();
-              agregarIngresosConvenios();
               alert("Pago Ingresado")
               handleClose();
-              handleCloseConvenio();
             }}
             color="primary"
           >

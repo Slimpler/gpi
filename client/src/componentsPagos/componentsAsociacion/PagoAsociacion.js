@@ -23,8 +23,8 @@ import InputLabel from "@material-ui/core/InputLabel";
 
 const columns = [
   {
-    title: "Nombre convenio",
-    field: "nombre_conv",
+    title: "Tipo de pago",
+    field: "tipo",
     headerStyle: {
       backgroundColor: "#23BB77",
     },
@@ -108,7 +108,7 @@ function PagosAsociacion() {
   };
 
   const peticionGet = async () => {
-    await Axios.get("http://localhost:3001/showPagosAsociacion")
+    await Axios.get("http://localhost:3001/showIngresosExternos")
       .then((response) => {
         setListIngresos(response.data);
         console.log(response.data);

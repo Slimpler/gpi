@@ -66,6 +66,7 @@ export default function FormDialog() {
   const [openTwo, setOpenTwo] = React.useState(false);
   const [openThree, setOpenThree] = React.useState(false);
   const [openFour, setOpenFour] = React.useState(false);
+  const [openFive, setOpenFive] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -98,6 +99,15 @@ export default function FormDialog() {
   const handleCloseFour = () => {
     setOpenFour(false);
   };
+
+  const handleClickOpenFive = () => {
+    setOpenFive(true);
+  };
+
+  const handleCloseFive = () => {
+    setOpenFive(false);
+
+  }
 
   const styles = makeStyles((theme) => ({
     modal: {
@@ -179,13 +189,8 @@ export default function FormDialog() {
     });;
   };
 
-  const agregarEgresoAfiliado = (rut_afiliado,monto_egreso) => {
-    console.log("aaaaaaaaa", rut_afiliado, monto_egreso)
+  const agregarEgresoAfiliado = (rut_afiliado, monto_egreso) => {
     Axios.post(`http://localhost:3001/agregarEgresoAfiliado/${rut_afiliado}/${monto_egreso}`) 
-    .then(() => {
-      console.log("Bono asociado a cada afiliado");
-      handleClose();
-    });
   }
 
   const Afiliados = async () => {
@@ -222,15 +227,13 @@ export default function FormDialog() {
   }
 
   const asignarBonos = async () => {
-    console.log("list de la funcion", listAfiliados)
     var montoReal = monto
-    listAfiliados.map((afiliado) => {
-        var date = new Date(afiliado.antiguedad_afiliado)
-        var diff = difference(date, actualDate)
-        var montoBono = porFecha(montoReal,diff)
-        agregarEgresoAfiliado(afiliado.rut_afiliado,montoBono)
-        console.log(afiliado)
-      });
+    for(const afiliado of listAfiliados){
+      var date = new Date(afiliado.antiguedad_afiliado)
+      var diff = difference(date, actualDate)
+      var montoBono = porFecha(montoReal,diff)
+      agregarEgresoAfiliado(afiliado.rut_afiliado,montoBono)
+    }
   } 
 
   const eliminarEgreso = async () => {
@@ -244,7 +247,9 @@ export default function FormDialog() {
   };
 
   const desactivarEgreso = async () => {
-    await Axios.delete(`http://localhost:3001/desactivarEgreso`)
+    Axios.put("http://localhost:3001/desactivarEgreso", {
+      id: idBono,
+    })
     .then(() => {
       handleClose();
     })
@@ -342,7 +347,7 @@ export default function FormDialog() {
               getDirectiva();
             }}
           >
-            Editar bono
+            Lista de bonos
           </Button>
 
           <Button
@@ -359,7 +364,7 @@ export default function FormDialog() {
           </Button>
         </Box>
       </div>
-      
+{/* -------------------------------------------------------- handleclick 1 ------------------------------------------------------ */}  
       <Dialog
         open={open}
         onClose={handleClose}
@@ -441,7 +446,7 @@ export default function FormDialog() {
           </Button>
         </DialogActions>
       </Dialog>
-
+{/* -------------------------------------------------------- handleclick 2 ------------------------------------------------------ */}
       <Dialog
         open={openTwo}
         onClose={handleCloseTwo}
@@ -474,7 +479,7 @@ export default function FormDialog() {
           </Button>
         </DialogActions>
       </Dialog>
-
+{/* -------------------------------------------------------- handleclick 3 ------------------------------------------------------ */}
       <Dialog
         open={openThree}
         onClose={handleCloseThree}
@@ -497,7 +502,10 @@ export default function FormDialog() {
             {
               icon: EditIcon,
               tooltip: "Editar bono",
-              onClick: (event, rowData) => console.log("xd"),
+              onClick: (event, rowData) => {
+                setIdBono(rowData.id);
+                handleClickOpenFour()
+              },
               iconProps: {
                 style: { backgroundColor: "#33ACFF" },
               },
@@ -505,7 +513,10 @@ export default function FormDialog() {
             {
               icon: DeleteIcon,
               tooltip: "Eliminar bono",
-              onClick: (event, rowData) => console.log("xd 2"),
+              onClick: (event, rowData) => {
+                setIdBono(rowData.id);
+                handleClickOpenFive()
+              },
             },
           ]}
 
@@ -557,7 +568,7 @@ export default function FormDialog() {
           Cerrar
         </Button>
       </Dialog>
-
+{/* -------------------------------------------------------- handleclick 4 ------------------------------------------------------ */}
       <Dialog
         open={openFour}
         onClose={handleCloseFour}
@@ -616,6 +627,37 @@ export default function FormDialog() {
             color="primary"
           >
             Editar
+          </Button>
+        </DialogActions>
+      </Dialog>
+{/* ----------------------------------------- handleclick 5 -------------------------------------------------------- */}
+      <Dialog
+        open={openFive}
+        onClose={handleCloseFive}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">Eliminar bono</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Desea eliminar el bono?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button 
+            onClick={() => {
+              handleCloseFive();
+            }} 
+            color="primary">
+            No
+          </Button>
+          <Button
+            onClick={() => {
+              desactivarEgreso();
+              handleCloseFive();
+            }}
+            color="primary"
+          >
+            Si
           </Button>
         </DialogActions>
       </Dialog>
